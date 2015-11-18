@@ -5,14 +5,14 @@
 - [Parallax Cover Image](#parallax-cover-image)
 - [Structure](#structure)
 
-#### Lazy Load Images
+### Lazy Load Images
 All images below the fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
 
 ```
 <img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
 ```
 
-#### Parallax Cover Image
+### Parallax Cover Image
 Use the `<figure>` element positioned absolutely within the section. The section must have `overflow: hidden; position: relative;` to contain the `<figure>`. Set the `<img>` to emulate `background-size: cover;` with CSS. Use the Skrollr.js data attributes to create the parallax effect. 
 
 ```
@@ -26,9 +26,10 @@ Use the `<figure>` element positioned absolutely within the section. The section
 </section>
 ```
 
-#### Structure
+### Structure
 
-**Document Structure**
+#### Document Structure
+
 ```
 <body>
     <div id="site-wrapper">
@@ -40,7 +41,8 @@ Use the `<figure>` element positioned absolutely within the section. The section
 </body>
 ```
 
-**Page Structure**
+#### Page Structure
+
 ```
 <main>
     <article>
@@ -53,8 +55,9 @@ Use the `<figure>` element positioned absolutely within the section. The section
 </main>
 ```
 
-**Section Structure**
+#### Section Structure
 A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area. 
+
 ```
 <section>
     <div class="main-container">
