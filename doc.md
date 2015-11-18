@@ -1,13 +1,14 @@
 # BrandCo Starter Kit Documentation
 
 ## Sections
-- Lazy load images
-- Parallax Cover Image
+- [Lazy Load Images](#lazy-load-images)
+- [Parallax Cover Image](#parallax-cover-image)
 
 #### Lazy Load Images
 All images below the fold should be loaded as they appear into the viewport. Currently using unveil.js.
+
 ```
-    <img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
+<img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
 ```
 
 #### Parallax Cover Image
@@ -23,3 +24,4 @@ Use the `<figure>` element positioned absolutely within the section. The section
     </figure>
 </section>
 ```
+
