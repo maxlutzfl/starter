@@ -1,4 +1,4 @@
-# BrandCo Starter Kit Documentation
+# Starter Kit Documentation
 
 ## Sections
 - [Lazy Load Images](#lazy-load-images)
