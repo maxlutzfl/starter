@@ -3,6 +3,7 @@
 ## Sections
 - [Lazy Load Images](#lazy-load-images)
 - [Parallax Cover Image](#parallax-cover-image)
+- [Structure](#structure)
 
 #### Lazy Load Images
 All images below the fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
@@ -25,3 +26,46 @@ Use the `<figure>` element positioned absolutely within the section. The section
 </section>
 ```
 
+#### Structure
+
+**Document Structure**
+```
+<body>
+    <div id="site-wrapper">
+        <header></header>
+        <main></main>
+        <footer></footer>
+    </div>
+    <div id="outsite-wrapper"></div>
+</body>
+```
+
+**Page Structure**
+```
+<main>
+    <article>
+        <header></header>
+        <section></section>
+        <section>...</section>
+        <section>...</section>
+        <footer></footer>
+    </article>
+</main>
+```
+
+**Section Structure**
+A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area. 
+```
+<section>
+    <div class="main-container">
+        <div class="column-full">
+        </div>
+    </div>
+</section>
+<section>
+    <div class="main-container">
+        <div class="column-primary"></div>
+        <aside class="column-aside"></aside>
+    </div>
+</section>
+```
