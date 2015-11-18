@@ -5,7 +5,7 @@
 - [Parallax Cover Image](#parallax-cover-image)
 
 #### Lazy Load Images
-All images below the fold should be loaded as they appear into the viewport. Currently using unveil.js.
+All images below the fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
 
 ```
 <img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
