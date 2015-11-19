@@ -4,6 +4,8 @@
 - [Lazy Load Images](#lazy-load-images)
 - [Parallax Cover Image](#parallax-cover-image)
 - [Structure](#structure)
+- [Scroll Animation](#animating-on-scroll)
+- [Fixed Elements](#fixed-elements-on-scroll)
 
 ### Lazy Load Images
 All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
@@ -73,8 +75,9 @@ A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area.
 </section>
 ```
 
-### Animating on scroll
+### Animating on Scroll
+To trigger animations as elements scroll into view of the viewport, use the class `.element-inview`. On scroll, `.animate` will be added to the element. In additional to `.element-inview` you can use a basic animation class like `.inview-up`, which begins with `opacity: 0; transform: translateY(100px);` and when the `.animate` class is triggered, `transition` animates the element to `opacity: 1; transform: translateY(0px);`.
 
-### Fixed elements on scroll
+### Fixed Elements on Scroll
 An element with the `.sticky-element` class will recieve `.stuck` when the top of the element reached the top of the viewport. 
 
