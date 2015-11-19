@@ -6,7 +6,7 @@
 - [Structure](#structure)
 
 ### Lazy Load Images
-All images below the fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
+All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
 
 ```
 <img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
@@ -20,7 +20,7 @@ Use the `<figure>` element positioned absolutely within the section. The section
     <div class="main-container">
         <!-- Content Here -->
     </div>
-    <figure data-bottom-top="transform: translateY(-350px);" data-top-bottom="transform: translateY(0px);">
+    <figure class="cover-image" data-bottom-top="transform: translateY(-350px);" data-top-bottom="transform: translateY(0px);">
         <img src="parallax-image.jpg">
     </figure>
 </section>
@@ -72,3 +72,9 @@ A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area.
     </div>
 </section>
 ```
+
+### Animating on scroll
+
+### Fixed elements on scroll
+An element with the `.sticky-element` class will recieve `.stuck` when the top of the element reached the top of the viewport. 
+
