@@ -3,7 +3,7 @@
 ## Sections
 - [Lazy Load Images](#lazy-load-images)
 - [Parallax Cover Image](#parallax-cover-image)
-- [Structure](#structure)
+- [Structure](#structure) -- Document, page, sections, spacing
 - [Scroll Animation](#animating-on-scroll)
 - [Fixed Elements](#fixed-elements-on-scroll)
 
@@ -75,9 +75,73 @@ A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area.
 </section>
 ```
 
+#### Spacing
+
+The most basic document structure would be a `<header>`, `<section>`, and `<footer>` wrapped between the `<main>` tag. Within each of these sections is our `.main-container`, which centers the content `margin: 0 auto` and has the `max-width`. Next we need to think about the padding of these sections so there is some breathing room between sections vertically and the document edges horizontally. 
+
+At it's most basic form, think of a printed document where the only padding is on the very top and bottom, left and right. To achieve this, we would add 3 helper classes to each section: `.page-header-padding`, `.page-section-padding` and `.page-footer-padding`.
+
+```
+.page-header-padding {
+    padding-top: 30px;
+    padding-bottom: 0px; 
+    padding-left: 30px;
+    padding-right: 30px;
+
+}
+
+.page-section-padding {
+    padding-top: 0px;
+    padding-bottom: 0px; 
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.page-footer-padding {
+    padding-top: 0;
+    padding-bottom: 30px; 
+    padding-left: 30px;
+    padding-right: 30px;
+}
+```
+
+If a section needs to be sectioned off separately, use a uniform padding like `padding: 30px;`. This would be the case for a section that has a border separating it from it's child section or if the section has a background image.  
+
 ### Animating on Scroll
-To trigger animations as elements scroll into view of the viewport, use the class `.element-inview`. On scroll, `.animate` will be added to the element. In additional to `.element-inview` you can use a basic animation class like `.inview-up`, which begins with `opacity: 0; transform: translateY(100px);` and when the `.animate` class is triggered, `transition` animates the element to `opacity: 1; transform: translateY(0px);`.
+To trigger animations as elements scroll into view of the viewport, use the class `.element-inview`. On scroll, `.animate` will be added to the element. In additional to `.element-inview` you can use a basic animation class like `.inview-up`, which begins with `opacity: 0; transform: translateY(100px);` and when the `.animate` class is triggered, `transition` animates the element to `opacity: 1; transform: translateY(0px);`. 
 
 ### Fixed Elements on Scroll
 An element with the `.sticky-element` class will recieve `.stuck` when the top of the element reached the top of the viewport. 
 
+## Maps
+
+```
+<div id="map"></div>
+<script>
+    function initMap() {
+        var address = "<?php echo get_option('company_address'); ?>";
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode( { 'address': address}, function(results, status) {
+            var latitude = results[0].geometry.location.lat();
+            var longitude = results[0].geometry.location.lng();
+            var myLatLng = {lat: latitude, lng: longitude};
+            var map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 14,
+                scrollwheel: false,
+                draggable: false,
+                center: myLatLng
+            });
+            var marker = new google.maps.Marker({
+                position: myLatLng,
+                map: map,
+                title: "<?php bloginfo('title'); ?>"
+            });
+            google.maps.event.addDomListener(window, 'resize', function() {
+                map.setCenter(myLatLng);
+            });
+        }); 
+    }
+</script>
+<script async defer
+    src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
+```
