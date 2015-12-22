@@ -145,3 +145,16 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 <script async defer
     src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 ```
+
+## Template Heirarchy 
+
+Archives
+- index.php (Blog Post Archive)
+- archive.php (by Post Type, Taxonomy, Date, or Author)
+- search.php (Search Results)
+
+Single Pages
+- page.php (Default Page Template)
+- single.php (Single Blog Post, Post Type Single Page, Attachment)
+- front-page.php (Homepage)
+- 404.php 
