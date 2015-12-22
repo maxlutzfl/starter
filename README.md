@@ -1,6 +1,6 @@
 # Starter Kit Documentation
 
-## Sections
+## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
 - [Parallax Cover Image](#parallax-cover-image)
 - [Structure](#structure) -- Document, page, sections, spacing
@@ -148,12 +148,12 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 
 ## Template Heirarchy 
 
-Archives
+**Archives**
 - index.php (Blog Post Archive)
 - archive.php (by Post Type, Taxonomy, Date, or Author)
 - search.php (Search Results)
 
-Single Pages
+**Single Pages**
 - page.php (Default Page Template)
 - single.php (Single Blog Post, Post Type Single Page, Attachment)
 - front-page.php (Homepage)
