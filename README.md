@@ -6,6 +6,8 @@
 - [Structure](#structure) -- Document, page, sections, spacing
 - [Scroll Animation](#animating-on-scroll)
 - [Fixed Elements](#fixed-elements-on-scroll)
+- [Maps](#maps)
+- [Template Heirarchy](#template-heirarchy)
 
 ### Lazy Load Images
 All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
@@ -113,7 +115,7 @@ To trigger animations as elements scroll into view of the viewport, use the clas
 ### Fixed Elements on Scroll
 An element with the `.sticky-element` class will recieve `.stuck` when the top of the element reached the top of the viewport. 
 
-## Maps
+### Maps
 
 ```
 <div id="map"></div>
@@ -146,7 +148,7 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
     src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
 ```
 
-## Template Heirarchy 
+### Template Heirarchy 
 
 **Archives**
 - index.php (Blog Post Archive)
