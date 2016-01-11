@@ -1,4 +1,8 @@
-<!doctype html>
+<?php
+/**
+ * 
+ * @package 
+ */ ?><!DOCTYPE html> 
 <html prefix="og: http://ogp.me/ns#">
 <head>
 	<meta charset="utf-8">
@@ -11,19 +15,18 @@
 		
 		<header id="SiteHeader" role="banner"></header>
 		<nav id="SiteNavigation" role="navigation"></nav>
+
 		<main id="SiteMain" role="main">
 			<header id="PageHeader"></header>
 			<section id="PageMain"></section>
 			<footer id="PageFooter"></footer>
 		</main>
-		<footer id="SiteFooter" role="contentinfo">
-			<?php echo sprintf( '&copy; %d %s. All rights reserved worldwide.', date('Y'), get_bloginfo('title') ); ?>
-		</footer>
+
+		<footer id="SiteFooter" role="contentinfo"></footer>
 
 	</div>
 
-	<div id="MobileNavigation" aria-hidden="true">
-	</div>
+	<div id="MobileNavigation" aria-hidden="true"></div>
 
 	<?php wp_footer(); ?>
 </body>
