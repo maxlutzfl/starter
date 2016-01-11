@@ -17,7 +17,7 @@
 			<footer id="PageFooter"></footer>
 		</main>
 		<footer id="SiteFooter" role="contentinfo">
-			<?php echo sprintf( '&copy; %s %s. All rights reserved worldwide.', date('Y'), get_bloginfo('title') ); ?>
+			<?php echo sprintf( '&copy; %d %s. All rights reserved worldwide.', date('Y'), get_bloginfo('title') ); ?>
 		</footer>
 
 	</div>
