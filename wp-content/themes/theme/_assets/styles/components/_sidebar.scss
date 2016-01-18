@@ -1,0 +1,33 @@
+.widget-title {
+	font-size: em(24);
+	margin-bottom: em(10);
+	color: $primary-color;
+}
+
+.sidebar-widget {
+	margin-bottom: em(30);
+
+	li {
+		margin-bottom: em(8);
+	}
+
+	a {
+		font-weight: 700;
+		transition: 300ms;
+
+		&:hover {
+			color: $primary-color;
+		}
+	}
+
+	.textwidget {
+		line-height: 1.4;
+	}
+
+	&.widget_search {
+		
+		input[type="submit"] {
+			display: none;
+		}
+	}
+}

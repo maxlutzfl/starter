@@ -1,0 +1,70 @@
+/**
+ * @package:		WordPress
+ * @subpackage:		Admin Bar Button Plugin
+ * @description:	Styles for the RGBA colour picker
+ * @since:			3.2.2
+ */
+
+#admin-bar-button-page .wp-picker-input-wrap{
+	height:	25px;
+}
+#admin-bar-button-page .abb-colour-picker{
+	padding:	3px 10px;
+	width:		129px !important;
+}
+#admin-bar-button-page .wp-picker-clear{
+	display: none;
+}
+
+#admin-bar-button-page .abb-alpha-container{
+    background:	#FFFFFF;
+    border:		1px solid #dfdfdf;
+    border-top:	none;
+    box-sizing:	padding-box;
+    display:	none;
+	margin-top:	-1px;
+    padding:	0 11px 6px;
+	width:		233px;
+}
+#admin-bar-button-page .abb-alpha-container .ui-slider{
+    position:	relative;
+    text-align:	center;
+    width:		88%;
+}
+#admin-bar-button-page .abb-alpha-container .ui-slider-handle{
+    background-color:		#FFFFFF;
+    border:					1px solid #AAAAAA;
+    border-radius:			4px;
+    -moz-border-radius:		4px;
+    -webkit-border-radius:	4px;
+    box-shadow:				0 1px 2px rgba(0,0,0,0.2);
+    color:					#777777;
+    cursor:					ew-resize;
+    font-size:				12px;
+    height:					20px;
+    margin-top:				-2px;
+    opacity:				0.9;
+    padding:				3px;
+    position:				absolute;
+    text-decoration:		none;
+    text-shadow:			0 1px 0 #FFFFFF;
+    z-index:				2;
+}
+#admin-bar-button-page .abb-alpha-container .transparency{
+    background-color:		#FFFFFF;
+    background-image:		url(../images/transparency-grid.png);
+    box-shadow:				0 0 5px rgba(0,0,0,0.4) inset;
+    border-radius:			3px;
+    -moz-border-radius:		3px;
+    -webkit-border-radius:	3px;
+    height:					24px;
+    padding:				0;
+    width:					100%;
+}
+ 
+#admin-bar-button-page .wp-picker-container a.wp-picker-open ~ div.abb-alpha-container{
+    display:	block;
+}
+#admin-bar-button-page .wp-picker-container .iris-picker{
+    border-bottom:	none;
+}

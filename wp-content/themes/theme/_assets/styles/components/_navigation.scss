@@ -1,0 +1,117 @@
+#SiteNavigation {
+	text-align: center;
+
+	#MobileToggle {
+		white-space: nowrap;
+		line-height: 40px;
+		padding: 0 15px;
+		display: inline-block; 
+
+		@include breakpoint('DesktopMenu') {
+			display: none;
+		}
+	}
+	
+	&.SimpleResponsiveNav {
+
+		#PrimaryMenu {
+			display: none; 
+			text-align: left;
+
+			@include breakpoint('DesktopMenu') {
+				display: block;
+				text-align: center;
+			}
+			
+			ul {
+				margin: 0;
+				padding: 0;
+			}
+
+			li {
+				list-style: none;
+				display: block;
+				vertical-align: top;
+			}
+
+			.menu-item-has-children {
+				position: relative;
+
+				@include breakpoint('DesktopMenu') {
+					.sub-menu {
+						opacity: 0;
+						visibility: hidden;
+						transition: 300ms;
+					}
+					
+					&:hover {
+						> .sub-menu {
+							display: block !important;
+							visibility: visible;
+							opacity: 1;
+							transform: translate(0px);
+						}
+					}
+				}
+			}
+
+			a {
+				white-space: nowrap;
+				line-height: 40px;
+				padding: 0 15px;
+				display: block;
+			}
+
+			> li {
+
+				@include breakpoint('DesktopMenu') {
+					display: inline-block;
+				}
+
+				> .sub-menu {
+					display: none;
+
+					@include breakpoint('DesktopMenu') {
+						display: block;
+						position: absolute;
+						top: 100%;
+						left: 0;
+						visibility: hidden;
+						transform: translateY(-5px);
+					}
+
+					a {
+						background-color: #333;
+					}
+
+					.sub-menu {
+						display: none;
+
+						@include breakpoint('DesktopMenu') {
+							display: block;
+							position: absolute;
+							top: 0;
+							left: 100%;
+							visibility: hidden;
+							transform: translateX(5px);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
