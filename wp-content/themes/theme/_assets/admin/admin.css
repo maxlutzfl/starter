@@ -1,0 +1,91 @@
+#acf-get_page_subtitle {
+	padding: 0;
+}
+
+#acf_after_title-sortables input {
+	padding: 0 8px;
+	font-size: 1.7em;
+	height: 1.7em;
+	width: 100%;
+	outline: 0;
+	margin: 0 0 3px;
+	background-color: #fff;
+	line-height: normal;
+}
+
+#bco-subtitle {
+	padding: 0 8px;
+	font-size: 1.7em;
+	height: 1.7em;
+	width: 100%;
+	outline: 0;
+	margin: 0 0 3px;
+	background-color: #fff;
+	line-height: normal;
+}
+
+#tinymce {
+	color: #333;
+	font-family: sans-serif;
+	line-height: 1.8;
+	max-width: 800px;
+	margin: 0 auto;
+	padding: 1px 30px !important;
+	box-sizing: border-box;
+	background-color: #fff;
+	border-left: 1px solid #bbb;
+	border-right: 1px solid #bbb;
+}
+
+#tinymce a {
+	color: #226DD1;
+	text-decoration: none;
+	font-weight: 700;
+}
+
+html {
+	background-color: #f1f1f1;
+}
+
+#tinymce .alignleft,
+#tinymce .alignright {
+	max-width: 50%;
+}
+
+#tinymce ul {
+	clear: both;
+}
+
+#tinymce h1,
+#tinymce h2 {
+	font-size: 2.25em;
+	line-height: 1;
+}
+
+#tinymce h3 {
+	font-size: 2em;
+	line-height: 1.1;
+}
+
+#tinymce h4,
+#tinymce h5,
+#tinymce h6 {
+	font-size: 1.5em;
+	line-height: 1.2;
+}
+
+#tinymce blockquote {
+	border-left: 3px solid #eee;
+	margin-left: 0;
+	padding-left: 1.25em;
+}
+
+
+
+
+
+
+
+
+
+

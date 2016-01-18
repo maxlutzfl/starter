@@ -1,0 +1,144 @@
+/*-------------------------
+# Global
+-------------------------*/
+
+html, body { height: 100%; }
+
+*,
+*:before,
+*:after {
+	box-sizing: border-box;
+}
+
+html {
+	background-color: transparent;
+}
+
+#SiteMainWrapper {
+	background-color: #fff;
+}
+
+body {
+	background-color: transparent;
+	color: $text-color;
+	cursor: auto;
+	margin: 0;
+	padding: 0;
+	text-rendering: optimizeLegibility;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+body,
+input,
+select,
+textarea {
+	font-family: $body-font;
+}
+
+section,
+article,
+header,
+footer {
+	position: relative;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: $header-font;
+	font-weight: 700;
+	line-height: 1;
+	margin: 0;
+}
+
+a,
+img,
+p,
+figure,
+blockquote {
+	margin: 0;
+	padding: 0;
+	&:active,
+	&:focus {
+		outline: 0;
+	}
+}
+
+.gallery {
+	&:not(.slick-initialized) {
+		opacity: 0;
+		transition: 300ms;
+	}
+
+	&.slick-initialized {
+		opacity: 1;
+	}
+}
+
+figcaption {
+	font-size: em(14);
+	margin: 10px auto;
+}
+
+a {
+	color: $primary-color;
+	text-decoration: none;
+	-webkit-backface-visibility: hidden;
+	backface-visibility: hidden;
+
+	&:visited {
+		color: $primary-color;
+	}
+}
+
+ul {
+	margin: 0;
+	padding: 0;
+}
+
+li { 
+	list-style: none; 
+}
+
+img { max-width: 100%; width: auto; height: auto; }
+img { -ms-interpolation-mode: bicubic; }
+
+.image-defer {
+	opacity: 0;
+	transition: 300ms;
+	display: block;
+	width: 100%;
+}
+
+#MapCanvas,
+.map_canvas,
+.mqa-display {
+	img,
+	embed,
+	object { 
+		max-width: none !important;
+	}
+}
+
+.PageContainer {
+	@include clearfix;
+	position: relative;
+	z-index: 25;
+	max-width: $container;
+	margin: 0 auto;
+}
+
+
+
+
+
+
+
+
+
+

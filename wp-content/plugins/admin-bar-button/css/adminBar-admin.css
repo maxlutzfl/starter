@@ -1,0 +1,53 @@
+/**
+ * @package:		WordPress
+ * @subpackage:		Admin Bar Button Plugin
+ * @description:	CSS for use in the admin area (on the Admin Bar Button settings page)
+ */
+
+/*------------------------------------------*/
+/* jQuery UI Tabs							*/
+/*------------------------------------------*/
+
+.ui-tabs ul.ui-tabs-nav{
+	border-bottom: 1px solid #CCCCCC;    
+	padding-bottom: 0;
+    padding-left: 10px;
+}
+.ui-tabs ul.ui-tabs-nav li{
+	-moz-border-bottom-colors: none;
+    -moz-border-left-colors: none;
+    -moz-border-right-colors: none;
+    -moz-border-top-colors: none;
+    background: none repeat scroll 0 0 #e4e4e4;
+    border-color: #CCCCCC #CCCCCC -moz-use-text-color;
+    border-image: none;
+    border-style: solid solid none;
+    border-width: 1px 1px medium;
+    display: inline-block;
+    font-size: 12px;
+    line-height: 16px;
+    margin: -4px 4px -1px 0;
+    text-decoration: none;
+	
+}
+.ui-tabs ul.ui-tabs-nav li:hover{
+	background: none repeat scroll 0 0 #FFFFFF;
+}
+.ui-tabs ul.ui-tabs-nav li.ui-state-active{
+	background: none repeat scroll 0 0 #F1F1F1;
+    border-bottom: 1px solid #f1f1f1;
+    color: #000;
+}
+.ui-tabs ul.ui-tabs-nav li a{
+	color: #555555;
+	display: inline-block;
+	font-size: 15px;
+	font-weight: 700;
+	line-height: 24px;
+    padding: 6px 10px;
+	text-decoration: none;
+}
+.ui-tabs ul.ui-tabs-nav li.ui-state-active a{
+    color: #000000;
+	cursor: default;
+}
