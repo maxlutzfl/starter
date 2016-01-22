@@ -56,6 +56,27 @@ jQuery(function($){
 
 	// Slider - slick.js
 	$(document).ready(function($) {
+
+		$('.Module__bgslider').owlCarousel({
+			items: 1,
+			margin: 0,
+			stagePadding: 0,
+			smartSpeed: 450,
+			loop: true,
+			mouseDrag: true,
+			touchDrag: true,
+			autoplay: true
+		});
+
+		// $('.Module__bgslider').slick({
+		// 	infinite: true,
+		// 	slidesToShow: 1,
+		// 	slidesToScroll: 1,
+		// 	dots: true,
+		// 	autoplay: true,
+		// 	appendArrows: '#slider-arrows'
+		// });		
+
 		$('.gallery').slick({
 			centerMode: true,
 			centerPadding: '15px',

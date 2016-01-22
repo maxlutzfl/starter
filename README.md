@@ -160,3 +160,18 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 - single.php (Single Blog Post, Post Type Single Page, Attachment)
 - front-page.php (Homepage)
 - 404.php 
+
+### Background Slider
+
+```
+    <section class="Section__with_bgslider">
+        <div class="PageContainer">
+            <h1>Content Title</h1>
+        </div>
+        <div class="Module__bgslider">
+                <div class="Module__bgslide" style="background-image: url(); "></div>
+                <div class="Module__bgslide" style="background-image: url(); "></div>
+                <div class="Module__bgslide" style="background-image: url(); "></div>
+        </div>
+    </section>
+```

@@ -196,8 +196,57 @@ figure.cover-image {
 
 html.js figure.cover-image img { opacity: 1; }
 
+/*-------------------------
+# Background Slider
+-------------------------*/
+.Section__with_bgslider {
+	position: relative;
+	min-height: 600px;
+	width: 100%;
 
+	.Module__bgslider {
+		overflow: hidden;
+		background-color: #444;
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0; 
 
+		> div {
+			height: 100%;
+
+			> div {
+				height: 100%;
+			}
+		}
+
+		.owl-stage {
+			overflow: hidden;
+
+			> .owl-item {
+				position: relative;
+				height: 100%;
+				display: inline-block;
+			}
+		}
+
+		li {
+			position: relative;
+		}
+
+		.Module__bgslide {
+			background-size: cover;
+			background-position: 50%;
+			position: absolute;
+			top: 0;
+			left: 0;
+			right: 0;
+			bottom: 0;
+			backface-visibility: hidden;
+		}		
+	}
+}
 
 
 

@@ -95,4 +95,10 @@ function BrandCo_Pagination() {
 	echo '</div>';
 }
 
-
+add_action('wp_head', 'BrandCo_OG');
+function BrandCo_OG() {
+	echo '<meta property="og:site_name" content="' . get_bloginfo('title') . '" />';
+	echo '<meta property="og:title" content="' . get_bloginfo('title') . ' - ' . get_bloginfo('description') . '" />';
+	if ( get_option('CompanyLogo') )
+		echo '<meta property="og:image" content="' . get_option('CompanyLogo') . '" />';
+}
