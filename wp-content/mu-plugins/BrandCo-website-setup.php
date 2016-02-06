@@ -23,7 +23,7 @@ class BrandCo_WebsiteSetup {
 		$wp_customize->add_setting( 'CompanyLogo', array('type' => 'option') );
 		$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'CompanyLogo', array(
 			'label' => __( 'Company Logo', 'brandco' ),
-			'section' => 'title_tagline',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'CompanyLogo',
 			'description' => 'Your main company logo for the website.',
 			'priority' => 100
@@ -32,7 +32,7 @@ class BrandCo_WebsiteSetup {
 		$wp_customize->add_setting( 'Site_GoogleAnalyticsID', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'Site_GoogleAnalyticsID', array(
 			'label' => __( 'Google Analytics UA-XXXXX-X ID', 'brandco' ),
-			'section' => 'title_tagline',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'Site_GoogleAnalyticsID',
 			'priority' => 20
 		))); 
@@ -79,49 +79,49 @@ class BrandCo_WebsiteSetup {
 		$wp_customize->add_setting( 'SocialMedia__Facebook', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Facebook', array(
 			'label' => __( 'Facebook URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Facebook'
 		))); 
 		
 		$wp_customize->add_setting( 'SocialMedia__Twitter', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Twitter', array(
 			'label' => __( 'Twitter URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Twitter'
 		))); 
 		
 		$wp_customize->add_setting( 'SocialMedia__GooglePlus', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__GooglePlus', array(
 			'label' => __( 'Google Plus URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__GooglePlus'
 		))); 
 		
 		$wp_customize->add_setting( 'SocialMedia__Linkedin', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Linkedin', array(
 			'label' => __( 'LinkedIn URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Linkedin'
 		))); 
 		
 		$wp_customize->add_setting( 'SocialMedia__Pinterest', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Pinterest', array(
 			'label' => __( 'Pinterest URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Pinterest'
 		))); 
 		
 		$wp_customize->add_setting( 'SocialMedia__Instagram', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Instagram', array(
 			'label' => __( 'Instagram URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Instagram'
 		)));
 		
 		$wp_customize->add_setting( 'SocialMedia__Youtube', array( 'type' => 'option' ) );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'SocialMedia__Youtube', array(
 			'label' => __( 'Youtube URL', 'brandco' ),
-			'section' => 'Section__SocialMedia',
+			'section' => 'Section__CompanyInfo',
 			'settings' => 'SocialMedia__Youtube'
 		)));
 	}

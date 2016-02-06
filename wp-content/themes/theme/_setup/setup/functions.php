@@ -82,13 +82,26 @@ function ArchiveBackLink() {
 function SocialMedia() {
 	$links = array();
 
-	$links[] = array( 'title' => 'Facebook', 'icon' => 'fa-facebook', 'link' => get_theme_mod('SocialMedia__Facebook') );
-	$links[] = array( 'title' => 'Twitter', 'icon' => 'fa-twitter', 'link' => get_theme_mod('SocialMedia__Twitter') );
-	$links[] = array( 'title' => 'Google Plus', 'icon' => 'fa-google-plus', 'link' => get_theme_mod('SocialMedia__GooglePlus') );
-	$links[] = array( 'title' => 'LinkedIn', 'icon' => 'fa-linkedin', 'link' => get_theme_mod('SocialMedia__Linkedin') );
-	$links[] = array( 'title' => 'Pinterest', 'icon' => 'fa-pinterest', 'link' => get_theme_mod('SocialMedia__Pinterest') );
-	$links[] = array( 'title' => 'Instagram', 'icon' => 'fa-instagram', 'link' => get_theme_mod('SocialMedia__Instagram') );
-	$links[] = array( 'title' => 'Youtube', 'icon' => 'fa-youtube-play', 'link' => get_theme_mod('SocialMedia__Youtube') );
+	if ( get_theme_mod('SocialMedia__Facebook') ) 
+		$links[] = array( 'title' => 'Facebook', 'icon' => 'fa-facebook', 'link' => get_theme_mod('SocialMedia__Facebook') );
+	
+	if ( get_theme_mod('SocialMedia__Twitter') )
+		$links[] = array( 'title' => 'Twitter', 'icon' => 'fa-twitter', 'link' => get_theme_mod('SocialMedia__Twitter') );
+	
+	if ( get_theme_mod('SocialMedia__GooglePlus') )
+		$links[] = array( 'title' => 'Google Plus', 'icon' => 'fa-google-plus', 'link' => get_theme_mod('SocialMedia__GooglePlus') );
+	
+	if ( get_theme_mod('SocialMedia__Linkedin') )
+		$links[] = array( 'title' => 'LinkedIn', 'icon' => 'fa-linkedin', 'link' => get_theme_mod('SocialMedia__Linkedin') );
+	
+	if ( get_theme_mod('SocialMedia__Pinterest') )
+		$links[] = array( 'title' => 'Pinterest', 'icon' => 'fa-pinterest', 'link' => get_theme_mod('SocialMedia__Pinterest') );
+	
+	if ( get_theme_mod('SocialMedia__Instagram') )
+		$links[] = array( 'title' => 'Instagram', 'icon' => 'fa-instagram', 'link' => get_theme_mod('SocialMedia__Instagram') );
+	
+	if ( get_theme_mod('SocialMedia__Youtube') )
+		$links[] = array( 'title' => 'Youtube', 'icon' => 'fa-youtube-play', 'link' => get_theme_mod('SocialMedia__Youtube') );
 
 	foreach ( $links as $link ) {
 		echo '<a href="' . $link['link'] . '" title="Click to find us on ' . $link['title'] . '"><i class="fa ' . $link['icon'] . '"></i></a>';
@@ -99,7 +112,14 @@ function ImgDir( $img = null ) {
 	return get_template_directory_uri() . '/_assets/images/' . $img;
 }
 
+function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
+	if ( $id === null )
+		$id = get_the_ID();
 
+	$content = get_post_field( 'post_content', $id );
+	$trimmed_content = wp_trim_words( $content, $wordcount, '... <a href="'. get_permalink( $id ) .'" class="Excerpt__readmore">' . $readmoretext . '</a>' );
+	return wpautop( $trimmed_content );
+}
 
 
 

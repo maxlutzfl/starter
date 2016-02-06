@@ -22,6 +22,8 @@
 
 		&:focus {
 			outline: 0;
+			background-color: $primary-color;
+			opacity: 0.8;			
 		}
 
 		&:hover {

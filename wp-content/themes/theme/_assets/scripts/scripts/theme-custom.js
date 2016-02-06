@@ -1,3 +1,27 @@
+/**
+ * Mobile Menu JS
+ */
+
+function toggleMobileMenu() {
+	var html = document.documentElement;
+	
+	if ( html.dataset.mobileMenuOpen === "true" ) {
+		html.dataset.mobileMenuOpen = "false";
+
+	} else {
+		html.dataset.mobileMenuOpen = "true";
+	}
+}
+
+document.getElementById('CloseMobileNavigationLayer').addEventListener('click', function(){
+	toggleMobileMenu();
+});	
+
+document.getElementById('MobileNavigation--CloseButton').addEventListener('click', function(){
+	toggleMobileMenu();
+});	
+
+
 // Parallax plugin
 if( ! (/Android|iPhone|iPad|iPod|BlackBerry/i).test(navigator.userAgent || navigator.vendor || window.opera) ){
 	var s = skrollr.init({
@@ -26,6 +50,12 @@ jQuery(function($){
 					$(this).next().slideToggle();
 				}
 			});
+		});
+
+		$('#SiteNavigation.PopoutResponsiveNav #MobileToggle').click(function(){
+			if ( $(window).width() <= 750 ) {
+				toggleMobileMenu();
+			}
 		});
 
 		$('#SiteNavigation.SimpleResponsiveNav #MobileToggle').click(function(){
@@ -156,7 +186,7 @@ jQuery(function($){
 		// $('#mobile-navigation .menu > li:last-of-type').after('<li id="close-navigation" class="menu-item"><a href="#0">Close Menu <i class="fa fa-close"></i></a></li>');
 	});
 
-	$('#mobile-navigation .menu-item-has-children > a').click(function(){
+	$('#MobileNavigation .menu-item-has-children > a').click(function(){
 		$(this).next().slideToggle( 300 );
 	});
 
