@@ -8,6 +8,7 @@
 - [Fixed Elements](#fixed-elements-on-scroll)
 - [Maps](#maps)
 - [Template Heirarchy](#template-heirarchy)
+- [Form Plugin](#forms)
 
 ### Lazy Load Images
 All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
@@ -174,4 +175,28 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
             <div class="Module__bgslide" style="background-image: url(); "></div>
     </div>
 </section>
+```
+
+### Forms 
+
+**Available 'fields'**
+- text
+- address (Same as `<input type="text">` but allows for Google Maps API Autocomplete)
+- phone
+- email
+- textarea
+```
+new BrandCo_Form( 
+    array(
+        'title' => 'Contact Form 01', // Does not display on front end
+        'submit' => 'Submit', // Text to display in submit button
+        'fields' => array(
+            'text' => 'Your Name',
+            'address' => 'Your Address',
+            'phone' => 'Your Phone Number',
+            'email' => 'Your Email',
+            'textarea' => 'How can we help?',   
+        )
+    )
+);
 ```

@@ -11,10 +11,11 @@ Basic Setup
 ===========
 $form = new BrandCo_Form( 
 	array(
-		'title' => 'Holler at us!',
-		'submit' => 'Submit my shit',
+		'title' => 'Contact Form 01', // Does not display on front end
+		'submit' => 'Submit', // Text to display in submit button
 		'fields' => array(
 			'text' => 'Your Name',
+			'address' => 'Your Address',
 			'phone' => 'Your Phone Number',
 			'email' => 'Your Email',
 			'textarea' => 'How can we help?',	
@@ -73,7 +74,7 @@ if ( ! class_exists('BrandCo_Form') ) :
 					}
 
 					if ( $type === 'address*' ) { 
-						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
+						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
 						add_action( 'wp_footer', array( $this, 'autocomplete' ) );
 					}					
 
@@ -114,11 +115,11 @@ if ( ! class_exists('BrandCo_Form') ) :
 					$name = '';
 					$email = '';
 					$subject = 'New contact form submission: ' . $args['title'] . ' ' . get_bloginfo( 'title' );
-					$message = '<h3>New submission to your contact form: ' . $args['title'] . '</h3><br>';
-					$message .= '<h4>Submitted: ' . $date . '</h4><br>';
+					$message = '<h3>New submission to your contact form: ' . $args['title'] . '</h3>';
+					$message .= '<h4>Submitted: ' . $date . '</h4>';
 
 					$i = 1; foreach ( $args['fields'] as $type => $title ) {
-						$message .= '<p><strong>' . $title . ': </strong> <span>' . $_POST[ $FormTitle . '-field-' . $i ] . '</span></p><br>';
+						$message .= '<p><strong>' . $title . ': </strong> <span>' . $_POST[ $FormTitle . '-field-' . $i ] . '</span></p>';
 						$i++;
 					}
 					
