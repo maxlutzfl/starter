@@ -13,14 +13,14 @@
 ### Lazy Load Images
 All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
 
-```
+```php
 <img src="placeholder.jpg" data-src="actual/image/path.jpg" class="image-defer>
 ```
 
 ### Parallax Cover Image
 Use the `<figure>` element positioned absolutely within the section. The section must have `overflow: hidden; position: relative;` to contain the `<figure>`. Set the `<img>` to emulate `background-size: cover;` with CSS. Use the Skrollr.js data attributes to create the parallax effect. 
 
-```
+```php
 <section>
     <div class="main-container">
         <!-- Content Here -->
@@ -35,7 +35,7 @@ Use the `<figure>` element positioned absolutely within the section. The section
 
 #### Document Structure
 
-```
+```php
 <body>
     <div id="site-wrapper">
         <header></header>
@@ -48,7 +48,7 @@ Use the `<figure>` element positioned absolutely within the section. The section
 
 #### Page Structure
 
-```
+```php
 <main>
     <article>
         <header></header>
@@ -63,7 +63,7 @@ Use the `<figure>` element positioned absolutely within the section. The section
 #### Section Structure
 A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area. 
 
-```
+```php
 <section>
     <div class="main-container">
         <div class="column-full">
@@ -84,7 +84,7 @@ The most basic document structure would be a `<header>`, `<section>`, and `<foot
 
 At it's most basic form, think of a printed document where the only padding is on the very top and bottom, left and right. To achieve this, we would add 3 helper classes to each section: `.page-header-padding`, `.page-section-padding` and `.page-footer-padding`.
 
-```
+```css
 .page-header-padding {
     padding-top: 30px;
     padding-bottom: 0px; 
@@ -118,7 +118,7 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 
 ### Maps
 
-```
+```php
 <div id="map"></div>
 <script>
     function initMap() {
@@ -164,7 +164,7 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 
 ### Background Slider
 
-```
+```php
 <section class="Section__with_bgslider">
     <div class="PageContainer">
         <h1>Content Title</h1>
