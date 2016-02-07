@@ -185,7 +185,7 @@ An element with the `.sticky-element` class will recieve `.stuck` when the top o
 - phone
 - email
 - textarea
-```
+```php
 new BrandCo_Form( 
     array(
         'title' => 'Contact Form 01', // Does not display on front end
