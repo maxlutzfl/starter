@@ -9,6 +9,7 @@
 - [Maps](#maps)
 - [Template Heirarchy](#template-heirarchy)
 - [Form Plugin](#forms)
+- [Slider](#slider)
 
 ### Lazy Load Images
 All images below-the-fold should be loaded as they appear into the viewport. Must use a placeholder image in the `src` and the `class="image-defer"`.
@@ -191,12 +192,129 @@ new BrandCo_Form(
         'title' => 'Contact Form 01', // Does not display on front end
         'submit' => 'Submit', // Text to display in submit button
         'fields' => array(
-            'text' => 'Your Name',
-            'address' => 'Your Address',
-            'phone' => 'Your Phone Number',
-            'email' => 'Your Email',
-            'textarea' => 'How can we help?',   
+            1 => array(
+                'title' => 'Your Name',
+                'type' => 'text'
+            ),
+            2 => array(
+                'title' => 'Your Last Name',
+                'type' => 'text'
+            ),
+            3 => array(
+                'title' => 'Your Address',
+                'type' => 'address'
+            ),
+            4 => array(
+                'title' => 'Your Email',
+                'type' => 'email'               
+            ),
+            5 => array(
+                'title' => 'Your Phone',
+                'type' => 'phone'
+            ),
+            6 => array(
+                'title' => 'Message',
+                'type' => 'textarea'
+            ),
         )
     )
 );
+```
+
+### Slider 
+
+Swipe.js
+
+```php
+    <div id="Gallery__Slider" class="Swipe__Gallery" data-slider>
+        <div class="Swipe__Wrapper">
+
+                <div>
+                    <div>
+                        <img src="https://placeholdit.imgix.net/~text?txtsize=33&txt=350%C3%97150&w=350&h=150">
+                    </div>                      
+                </div>
+
+        </div>
+
+        <span class="Swipe__Nav Swipe__Prev" data-slider-prev><span>Prev</span></span>
+        <span class="Swipe__Nav Swipe__Next" data-slider-next><span>Next</span></span>   
+    </div>  
+```
+
+```css
+.Swipe__Wrapper {
+    overflow: hidden;
+    position: relative;
+}
+
+.Swipe__Slider {
+    position: relative;
+}
+
+.Swipe__Wrapper > div {
+    float: left;
+    width: 100%;
+    position: relative;
+}       
+
+.Swipe__Nav {
+    display: none;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    color: #fff;
+    cursor: pointer;
+    z-index: 100;
+    width: 50px;
+
+    span {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        text-align: center;
+    }
+
+    &.Swipe__Next {
+        right: 0;
+    }
+
+    &.Swipe__Prev {
+        left: 0;
+    }
+
+    @include breakpoint('above_750px') {
+        display: block;
+    }
+}
+```
+
+```js
+function initSliders() {
+    var sliders = document.querySelectorAll('[data-slider]');
+
+    for (var i = sliders.length - 1; i >= 0; i--) {
+        var id = sliders[i].id;
+
+        sliders[i].dataset.slider = i;
+
+        var Slider = new Swipe( document.getElementById( id ), {
+                callback: function(index, elem) {
+                    // console.log(index);
+                    updateCurrentGalleryImage(index);
+                    elem.dataset.galleryImageActive = 'true';
+                    lazyLoadImage();
+
+                },
+            }
+        );
+
+        document.getElementById(id).querySelector('[data-slider-next]').addEventListener('click', Slider.next);
+        document.getElementById(id).querySelector('[data-slider-prev]').addEventListener('click', Slider.prev);
+    };
+}
+
+initSliders();
 ```

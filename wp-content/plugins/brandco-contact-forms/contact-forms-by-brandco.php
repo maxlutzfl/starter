@@ -5,35 +5,55 @@ Plugin URI: https://brandco.com/
 Version: 0.0.1
 Author: BrandCo.
 Author URI: https://brandco.com/
+*/
 
-===========
-Basic Setup
-===========
-$form = new BrandCo_Form( 
-	array(
+/*
+Example: 
+
+new BrandCo_Form( 
+    array(
 		'title' => 'Contact Form 01', // Does not display on front end
 		'submit' => 'Submit', // Text to display in submit button
 		'fields' => array(
-			'text' => 'Your Name',
-			'address' => 'Your Address',
-			'phone' => 'Your Phone Number',
-			'email' => 'Your Email',
-			'textarea' => 'How can we help?',	
+			1 => array(
+				'title' => 'Your Name',
+				'type' => 'text'
+			),
+			2 => array(
+				'title' => 'Your Last Name',
+				'type' => 'text'
+			),
+			3 => array(
+				'title' => 'Your Address',
+				'type' => 'address'
+			),
+			4 => array(
+				'title' => 'Your Email',
+				'type' => 'email'				
+			),
+			5 => array(
+				'title' => 'Your Phone',
+				'type' => 'phone'
+			),
+			6 => array(
+				'title' => 'Message',
+				'type' => 'textarea'
+			),
 		)
-	)
+    )
 );
 
- */
+*/
 
 if ( ! class_exists('BrandCo_Form') ) :
 
 	class BrandCo_Form {
 
 		function __construct( $args ) {
-			$this->create( $args );
+			$this->create_form( $args );
 		}
 
-		public function create( $args ) {
+		public function create_form( $args ) {
 
 			if ( is_array( $args['fields'] ) ) {
 
@@ -42,9 +62,9 @@ if ( ! class_exists('BrandCo_Form') ) :
 				$FormTitle = ( $args['title'] ) ? $this->slugify( $args['title'] ) : 'form';
 				$SubmitTitle = ( $args['submit'] ) ? $args['submit'] : 'Submit';
 
-				echo '<div class="ContactForm--Wrapper">';
+				echo '<div id="FormID--' . $FormTitle . '" class="ContactForm--Wrapper">';
 
-				echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '" method="post">';
+				echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '#FormID--' . $FormTitle . '" method="post">';
 
 				echo '<div class="ContactForm--Header">';
 
@@ -54,27 +74,27 @@ if ( ! class_exists('BrandCo_Form') ) :
 
 				echo '<div class="ContactForm--Main">';
 
-				foreach ( $args['fields'] as $type => $title ) {
+				foreach ( $args['fields'] as $key => $value ) {
 
-					echo ( $type === 'text' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><input type="' . $type . '" placeholder="' . $title . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $type === 'text*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'text' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'text*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
 
-					echo ( $type === 'phone' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><input type="' . $type . '" placeholder="' . $title . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $type === 'phone*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'phone' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'phone*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
 
-					echo ( $type === 'email' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><input type="' . $type . '" placeholder="' . $title . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $type === 'email*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'email' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
+					echo ( $value['type'] === 'email*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
 
-					echo ( $type === 'textarea' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><textarea placeholder="' . $title . '" name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
-					echo ( $type === 'textarea*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><textarea placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
+					echo ( $value['type'] === 'textarea' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><textarea placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
+					echo ( $value['type'] === 'textarea*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><textarea placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
 
-					if ( $type === 'address' ) { 
-						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '</span><input type="' . $type . '" placeholder="' . $title . '" name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
+					if ( $value['type'] === 'address' ) { 
+						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
 						add_action( 'wp_footer', array( $this, 'autocomplete' ) );
 					}
 
-					if ( $type === 'address*' ) { 
-						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $title . '*</span><input type="' . $type . '" placeholder="' . $title . '" required name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
+					if ( $value['type'] === 'address*' ) { 
+						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
 						add_action( 'wp_footer', array( $this, 'autocomplete' ) );
 					}					
 
@@ -91,6 +111,8 @@ if ( ! class_exists('BrandCo_Form') ) :
 				echo '</div>';
 
 				echo '</form>';
+
+				echo '<script>window.onload = function(){ if (location.hash === "#FormID--' . $FormTitle . '") { goto( "#FormID--' . $FormTitle . '", this ); } }</script>';
 
 				echo '</div>';
 			}			
@@ -118,14 +140,20 @@ if ( ! class_exists('BrandCo_Form') ) :
 					$message = '<h3>New submission to your contact form: ' . $args['title'] . '</h3>';
 					$message .= '<h4>Submitted: ' . $date . '</h4>';
 
-					$i = 1; foreach ( $args['fields'] as $type => $title ) {
-						$message .= '<p><strong>' . $title . ': </strong> <span>' . $_POST[ $FormTitle . '-field-' . $i ] . '</span></p>';
+					$i = 1; foreach ( $args['fields'] as $key => $value ) {
+						$message .= '<p><strong>' . $value['title'] . ': </strong> <span>' . $_POST[ $FormTitle . '-field-' . $i ] . '</span></p>';
 						$i++;
 					}
 					
 					$message .= '<br><hr>This email is from your website ' . get_bloginfo( 'title' ) . '. The admin of ' . get_bloginfo( 'title' ) . ' can be contacted at ' . get_option( 'admin_email' );
 
 					// echo $message;
+
+					function set_html_mail_content_type() {
+						return 'text/html';
+					}
+
+					add_filter( 'wp_mail_content_type', 'set_html_mail_content_type' );
 
 					$to = get_option( 'admin_email' );
 					$site = get_bloginfo( 'title' );
@@ -134,11 +162,11 @@ if ( ! class_exists('BrandCo_Form') ) :
 
 					if ( wp_mail( $to, $subject, $message, $headers ) ) {
 						$this->create_post( $date, $subject, $message );
-					    echo '<div>';
-					    echo '<p>Thanks for contacting me, expect a response soon.</p>';
+					    echo '<div class="ContactForm--Success">';
+					    echo '<p>Thanks for contacting us, we will get back to you as soon as possible!</p>';
 					    echo '</div>';
 					} else {
-					    echo 'An unexpected error occurred';
+						echo '<div class="ContactForm--Error"><p>An error occurred, please try submitting your form again or contact us directly at ' . $to . '</p></div>';
 					}
 				}
 			}		

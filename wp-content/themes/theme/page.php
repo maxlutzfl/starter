@@ -30,7 +30,42 @@ get_header(); ?>
 
 			<footer id="PageFooter">
 				<div class="PageContainer">
+<?php 
 
+new BrandCo_Form( 
+    array(
+		'title' => 'Contact Form 01', // Does not display on front end
+		'submit' => 'Submit', // Text to display in submit button
+		'fields' => array(
+			1 => array(
+				'title' => 'Your Name',
+				'type' => 'text*'
+			),
+			2 => array(
+				'title' => 'Your Last Name',
+				'type' => 'text'
+			),
+			3 => array(
+				'title' => 'Your Address',
+				'type' => 'address*'
+			),
+			4 => array(
+				'title' => 'Your Email',
+				'type' => 'email*'				
+			),
+			5 => array(
+				'title' => 'Your Phone',
+				'type' => 'phone'
+			),
+			6 => array(
+				'title' => 'Message',
+				'type' => 'textarea*'
+			),
+		)
+    )
+);
+
+?>
 				</div>
 			</footer>
 
