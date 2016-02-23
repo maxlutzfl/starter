@@ -303,10 +303,6 @@ function initSliders() {
         var Slider = new Swipe( document.getElementById( id ), {
                 callback: function(index, elem) {
                     // console.log(index);
-                    updateCurrentGalleryImage(index);
-                    elem.dataset.galleryImageActive = 'true';
-                    lazyLoadImage();
-
                 },
             }
         );

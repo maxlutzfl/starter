@@ -7,204 +7,128 @@ Author: BrandCo.
 Author URI: https://brandco.com/
 */
 
-/*
-Example: 
-
-new BrandCo_Form( 
-    array(
-		'title' => 'Contact Form 01', // Does not display on front end
-		'submit' => 'Submit', // Text to display in submit button
-		'fields' => array(
-			1 => array(
-				'title' => 'Your Name',
-				'type' => 'text'
-			),
-			2 => array(
-				'title' => 'Your Last Name',
-				'type' => 'text'
-			),
-			3 => array(
-				'title' => 'Your Address',
-				'type' => 'address'
-			),
-			4 => array(
-				'title' => 'Your Email',
-				'type' => 'email'				
-			),
-			5 => array(
-				'title' => 'Your Phone',
-				'type' => 'phone'
-			),
-			6 => array(
-				'title' => 'Message',
-				'type' => 'textarea'
-			),
-		)
-    )
-);
-
-*/
-
 if ( ! class_exists('BrandCo_Form') ) :
 
 	class BrandCo_Form {
 
-		function __construct( $args ) {
-			$this->create_form( $args );
+		function __construct($args) {
+			$this->form($args);
 		}
 
-		public function create_form( $args ) {
+		public function form($args) {
 
-			if ( is_array( $args['fields'] ) ) {
+			// For debugging, view all data
+			// echo '<pre>';
+			// var_dump($args);
+			// echo '</pre>';
 
-				$i = 1;
+			// Check if everything is set up correctly
+			if ( ! array_key_exists('title', $args) ) { echo "No title found! "; return; }
+			if ( ! array_key_exists('fields', $args) ) { echo "No fields found! "; return; }
 
-				$FormTitle = ( $args['title'] ) ? $this->slugify( $args['title'] ) : 'form';
-				$SubmitTitle = ( $args['submit'] ) ? $args['submit'] : 'Submit';
+			// Vars
+			$formTitle = $args['title'];
+			$formID = $this->create_slug( $args['title'] );
+			$formFakeID = $args['id'];
+			$formFields = $args['fields'];
+			$formRedirect = ( array_key_exists('after_submit_redirect', $args) ) ? esc_url( $args['after_submit_redirect'] ) : '';
 
-				echo '<div id="FormID--' . $FormTitle . '" class="ContactForm--Wrapper">';
-
-				echo '<form action="' . esc_url( $_SERVER['REQUEST_URI'] ) . '#FormID--' . $FormTitle . '" method="post">';
-
-				echo '<div class="ContactForm--Header">';
-
-				$this->deliver( $args );
-
-				echo '</div>';
-
-				echo '<div class="ContactForm--Main">';
-
-				foreach ( $args['fields'] as $key => $value ) {
-
-					echo ( $value['type'] === 'text' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $value['type'] === 'text*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-
-					echo ( $value['type'] === 'phone' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $value['type'] === 'phone*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-
-					echo ( $value['type'] === 'email' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-					echo ( $value['type'] === 'email*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value=""></label></p>' : NULL;
-
-					echo ( $value['type'] === 'textarea' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><textarea placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
-					echo ( $value['type'] === 'textarea*' ) ? '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><textarea placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '"></textarea></label></p>' : NULL;
-
-					if ( $value['type'] === 'address' ) { 
-						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '" name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
-						add_action( 'wp_footer', array( $this, 'autocomplete' ) );
-					}
-
-					if ( $value['type'] === 'address*' ) { 
-						echo '<p id="' . $FormTitle . '-field-' . $i . '"><label><span>' . $value['title'] . '*</span><input type="' . $value['type'] . '" placeholder="' . $value['title'] . '*" required name="' . $FormTitle . '-field-' . $i . '" value="" data-google-autocomplete></label></p>';
-						add_action( 'wp_footer', array( $this, 'autocomplete' ) );
-					}					
-
-					$i++;
-
-				}
-
-				echo '</div>';
-
-				echo '<div class="ContactForm--Footer">';
-
-				echo '<input id="' . $FormTitle . '-submit-button" type="submit" name="' . $FormTitle . '-submit-button" value="' . $SubmitTitle . '">';
-
-				echo '</div>';
-
-				echo '</form>';
-
-				echo '<script>window.onload = function(){ if (location.hash === "#FormID--' . $FormTitle . '") { goto( "#FormID--' . $FormTitle . '", this ); } }</script>';
-
-				echo '</div>';
-			}			
-		}
-
-		public function deliver( $args ) {
-
-			if ( is_array( $args['fields'] ) ) {
-
-				$FormTitle = ( $args['title'] ) ? $this->slugify( $args['title'] ) : 'form';
-				$SubmitTitle = ( $args['submit'] ) ? $args['submit'] : 'Submit';
-
-				if ( isset( $_POST[ $FormTitle . '-submit-button' ] ) ) {
-
-					$date = date( 'Y-m-d', current_time( 'timestamp' ) );
-
-					// $i = 1; foreach ( $args['fields'] as $type => $title ) {
-
-					// 	$i++;
-					// }
-
-					$name = '';
-					$email = '';
-					$subject = 'New contact form submission: ' . $args['title'] . ' ' . get_bloginfo( 'title' );
-					$message = '<h3>New submission to your contact form: ' . $args['title'] . '</h3>';
-					$message .= '<h4>Submitted: ' . $date . '</h4>';
-
-					$i = 1; foreach ( $args['fields'] as $key => $value ) {
-						$message .= '<p><strong>' . $value['title'] . ': </strong> <span>' . $_POST[ $FormTitle . '-field-' . $i ] . '</span></p>';
-						$i++;
-					}
-					
-					$message .= '<br><hr>This email is from your website ' . get_bloginfo( 'title' ) . '. The admin of ' . get_bloginfo( 'title' ) . ' can be contacted at ' . get_option( 'admin_email' );
-
-					// echo $message;
-
-					function set_html_mail_content_type() {
-						return 'text/html';
-					}
-
-					add_filter( 'wp_mail_content_type', 'set_html_mail_content_type' );
-
-					$to = get_option( 'admin_email' );
-					$site = get_bloginfo( 'title' );
-
-					$headers = "From: " . $site . " <noreply@brandco.com>" . "\r\n";
-
-					if ( wp_mail( $to, $subject, $message, $headers ) ) {
-						$this->create_post( $date, $subject, $message );
-					    echo '<div class="ContactForm--Success">';
-					    echo '<p>Thanks for contacting us, we will get back to you as soon as possible!</p>';
-					    echo '</div>';
-					} else {
-						echo '<div class="ContactForm--Error"><p>An error occurred, please try submitting your form again or contact us directly at ' . $to . '</p></div>';
-					}
-				}
-			}		
-		}
-
-		public function create_post( $date, $subject, $message ) {
-
-			$args = array(
-				'post_type' => 'contact-entries',
-				'post_title' => $subject . ': ' . $date,
-				'post_content' => $message,
-				'post_status' => 'publish'
-			);
-
-			wp_insert_post( $args );				
-		}
-
-		public function autocomplete() {
 			?>
-				<script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
-				<script>
+				<div id="BcoForm__Wrapper__<?php echo $formID; ?>" class="BcoForm__Wrapper">
+					<form id="BcoForm__<?php echo $formID; ?>" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="POST">
+						<div class="BcoForm__Header">
+							<div class="BcoForm__Messages">
+								<div class="BcoForm__Success"></div>
+								<div class="BcoForm__Error"></div>
+							</div>
+						</div>
 
-					var inputs = document.querySelectorAll('[data-google-autocomplete]');
-					if ( inputs.length > 0 ) {
+						<div class="BcoForm__Body">
+							<?php foreach ( $formFields as $id => $data ): ?>
+								
+								<?php 
+									// Vars
+									$fieldTitle = ( array_key_exists('title', $data) ) ? $data['title'] : '';
+									$fieldRequired = ( array_key_exists('required', $data) && $data['required'] === true ) ? true : false;
+									$fieldType = ( array_key_exists('type', $data) ) ? $data['type'] : '';
 
-						function initialize() {
-							for (var i = inputs.length - 1; i >= 0; i--) {
-								var autocomplete = new google.maps.places.Autocomplete(inputs[i]);
-							};
-						}
+									// Before field
+									echo '<div id="BcoForm__Field__' . $id . '" class="BcoForm__Field">';
 
-						google.maps.event.addDomListener(window, 'load', initialize);
-					}
-				</script>
-			<?php 
+									// Text field
+									if ( $fieldType === 'text' ) { ?>
+										<label>
+											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
+											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+										</label>
+									<?php }
+
+									// Email field
+									if ( $fieldType === 'email' ) { ?>
+										<label>
+											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
+											<input type="email" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+										</label>
+									<?php }
+
+									// Phone field
+									if ( $fieldType === 'phone' ) { ?>
+										<label>
+											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
+											<input type="phone" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+										</label>
+									<?php }
+
+									// Address field
+									if ( $fieldType === 'address' ) { ?>
+										<label>
+											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
+											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>" data-google-autocomplete>
+										</label>
+									<?php }
+
+									// Textarea field
+									if ( $fieldType === 'textarea' ) { ?>
+										<label>
+											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
+											<textarea name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>"></textarea>
+										</label>
+									<?php }
+
+									// After field
+									echo '</div>';
+								?>
+
+							<?php 
+								// End of field
+								endforeach;
+
+								// Hidden fields 
+								echo '<input type="hidden" name="BcoForm__HiddenField__PageURL" value="">';
+							?>
+
+						</div>
+
+						<div class="BcoForm__Footer">
+							<div class="BcoForm__Field BcoForm__Submit">
+								<div class="BcoForm__SubmitButtonWrapper">
+									<input type="submit" id="Form__Submit" value="Submit">
+								</div>
+							</div>
+						</div>
+
+					</form>
+
+					<?php 
+						$this->after_submit_js( $formID, $formRedirect );
+					?>
+
+				</div>
+		
+			<?php
 		}
 
-		public function slugify( $text ) { 
+		public function create_slug( $text ) { 
 			$text = preg_replace('~[^\\pL\d]+~u', '-', $text);
 			$text = trim($text, '-');
 			$text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
@@ -213,70 +137,78 @@ if ( ! class_exists('BrandCo_Form') ) :
 
 			return $text;
 		}
-	}
 
-endif;
-
-if ( ! class_exists('BrandCo_Form__Entries') ) :
-
-	class BrandCo_Form__Entries {
-
-		function __construct() {
-			add_action( 'init', array( $this, 'post_type_contacts' ) );
+		public function after_submit_post() {
+			var_dump($_POST);
 		}
 
+		public function after_submit_redirect() {
 
-		public static function post_type_contacts() {
-			$menu_name = 'Contact Entries';
-			$regular_name = 'Contact Entries';
-			$singular_name = 'Contact Entry';
-			$register_name = 'contact-entries';
-			$icon = 'dashicons-email-alt';
+		}
 
-			$labels = array(
-				'name'               => _x( $regular_name, 'post type general name', 'brandco' ),
-				'singular_name'      => _x( $singular_name, 'post type singular name', 'brandco' ),
-				'menu_name'          => _x( $menu_name, 'admin menu', 'brandco' ),
-				'name_admin_bar'     => _x( $singular_name, 'add new on admin bar', 'brandco' ),
-				'add_new'            => _x( 'Add New', $register_name, 'brandco' ),
-				'add_new_item'       => __( 'Add New ' . $singular_name, 'brandco' ),
-				'new_item'           => __( 'New ' . $singular_name, 'brandco' ),
-				'edit_item'          => __( 'Edit ' . $singular_name, 'brandco' ),
-				'view_item'          => __( 'View ' . $singular_name, 'brandco' ),
-				'all_items'          => __( 'All ' . $regular_name, 'brandco' ),
-				'search_items'       => __( 'Search ' . $regular_name, 'brandco' ),
-				'parent_item_colon'  => __( 'Parent ' . $regular_name . ':', 'brandco' ),
-				'not_found'          => __( 'No ' . $regular_name . ' found.', 'brandco' ),
-				'not_found_in_trash' => __( 'No ' . $regular_name . ' found in Trash.', 'brandco' )
-			);
+		public function after_submit_js($formID, $formRedirect) {
+			?>
+				<script type="text/javascript">
+					window.addEventListener("load", function() {
+						function sendData() {
 
-			$args = array(
-				'labels'             => $labels,
-				'public'             => false,
-				'publicly_queryable' => false,
-				'show_ui'            => true,
-				'show_in_menu'       => true,
-				'query_var'          => true,
-				'rewrite'            => $register_name,
-				'capability_type'    => 'page',
-				// 'capabilities' 		 => array(
-				// 	'create_posts'	 => false, 
-				// 	'edit_post' 	 => false, 
-				// 	'read_post'      => true, 
-				// 	'delete_post'    => true, 
-				// ),
-				'has_archive'        => false,
-				'hierarchical'       => false,
-				'menu_position'      => null,
-				'menu_icon'			 => $icon,
-				'supports'           => array( 'title', 'editor' )
-			);
-			register_post_type( $register_name, $args );					
-		} 
+							var form = document.getElementById('<?php echo "BcoForm__" . $formID; ?>');
+							var elem = form.elements;
+							var url = form.action;        
+							var params = "";
+							var value;
+							var redirect = "<?php echo $formRedirect; ?>";
 
+							
+							for (var i = 0; i < elem.length; i++) {
+								if (elem[i].tagName == "SELECT") {
+									value = elem[i].options[elem[i].selectedIndex].value;
+
+								} else {
+									value = elem[i].value;
+
+								}
+
+								params += elem[i].name + "=" + encodeURIComponent(value) + "&";
+							}
+
+							var XHR = new XMLHttpRequest();
+
+							// We define what will happen if the data are successfully sent
+							XHR.addEventListener("load", function(event) {
+								document.getElementById('<?php echo "BcoForm__" . $formID; ?>').querySelector('.BcoForm__Success').innerHTML = 'Thanks!';
+								if ( redirect.length ) {
+									setTimeout(function(){
+										window.location.href = redirect + '?' + params;
+									}, 1000);
+								}
+							});
+
+							// We define what will happen in case of error
+							XHR.addEventListener("error", function(event) {
+								alert('Oups! Something goes wrong.');
+							});
+
+							XHR.open("POST", '<?php echo home_url(); ?>/wp-content/plugins/brandco-contact-forms/message.php');
+							XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+							XHR.send(params);
+						}
+						
+						var form = document.getElementById('<?php echo "BcoForm__" . $formID; ?>');
+
+						form.addEventListener("submit", function (event) {
+							event.preventDefault();
+							sendData();
+						});
+					});
+				</script>
+			<?php
+		}
+
+		public function deliver() {
+
+		}
 	}
-
-	new BrandCo_Form__Entries();
 
 endif;
 
