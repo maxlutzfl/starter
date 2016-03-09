@@ -4,6 +4,8 @@
 
 - <a href="http://youmightnotneedjqueryplugins.com/" target="_blank">youmightnotneedjqueryplugins.com</a>
 - <a href="http://youmightnotneedjquery.com/" target="_blank">youmightnotneedjquery.com</a>
+- <a href="http://bitsofco.de/styling-broken-images/" target="_blank">Styling Broken Images</a>
+- <a href="https://jonsuh.com/hamburgers/" target="_blank">Hamburgers</a>
 
 ## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
