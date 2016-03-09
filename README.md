@@ -6,6 +6,7 @@
 - <a href="http://youmightnotneedjquery.com/" target="_blank">youmightnotneedjquery.com</a>
 - <a href="http://bitsofco.de/styling-broken-images/" target="_blank">Styling Broken Images</a>
 - <a href="https://jonsuh.com/hamburgers/" target="_blank">Hamburgers</a>
+- <a href="http://themefoundation.com/wordpress-meta-boxes-guide/" target="_blank">WordPress Meta Boxes: a Comprehensive Developer’s Guide</a>
 
 ## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
