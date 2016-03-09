@@ -1,6 +1,6 @@
 # Starter Kit Documentation
 
-[http://youmightnotneedjqueryplugins.com/](http://youmightnotneedjqueryplugins.com/)
+<a href="http://youmightnotneedjqueryplugins.com/" target="_blank">http://youmightnotneedjqueryplugins.com/</a>
 
 ## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
