@@ -2,8 +2,8 @@
 
 ### Useful Links
 
-<a href="http://youmightnotneedjqueryplugins.com/" target="_blank">http://youmightnotneedjqueryplugins.com/</a>
-<a href="http://youmightnotneedjquery.com/" target="_blank">http://youmightnotneedjquery.com/</a>
+- <a href="http://youmightnotneedjqueryplugins.com/" target="_blank">http://youmightnotneedjqueryplugins.com/ </a>
+- <a href="http://youmightnotneedjquery.com/" target="_blank">http://youmightnotneedjquery.com/ </a>
 
 ## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
