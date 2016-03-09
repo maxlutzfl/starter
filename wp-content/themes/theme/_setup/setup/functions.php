@@ -121,5 +121,39 @@ function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
 	return wpautop( $trimmed_content );
 }
 
+function GoogleMapsScript() {
+	echo '<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>';
+}
 
+function AddMap( $address ) {
+	add_action('wp_footer', 'BrandCo\GoogleMapsScript');
+	?>
+		<div id="CompanyMap"></div>
+		<script>
+			function initMap() {
+				var address = "<?php echo $address; ?>";
+				var geocoder = new google.maps.Geocoder();
+				geocoder.geocode( { 'address': address}, function(results, status) {
+					var latitude = results[0].geometry.location.lat();
+					var longitude = results[0].geometry.location.lng();
+					var myLatLng = {lat: latitude, lng: longitude};
+					var map = new google.maps.Map(document.getElementById('CompanyMap'), {
+						zoom: 14,
+						scrollwheel: false,
+						draggable: false,
+						center: myLatLng
+					});
+					var marker = new google.maps.Marker({
+						position: myLatLng,
+						map: map,
+						title: "<?php bloginfo('title'); ?>"
+					});
+					google.maps.event.addDomListener(window, 'resize', function() {
+						map.setCenter(myLatLng);
+					});
+				}); 
+			}
+		</script>
+	<?php
+}
 

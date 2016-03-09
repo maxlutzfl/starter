@@ -18,7 +18,7 @@
 			wp_insert_post(
 				array(
 					'post_status' => 'publish',
-					'post_type' => 'post',
+					'post_type' => 'brandco-entries',
 					'post_title' => 'test3',
 					'post_content' => 'Lorem ipsum'
 				)

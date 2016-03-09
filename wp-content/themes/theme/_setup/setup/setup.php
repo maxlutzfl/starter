@@ -24,6 +24,13 @@ function BrandCo_ThemeSetup() {
 		) 
 	);
 
+	update_option('thumbnail_size_w', 300);
+	update_option('thumbnail_size_h', 300);
+	update_option('medium_size_w', 600);
+	update_option('medium_size_h', 600);
+	update_option('large_size_w', 1200);
+	update_option('large_size_h', 1200);
+	
 	register_nav_menus( 
 		array(
 			'primary' => esc_html__( 'Main Navigation', 'brandco' ),
@@ -70,7 +77,7 @@ function BrandCo_PostTypeArchiveSetup( $wp_customize ) {
 	foreach ( $custom_post_types as $type ) {
 		$details = get_post_type_object( $type );
 		$label = $details->label;
-		$wp_customize->add_setting( 'page_for_' . $type );
+		$wp_customize->add_setting( 'page_for_' . $type, array('type' => 'option') );
 		$wp_customize->add_control( new WP_Customize_Control( $wp_customize, 'page_for_' . $type, array(
 			'label' => __( $label . ' Archive Page', 'bcore' ),
 			'section' => 'static_front_page',
@@ -78,6 +85,21 @@ function BrandCo_PostTypeArchiveSetup( $wp_customize ) {
 			'type' => 'dropdown-pages'
 		))); 
 	}	
+}
+
+add_filter( 'display_post_states', 'BrandCo_PostTypeArchivePageLabels' );
+function BrandCo_PostTypeArchivePageLabels( $states ) {
+	global $post;
+	$custom_post_types = get_post_types( array( '_builtin' => false ) );
+	foreach ( $custom_post_types as $type ) {
+		$details = get_post_type_object( $type );
+		$label = $details->label;
+
+		if ( $post->ID == get_theme_mod( 'page_for_' . $type ) ) {
+			return array(  $label . ' Page' );
+		}
+	}
+	return $states;
 }
 
 function BrandCo_Pagination() {
@@ -130,79 +152,8 @@ if ( class_exists('WP_Customize_Control') && class_exists('GFAPI') ) :
 	}
 endif;
 
-function html_form_code() {
-	?>
-		<form class="BrandCoContactForm" action="<?php echo esc_url( $_SERVER['REQUEST_URI'] ); ?>" method="post">
-
-			<label class="BrandCoContactForm__field">
-				<span class="screen-reader-text">Your Name</span>
-				<input type="text" placeholder="Your Name" required name="cf-name" pattern="[a-zA-Z0-9 ]+" value="<?php echo ( isset( $_POST["cf-name"] ) ? esc_attr( $_POST["cf-name"] ) : '' ) ?>" >
-			</label>
-
-			<label class="BrandCoContactForm__field">
-				<span class="screen-reader-text">Your Email</span>
-				<input type="email" name="cf-email" placeholder="Your Email" required value="<?php echo ( isset( $_POST["cf-email"] ) ? esc_attr( $_POST["cf-email"] ) : '' ) ?>" size="40" />
-			</label>
-
-			<label class="BrandCoContactForm__field">
-				<span class="screen-reader-text">How can we help?</span>
-				<textarea name="cf-message" placeholder="How can we help?" ><?php echo ( isset( $_POST["cf-message"] ) ? esc_attr( $_POST["cf-message"] ) : '' ); ?></textarea>
-			</label>
-
-			<input class="BrandCoContactForm__submit" type="submit" name="cf-submitted" value="Submit">
-
-		</form>
-
-	<?php
+add_filter( 'gform_validation_message', 'gravityFormsErrorMessage', 10, 2 );
+function gravityFormsErrorMessage( $message, $form ) {
+    return "<div class='validation_error'>There was a problem, please fill in the required fields.</div>";
 }
 
-function deliver_mail() {
-
-	// if the submit button is clicked, send the email
-	if ( isset( $_POST['cf-submitted'] ) ) {
-
-		// sanitize form values
-		$name = sanitize_text_field( $_POST["cf-name"] );
-		$email = sanitize_email( $_POST["cf-email"] );
-		// $subject = sanitize_text_field( $_POST["cf-subject"] );
-		$website = get_bloginfo('title');
-
-		// get the blog administrator's email address
-		$to = get_option( 'admin_email' );
-
-		$message = esc_textarea( $_POST["cf-message"] ) . '<br><br> ____ <br><br>' . $name . ': ' .  $email . ' <br> This message is from your website ' . $website . ' ' . $to;
-
-
-		$headers = "From: $website <noreply@brandco.com>" . "\r\n";
-
-		// If email has been process for sending, display a success message
-		if ( wp_mail( $to, 'New form submission for your website.', $message, $headers ) ) {
-			echo '<div>';
-			echo '<p>Thanks for contacting me, expect a response soon.</p>';
-			echo '</div>';
-
-			// wp_insert_post(
-			// 	array(
-			// 		'post_type' => 'post',
-			// 		'post_title' => 'Message from ' . $name . ': ' . $email,
-			// 		'post_content' => apply_filters( 'the_content', $message )
-			// 	)
-			// );
-
-		} else {
-			echo 'An unexpected error occurred';
-		}
-	}
-}
-
-function wpse27856_set_content_type(){
-    return "text/html";
-}
-add_filter( 'wp_mail_content_type','wpse27856_set_content_type' );
-
-function cf_shortcode() {
-	deliver_mail();
-	html_form_code();
-}
-
-add_shortcode( 'sitepoint_contact_form', 'cf_shortcode' );

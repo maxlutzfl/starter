@@ -66,7 +66,7 @@ jQuery(function($){
 
 		// Placeholder
 		$('.gfield').each(function(){
-			var PlaceholderText = $(this).find('label').html();
+			var PlaceholderText = $(this).find('label').text();
 			$(this).find('input, textarea').attr('placeholder', PlaceholderText);
 		});
 	});

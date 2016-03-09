@@ -38,12 +38,15 @@ Use the `<figure>` element positioned absolutely within the section. The section
 
 ```php
 <body>
-    <div id="site-wrapper">
-        <header></header>
-        <main></main>
-        <footer></footer>
+    <div id="SiteMainWrapper">
+        <div id="SiteMasthead">
+            <header id="SiteHeader"></header>
+            <nav id="SiteNavigation"></nav>
+        </div>
+        <main id="SiteMain"></main>
+        <footer id="SiteFooter"></footer>
     </div>
-    <div id="outsite-wrapper"></div>
+    <div id="MobileNavigation"></div>
 </body>
 ```
 
@@ -62,54 +65,39 @@ Use the `<figure>` element positioned absolutely within the section. The section
 ```
 
 #### Section Structure
-A section can a `<header>`, `<section>`, or `<footer>` within the `<main>` area. 
 
 ```php
 <section>
-    <div class="main-container">
-        <div class="column-full">
-        </div>
+    <div class="MainContainer">
+        ...
     </div>
 </section>
 <section>
-    <div class="main-container">
-        <div class="column-primary"></div>
-        <aside class="column-aside"></aside>
+    <div class="MainContainer">
+        ...
     </div>
 </section>
 ```
 
-#### Spacing
-
-The most basic document structure would be a `<header>`, `<section>`, and `<footer>` wrapped between the `<main>` tag. Within each of these sections is our `.main-container`, which centers the content `margin: 0 auto` and has the `max-width`. Next we need to think about the padding of these sections so there is some breathing room between sections vertically and the document edges horizontally. 
-
-At it's most basic form, think of a printed document where the only padding is on the very top and bottom, left and right. To achieve this, we would add 3 helper classes to each section: `.page-header-padding`, `.page-section-padding` and `.page-footer-padding`.
+#### Grids
 
 ```css
-.page-header-padding {
-    padding-top: 30px;
-    padding-bottom: 0px; 
-    padding-left: 30px;
-    padding-right: 30px;
-
+ul {
+    font-size: 0; // removes white space
 }
 
-.page-section-padding {
-    padding-top: 0px;
-    padding-bottom: 0px; 
-    padding-left: 30px;
-    padding-right: 30px;
-}
-
-.page-footer-padding {
-    padding-top: 0;
-    padding-bottom: 30px; 
-    padding-left: 30px;
-    padding-right: 30px;
+li {
+    font-size: 16px; // resets font-size
+    display: inline-block;
+    vertical-align: top;
 }
 ```
 
-If a section needs to be sectioned off separately, use a uniform padding like `padding: 30px;`. This would be the case for a section that has a border separating it from it's child section or if the section has a background image.  
+```php
+<ul>
+
+</ul>
+```
 
 ### Animating on Scroll
 To trigger animations as elements scroll into view of the viewport, use the class `.element-inview`. On scroll, `.animate` will be added to the element. In additional to `.element-inview` you can use a basic animation class like `.inview-up`, which begins with `opacity: 0; transform: translateY(100px);` and when the `.animate` class is triggered, `transition` animates the element to `opacity: 1; transform: translateY(0px);`. 
