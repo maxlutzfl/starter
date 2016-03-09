@@ -1,5 +1,7 @@
 # Starter Kit Documentation
 
+[http://youmightnotneedjqueryplugins.com/](http://youmightnotneedjqueryplugins.com/)
+
 ## Table of Contents
 - [Lazy Load Images](#lazy-load-images)
 - [Parallax Cover Image](#parallax-cover-image)
