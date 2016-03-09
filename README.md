@@ -89,6 +89,8 @@ Use the `<figure>` element positioned absolutely within the section. The section
 
 #### Grids
 
+- <a href="codepen.io/maxlutzfl/full/jWOjBj/" target="_blank">Codepen Example</a>
+
 ```css
 ul {
     font-size: 0; /* removes white space */
