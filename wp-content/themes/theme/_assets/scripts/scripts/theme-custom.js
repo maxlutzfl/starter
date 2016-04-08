@@ -1,3 +1,26 @@
+(function(){
+	var h = document.getElementById("SiteMasthead");
+	var stuck = false;
+	var stickPoint = getDistance();
+	
+	function getDistance() {
+		var topDist = h.offsetTop;
+		return topDist;
+	}	
+	
+	window.onscroll = function(e) {
+		var distance = getDistance() - window.pageYOffset;
+		var offset = window.pageYOffset;
+	
+		if ( ( distance <= 0 ) && ! stuck ) {
+			document.getElementById('SiteHeader').dataset.fixedHeader = 'true';
+		} else {
+			document.getElementById('SiteHeader').dataset.fixedHeader = 'false';
+		}
+	}
+}());
+
+
 /**
  * Mobile Menu JS
  */
@@ -5,11 +28,11 @@
 function toggleMobileMenu() {
 	var html = document.documentElement;
 	
-	if ( html.dataset.mobileMenuOpen === "true" ) {
-		html.dataset.mobileMenuOpen = "false";
+	if ( html.getAttribute('data-mobile-menu-open') === "true" ) {
+		html.setAttribute('data-mobile-menu-open', 'false');
 
 	} else {
-		html.dataset.mobileMenuOpen = "true";
+		html.setAttribute('data-mobile-menu-open', 'true');
 	}
 }
 

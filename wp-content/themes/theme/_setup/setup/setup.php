@@ -102,6 +102,22 @@ function BrandCo_PostTypeArchivePageLabels( $states ) {
 	return $states;
 }
 
+/**
+ * Set default page order
+ */
+
+add_filter( 'wp_insert_post_data', 'brandco_default_menu_order' );
+function brandco_default_menu_order( $data ) {
+	if ( $data['post_status'] == 'auto-draft' ) {
+		$data['menu_order'] = 999;
+	}
+	return $data;
+}
+
+/**
+ * Paging
+ */
+
 function BrandCo_Pagination() {
 	global $wp_query;
 	$big = 999999999;
@@ -117,6 +133,10 @@ function BrandCo_Pagination() {
 	echo '</div>';
 }
 
+/**
+ * Open Graphs
+ */
+
 add_action('wp_head', 'BrandCo_OG');
 function BrandCo_OG() {
 	echo '<meta property="og:site_name" content="' . get_bloginfo('title') . '" />';
@@ -126,8 +146,9 @@ function BrandCo_OG() {
 }
 
 /**
- *
+ * Gravity Forms Customizer Setting
  */
+
 if ( class_exists('WP_Customize_Control') && class_exists('GFAPI') ) :
 	class WP_Customize_Gravity_Forms extends WP_Customize_Control {
 		public function render_content() {

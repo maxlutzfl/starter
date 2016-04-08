@@ -72,6 +72,15 @@
 			position: relative;
 
 			@include breakpoint('DesktopMenu') {
+
+				> a:after {
+					content: '▾';
+					vertical-align: top;
+					display: inline-block;
+					margin-left: 5px;
+					margin-top: -2px;
+				}
+
 				.sub-menu {
 					opacity: 0;
 					visibility: hidden;

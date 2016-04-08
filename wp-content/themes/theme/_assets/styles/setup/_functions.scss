@@ -25,6 +25,17 @@
 	transform: translateY(2px);
 }
 
+@mixin BackgroundCover() {
+	background-size: cover;
+	background-position: 50%;
+}
+
+@mixin Fill() {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
 
 
 
