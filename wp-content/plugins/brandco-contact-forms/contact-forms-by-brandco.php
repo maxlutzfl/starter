@@ -53,7 +53,7 @@ if ( ! class_exists('BrandCo_Form') ) :
 									$fieldType = ( array_key_exists('type', $data) ) ? $data['type'] : '';
 
 									// Before field
-									echo '<div id="BcoForm__Field__' . $id . '" class="BcoForm__Field">';
+									echo '<div id="BcoForm__Field__' . $id . '" class="BcoForm__Field BcoForm__FieldType__' . $fieldType . '">';
 
 									// Text field
 									if ( $fieldType === 'text' ) { ?>
@@ -104,7 +104,7 @@ if ( ! class_exists('BrandCo_Form') ) :
 								endforeach;
 
 								// Hidden fields 
-								echo '<input type="hidden" name="BcoForm__HiddenField__PageURL" value="">';
+								echo '<input type="hidden" name="BcoForm__HiddenField__PageURL" value="' . esc_url( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) . '">';
 							?>
 
 						</div>
@@ -172,7 +172,14 @@ if ( ! class_exists('BrandCo_Form') ) :
 								params += elem[i].name + "=" + encodeURIComponent(value) + "&";
 							}
 
-							var XHR = new XMLHttpRequest();
+							var XHR; 
+
+							if ( window.XMLHttpRequest ) {
+								XHR = new XMLHttpRequest();
+							} else {
+								XHR = new ActiveXObject("Microsoft.XMLHTTP");
+							}
+							
 
 							// We define what will happen if the data are successfully sent
 							XHR.addEventListener("load", function(event) {
@@ -189,7 +196,7 @@ if ( ! class_exists('BrandCo_Form') ) :
 								alert('Oups! Something goes wrong.');
 							});
 
-							XHR.open("POST", '<?php echo home_url(); ?>/wp-content/plugins/brandco-contact-forms/message.php');
+							XHR.open("POST", '<?php echo home_url(); ?>/wp-content/plugins/brandco-contact-forms/form-submit.php');
 							XHR.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
 							XHR.send(params);
 						}
@@ -215,10 +222,10 @@ if ( ! class_exists('BrandCo_Contacts_Setup') ) :
 
 		function __construct() {
 			add_action( 'init', array( $this, 'PostType_Entries' ) );
-			add_action( 'init', array( $this, 'PostType_Users' ) );
-			add_action( 'init', array( $this, 'SetCookie' )  );
-			add_action( 'wp_footer', array( $this, 'RegisterPageView' ) );
-			add_action( 'add_meta_boxes', array( $this, 'MetaBox_Users' ) );
+			// add_action( 'init', array( $this, 'PostType_Users' ) );
+			// add_action( 'init', array( $this, 'SetCookie' )  );
+			// add_action( 'wp_footer', array( $this, 'RegisterPageView' ) );
+			// add_action( 'add_meta_boxes', array( $this, 'MetaBox_Users' ) );
 		}
 
 		public function PostType_Entries() {
@@ -248,12 +255,21 @@ if ( ! class_exists('BrandCo_Contacts_Setup') ) :
 				'query_var' => true,
 				'rewrite' => array( 'slug' => 'brandco-entries' ),
 				'capability_type' => 'post',
-				'capabilities' => array(
-					'create_posts' => false,
-				),
-				'has_archive' => false,
+				// 'capabilities' => array(
+				// 	'edit_post'          => true, 
+				// 	'read_post'          => true, 
+				// 	'delete_post'        => true, 
+				// 	'delete_posts'       => true, 
+				// 	'edit_posts'         => true, 
+				// 	'edit_others_posts'  => true, 
+				// 	'publish_posts'      => true,       
+				// 	'read_private_posts' => true, 
+				// 	'create_posts'       => false, 
+				// ),
+				'has_archive' => true,
 				'hierarchical' => false,
 				'menu_position' => null,
+				'menu_icon' => 'dashicons-email-alt',
 				'supports' => array( 'title' )
 			);
 
