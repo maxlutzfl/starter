@@ -99,3 +99,5 @@ wp-content/themes/twenty*/
 
 # ignore node/grunt dependency directories
 node_modules/
+
+.DS_Store
