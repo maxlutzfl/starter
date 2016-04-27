@@ -37,13 +37,16 @@ class acf_field_file extends acf_field {
 		$this->category = 'content';
 		$this->defaults = array(
 			'return_format'	=> 'array',
-			'library' 		=> 'all'
+			'library' 		=> 'all',
+			'min_size'		=> 0,
+			'max_size'		=> 0,
+			'mime_types'	=> ''
 		);
 		$this->l10n = array(
 			'select'		=> __("Select File",'acf'),
 			'edit'			=> __("Edit File",'acf'),
 			'update'		=> __("Update File",'acf'),
-			'uploadedTo'	=> __("uploaded to this post",'acf'),
+			'uploadedTo'	=> __("Uploaded to this post",'acf'),
 		);
 		
 		
@@ -72,13 +75,20 @@ class acf_field_file extends acf_field {
 	
 	function render_field( $field ) {
 		
+		// vars
+		$uploader = acf_get_setting('uploader');
+		
+		
 		// enqueue
-		acf_enqueue_uploader();
+		if( $uploader == 'wp' ) {
+			
+			acf_enqueue_uploader();
+			
+		}
 		
 		
 		// vars
 		$o = array(
-			'class'		=> 'acf-file-uploader acf-cf',
 			'icon'		=> '',
 			'title'		=> '',
 			'size'		=> '',
@@ -86,13 +96,23 @@ class acf_field_file extends acf_field {
 			'name'		=> '',
 		);
 		
+		$div = array(
+			'class'				=> 'acf-file-uploader acf-cf',
+			'data-library' 		=> $field['library'],
+			'data-mime_types'	=> $field['mime_types'],
+			'data-uploader'		=> $uploader
+		);
+		
+		
+		// has value
 		if( $field['value'] && is_numeric($field['value']) ) {
 			
 			$file = get_post( $field['value'] );
 			
 			if( $file ) {
 				
-				$o['class'] .= ' has-value';
+				$div['class'] .= ' has-value';
+				
 				$o['icon'] = wp_mime_type_icon( $file->ID );
 				$o['title']	= $file->post_title;
 				$o['size'] = @size_format(filesize( get_attached_file( $file->ID ) ));
@@ -104,21 +124,11 @@ class acf_field_file extends acf_field {
 			}
 			
 		}
-		
-		
-		// basic?
-		$basic = !current_user_can( 'upload_files' );
-		
-		if( $basic ) {
-			
-			$o['class'] .= ' basic';
-			
-		}
-		
+				
 ?>
-<div <?php acf_esc_attr_e(array( 'class' => $o['class'], 'data-library' => $field['library'] )); ?>>
+<div <?php acf_esc_attr_e($div); ?>>
 	<div class="acf-hidden">
-		<input type="hidden" <?php acf_esc_attr_e(array( 'name' => $field['name'], 'value' => $field['value'], 'data-name' => 'id' )); ?> />	
+		<?php acf_hidden_input(array( 'name' => $field['name'], 'value' => $field['value'], 'data-name' => 'id' )); ?>
 	</div>
 	<div class="show-if-value file-wrap acf-soh">
 		<div class="file-icon">
@@ -129,25 +139,24 @@ class acf_field_file extends acf_field {
 				<strong data-name="title"><?php echo $o['title']; ?></strong>
 			</p>
 			<p>
-				<strong><?php _e('File Name', 'acf'); ?>:</strong>
+				<strong><?php _e('File name', 'acf'); ?>:</strong>
 				<a data-name="name" href="<?php echo $o['url']; ?>" target="_blank"><?php echo $o['name']; ?></a>
 			</p>
 			<p>
-				<strong><?php _e('File Size', 'acf'); ?>:</strong>
+				<strong><?php _e('File size', 'acf'); ?>:</strong>
 				<span data-name="size"><?php echo $o['size']; ?></span>
 			</p>
 			
 			<ul class="acf-hl acf-soh-target">
-				<?php if( !$basic ): ?>
-					<li><a class="acf-icon dark" data-name="edit" href="#"><i class="acf-sprite-edit"></i></a></li>
+				<?php if( $uploader != 'basic' ): ?>
+					<li><a class="acf-icon -pencil dark" data-name="edit" href="#"></a></li>
 				<?php endif; ?>
-				<li><a class="acf-icon dark" data-name="remove" href="#"><i class="acf-sprite-delete"></i></a></li>
+				<li><a class="acf-icon -cancel dark" data-name="remove" href="#"></a></li>
 			</ul>
-			
 		</div>
 	</div>
 	<div class="hide-if-value">
-		<?php if( $basic ): ?>
+		<?php if( $uploader == 'basic' ): ?>
 			
 			<?php if( $field['value'] && !is_numeric($field['value']) ): ?>
 				<div class="acf-error-message"><p><?php echo $field['value']; ?></p></div>
@@ -157,7 +166,7 @@ class acf_field_file extends acf_field {
 			
 		<?php else: ?>
 			
-			<p style="margin:0;"><?php _e('No File selected','acf'); ?> <a data-name="add" class="acf-button" href="#"><?php _e('Add File','acf'); ?></a></p>
+			<p style="margin:0;"><?php _e('No file selected','acf'); ?> <a data-name="add" class="acf-button button" href="#"><?php _e('Add File','acf'); ?></a></p>
 			
 		<?php endif; ?>
 		
@@ -182,6 +191,23 @@ class acf_field_file extends acf_field {
 	*/
 	
 	function render_field_settings( $field ) {
+		
+		// clear numeric settings
+		$clear = array(
+			'min_size',
+			'max_size'
+		);
+		
+		foreach( $clear as $k ) {
+			
+			if( empty($field[$k]) ) {
+				
+				$field[$k] = '';
+				
+			}
+			
+		}
+		
 		
 		// return_format
 		acf_render_field_setting( $field, array(
@@ -209,7 +235,38 @@ class acf_field_file extends acf_field {
 				'all'			=> __('All', 'acf'),
 				'uploadedTo'	=> __('Uploaded to post', 'acf')
 			)
-		));	
+		));
+		
+		
+		// min
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Minimum','acf'),
+			'instructions'	=> __('Restrict which files can be uploaded','acf'),
+			'type'			=> 'text',
+			'name'			=> 'min_size',
+			'prepend'		=> __('File size', 'acf'),
+			'append'		=> 'MB',
+		));
+		
+		
+		// max
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Maximum','acf'),
+			'instructions'	=> __('Restrict which files can be uploaded','acf'),
+			'type'			=> 'text',
+			'name'			=> 'max_size',
+			'prepend'		=> __('File size', 'acf'),
+			'append'		=> 'MB',
+		));
+		
+		
+		// allowed type
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Allowed file types','acf'),
+			'instructions'	=> __('Comma separated list. Leave blank for all types','acf'),
+			'type'			=> 'text',
+			'name'			=> 'mime_types',
+		));
 		
 	}
 	
@@ -235,8 +292,16 @@ class acf_field_file extends acf_field {
 		// bail early if no value
 		if( empty($value) ) {
 		
-			return $value;
+			return false;
 			
+		}
+		
+		
+		// bail early if not numeric (error message)
+		if( !is_numeric($value) ) {
+			
+			return false;
+				
 		}
 		
 		
@@ -247,31 +312,11 @@ class acf_field_file extends acf_field {
 		// format
 		if( $field['return_format'] == 'url' ) {
 		
-			$value = wp_get_attachment_url($value);
+			return wp_get_attachment_url($value);
 			
 		} elseif( $field['return_format'] == 'array' ) {
 			
-			$attachment = get_post( $value );
-			
-			
-			// validate
-			if( !$attachment )
-			{
-				return false;	
-			}
-			
-			
-			// create array to hold value data
-			$value = array(
-				'ID'			=> $attachment->ID,
-				'id'			=> $attachment->ID,
-				'alt'			=> get_post_meta($attachment->ID, '_wp_attachment_image_alt', true),
-				'title'			=> $attachment->post_title,
-				'caption'		=> $attachment->post_excerpt,
-				'description'	=> $attachment->post_content,
-				'mime_type'		=> $attachment->post_mime_type,
-				'url'			=> wp_get_attachment_url( $attachment->ID ),
-			);
+			return acf_get_attachment( $value );
 		}
 		
 		

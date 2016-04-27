@@ -1,3 +1,22 @@
+.ColumnPrimary {
+
+	@include breakpoint('above_900px') {
+		float: left;
+		width: 70%;
+		padding-right: 60px;
+	}
+}
+
+.ColumnSidebar {
+	margin-top: 60px;
+
+	@include breakpoint('above_900px') {
+		margin-top: 0;
+		float: right;
+		width: 30%;
+	}
+}
+
 .screen-reader-text {
 	clip: rect(1px, 1px, 1px, 1px);
 	height: 1px;
@@ -54,26 +73,6 @@
 	left: 0;
 	top: 0;
 	width: 100%;
-}
-
-.select-holder {
-	@include fa;
-	width: 100%;
-	position: relative;
-
-	&:after {
-		content: "\72";
-		position: absolute;
-		top: 0;
-		right: 0;
-		bottom: 0;
-		background-color: transparent;
-		width: $form-field-height;
-		line-height: $form-field-height;
-		text-align: center;
-		pointer-events: none;
-
-	}
 }
 
 .gallery {

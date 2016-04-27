@@ -40,25 +40,20 @@ class acf_field_gallery extends acf_field {
 			'library'		=> 'all',
 			'min'			=> 0,
 			'max'			=> 0,
+			'min_width'		=> 0,
+			'min_height'	=> 0,
+			'min_size'		=> 0,
+			'max_width'		=> 0,
+			'max_height'	=> 0,
+			'max_size'		=> 0,
+			'mime_types'	=> ''
 		);
 		$this->l10n = array(
 			'select'		=> __("Add Image to Gallery",'acf'),
 			'edit'			=> __("Edit Image",'acf'),
 			'update'		=> __("Update Image",'acf'),
-			'uploadedTo'	=> __("uploaded to this post",'acf'),
-			'max'			=> __("Maximum selection reached",'acf'),
-			
-			'tmpl'			=> '<div data-id="<%= id %>" class="acf-gallery-attachment acf-soh">
-									<input type="hidden" value="<%= id %>" name="<%= name %>[]">
-									<div class="padding">
-										<img alt="" src="<%= url %>">
-									</div>
-									<div class="actions acf-soh-target">
-										<a href="#" class="acf-icon dark remove-attachment" data-id="<%= id %>">
-											<i class="acf-sprite-delete"></i>
-										</a>
-									</div>
-								</div>'
+			'uploadedTo'	=> __("Uploaded to this post",'acf'),
+			'max'			=> __("Maximum selection reached",'acf')
 		);
 		
 		
@@ -149,25 +144,26 @@ class acf_field_gallery extends acf_field {
 	
 	function ajax_update_attachment() {
 		
-		
-		// validate
-		if( ! wp_verify_nonce($_REQUEST['nonce'], 'acf_nonce') ) {
-		
-			wp_send_json_error();
-			
-		}
-		
-		
-		if( empty($_REQUEST['attachments']) ) {
+		// validate nonce
+		if( !wp_verify_nonce($_POST['nonce'], 'acf_nonce') ) {
 		
 			wp_send_json_error();
 			
 		}
 		
 		
-		foreach( $_REQUEST['attachments'] as $id => $changes ) {
+		// bail early if no attachments
+		if( empty($_POST['attachments']) ) {
+		
+			wp_send_json_error();
 			
-			if ( ! current_user_can( 'edit_post', $id ) )
+		}
+		
+		
+		// loop over attachments
+		foreach( $_POST['attachments'] as $id => $changes ) {
+			
+			if ( !current_user_can( 'edit_post', $id ) )
 				wp_send_json_error();
 				
 			$post = get_post( $id, ARRAY_A );
@@ -197,11 +193,20 @@ class acf_field_gallery extends acf_field {
 			wp_update_post( $post );
 			
 			
+			/** This filter is documented in wp-admin/includes/media.php */
+			// - seems off to run this filter AFTER the update_post function, but there is a reason
+			// - when placed BEFORE, an empty post_title will be populated by WP
+			// - this filter will still allow 3rd party to save extra image data!
+			$post = apply_filters( 'attachment_fields_to_save', $post, $changes );
+			
+			
 			// save meta
 			acf_save_post( $id );
 						
 		}
 		
+		
+		// return
 		wp_send_json_success();
 			
 	}
@@ -299,17 +304,63 @@ class acf_field_gallery extends acf_field {
 	
 	function render_attachment( $id = 0, $field ) {
 		
+		// vars
 		$attachment = wp_prepare_attachment_for_js( $id );
+		$thumb = '';
 		$prefix = "attachments[{$id}]";
 		$compat = get_compat_media_markup( $id );
+		$dimentions = '';
+		
+		
+		// thumb
+		if( isset($attachment['thumb']['src']) ) {
+			
+			// video
+			$thumb = $attachment['thumb']['src'];
+			
+		} elseif( isset($attachment['sizes']['thumbnail']['url']) ) {
+			
+			// image
+			$thumb = $attachment['sizes']['thumbnail']['url'];
+			
+		} elseif( $attachment['type'] === 'image' ) {
+			
+			// svg
+			$thumb = $attachment['url'];
+			
+		} else {
+			
+			// fallback (perhaps attachment does not exist)
+			$thumb = $attachment['icon'];
+				
+		}
+		
+		
+		
+		// dimentions
+		if( $attachment['type'] === 'audio' ) {
+			
+			$dimentions = __('Length', 'acf') . ': ' . $attachment['fileLength'];
+			
+		} elseif( !empty($attachment['width']) ) {
+			
+			$dimentions = $attachment['width'] . ' x ' . $attachment['height'];
+			
+		}
+		
+		if( $attachment['filesizeHumanReadable'] ) {
+			
+			$dimentions .=  ' (' . $attachment['filesizeHumanReadable'] . ')';
+			
+		}
 		
 		?>
 		<div class="acf-gallery-side-info acf-cf">
-			<img src="<?php echo $attachment['sizes']['thumbnail']['url']; ?>" alt="<?php echo $attachment['alt']; ?>" />
-			<p class="filename"><strong><?php _e('Attachment Details', 'acf'); ?></strong></p>
+			<img src="<?php echo $thumb; ?>" alt="<?php echo $attachment['alt']; ?>" />
+			<p class="filename"><strong><?php echo $attachment['filename']; ?></strong></p>
 			<p class="uploaded"><?php echo $attachment['dateFormatted']; ?></p>
-			<p class="dimensions"><?php echo $attachment['width']; ?> × <?php echo $attachment['height']; ?> </p>
-			<p class="actions"><a href="#" class="edit-attachment" data-id="<?php echo $id; ?>">Edit</a> <a href="#" class="remove-attachment" data-id="<?php echo $id; ?>">Remove</a></p>
+			<p class="dimensions"><?php echo $dimentions; ?></p>
+			<p class="actions"><a href="#" class="edit-attachment" data-id="<?php echo $id; ?>"><?php _e('Edit', 'acf'); ?></a> <a href="#" class="remove-attachment" data-id="<?php echo $id; ?>"><?php _e('Remove', 'acf'); ?></a></p>
 		</div>
 		<table class="form-table">
 			<tbody>
@@ -320,7 +371,7 @@ class acf_field_gallery extends acf_field {
 					'name'		=> 'title',
 					'prefix'	=> $prefix,
 					'type'		=> 'text',
-					'label'		=> 'Title',
+					'label'		=> __('Title', 'acf'),
 					'value'		=> $attachment['title']
 				), 'tr');
 				
@@ -329,7 +380,7 @@ class acf_field_gallery extends acf_field {
 					'name'		=> 'caption',
 					'prefix'	=> $prefix,
 					'type'		=> 'textarea',
-					'label'		=> 'Caption',
+					'label'		=> __('Caption', 'acf'),
 					'value'		=> $attachment['caption']
 				), 'tr');
 				
@@ -338,7 +389,7 @@ class acf_field_gallery extends acf_field {
 					'name'		=> 'alt',
 					'prefix'	=> $prefix,
 					'type'		=> 'text',
-					'label'		=> 'Alt Text',
+					'label'		=> __('Alt Text', 'acf'),
 					'value'		=> $attachment['alt']
 				), 'tr');
 				
@@ -347,7 +398,7 @@ class acf_field_gallery extends acf_field {
 					'name'		=> 'description',
 					'prefix'	=> $prefix,
 					'type'		=> 'textarea',
-					'label'		=> 'Description',
+					'label'		=> __('Description', 'acf'),
 					'value'		=> $attachment['description']
 				), 'tr');
 				
@@ -380,6 +431,7 @@ class acf_field_gallery extends acf_field {
 		
 		
 		// vars
+		$posts = array();
 		$atts = array(
 			'id'				=> $field['id'],
 			'class'				=> "acf-gallery {$field['class']}",
@@ -387,12 +439,26 @@ class acf_field_gallery extends acf_field {
 			'data-library'		=> $field['library'],
 			'data-min'			=> $field['min'],
 			'data-max'			=> $field['max'],
+			'data-mime_types'	=> $field['mime_types'],
 		);
 		
-		// vars
+		
+		// set gallery height
 		$height = acf_get_user_setting('gallery_height', 400);
 		$height = max( $height, 200 ); // minimum height is 200
 		$atts['style'] = "height:{$height}px";
+		
+		
+		// load posts
+		if( !empty($field['value']) ) {
+			
+			$posts = acf_get_posts(array(
+				'post_type'	=> 'attachment',
+				'post__in'	=> $field['value']
+			));
+			
+		}
+		
 		
 		?>
 <div <?php acf_esc_attr_e($atts); ?>>
@@ -405,43 +471,61 @@ class acf_field_gallery extends acf_field {
 		
 		<div class="acf-gallery-attachments">
 			
-			<?php if( !empty($field['value']) ): 
-				
-				// force value to array
-				$field['value'] = acf_force_type_array( $field['value'] );
-				
-				
-				// convert values to int
-				$field['value'] = array_map('intval', $field['value']);
-				
-				
-				foreach( $field['value'] as $id ): 
+			<?php if( !empty($posts) ): ?>
+			
+				<?php foreach( $posts as $post ): 
 					
 					// vars
-					$mime_type = get_post_mime_type( $id );
-					$src = '';
-	
-					if( strpos($mime_type, 'image') !== false )
-					{
-						$src = wp_get_attachment_image_src( $id, $field['preview_size'] );
-						$src = $src[0];
+					$type = acf_maybe_get(explode('/', $post->post_mime_type), 0);
+					$thumb_id = $post->ID;
+					$thumb_url = '';
+					$thumb_class = 'acf-gallery-attachment acf-soh';
+					$filename = wp_basename($post->guid);
+					
+					
+					// thumb
+					if( $type === 'image' || $type === 'audio' || $type === 'video' ) {
+						
+						// change $thumb_id
+						if( $type === 'audio' || $type === 'video' ) {
+							
+							$thumb_id = get_post_thumbnail_id( $post->ID );
+							
+						}
+						
+						
+						// get attachment
+						if( $thumb_id ) {
+							
+							$thumb_url = wp_get_attachment_image_src( $thumb_id, $field['preview_size'] );
+							$thumb_url = acf_maybe_get( $thumb_url, 0 );
+						
+						}
+						
 					}
-					else
-					{
-						$src = wp_mime_type_icon( $id );
+					
+					
+					// fallback
+					if( !$thumb_url ) {
+						
+						$thumb_url = wp_mime_type_icon( $post->ID );
+						$thumb_class .= ' is-mime-icon';
+						
 					}
 					
 					?>
-					
-					<div class="acf-gallery-attachment acf-soh" data-id="<?php echo $id; ?>">
-						<input type="hidden" name="<?php echo $field['name']; ?>[]" value="<?php echo $id; ?>" />
-						<div class="padding">
-							<img src="<?php echo $src; ?>" alt="" />
+					<div class="<?php echo $thumb_class; ?>" data-id="<?php echo $post->ID; ?>">
+						<input type="hidden" name="<?php echo $field['name']; ?>[]" value="<?php echo $post->ID; ?>" />
+						<div class="margin" title="<?php echo $filename; ?>">
+							<div class="thumbnail">
+								<img src="<?php echo $thumb_url; ?>"/>
+							</div>
+							<?php if( $type !== 'image' ): ?>
+							<div class="filename"><?php echo acf_get_truncated($filename, 18); ?></div>
+							<?php endif; ?>
 						</div>
 						<div class="actions acf-soh-target">
-							<a class="acf-icon dark remove-attachment" data-id="<?php echo $id; ?>" href="#">
-								<i class="acf-sprite-delete"></i>
-							</a>
+							<a class="acf-icon -cancel dark remove-attachment" data-id="<?php echo $post->ID; ?>" href="#"></a>
 						</div>
 					</div>
 					
@@ -456,7 +540,7 @@ class acf_field_gallery extends acf_field {
 			
 			<ul class="acf-hl">
 				<li>
-					<a href="#" class="acf-button blue add-attachment"><?php _e('Add to gallery', 'acf'); ?></a>
+					<a href="#" class="acf-button button button-primary add-attachment"><?php _e('Add to gallery', 'acf'); ?></a>
 				</li>
 				<li class="acf-fr">
 					<select class="bulk-actions">
@@ -482,10 +566,10 @@ class acf_field_gallery extends acf_field {
 			
 			<ul class="acf-hl">
 				<li>
-					<a href="#" class="acf-button close-sidebar"><?php _e('Close', 'acf'); ?></a>
+					<a href="#" class="acf-button button close-sidebar"><?php _e('Close', 'acf'); ?></a>
 				</li>
 				<li class="acf-fr">
-					<a class="acf-button blue update-attachment"><?php _e('Update', 'acf'); ?></a>
+					<a class="acf-button button button-primary update-attachment"><?php _e('Update', 'acf'); ?></a>
 				</li>
 			</ul>
 			
@@ -515,9 +599,27 @@ class acf_field_gallery extends acf_field {
 	
 	function render_field_settings( $field ) {
 		
-		// min / max
-		$field['min'] = empty($field['min']) ? '' : $field['min'];
-		$field['max'] = empty($field['max']) ? '' : $field['max'];
+		// clear numeric settings
+		$clear = array(
+			'min',
+			'max',
+			'min_width',
+			'min_height',
+			'min_size',
+			'max_width',
+			'max_height',
+			'max_size'
+		);
+		
+		foreach( $clear as $k ) {
+			
+			if( empty($field[$k]) ) {
+				
+				$field[$k] = '';
+				
+			}
+			
+		}
 		
 		
 		// min
@@ -525,8 +627,7 @@ class acf_field_gallery extends acf_field {
 			'label'			=> __('Minimum Selection','acf'),
 			'instructions'	=> '',
 			'type'			=> 'number',
-			'name'			=> 'min',
-			'placeholder'	=> '0',
+			'name'			=> 'min'
 		));
 		
 		
@@ -535,8 +636,7 @@ class acf_field_gallery extends acf_field {
 			'label'			=> __('Maximum Selection','acf'),
 			'instructions'	=> '',
 			'type'			=> 'number',
-			'name'			=> 'max',
-			'placeholder'	=> '0',
+			'name'			=> 'max'
 		));
 		
 		
@@ -563,6 +663,81 @@ class acf_field_gallery extends acf_field {
 			)
 		));
 		
+		
+		// min
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Minimum','acf'),
+			'instructions'	=> __('Restrict which images can be uploaded','acf'),
+			'type'			=> 'text',
+			'name'			=> 'min_width',
+			'prepend'		=> __('Width', 'acf'),
+			'append'		=> 'px',
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> '',
+			'type'			=> 'text',
+			'name'			=> 'min_height',
+			'prepend'		=> __('Height', 'acf'),
+			'append'		=> 'px',
+			'wrapper'		=> array(
+				'data-append' => 'min_width'
+			)
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> '',
+			'type'			=> 'text',
+			'name'			=> 'min_size',
+			'prepend'		=> __('File size', 'acf'),
+			'append'		=> 'MB',
+			'wrapper'		=> array(
+				'data-append' => 'min_width'
+			)
+		));	
+		
+		
+		// max
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Maximum','acf'),
+			'instructions'	=> __('Restrict which images can be uploaded','acf'),
+			'type'			=> 'text',
+			'name'			=> 'max_width',
+			'prepend'		=> __('Width', 'acf'),
+			'append'		=> 'px',
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> '',
+			'type'			=> 'text',
+			'name'			=> 'max_height',
+			'prepend'		=> __('Height', 'acf'),
+			'append'		=> 'px',
+			'wrapper'		=> array(
+				'data-append' => 'max_width'
+			)
+		));
+		
+		acf_render_field_setting( $field, array(
+			'label'			=> '',
+			'type'			=> 'text',
+			'name'			=> 'max_size',
+			'prepend'		=> __('File size', 'acf'),
+			'append'		=> 'MB',
+			'wrapper'		=> array(
+				'data-append' => 'max_width'
+			)
+		));	
+		
+		
+		// allowed type
+		acf_render_field_setting( $field, array(
+			'label'			=> __('Allowed file types','acf'),
+			'instructions'	=> __('Comma separated list. Leave blank for all types','acf'),
+			'type'			=> 'text',
+			'name'			=> 'mime_types',
+		));
+		
 	}
 	
 	
@@ -587,106 +762,31 @@ class acf_field_gallery extends acf_field {
 		// bail early if no value
 		if( empty($value) ) {
 			
-			return $value;
+			// return false as $value may be '' (from DB) which doesn't make much sense
+			return false;
 		
 		}
 		
 		
-		// force value to array
-		$value = acf_force_type_array( $value );
-		
-		
-		// convert values to int
-		$value = array_map('intval', $value);
-		
-		
-		// load posts in 1 query to save multiple DB calls from following code
-		$posts = get_posts(array(
-			'posts_per_page'	=> -1,
-			'post_type'			=> 'attachment',
-			'post_status'		=> 'any',
-			'post__in'			=> $value,
-			'orderby'			=> 'post__in'
+		// get posts
+		$posts = acf_get_posts(array(
+			'post_type'	=> 'attachment',
+			'post__in'	=> $value,
 		));
 		
 		
-		foreach( $value as $k => $v ) {
-			
-			// get post
-			$post = get_post( $v );
-			
-			
-			// create $attachment
-			$a = array(
-				'ID'			=> $post->ID,
-				'id'			=> $post->ID,
-				'alt'			=> get_post_meta($post->ID, '_wp_attachment_image_alt', true),
-				'title'			=> $post->post_title,
-				'caption'		=> $post->post_excerpt,
-				'description'	=> $post->post_content,
-				'mime_type'		=> $post->post_mime_type,
-				'type'			=> 'file',
-				'url'			=> ''
-			);
-			
-			
-			// image
-			if( strpos($a['mime_type'], 'image') !== false ) {
-				
-				// type
-				$a['type'] = 'image';
-				
-				
-				// url
-				$src = wp_get_attachment_image_src( $a['ID'], 'full' );
-				
-				$a['url'] = $src[0];
-				$a['width'] = $src[1];
-				$a['height'] = $src[2];
-				
-				
-				// find all image sizes
-				$sizes = get_intermediate_image_sizes();
-				
-				
-				// sizes
-				if( !empty($sizes) ) {
-					
-					$a['sizes'] = array();
-					
-					foreach( $sizes as $size ) {
-						
-						// url
-						$src = wp_get_attachment_image_src( $a['ID'], $size );
-						
-						// add src
-						$a['sizes'][ $size ] = $src[0];
-						$a['sizes'][ $size . '-width' ] = $src[1];
-						$a['sizes'][ $size . '-height' ] = $src[2];
-						
-					}
-					// foreach
-					
-				}
-				// if
-				
-			} else {
-				
-				// is file
-				$src = wp_get_attachment_url( $a['ID'] );
-				
-				$a['url'] = $src;
-			}
-			
-			
-			$value[ $k ] = 	$a;
 		
+		// update value to include $post
+		foreach( array_keys($posts) as $i ) {
+			
+			$posts[ $i ] = acf_get_attachment( $posts[ $i ] );
+			
 		}
-		// foreach
-		
+				
 		
 		// return
-		return $value;
+		return $posts;
+		
 	}
 	
 	

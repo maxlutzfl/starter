@@ -38,15 +38,6 @@ gulp.task('sass', function() {
 		.pipe(livereload());
 });
 
-// Compile Our Sass
-gulp.task('headerfootercss', function() {
-	gulp.src('_assets/styles/headerfooter.scss')
-		.pipe(autoprefixer())
-		.pipe(minifyCSS({keepBreaks:false}))
-		.pipe(rename('_assets/styles/header-footer.min.css'))
-		.pipe(gulp.dest('.'))
-});
-
 // Concatenate & Minify JS
 gulp.task('scripts', function() {
 	return gulp.src('_assets/scripts/scripts/*.js')
@@ -62,7 +53,6 @@ gulp.task('watch', function() {
 	var server = livereload();
 	gulp.watch('_assets/scripts/scripts/theme-custom.js', ['lint', 'scripts']);
 	gulp.watch('_assets/styles/**/*.scss', ['sass']);
-	gulp.watch('_assets/styles/**/*.scss', ['headerfootercss']);
 	gulp.watch('**/*.php').on('change', function(file) {
 		livereload.changed(file.path);
 	});
@@ -70,4 +60,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['lint', 'sass', 'headerfootercss', 'scripts', 'watch']);
+gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);

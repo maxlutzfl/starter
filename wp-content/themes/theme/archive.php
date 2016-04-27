@@ -35,7 +35,7 @@ get_header(); ?>
 				<?php endwhile; ?>
 			</div>
 
-			<aside class="ColumnAside">
+			<aside class="ColumnSidebar">
 				<?php get_sidebar(); ?>
 			</aside>
 

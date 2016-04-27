@@ -1,8 +1,17 @@
-#SiteMain {
+$form-fields-height: 50px;
+$form-fields-border-radius: 5px;
+$input-border-width: 2px;
+$input-border-color: #666;
+$input-background-color: #fff;
+$button-background-color: $primary-color;
+
+#SiteMain,
+#SiteMasthead,
+#SiteFooter {
 
 	.ButtonStyle,
-	button,
-	input[type="submit"] {
+	.Submit,
+	.gform_wrapper input[type="submit"] {
 		font-weight: 700;
 		color: #fff;
 		text-align: center;
@@ -10,24 +19,25 @@
 		letter-spacing: 1.5px;
 		text-transform: uppercase;
 		border: 0px solid transparent;
-		background-color: $primary-color;
-		padding: 8px;
+		background-color: $button-background-color;
+		border-radius: $form-fields-border-radius;
+		padding: 0 15px;
 		box-shadow: 0 0 transparent;
 		transition: 300ms;
 		display: inline-block;
 		width: auto;
 		min-width: 200px;
 		cursor: pointer;
-		height: $form-field-height;
+		height: $form-fields-height;
+		outline: 0;
 
 		&:focus {
 			outline: 0;
-			background-color: $primary-color;
 			opacity: 0.8;			
 		}
 
 		&:hover {
-			opacity: 0.82;
+			opacity: 0.8;
 		}
 
 		@include breakpoint('below_750px') {
@@ -35,36 +45,41 @@
 			display: block;
 		}
 	}
-
-
+	
 	.input-search-holder {
-		@include fa;
 		width: 100%;
 		position: relative;
 
 		&:after {
-			content: "\6e";
+			content: "";
 			position: absolute;
 			top: 0;
 			right: 0;
 			bottom: 0;
 			background-color: transparent;
-			width: $form-field-height;
-			line-height: $form-field-height;
+			width: $form-fields-height;
+			line-height: $form-fields-height;
 			text-align: center;
 			pointer-events: none;
 			color: #bbb;
+			background-image: url(../images/svg/search.svg);
+			background-size: 16px;
+			background-position: 50%;
+			background-repeat: no-repeat;
+			opacity: 0.25;
 		}
 	}
 
-	input {
-		border: 1px solid #ddd;
-		height: $form-field-height;
+	.Input,
+	.widget_search input[type="search"],
+	.gform_wrapper input {
+		border: 0px solid transparent;
+		height: $form-fields-height;
 		padding: 0 em(15);
 		width: 100%;
 		box-sizing: border-box !important;
-		border-radius: 5px;
-		box-shadow: 0 0 transparent;
+		border-radius: $form-fields-border-radius;
+		box-shadow: inset 0 0 0 $input-border-width $input-border-color;
 		transition: 300ms;
 		-webkit-appearance: none;
 		font-size: em(16);
@@ -76,20 +91,21 @@
 		}
 	}
 
-	select {
-		border: 1px solid #ddd;
-		height: $form-field-height;
-		padding: 0 em(10);
+	.Select,
+	.gform_wrapper select {
+		border: 0px solid transparent;
+		height: $form-fields-height;
+		padding: 0 em(15);
 		width: 100%;
 		box-sizing: border-box !important;
-		border-radius: 5px;
-		box-shadow: 0 0 transparent;
 		appearance: none;
 		-webkit-appearance: none;
 		-moz-appearance: none;
 		background-color: #fff;
 		transition: 300ms;
 		font-size: em(16);
+		border-radius: $form-fields-border-radius;
+		box-shadow: inset 0 0 0 $input-border-width $input-border-color;
 
 		&:focus,
 		&:active {
@@ -102,21 +118,48 @@
 		display: none;
 	}
 
-	textarea {
+	.select-holder {
+		width: 100%;
+		position: relative;
+
+		&:after {
+			content: "";
+			font-family: sans-serif;
+			position: absolute;
+			top: 0;
+			right: 0;
+			bottom: 0;
+			background-color: transparent;
+			width: $form-fields-height;
+			line-height: $form-fields-height;
+			text-align: center;
+			pointer-events: none;
+			background-image: url(../images/svg/dropdown.svg);
+			background-size: 16px;
+			background-position: 50%;
+			background-repeat: no-repeat;
+			opacity: 0.5;
+		}
+	}
+
+	.Textarea,
+	.gform_wrapper textarea {
 		overflow: hidden;
-		font-size: em(16);
-		border: 1px solid #ddd;
-		height: ( $form-field-height * 2 );
-		padding: em(10);
+		font-size: em(14);
+		line-height: 1.75;
+		border: 0px solid transparent;
+		height: ( $form-fields-height * 2 );
+		padding: em(15);
 		width: 100%;
 		box-sizing: border-box !important;
-		border-radius: 5px;
-		box-shadow: 0 0 transparent;
 		resize: none;
 		transition: 300ms;
 		appearance: none;
 		-webkit-appearance: none;
 		-moz-appearance: none;	
+		border-radius: $form-fields-border-radius;
+		box-shadow: inset 0 0 0 $input-border-width $input-border-color;
+
 
 		&:focus {
 			outline: 0;
@@ -133,8 +176,11 @@
 			}
 		}
 	}
+
 	.gform_wrapper {
+
 		form {
+
 			.gform_heading {
 				margin: em(15) 0;
 
@@ -147,12 +193,13 @@
 					display: block;
 				}
 			}
+
 			.gform_body {
 
 				.gfield_label {
 					text-transform: uppercase;
 					font-weight: 700;
-					font-size: em(12);
+					font-size: em(10);
 					margin-bottom: 5px;
 					display: block;
 					opacity: 0.5;
@@ -164,7 +211,7 @@
 
 					li.gfield {
 						list-style: none;
-						margin: 0 0 em(20) 0;
+						margin: 0 0 em(10) 0;
 						padding-left: 0;
 
 						li {
@@ -212,7 +259,7 @@
 			}
 
 			.gform_footer {
-				padding: 30px 0;
+
 				input[type="submit"] {
 
 				}

@@ -25,7 +25,7 @@ $ofgs = get_posts(array(
 	'post_type' 		=> 'acf',
 	'orderby' 			=> 'menu_order title',
 	'order' 			=> 'asc',
-	'suppress_filters'	=> false,
+	'suppress_filters'	=> true,
 ));
 
 
@@ -171,6 +171,10 @@ function _migrate_field_group_500( $ofg ) {
 	// Note: acf_update_field_group will call the acf_get_valid_field_group function and apply 'compatibility' changes
 	
 	
+	// add old ID reference
+	$nfg['old_ID'] = $ofg->ID;
+	
+	
 	// save field group
 	$nfg = acf_update_field_group( $nfg );
 	
@@ -209,6 +213,14 @@ function _migrate_field_500( $field ) {
 	
 	// order_no is now menu_order
 	$field['menu_order'] = acf_extract_var( $field, 'order_no' );
+	
+	
+	// correct very old field keys
+	if( substr($field['key'], 0, 6) !== 'field_' ) {
+	
+		$field['key'] = 'field_' . str_replace('field', '', $field['key']);
+		
+	}
 	
 	
 	// get valid field

@@ -1,5 +1,5 @@
 // Site
-$container: em(1100);
+$container: em(1200);
 
 // Fonts
 $header-font: 'Open Sans', sans-serif;
@@ -8,7 +8,10 @@ $alt-font: 'Open Sans', sans-serif;
 
 // Colors
 $primary-color: #0795d7;
-$text-color: #333;
+$secondary-color: #c40000;
+$black: #333;
+$lightgrey: #f9f9f9;
+$text-color: $black;
 $header-color: $primary-color;
 
 // Forms

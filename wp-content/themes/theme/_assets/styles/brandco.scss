@@ -1,41 +1,42 @@
-/*--------------------------
-## Setup
---------------------------*/
+/**
+ * Setup
+ */
+
 @import "setup/functions";
-// @import "setup/normalize";
 @import "setup/variables";
 @import "setup/breakpoints";
 @import "setup/global";
-@import "setup/icons";
 
-/*--------------------------
-## Plugins
---------------------------*/
-// @import "components/flexslider";
-// @import "components/magnific-popup";
-@import "components/wolfnet";
-@import "components/js-slick";
-@import "components/js-featherlight";
+/**
+ * Plugins
+ */
 
-/*--------------------------
-## Components
---------------------------*/
-//@import "components/accessibility";
-@import "components/datepicker";
+@import "plugins/wolfnet";
+@import "plugins/js-slick";
+@import "plugins/magnific-popup";
+@import "plugins/datepicker";
+
+/**
+ * Components
+ */
+
+@import "components/content";
 @import "components/helpers";
 @import "components/forms";
-@import "components/header";
-@import "components/navigation";
-@import "components/mobilenav";
-@import "components/footer";
-@import "components/layout-home";
-@import "components/layout-single";
-@import "components/layout-archives";
-@import "components/layout-page";
-@import "components/content";
-@import "components/sidebar";
 @import "components/misc";
 
+/**
+ * Layout
+ */
 
+@import "layout/sidebar";
+@import "layout/header";
+@import "layout/navigation";
+@import "layout/mobilenav";
+@import "layout/footer";
+@import "layout/layout-home";
+@import "layout/layout-single";
+@import "layout/layout-archives";
+@import "layout/layout-page";
 
 
