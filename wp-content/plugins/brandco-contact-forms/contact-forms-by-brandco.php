@@ -58,40 +58,65 @@ if ( ! class_exists('BrandCo_Form') ) :
 									// Text field
 									if ( $fieldType === 'text' ) { ?>
 										<label>
-											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
-											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+											<span class="BcoForm__Label">
+												<span class="BcoForm__Label__Text">
+													<?php echo $fieldTitle; ?>
+												</span>
+												<?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?>
+											</span>
+											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" data-bco-field-label="<?php echo $fieldTitle; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
 										</label>
 									<?php }
 
 									// Email field
 									if ( $fieldType === 'email' ) { ?>
 										<label>
-											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
-											<input type="email" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+											<span class="BcoForm__Label">
+												<span class="BcoForm__Label__Text">
+													<?php echo $fieldTitle; ?>
+												</span>
+												<?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?>
+											</span>
+											<input type="email" name="BcoForm__Field__<?php echo $id; ?>" data-bco-field-label="<?php echo $fieldTitle; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
 										</label>
 									<?php }
 
 									// Phone field
 									if ( $fieldType === 'phone' ) { ?>
 										<label>
-											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
-											<input type="phone" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
+											<span class="BcoForm__Label">
+												<span class="BcoForm__Label__Text">
+													<?php echo $fieldTitle; ?>
+												</span>
+												<?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?>
+											</span>
+											<input type="phone" name="BcoForm__Field__<?php echo $id; ?>" data-bco-field-label="<?php echo $fieldTitle; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>">
 										</label>
 									<?php }
 
 									// Address field
 									if ( $fieldType === 'address' ) { ?>
 										<label>
-											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
-											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>" data-google-autocomplete>
+											<span class="BcoForm__Label">
+												<span class="BcoForm__Label__Text">
+													<?php echo $fieldTitle; ?>
+												</span>
+												<?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?>
+											</span>
+											<input type="text" name="BcoForm__Field__<?php echo $id; ?>" data-bco-field-label="<?php echo $fieldTitle; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>" data-google-autocomplete>
 										</label>
 									<?php }
 
 									// Textarea field
 									if ( $fieldType === 'textarea' ) { ?>
 										<label>
-											<span class="BcoForm__Label"><?php echo $fieldTitle; ?><?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?></span>
-											<textarea name="BcoForm__Field__<?php echo $id; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>"></textarea>
+											<span class="BcoForm__Label">
+												<span class="BcoForm__Label__Text">
+													<?php echo $fieldTitle; ?>
+												</span>
+												<?php echo ( $fieldRequired ) ? '<span class="BcoForm__RequiredField">*</span>' : ''; ?>
+											</span>
+											<textarea name="BcoForm__Field__<?php echo $id; ?>" data-bco-field-label="<?php echo $fieldTitle; ?>" <?php echo ( $fieldRequired ) ? 'required' : ''; ?> placeholder="<?php echo $fieldTitle; ?>"></textarea>
 										</label>
 									<?php }
 
@@ -104,7 +129,9 @@ if ( ! class_exists('BrandCo_Form') ) :
 								endforeach;
 
 								// Hidden fields 
-								echo '<input type="hidden" name="BcoForm__HiddenField__PageURL" value="' . esc_url( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) . '">';
+								echo '<input type="hidden" data-bco-field-label="From Page URL" name="BcoForm__HiddenField__PageURL" value="' . esc_url( $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'] ) . '">';
+								echo '<input type="hidden" data-bco-field-label="Form Title" name="BcoForm__HiddenField__FormTitle" value="' . $formTitle . '">';
+								echo '<input type="hidden" data-bco-field-label="Form ID" name="BcoForm__HiddenField__FormID" value="' . $formID . '">';
 							?>
 
 						</div>
@@ -112,10 +139,16 @@ if ( ! class_exists('BrandCo_Form') ) :
 						<div class="BcoForm__Footer">
 							<div class="BcoForm__Field BcoForm__Submit">
 								<div class="BcoForm__SubmitButtonWrapper">
-									<input type="submit" id="Form__Submit" value="Submit">
+									<input type="submit" id="Form__Submit" data-bco-field-label="Submit" value="Submit">
 								</div>
 							</div>
 						</div>
+				
+						<?php /* ?>
+						<div class="BcoForm__Alert">
+							<svg style="height: 50px; width: 50px; " xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 76 76" style="enable-background:new 0 0 76 76;" xml:space="preserve"><g><path d="M38,0C17,0,0,17,0,38s17,38,38,38s38-17,38-38S59,0,38,0z M38,72C19.2,72,4,56.8,4,38S19.2,4,38,4s34,15.2,34,34 S56.8,72,38,72z M60.9,25.1c-0.8-0.8-2-0.8-2.8,0L32.6,50.7L21.9,40c-0.8-0.8-2.1-0.8-2.8,0c-0.8,0.8-0.8,2.1,0,2.8l12.1,12.1 c0.4,0.4,0.9,0.6,1.4,0.6s1-0.2,1.4-0.6l26.9-27C61.7,27.1,61.7,25.9,60.9,25.1z"/></g></svg>
+						</div>	
+						<?php */ ?>
 
 					</form>
 
@@ -159,18 +192,32 @@ if ( ! class_exists('BrandCo_Form') ) :
 							var value;
 							var redirect = "<?php echo $formRedirect; ?>";
 
+							// var fieldLabel;
+							// var fieldResponse;
+							// var fieldLabelAndResponse;
 							
 							for (var i = 0; i < elem.length; i++) {
-								if (elem[i].tagName == "SELECT") {
-									value = elem[i].options[elem[i].selectedIndex].value;
 
+								if ( elem[i].tagName == "SELECT" ) {
+									value = elem[i].options[elem[i].selectedIndex].value;
 								} else {
 									value = elem[i].value;
-
 								}
 
-								params += elem[i].name + "=" + encodeURIComponent(value) + "&";
+								params += elem[i].getAttribute('data-bco-field-label') + "=" + encodeURIComponent(value) + "&";
 							}
+
+							// for (var i = 0; i < elem.length; i++) {
+
+							// 	if ( elem[i].tagName == "SELECT" ) {
+							// 		fieldResponse = elem[i].options[elem[i].selectedIndex].value;
+							// 	} else {
+							// 		fieldResponse = elem[i].value;
+							// 	}
+
+							// 	fieldLabelAndResponse += elem[i].getAttribute('data-bco-field-label') + "=" + encodeURIComponent(fieldResponse) + "&";
+							// }
+							// console.log(fieldLabelAndResponse);			
 
 							var XHR; 
 
@@ -180,16 +227,17 @@ if ( ! class_exists('BrandCo_Form') ) :
 								XHR = new ActiveXObject("Microsoft.XMLHTTP");
 							}
 							
-
 							// We define what will happen if the data are successfully sent
 							XHR.addEventListener("load", function(event) {
-								document.getElementById('<?php echo "BcoForm__" . $formID; ?>').querySelector('.BcoForm__Success').innerHTML = 'Thanks!';
+								document.getElementById('<?php echo "BcoForm__" . $formID; ?>').querySelector('.BcoForm__Success').innerHTML = 'Thanks you for submitting your information, we will get back to you as soon as possible! ';
 								if ( redirect.length ) {
 									setTimeout(function(){
 										window.location.href = redirect + '?' + params;
 									}, 1000);
 								}
 							});
+
+							console.log(params);
 
 							// We define what will happen in case of error
 							XHR.addEventListener("error", function(event) {
@@ -222,6 +270,8 @@ if ( ! class_exists('BrandCo_Contacts_Setup') ) :
 
 		function __construct() {
 			add_action( 'init', array( $this, 'PostType_Entries' ) );
+			add_action( 'add_meta_boxes', array( $this, 'MetaBox_EntryData' ) );
+
 			// add_action( 'init', array( $this, 'PostType_Users' ) );
 			// add_action( 'init', array( $this, 'SetCookie' )  );
 			// add_action( 'wp_footer', array( $this, 'RegisterPageView' ) );
@@ -276,6 +326,38 @@ if ( ! class_exists('BrandCo_Contacts_Setup') ) :
 			register_post_type( 'brandco-entries', $args );
 		}
 
+		public function MetaBox_EntryData() {
+			add_meta_box( 
+				'BrandCo_EntryData_Metabox', 
+				'Entry Data', 
+				array($this, 'BrandCo_EntryData_Metabox_Callback'), 
+				'brandco-entries' 
+			);
+		}
+
+		public function BrandCo_EntryData_Metabox_Callback( $post ) {
+			$data = get_post_meta( $post->ID, 'bco-form-entry-data-fieldsonly', true );
+
+			?>
+
+				<ul>
+					<?php foreach ( $data as $key ) : ?>
+
+						<li>
+							<div>
+								<div>
+									<strong><?php echo str_replace('_', ' ', $key['key']); ?>: </strong>
+									<span><?php echo $key['value']; ?></span>
+								</div>
+							</div>
+						</li>								
+		
+					<?php endforeach ?>
+				</ul>
+
+			<?php
+		}
+
 		public function PostType_Users() {
 			$labels = array(
 				'name'               => _x( 'Contact Users', 'brandco-users', 'brandco' ),
@@ -321,23 +403,23 @@ if ( ! class_exists('BrandCo_Contacts_Setup') ) :
 			);
 		}
 
-	public function BrandCo_Users_Metabox_Callback( $post ) {
-		$events = get_post_meta( $post->ID, 'brandco_user_event', true );
+		public function BrandCo_Users_Metabox_Callback( $post ) {
+			$events = get_post_meta( $post->ID, 'brandco_user_event', true );
 
-		if ( empty($events) ) { echo 'No events recorded yet. Check back later.'; return; }
+			if ( empty($events) ) { echo 'No events recorded yet. Check back later.'; return; }
 
-		foreach ( array_reverse($events) as $event ) :
-			?>
-				<li>
-					<p>
-						<strong><?php echo $event['page_url']; ?> -- </strong>
-						<i><?php echo $event['time']; ?></i>
-					</p>
-					<!-- <pre><?php var_dump($event); ?></pre> -->
-				</li>
-			<?php
-		endforeach;
-	}
+			foreach ( array_reverse($events) as $event ) :
+				?>
+					<li>
+						<p>
+							<strong><?php echo $event['page_url']; ?> -- </strong>
+							<i><?php echo $event['time']; ?></i>
+						</p>
+						<!-- <pre><?php var_dump($event); ?></pre> -->
+					</li>
+				<?php
+			endforeach;
+		}
 
 		public static function SetCookie() {
 			if ( is_admin() ) { return; }

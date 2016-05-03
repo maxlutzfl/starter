@@ -4,6 +4,8 @@
 html {
 	height: 100%;
 	background-color: transparent;
+	overflow-x: hidden;
+	max-width: 100%;
 }
 
 body {
@@ -75,17 +77,6 @@ blockquote {
 	}
 }
 
-.gallery {
-	&:not(.slick-initialized) {
-		opacity: 0;
-		transition: 300ms;
-	}
-
-	&.slick-initialized {
-		opacity: 1;
-	}
-}
-
 figcaption {
 	font-size: em(14);
 	margin: 10px auto;
@@ -111,8 +102,10 @@ li {
 	list-style: none; 
 }
 
-img { max-width: 100%; width: auto; height: auto; }
-img { -ms-interpolation-mode: bicubic; }
+img { 
+	max-width: 100%; 
+	height: auto;
+}
 
 .image-defer {
 	opacity: 0;

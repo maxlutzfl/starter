@@ -32,8 +32,8 @@ get_header(); ?>
 						
 							<?php 
 								if ( is_singular('post') ) {
-									echo sprintf( '<span class="ArticleDate">%s</span>', BrandCo\Date() );
-									echo sprintf( '<span class="ArticleAuthor author vcard" itemprop="author">by %s</span>', get_the_author() );
+									echo sprintf( '<span class="ArticleDate">%s</span> ', BrandCo\Date() );
+									echo sprintf( '<span class="ArticleAuthor author vcard" itemprop="author">by %s</span> ', get_the_author() );
 									BrandCo\Categories();
 									BrandCo\Tags(', ');
 								}

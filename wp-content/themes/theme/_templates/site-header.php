@@ -36,7 +36,9 @@
 			<div class="HeaderContainer">
 
 				<?php /** Un-Comment For Basic responsive menu ?> <a href="#0" id="MobileToggle"><i class="fa fa-bars"></i> MENU</a> <?php */ ?>
-				<a href="#0" id="MobileToggle"><i class="fa fa-bars"></i> MENU</a>
+				
+				<a href="#0" id="MobileToggle"><i class="Icon__Menu"></i> <span>MENU</span></a>
+
 				<?php 
 					wp_nav_menu( 
 						array( 

@@ -149,15 +149,18 @@ function BrandCo_OG() {
  * Gravity Forms Customizer Setting
  */
 
-if ( class_exists('WP_Customize_Control') && class_exists('GFAPI') ) :
+if ( class_exists('WP_Customize_Control') ) :
 	class WP_Customize_Gravity_Forms extends WP_Customize_Control {
 		public function render_content() {
+
+			if ( ! class_exists('GFAPI') ) { echo '<label><span class="customize-control-title" style="color: #c40000; ">There is supposed to be an option here, but Gravity Forms is disabled! Please notify your web developer! </span></label>'; return; }
 
 			$forms = GFAPI::get_forms();
 
 			?>
 				<label>
 					<span class="customize-control-title"><?php echo esc_html( $this->label ); ?></span>
+					<span class="description customize-control-description">First, go back to the dashboard and create a form in "Forms" on the left menu. </span>
 					<select <?php $this->link(); ?>>
 						<option value="0"> -- Pick one</option>
 						<?php 

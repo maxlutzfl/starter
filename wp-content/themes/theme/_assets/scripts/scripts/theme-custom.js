@@ -30,7 +30,6 @@ jQuery(function($){
 	 */
 
 	$(document).ready(function() {
-		$('.menu-item-has-children > a').attr('onClick', 'return false;');
 
 		$('#SiteNavigation.SimpleResponsiveNav .menu-item-has-children > a').each(function(){
 			$(this).on('click', function(){
@@ -113,8 +112,7 @@ jQuery(function($){
 	});
 
 	$(document).ready(function() {
-		$('#mobile-navigation .menu-item-has-children > a').append('<i class="fa fa-angle-down"></i>');
-		// $('#mobile-navigation .menu > li:last-of-type').after('<li id="close-navigation" class="menu-item"><a href="#0">Close Menu <i class="fa fa-close"></i></a></li>');
+		$('.menu-item-has-children > a').append('<svg width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1395 736q0 13-10 23l-466 466q-10 10-23 10t-23-10l-466-466q-10-10-10-23t10-23l50-50q10-10 23-10t23 10l393 393 393-393q10-10 23-10t23 10l50 50q10 10 10 23z"/></svg>');
 	});
 
 	$('#MobileNavigation .menu-item-has-children > a').click(function(){
@@ -196,6 +194,34 @@ jQuery(function($){
 	});
 
 	wow.init();
+
+	/**
+	 * Magnific popup
+	 */
+
+	$(document).ready(function() {
+		$('.gallery .gallery-item').magnificPopup({
+			delegate: 'a',
+			type: 'image',
+			closeOnContentClick: false,
+			closeBtnInside: false,
+			mainClass: 'mfp-with-zoom mfp-img-mobile',
+			image: {
+				verticalFit: true
+			},
+			gallery: {
+				enabled: true
+			},
+			zoom: {
+				enabled: true,
+				duration: 300, // don't foget to change the duration also in CSS
+				opener: function(element) {
+					return element.find('img');
+				}
+			}
+			
+		});
+	});
 
 });
 
