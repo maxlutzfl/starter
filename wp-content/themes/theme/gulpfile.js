@@ -1,57 +1,89 @@
-// Include gulp
-var gulp = require('gulp'); 
+/**
+ * Import scripts
+ */
 
-// Include Our Plugins
+var gulp = require('gulp') ;
+var sass = require('gulp-sass') ;
+var watch = require('gulp-watch') ;
+var sourcemaps = require('gulp-sourcemaps');
+var browserSync = require('browser-sync');
 var jshint = require('gulp-jshint');
-var sass = require('gulp-sass');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
 var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
-var sourcemaps = require('gulp-sourcemaps');
 var autoprefixer = require('gulp-autoprefixer');
 var livereload = require('gulp-livereload');
 
-// Lint Task
-gulp.task('lint', function() {
-	return gulp.src('_assets/scripts/scripts/theme-custom.js')
-		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
-		.pipe(livereload());
-});
+/**
+ * Setup "sass" task
+ */
 
-// Compile Our Sass
 gulp.task('sass', function() {
+
 	return gulp.src('_assets/styles/brandco.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
-		.pipe(sass({outputStyle: 'compressed'}))
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(rename('_assets/styles/brandco.min.css'))
 		.pipe(livereload())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('.'));
+
 });
 
-// Concatenate & Minify JS
+/**
+ * Setup "scripts" task
+ */
+
 gulp.task('scripts', function() {
 	return gulp.src('_assets/scripts/scripts/*.js')
 		.pipe(concat('all-scripts.js'))
+		.pipe(jshint())
 		.pipe(gulp.dest('_assets/scripts'))
 		.pipe(rename('brandco.min.js'))
 		.pipe(uglify())
 		.pipe(gulp.dest('_assets/scripts'));
 });
 
-// Watch Files For Changes
-gulp.task('watch', function() {
-	livereload.listen();
-	gulp.watch('_assets/scripts/scripts/theme-custom.js', ['lint', 'scripts']);
-	gulp.watch('_assets/styles/**/*.scss', ['sass']);
-	gulp.watch('**/*.php').on('change', function(file) {
-		livereload.changed(file.path);
+/**
+ * Setup "browser-sync" task
+ */
+
+gulp.task('browser-sync', function() {
+
+	// Watch for changes in .sass files and run the sass task
+	gulp.watch( '_assets/styles/**/*.scss', ['sass'] );
+
+	// Watch for changes in .js files and run the scripts task
+	gulp.watch( '_assets/scripts/scripts/*.js', ['scripts'] );
+
+	// BrowserSync settings
+	browserSync({
+		files: [
+			"_assets/styles/brandco.min.css",
+			"_assets/scripts/brandco.min.js",
+			"**/*.php"
+		],
+
+		/**
+		 *
+		 */
+		proxy: "starter.bco",
 	});
+
 });
 
-// Default Task
-gulp.task('default', ['lint', 'sass', 'scripts', 'watch']);
+/**
+ * Setup default "gulp" task
+ */
+
+gulp.task( 'default', ['browser-sync'] );
+
+
+
+
+
+
+

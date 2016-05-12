@@ -189,3 +189,44 @@ function Icon( $name = null ) {
 		return 'Icon does not exist';
 	}
 }
+
+function MobileNav() {
+	if ( has_nav_menu('mobile') ) {
+		wp_nav_menu( 
+			array( 
+				'theme_location' => 'mobile',
+				'container' => '',
+				'items_wrap' => '%3$s'
+			) 
+		);
+		return;
+
+	} elseif ( has_nav_menu('primary') ) {
+		wp_nav_menu( 
+			array( 
+				'theme_location' => 'primary',
+				'container' => '',
+				'items_wrap' => '%3$s'
+			) 
+		);
+		return;
+
+	} else {
+		echo 'No Menu Available.';
+		return;
+	}	
+}
+
+function getParentPageId() {
+	global $post;
+	if ( $post->post_parent )	{
+		$ancestors = get_post_ancestors($post->ID);
+		$root = count($ancestors) - 1;
+		$parent = $ancestors[$root];
+		
+	} else {
+		$parent = $post->ID;
+	}
+
+	return $parent;
+}

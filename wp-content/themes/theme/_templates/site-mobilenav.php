@@ -25,34 +25,13 @@
 		<div class="MobileNavigation--Main">
 		
 			<ul class="MobileNavigation--Links">
-				<?php
-					if ( has_nav_menu('mobile') ) {
-						wp_nav_menu( 
-							array( 
-								'theme_location' => 'mobile',
-								'container' => '',
-								'items_wrap' => '%3$s'
-							) 
-						); 
-
-					} elseif ( has_nav_menu('primary') ) {
-						wp_nav_menu( 
-							array( 
-								'theme_location' => 'primary',
-								'container' => '',
-								'items_wrap' => '%3$s'
-							) 
-						); 
-
-					} else {
-						echo 'No Menu Available.';
-					}
-				?>
+				<?php BrandCo\MobileNav(); ?>
 			</ul>
 
 		</div>
 
 		<div class="MobileNavigation--Footer">
+			<?php /* ?>
 			<ul class="MobileNavigation--MoreLinks">
 				<li>
 					<a href="#">Additional Link</a>
@@ -61,6 +40,7 @@
 					<a href="#">Additional Link</a>
 				</li>				
 			</ul>
+			<?php */ ?>
 		</div>
 
 	</div>

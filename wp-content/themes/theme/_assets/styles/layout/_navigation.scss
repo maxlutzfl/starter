@@ -100,15 +100,20 @@
 		.menu-item-has-children {
 			position: relative;
 
+			svg {
+				width: 14px;
+				height: 14px;
+			}
+
 			@include breakpoint('DesktopMenu') {
 
-				> a:after {
-					content: '▾';
-					font-family: sans-serif;
-					vertical-align: top;
-					display: inline-block;
-					margin-left: 5px;
-				}
+				// > a:after {
+				// 	content: '▾';
+				// 	font-family: sans-serif;
+				// 	vertical-align: top;
+				// 	display: inline-block;
+				// 	margin-left: 5px;
+				// }
 
 				.sub-menu {
 					opacity: 0;

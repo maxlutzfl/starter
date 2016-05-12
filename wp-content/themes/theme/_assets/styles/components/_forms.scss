@@ -114,7 +114,8 @@ $button-background-color: $primary-color;
 		}
 	}
 
-	select::-ms-expand {
+	.gfield select::-ms-expand,
+	.Select::-ms-expand {
 		display: none;
 	}
 
