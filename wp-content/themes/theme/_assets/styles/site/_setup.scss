@@ -1,0 +1,183 @@
+/**
+ * =============================
+ * Setup
+ * =============================
+ * 
+ * Table of Contents: 
+ * ------------------
+ * 1.0 - Variables
+ * 2.0 - Responsive Breakpoints
+ * 3.0 - Functions/Mixins
+ */
+
+/**
+ * =============================
+ * 1.0 - Variables
+ * ============================= 
+ */
+
+ /** Global */
+$baseFontSize: 16px;
+
+/** Layout */
+$container-maxWidth: 1200px;
+$sidebarLayout-mainColumnWidth: 70%;
+$sidebarLayout-sidebarColumnWidth: 30%;
+$sidebarLayout-paddingBetweenColumns: 60px;
+
+
+/** Fonts */
+$fontFamily-body: 'Open Sans', sans-serif;
+$fontFamily-headers: 'Open Sans', sans-serif;
+$fontFamily-alt: 'Open Sans', sans-serif;
+$headlineSize-h1: 30;
+$headlineSize-h2: 25;
+$headlineSize-h3: 22;
+$headlineSize-h4: 20;
+$headlineSize-h5: 18;
+$headlineSize-h6: 16;
+
+/** Colors */
+$themeColor-primary: #607D8B;
+$themeColor-secondary: #C2185B;
+$globalColor-black: #212121;
+$globalColor-white: #FFFFFF;
+$globalColor-whiteGrey: #F5F5F5;
+$globalColor-lightGrey: #EEEEEE;
+$globalColor-grey: #999;
+
+/** Masthead */
+$siteMasthead-height: 100px;
+$siteMasthead-height-mobile: 70px;
+$siteMasthead-background: #fff;
+$siteMasthead-linkColors: $globalColor-black;
+$siteMasthead-navLineHeight: 40px;
+
+/** Elements */
+$borderColor: $globalColor-lightGrey;
+$headlineColor: $globalColor-black;
+$paragraphColor: $globalColor-black;
+
+/** Forms */
+$formField-height: 50px;
+$formField-borderRadius: 3px;
+$formField-borderWidth: 1px;
+$formField-borderColor: $globalColor-grey;
+$formField-backgroundColor: $globalColor-white;
+
+
+/**
+ * =============================
+ * 2.0 - Responsive Breakpoints
+ * ============================= 
+ */
+
+$responsiveBreakpoint-mobile: 414px;
+$responsiveBreakpoint-tablet: 768px;
+$responsiveBreakpoint-laptop: 1024px;
+$responsiveBreakpoint-monitor: 1824px;
+
+@mixin breakpoint($direction, $point) {
+
+	@if $direction == 'above' {
+		@media (min-width: $point) { @content; }
+
+	} @else if $direction == 'below' {
+		@media (max-width: $point) { @content; }
+	}
+}
+
+
+/**
+ * =============================
+ * 3.0 - Functions/Mixins
+ * ============================= 
+ */
+
+@function rem( $pixels, $context: 16 ) {
+	@return ($pixels / $context) * 1rem;
+}
+
+@mixin fontSize($pixels) {
+	font-size: $pixels + px;
+	font-size: rem($pixels);
+}
+
+@mixin clearFix {
+	&:before, 
+	&:after { 
+		content: ""; 
+		display: table; 
+	}
+
+	&:after { 
+		clear: both; 
+	}
+}
+
+@mixin backgroundCover($src: null, $color: transparent) {
+	@if $src { background-image: url($src); }
+	background-color: $color;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50%;
+}
+
+@mixin backgroundContain($src: null) {
+	@if $src { background-image: url($src); }
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: 50%;
+}
+
+@mixin fillContainer() {
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+}
+
+@mixin gridSetup($cols, $margin, $selector) {
+	font-size: 0;
+
+	> #{$selector} {
+		@include fontSize($baseFontSize);
+		padding-right: ( $margin / 2 );
+		padding-left: ( $margin / 2 );
+		margin-bottom: $margin;
+		display: inline-block;
+		vertical-align: top;
+		width: ( 100% / $cols );
+
+		&:nth-of-type(#{$cols}n) {
+			padding-right: 0;
+		}
+
+		&:nth-of-type(#{$cols}n+1) {
+			padding-left: 0;
+		}
+		
+		@for $i from 1 through $cols {
+
+			&:nth-last-of-type(#{$i}) {
+				margin-bottom: 0;
+			}		
+		}		
+	}
+}
+
+@mixin backgroundShadow($opacity: 1) {
+	position: relative;
+
+	&:after {
+		content: "";
+		position: absolute;
+		top: 40%;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		z-index: 0;
+		opacity: $opacity;
+		background-image: linear-gradient(to bottom, transparent, #000);
+	}	
+}

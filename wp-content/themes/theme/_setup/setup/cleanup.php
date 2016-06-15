@@ -3,12 +3,41 @@
  * @package 
  */
 
-// Simplify the WYSIWYG editor format options
-add_action('tiny_mce_before_init', 'brandco_content_editor_styles');
-function brandco_content_editor_styles( $settings ) {
-	$settings['block_formats'] = "Paragraph=p; Heading=h2; Subheading=h3; Small Heading=h4;";
-	return $settings;
+/**
+ * Registers an editor stylesheet for the theme.
+ */
+function addBackendContentEditorStylesheet() {
+	add_theme_support('editor_style');
+    add_editor_style('/_assets/admin/custom-editor-style.css');
 }
+
+add_action( 'admin_init', 'addBackendContentEditorStylesheet' );
+
+/**
+ * Insert custom formats to content editor
+ */
+
+function addFormatsDropdownToContentEditor($buttons) {
+	array_unshift($buttons, 'styleselect');
+	return $buttons;
+}
+
+add_filter('mce_buttons_2', 'addFormatsDropdownToContentEditor');
+
+function addContentEditorFormats($init_array) {
+	$style_formats = array(
+		array(
+			'title' => 'Button',
+			'block' => 'span',
+			'classes' => 'content-button',
+			'wrapper' => true,
+		),
+	);
+	$init_array['style_formats'] = json_encode($style_formats); 
+	return $init_array; 
+}
+
+add_filter( 'tiny_mce_before_init', 'addContentEditorFormats' );
 
 // Moved SEO Yoast metabox below important ones
 add_filter( 

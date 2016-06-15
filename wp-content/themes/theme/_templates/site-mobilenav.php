@@ -5,45 +5,34 @@
  */ 
 ?>
 
-<div id="MobileNavigation" aria-hidden="true">
-	<div class="MobileNavigation--Container">
+<div id="mobileNavigation" class="mobileNavigation" aria-hidden="true">
+	<div class="mobileNavigation-container">
 		
-		<div id="MobileNavigation--CloseButton" title="Close Menu">&times;</div>
+		<div id="mobileNavigation-close" class="mobileNavigation-close" title="Close Menu" data-mobile-menu-close>&times;</div>
 
-		<div class="MobileNavigation--Header">
+		<div class="mobileNavigation-header">
 
-			<?php 
-				if ( get_option('CompanyLogo') )
-					echo sprintf( '<img src="%s" alt="%s" class="MobileNavigation__logo">', get_option('CompanyLogo'), get_bloginfo('title') . ' Logo' );
-				
-				else 
-					echo sprintf( '<h2 class="MobileNavigation__title">%s</h2>', get_bloginfo('title') );
-			?>
+			<img src="<?php echo BrandCo\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
 
 		</div>
 
-		<div class="MobileNavigation--Main">
-		
-			<ul class="MobileNavigation--Links">
-				<?php BrandCo\MobileNav(); ?>
-			</ul>
-
+		<div class="mobileNavigation-body">
+			<div class="mobileNavigation-links">
+				<ul>
+					<?php BrandCo\MobileNav(); ?>
+				</ul>				
+			</div>
 		</div>
 
-		<div class="MobileNavigation--Footer">
-			<?php /* ?>
-			<ul class="MobileNavigation--MoreLinks">
-				<li>
-					<a href="#">Additional Link</a>
-				</li>
-				<li>
-					<a href="#">Additional Link</a>
-				</li>				
+		<div class="mobileNavigation-footer">
+			<ul>
+				<li> ... </li>
+				<li> ... </li>
+				<li> ... </li>
 			</ul>
-			<?php */ ?>
 		</div>
 
 	</div>
 </div>
 
-<div id="CloseMobileNavigationLayer" aria-hidden="true"></div>
+<div id="mobileNavigation-overlay" class="mobileNavigation-overlay" aria-hidden="true" data-mobile-menu-close></div>

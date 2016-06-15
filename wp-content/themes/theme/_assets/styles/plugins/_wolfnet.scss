@@ -5,8 +5,8 @@
 $featured-listing-width: 270px;
 $featured-listing-margin: 15px;
 
-.entry-content,
-.ColumnSidebar {
+.entryContent,
+.pageMain-secondary {
 
 	.wolfnet_widget.wolfnet_featuredListings.wolfnet-theme-ash {
 		
@@ -39,7 +39,7 @@ $featured-listing-margin: 15px;
 	}
 }
 
-.ColumnSidebar {
+.pageMain-secondary {
 	.wolfnet_widget.wolfnet_featuredListings .wolfnet_control {
 		min-width: 40px;
 		background-size: 20px auto;
@@ -57,8 +57,8 @@ $featured-listing-margin: 15px;
  * Appearance: Modern - Featured Listings
  */
 
-.entry-content,
-.ColumnSidebar {
+.entryContent,
+.pageMain-secondary {
 
 	.wolfnet_widget.wolfnet_featuredListings.wolfnet-theme-birch {
 
@@ -78,8 +78,8 @@ $featured-listing-margin: 15px;
 
 $quick-search-field-height: 50px;
 
-.entry-content,
-.ColumnSidebar {
+.entryContent,
+.pageMain-secondary {
 	
 	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_basic,
 	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_legacy {
@@ -100,7 +100,7 @@ $quick-search-field-height: 50px;
 		}
 
 		.wolfnet_searchType {
-			@include clearfix();
+			@include clearFix();
 			line-height: 1;
 			display: block;
 			width: 100%;
@@ -198,7 +198,7 @@ $quick-search-field-height: 50px;
 			font-size: 0;
 
 			button {
-				@extend .ButtonStyle;
+				@extend .buttonStyle;
 				width: 100% !important;
 				min-width: 0 !important;
 				font-size: 14px !important;
@@ -207,7 +207,7 @@ $quick-search-field-height: 50px;
 	}
 }
 
-.entry-content {
+.entryContent {
 
 	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_basic,
 	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_legacy {
@@ -219,7 +219,7 @@ $quick-search-field-height: 50px;
 			padding: 5px;
 		}
 
-		@include breakpoint('above_750px') {
+		@include breakpoint('above', $responsiveBreakpoint-tablet) {
 			.wolfnet_quickSearch_form {
 				font-size: 0;
 			}
@@ -232,7 +232,7 @@ $quick-search-field-height: 50px;
 			}	
 		}
 
-		@include breakpoint('above_1200px') {
+		@include breakpoint('above', 1200px) {
 
 			.wolfnet_quickSearch_form {
 				font-size: 0;
@@ -258,8 +258,8 @@ $quick-search-field-height: 50px;
  * Quick Search w/ Smart Search
  */
 
-.entry-content,
-.ColumnSidebar {
+.entryContent,
+.pageMain-secondary {
 
 	.wolfnet_widget.wolfnet_smartSearch {
 		select {
@@ -280,16 +280,16 @@ $quick-search-field-height: 50px;
  */
  
  #Section__QuickSearch {
-	@include breakpoint('above_750px') {
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
 		height: 0;
 	}
 
 	#QuickSearch {
-		background-color: $secondary-color;
+		background-color: $globalColor-black;
 		padding: 25px;
 		border-radius: 5px;
 
-		@include breakpoint('above_750px') {
+		@include breakpoint('above', $responsiveBreakpoint-tablet) {
 			transform: translateY(-50%);
 		}
 	}
@@ -341,7 +341,7 @@ $quick-search-field-height: 50px;
 		.wolfnet_searchTypeField {
 			width: 100%;
 
-			@include breakpoint('above_1200px') {
+			@include breakpoint('above', 1200px) {
 				width: 30%;
 			}
 		}
@@ -352,15 +352,15 @@ $quick-search-field-height: 50px;
 		.wolfnet_widgetBaths {
 			width: 100%;
 
-			@include breakpoint('above_500px') {
+			@include breakpoint('above', 500px) {
 				width: 50%;
 			}
 
-			@include breakpoint('above_750px') {
+			@include breakpoint('above', $responsiveBreakpoint-tablet) {
 				width: 25%;
 			}
 
-			@include breakpoint('above_1200px') {
+			@include breakpoint('above', 1200px) {
 				width: 15%;
 			}
 		}
@@ -368,7 +368,7 @@ $quick-search-field-height: 50px;
 		.wolfnet_quickSearchFormButton {
 			width: 100%;
 
-			@include breakpoint('above_1200px') {
+			@include breakpoint('above', 1200px) {
 				width: 10%;
 			}
 

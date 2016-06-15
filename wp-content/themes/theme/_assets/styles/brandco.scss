@@ -1,44 +1,31 @@
 /**
- * Setup
+ * =============================
+ * BrandCo Website Styles
+ * Run "gulp"
+ * ============================= 
  */
 
-@import "setup/functions";
-@import "setup/variables";
-@import "setup/breakpoints";
-@import "setup/global";
-
-/**
- * Plugins
+/** 
+ * Setup Files 
  */
 
-@import "plugins/wolfnet";
+@import "site/setup";
+@import "site/global";
+
+/** 
+ * Plugin Files 
+ */
+
+@import "plugins/gravity-forms";
+// @import "plugins/wolfnet";
 @import "plugins/js-slick";
 @import "plugins/magnific-popup";
-@import "plugins/datepicker";
+// @import "plugins/datepicker";
 
-/**
- * Components
+/** 
+ * Main Site Files 
  */
 
-@import "components/content";
-@import "components/helpers";
-@import "components/forms";
-@import "components/misc";
-
-/**
- * Layout
- */
-
-@import "layout/sidebar";
-@import "layout/header";
-@import "layout/navigation";
-@import "layout/mobilenav";
-@import "layout/footer";
-@import "layout/layout-home";
-@import "layout/layout-single";
-@import "layout/layout-archives";
-@import "layout/layout-page";
-
-/*! sourceMappingURL=brandco.min.css.map */
-/*# sourceMappingURL=brandco.min.css.map */
-
+@import "site/forms";
+@import "site/header-nav-footer";
+@import "site/site";

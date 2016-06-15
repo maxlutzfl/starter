@@ -1,27 +1,31 @@
-<article <?php post_class('ArticlePreview entry-summary'); ?>>
+<article <?php post_class('entrySummary entry-summary'); ?>>
 
 	<?php if ( has_post_thumbnail() ) : ?>
-		<div class="ArticlePreview__Side">
-			<?php echo sprintf( '<a href="%s"><img class="ArticlePreview__Image" src="%s" alt="%s"></a>', get_permalink(), BrandCo\Image(), get_the_title() ); ?>
+		<div class="entrySummary-image">
+			<a href="<?php echo get_permalink(); ?>">
+				<img src="<?php echo BrandCo\Image('thumbnail'); ?>" alt="<?php the_title(); ?> - Featured Image">
+			</a>
 		</div>
 	<?php endif; ?>
 
-	<div class="ArticlePreview__Main">
+	<div class="entrySummary-main">
 
-		<?php echo sprintf( '<a href="%s"><h2 class="ArticlePreview__Title entry-title">%s</h2></a>', get_permalink(), get_the_title() ); ?>
+		<h1 class="entrySummary-title">
+			<a href="<?php echo get_permalink(); ?>"><?php the_title(); ?></a>
+		</h1>
 
-		<?php if ( is_home() ) : ?>
-			<div class="ArchivePreview__Details">
-				<?php
-					echo sprintf( '<span class="ArticleDate">%s</span>', BrandCo\Date() );
-					echo sprintf( '<span class="ArticleAuthor author vcard" itemprop="author">by %s</span>', get_the_author() );
-					BrandCo\Categories();
-				?>	
+		<?php if ( is_home() || is_category() || is_tag() ) : ?>
+			<div class="entrySummary-meta">
+				<p>
+					<span class="entrySummary-meta-categories"><?php BrandCo\Categories(); ?> </span>
+					<span class="entrySummary-meta-date"><?php echo BrandCo\Date(); ?> </span>
+					<span class="entrySummary-meta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
+				</p>
 			</div>
 		<?php endif; ?>
 
-		<div class="ArticlePreview__Excerpt">
-			<?php the_excerpt(); ?>
+		<div class="entrySummary-excerpt">
+			<?php echo BrandCo\Excerpt(100, null, '...'); ?>
 		</div>
 
 	</div>

@@ -57,18 +57,28 @@ function PostTypeTitle() {
 	}
 }
 
-function Image( $size = 'medium', $id = null ) {
-	if ( empty( $id ) )
-		$id = get_the_ID();
+function Image( $size = 'medium', $post_id = null ) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
 
-	if ( has_post_thumbnail( $id ) ) {
-		$get_img_ID = get_post_thumbnail_id( $id );
+	if ( has_post_thumbnail( $post_id ) ) {
+		$get_img_ID = get_post_thumbnail_id( $post_id );
 		$img_src_url = wp_get_attachment_image_src( $get_img_ID, $size );
 		if ( $img_src_url ) {
 			return $img_src_url[0];
 		} else {
 			return;
 		}
+	}
+}
+
+function ImageID($img_id, $size = 'thumbnail') {
+	$img_src_url = wp_get_attachment_image_src( $img_id, $size );
+	if ( $img_src_url ) {
+		return $img_src_url[0];
+	} else {
+		return;
 	}
 }
 
@@ -117,11 +127,19 @@ function ImgDir( $img = null ) {
 }
 
 function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
-	if ( $id === null )
+
+	if ( $id === null ) {
 		$id = get_the_ID();
+	}
+
+	if ( $readmoretext === null ) {
+		$readMore = '';
+	} else {
+		$readMore = '<a href="'. get_permalink( $id ) .'" class="excerptReadMore">' . $readmoretext . '</a>';
+	}
 
 	$content = get_post_field( 'post_content', $id );
-	$trimmed_content = wp_trim_words( $content, $wordcount, '... <a href="'. get_permalink( $id ) .'" class="Excerpt__readmore">' . $readmoretext . '</a>' );
+	$trimmed_content = wp_trim_words($content, $wordcount, '') . $readMore;
 	return wpautop( strip_shortcodes($trimmed_content) );
 }
 

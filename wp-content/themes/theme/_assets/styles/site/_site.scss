@@ -1,0 +1,222 @@
+/**
+ * =============================
+ * General Site Styles
+ * =============================
+ * 
+ * Table of Contents: 
+ * ------------------
+ * 1.0 - Global Layout/Elements
+ * 2.0 - Homepage
+ * 3.0 - Pages/Posts
+ * 4.0 - Archives
+ * 5.0 - Sidebar Layout and Elements
+ */
+
+
+/**
+ * =============================
+ * 1.0 - Global Layout/Elements
+ * ============================= 
+ */
+
+[data-content-sidebar="left"] {
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+
+		.pageMain-primary {
+			float: right;
+			width: $sidebarLayout-mainColumnWidth;
+			padding-left: ( $sidebarLayout-paddingBetweenColumns / 2 );
+		}
+
+		.pageMain-secondary {
+			float: left;
+			width: $sidebarLayout-sidebarColumnWidth;
+			padding-right: ( $sidebarLayout-paddingBetweenColumns / 2 );
+		}
+	}
+}
+
+[data-content-sidebar="right"] {
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+
+		.pageMain-primary {
+			float: left;
+			width: $sidebarLayout-mainColumnWidth;
+			padding-right: ( $sidebarLayout-paddingBetweenColumns / 2 );
+		}
+
+		.pageMain-secondary {
+			float: right;
+			width: $sidebarLayout-sidebarColumnWidth;
+			padding-left: ( $sidebarLayout-paddingBetweenColumns / 2 );
+		}
+	}
+}
+
+ /**
+ * =============================
+ * 2.0 - Homepage
+ * ============================= 
+ */
+
+body.home {
+
+}
+
+ /**
+ * =============================
+ * 3.0 - Pages/Posts
+ * ============================= 
+ */
+
+body.single-post,
+body.page {
+
+}
+
+.entryMeta {
+
+	a {
+		color: $themeColor-secondary;
+		font-weight: 700;
+	}
+}
+
+.archive-pagination {
+	padding: 30px;
+	text-align: center;
+
+	.page-numbers {
+		display: inline-block;
+		margin: 3px;
+		vertical-align: top;
+		color: $globalColor-black;
+		background-color: $globalColor-whiteGrey;
+		border-radius: 3px;
+		text-align: center;
+		padding: 3px 8px;
+		font-weight: 700;
+		transition: 300ms ease;
+
+		&:hover {
+			background-color: $globalColor-lightGrey;
+		}
+
+		&.current {
+			background-color: $globalColor-black;
+			color: #fff;
+		}
+	}
+}
+
+ /**
+ * =============================
+ * 4.0 - Archives
+ * ============================= 
+ */
+
+.entrySummary {
+	@include clearFix();
+	margin-bottom: 60px;
+	padding-bottom: 60px;
+	border-bottom: 3px double $borderColor;
+
+	&.has-post-thumbnail {
+
+		.entrySummary-image {
+			float: left;
+			width: 20%;
+		}
+
+		.entrySummary-main {
+			float: right;
+			width: 80%;
+			padding-left: 30px;
+		}
+	}
+}
+
+.entrySummary-image {
+
+	img,
+	a {
+		display: block;
+	}
+}
+
+.entrySummary-title {
+	margin-bottom: 10px;
+
+	a {
+
+		&:hover {
+			color: $themeColor-secondary;
+		}
+	}
+}
+
+.entrySummary-meta {
+	margin-bottom: 10px;
+
+	a {
+		color: $themeColor-secondary;
+		font-weight: 700;
+	}
+}
+
+.entrySummary-excerpt {
+	@include fontSize(12);
+	line-height: 1.75;
+}
+
+/**
+ * =============================
+ * 5.0 - Sidebar Layout and Elements
+ * ============================= 
+ */
+
+aside {
+
+	.search-form {
+		
+		input[type="submit"] {
+			display: none;
+		}
+	}
+}
+
+.widget-title {
+	font-size: em(24);
+	margin-bottom: em(10);
+	color: $globalColor-black;
+}
+
+.sidebar-widget {
+	margin-bottom: em(30);
+
+	li {
+		margin-bottom: em(8);
+	}
+
+	a {
+		font-weight: 700;
+		transition: 300ms;
+
+		&:hover {
+			color: $themeColor-primary;
+		}
+	}
+
+	.textwidget {
+		line-height: 1.4;
+	}
+
+	&.widget_search {
+		
+		input[type="submit"] {
+			display: none;
+		}
+	}
+}

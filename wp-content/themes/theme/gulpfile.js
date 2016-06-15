@@ -24,6 +24,8 @@ gulp.task('sass', function() {
 	return gulp.src('_assets/styles/brandco.scss')
 		.pipe(plumber())
 		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.pipe(gulp.dest('_assets/styles/.'))		
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(autoprefixer())
 		.pipe(rename('_assets/styles/brandco.min.css'))
@@ -71,6 +73,9 @@ gulp.task('browser-sync', function() {
 		 *
 		 */
 		proxy: "starter.bco",
+		snippetOptions: {
+			ignorePaths: ["http://localhost:3000/wp-admin/**"],
+		},		
 	});
 
 });

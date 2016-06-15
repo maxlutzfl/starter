@@ -1,0 +1,453 @@
+/**
+ * =============================
+ * Header, Footer, Navigation, Mobile Navigation
+ * =============================
+ * 
+ * Table of Contents: 
+ * ------------------
+ * 1.0 - General header style
+ * 2.0 - Navigation style
+ * 3.0 - Mobile Nav style
+ * 4.0 - Footer styles
+ */
+
+
+/**
+ * =============================
+ * 1.0 - General header style
+ * =============================
+ */
+
+.siteMasthead {
+	background-color: $siteMasthead-background;
+	position: relative;
+	top: 0;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	box-shadow: 0 2px 4px rgba(#000, 0.1);
+
+	body.nav-is-stuck & { position: fixed; }
+}
+
+.siteHeader {
+	padding: 0 15px;
+}
+
+.siteHeader-container {
+	position: relative;
+	z-index: 25;
+	height: $siteMasthead-height-mobile;
+	max-width: 1400px;
+	margin: 0 auto;
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+		height: $siteMasthead-height;
+	}
+}
+
+.siteHeader-homeLink {
+	display: block;
+	height: $siteMasthead-height-mobile;
+	background-position: left center;
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+		height: $siteMasthead-height;
+	}
+}
+
+.siteHeader-logoSide {
+	float: left;
+	width: 200px;
+}
+
+.siteHeader-navSide {
+	float: right;
+	width: calc(100% - 200px);
+	padding-top: ( $siteMasthead-height-mobile - $siteMasthead-navLineHeight ) / 2;
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+		padding-top: ( $siteMasthead-height - $siteMasthead-navLineHeight ) / 2;
+	}
+}
+
+
+/**
+ * =============================
+ * 2.0 - Navigation style
+ * =============================
+ */
+
+.mainNavigation {
+	position: relative;
+	text-align: right;
+
+	.primaryMenu {
+		display: none; 
+		text-align: left;
+
+		@include breakpoint('above', $responsiveBreakpoint-tablet) {
+			display: block;
+			text-align: right;
+		}
+
+		a {
+			@include fontSize(14);
+			font-weight: 700;
+			white-space: nowrap;
+			line-height: $siteMasthead-navLineHeight;
+			padding: 0 15px;
+			display: block;			
+			color: $siteMasthead-linkColors;
+			text-transform: uppercase;
+			transition: 300ms ease;
+
+			&:hover {
+				background-color: $globalColor-lightGrey;
+			}			
+		}
+		
+		ul {
+			margin: 0;
+			padding: 0;
+			box-shadow: 0 2px 4px rgba(#000, 0.15);
+		}
+
+		.sub-menu {
+			text-align: left;
+		}
+
+		li {
+			list-style: none;
+			display: block;
+			vertical-align: top;
+		}
+
+		.menu-item-has-children {
+			position: relative;
+			
+			> a {
+				padding-right: 30px;
+			}
+
+			svg {
+				width: 16px;
+				height: $siteMasthead-navLineHeight;
+				float: right;
+				display: inline-block;
+				vertical-align: middle;
+				position: absolute;
+				top: 0;
+				right: 8px;
+			}
+
+			@include breakpoint('above', $responsiveBreakpoint-tablet) {
+
+				.sub-menu {
+					opacity: 0;
+					visibility: hidden;
+					transition: 300ms;
+				}
+				
+				&:hover {
+
+					> .sub-menu {
+						display: block !important;
+						visibility: visible;
+						opacity: 1;
+						transform: translate(0px);
+					}
+				}
+			}
+		}
+
+		> li {
+
+			@include breakpoint('above', $responsiveBreakpoint-tablet) {
+				display: inline-block;
+			}
+
+			> .sub-menu {
+				display: none;
+
+				@include breakpoint('above', $responsiveBreakpoint-tablet) {
+					display: block;
+					position: absolute;
+					top: 100%;
+					left: 0;
+					visibility: hidden;
+					transform: translateY(-5px);
+				}
+
+				a {
+					transition: 300ms ease;
+					background-color: $siteMasthead-background;
+					min-width: 200px;
+
+					&:hover {
+						background-color: $globalColor-lightGrey;
+					}					
+				}
+
+				.sub-menu {
+					display: none;
+
+					@include breakpoint('above', $responsiveBreakpoint-tablet) {
+						display: block;
+						position: absolute;
+						top: 0;
+						left: 100%;
+						visibility: hidden;
+						transform: translateX(5px);
+					}
+				}
+			}
+		}
+	}
+}
+
+/**
+ * =============================
+ * 3.0 - Mobile Nav style
+ * =============================
+ */
+
+.mobileMenu-toggle {
+	white-space: nowrap;
+	line-height: 40px;
+	padding: 0;
+	font-size: 0;
+	display: inline-block; 
+	background-color: $globalColor-black;
+	border-radius: 3px;
+
+	span {
+		display: inline-block;
+		vertical-align: top;
+		font-size: 16px;
+		padding: 0 15px;
+		color: #fff;
+		font-weight: 700;
+	}
+
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+		display: none;
+	}
+} 
+
+.mobileNavigation {
+	z-index: 100010;
+	position: fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 20%;
+	opacity: 0;
+	transform: translateX(-100%);
+	transition: 400ms ease;
+	display: none;
+}
+
+@include breakpoint('below', $responsiveBreakpoint-tablet) {
+
+	.mobileNavigation {
+		display: block;
+	}
+
+	.mobileNavigation-close {
+		position: relative;
+		text-align: right;
+		line-height: 40px;
+		padding: 0 10px;
+		font-size: 40px;
+		cursor: pointer;
+	}
+
+	.mobileNavigation-overlay {
+		z-index: 100005;
+		position: fixed;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-color: #333;
+		opacity: 0.95;
+		opacity: 0;
+		transform: translateX(-100%);
+		transition: opacity 400ms ease;
+	}
+
+	.mobileNavigation-container {
+		z-index: 505;
+		overflow-y: auto;
+		overflow-x: hidden;
+		-webkit-overflow-scrolling: touch;
+		position: absolute;
+		top: 0;
+		left: 0;
+		bottom: 0;
+		right: 0;
+		background-color: #f9f9f9;
+		box-shadow: 0 0 10px rgba(#000, 0.5);
+		opacity: 0;
+		transform: translateX(-100%);
+		transition: 400ms ease 200ms;
+	}
+
+	html[data-mobile-menu-open="true"] {
+		overflow: hidden;
+
+		.mobileNavigation-overlay {
+			opacity: 1;
+			transform: translateX(0%);	
+		}
+
+		.mobileNavigation {
+			opacity: 1;
+			transform: translateX(0%);	
+		}
+
+		.mobileNavigation-container {
+			opacity: 1;
+			transform: translateX(0%);	
+		}
+	}
+
+	.mobileNavigation {
+
+		.mobileNavigation-header {
+			padding: 0 20px 20px;
+			text-align: center;
+
+			img {
+				max-height: 100px;
+			}
+		}
+
+		.mobileNavigation-footer {
+
+			ul {
+				border-top: 1px solid rgba(#000, 0.1); 
+				padding: 20px 0;
+
+				li {
+					display: block; 
+
+					a {
+						line-height: 1.2;
+						padding: 10px 20px;
+						display: block;
+					}
+				}
+			}
+
+		}
+
+		.mobileNavigation-links {
+
+			ul {
+
+				li {
+					display: block; 
+					border-top: 1px solid rgba(#000, 0.1); 
+
+					a {
+						line-height: 1.2;
+						padding: 20px 20px;
+						display: block;
+					}
+				}
+
+				.sub-menu {
+					li {
+						a {
+							padding: 20px 30px;
+							background-color: rgba(#000, 0.05);
+						}
+					}
+
+					.sub-menu {
+						li {
+							border-top: 1px solid rgba(#000, 0.15); 
+
+							a {
+								padding: 20px 40px;
+								background-color: rgba(#000, 0.08);
+							}
+						}
+					}					
+				}
+			}
+
+			.menu-item-has-children {
+				> a {
+					position: relative;
+
+					.fa {
+						position: absolute;
+						top: 50%;
+						transform: translateY(-50%);
+						right: 0;
+						padding: 0 10px;
+						font-size: 20px;
+						color: rgba( #555, 0.75 );
+					}
+				}
+
+				> .sub-menu {
+					display: none;
+
+					> li {
+
+					}
+
+					.sub-menu {
+						display: none;
+					}
+				}
+			}
+			.menu {
+
+				li {
+					display: block;
+
+					> a {
+						display: block;
+					}
+				}
+			}	
+		}	
+	}
+}
+
+
+/**
+ * =============================
+ * 4.0 - Footer styles
+ * =============================
+ */
+
+ .siteFooter {
+
+ }
+
+.siteFooter-container {
+	position: relative;
+	z-index: 25;
+	max-width: $container-maxWidth;
+	margin: 0 auto;
+}
+
+.siteFooter-copyright {
+	@include fontSize(12);
+}
+
+
+
+
+
+
+
+
+
+

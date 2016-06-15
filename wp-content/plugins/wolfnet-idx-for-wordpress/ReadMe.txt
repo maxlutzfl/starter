@@ -4,7 +4,7 @@ Contributors:       wolfnettech, ajmichels, asbaumgart, michaelpidde, blots
 Tags:               idx, mls, homes
 Requires at least:  3.5.1
 Tested up to:       4.5
-Stable tag:         1.10.1
+Stable tag:         1.10.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,10 +93,15 @@ Please upgrade to the latest version of the plugin as we will be disabling our o
 
 == Changelog ==
 
+= 1.10.2 =
+* New, simpler speed scale for Featured Listings scroller in lieu of the 1-99 scale.
+* New speed default for Featured Listings scroller.
+* Modern theme font family fix.
+
 = 1.10.1 =
 * Fix warnings being thrown in Smart Search functionality.
-* Fix box-sizing for Modern widget style
-* Add hand cursor for widget buttons
+* Fix box-sizing for Modern widget style.
+* Add hand cursor for widget buttons.
 * Fixes map bounds bug.
 
 = 1.10.0 =

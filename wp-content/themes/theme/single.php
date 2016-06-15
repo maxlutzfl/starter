@@ -6,50 +6,65 @@
 
 get_header(); ?>
 
-<main id="SiteMain" role="main">
+<main id="siteMain" class="siteMain" role="main" <?php if ( is_user_logged_in() && function_exists('live_edit') ) { live_edit('post_title, post_content'); } ?>>
 
 	<?php while ( have_posts() ) : the_post(); ?>
 
 		<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
 
-			<header class="PageHeader">
-				<div class="PageContainer">
-					<?php echo sprintf( '<h1 class="entry-title" itemprop="headline">%s</h1>', get_the_title() ); ?>
+			<header id="pageHeader" class="pageHeader __border-bottom-thin __sectionPadding-default">
+				<div class="pageContainer">
+
+					<h1 class="entry-title entryTitle" itemprop="headline">
+						<?php the_title(); ?>
+					</h1>
+				
+					<?php if ( is_singular('post') ) : ?>
+						<h2 class="entrySubtitle">
+							<span class="entryMeta-date"><?php echo BrandCo\Date(); ?></span>
+							<span class="entryMeta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
+						</h2>
+					<?php endif; ?>
+
 				</div>
 			</header>
 
-			<section class="PageMain">
-				<div class="PageContainer">
+			<section id="pageMain" class="pageMain __sectionPadding-default" data-content-sidebar="right">
+				<div class="pageContainer">
 					
-					<div class="ColumnPrimary">
-						<div class="entry-content" itemprop="mainContentOfPage">
-
+					<div class="pageMain-primary">
+						<div class="entry-content entryContent" itemprop="mainContentOfPage">
 							<?php the_content(); ?>
-
 						</div>
-						
-						<div class="PageMeta">
-						
-							<?php 
-								if ( is_singular('post') ) {
-									echo sprintf( '<span class="ArticleDate">%s</span> ', BrandCo\Date() );
-									echo sprintf( '<span class="ArticleAuthor author vcard" itemprop="author">by %s</span> ', get_the_author() );
-									BrandCo\Categories();
-									BrandCo\Tags(', ');
-								}
 
-								BrandCo\ArchiveBackLink();
+						<?php if ( is_singular('post') ) : ?>
+							<div class="entryMeta">
+								<p>
+									<span class="entryMeta-date">Entry posted <?php echo BrandCo\Date(); ?></span>
+									<span class="entryMeta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
+								</p>
+								<p class="entryMeta-categories">
+									<strong>Categories: </strong>
+									<?php BrandCo\Categories(); ?>
+								</p>
 
-								the_posts_navigation();
-							?>
+								<?php if ( get_the_tags() ) : ?>
+									<p class="entryMeta-tags">
+										<strong>Tags: </strong>
+										<?php BrandCo\Tags(', '); ?>
+									</p>		
+								<?php endif; ?>	
 
-						</div>
+							</div>
+						<?php endif; ?>
+
+						<?php the_posts_navigation(); ?>
 					</div>
 
-					<aside class="ColumnSidebar">
+					<aside class="pageMain-secondary" class="siteSidebar widgetArea" role="complementary">
 						<?php get_sidebar(); ?>
 					</aside>
-					
+
 				</div>
 			</section>
 
