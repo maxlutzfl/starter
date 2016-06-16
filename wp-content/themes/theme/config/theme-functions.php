@@ -1,10 +1,34 @@
 <?php 
 /**
- * Functions
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Theme Functions
+ * @author BrandCo. LLC
  */
 
-namespace BrandCo;
+namespace BrandCo\Config\Functions;
+
+/**
+ * Default pagination for archives
+ */
+
+function BrandCo_Pagination() {
+	global $wp_query;
+	$big = 999999999;
+	$translated = __( 'Page', 'brandco' );
+	echo '<div class="archive-pagination">'; 
+	echo paginate_links( array(
+		'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+		'format' => '?paged=%#%',
+		'current' => max( 1, get_query_var('paged') ),
+		'total' => $wp_query->max_num_pages,
+			'before_page_number' => '<span class="screen-reader-object">'.$translated.' </span>'
+	) );
+	echo '</div>';
+}
+
+/**
+ * Get post date
+ */
 
 function Date() {
 	$default_date = get_the_date();
@@ -12,6 +36,10 @@ function Date() {
 	$date = "<time datetime='{$formatted_date}' class='published' itemprop='datePublished'>{$default_date}</time>";
 	return $date;
 }
+
+/**
+ * Get post categories
+ */
 
 function Categories($sep = null) {
 	$list = get_the_category();
@@ -26,6 +54,10 @@ function Categories($sep = null) {
 	}
 }
 
+/**
+ * Get post tags
+ */
+
 function Tags($sep = null) {
 	$list = get_the_tags();
 	if ( $list ) {
@@ -39,6 +71,10 @@ function Tags($sep = null) {
 	}
 }
 
+/**
+ * Get blog page title
+ */
+
 function BlogTitle() {
 	if ( is_home() ) {
 		if ( get_option('page_for_posts', true) ) {
@@ -49,6 +85,10 @@ function BlogTitle() {
 	}
 }
 
+/**
+ * Get custom post type title
+ */
+
 function PostTypeTitle() {
 	global $wp_query;
 
@@ -56,6 +96,10 @@ function PostTypeTitle() {
 		return get_post_type_object( $wp_query->query['post_type'] )->labels->name;
 	}
 }
+
+/**
+ * Get featured image url
+ */
 
 function Image( $size = 'medium', $post_id = null ) {
 	if ( empty( $post_id ) ) {
@@ -73,6 +117,10 @@ function Image( $size = 'medium', $post_id = null ) {
 	}
 }
 
+/**
+ * Get image url by image ID
+ */
+
 function ImageID($img_id, $size = 'thumbnail') {
 	$img_src_url = wp_get_attachment_image_src( $img_id, $size );
 	if ( $img_src_url ) {
@@ -81,6 +129,10 @@ function ImageID($img_id, $size = 'thumbnail') {
 		return;
 	}
 }
+
+/**
+ * Single page back link to archive
+ */
 
 function ArchiveBackLink() {
 	global $wp_query;
@@ -122,8 +174,8 @@ function SocialMedia() {
 	}
 }
 
-function ImgDir( $img = null ) {
-	return get_template_directory_uri() . '/_assets/images/' . $img;
+function ImgDir($img = null) {
+	return IMAGE_DIRECTORY_URI . $img;
 }
 
 function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {

@@ -1,10 +1,12 @@
 <?php
 /**
- * Blog Index
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Search Results Page Template
+ * @author BrandCo. LLC
  */
-
-get_header(); ?>
+get_header();
+use BrandCo\Config\Functions;
+?>
 
 <main id="siteMain" class="siteMain" role="main">
 
@@ -19,7 +21,7 @@ get_header(); ?>
 
 			<div class="pageMain-primary archivePage-list">
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part('_templates/archive', 'default'); ?>
+					<?php get_template_part('templates/archive', 'default'); ?>
 				<?php endwhile; ?>
 				<?php BrandCo_Pagination(); ?>
 			</div>

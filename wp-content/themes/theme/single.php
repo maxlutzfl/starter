@@ -1,10 +1,12 @@
 <?php
 /**
- * Single Post Template
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Default Single Post Template
+ * @author BrandCo. LLC
  */
-
-get_header(); ?>
+get_header();
+use BrandCo\Config\Functions;
+?>
 
 <main id="siteMain" class="siteMain" role="main" <?php if ( is_user_logged_in() && function_exists('live_edit') ) { live_edit('post_title, post_content'); } ?>>
 
@@ -21,7 +23,7 @@ get_header(); ?>
 				
 					<?php if ( is_singular('post') ) : ?>
 						<h2 class="entrySubtitle">
-							<span class="entryMeta-date"><?php echo BrandCo\Date(); ?></span>
+							<span class="entryMeta-date"><?php echo Functions\Date(); ?></span>
 							<span class="entryMeta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
 						</h2>
 					<?php endif; ?>
@@ -40,18 +42,18 @@ get_header(); ?>
 						<?php if ( is_singular('post') ) : ?>
 							<div class="entryMeta">
 								<p>
-									<span class="entryMeta-date">Entry posted <?php echo BrandCo\Date(); ?></span>
+									<span class="entryMeta-date">Entry posted <?php echo Functions\Date(); ?></span>
 									<span class="entryMeta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
 								</p>
 								<p class="entryMeta-categories">
 									<strong>Categories: </strong>
-									<?php BrandCo\Categories(); ?>
+									<?php Functions\Categories(); ?>
 								</p>
 
 								<?php if ( get_the_tags() ) : ?>
 									<p class="entryMeta-tags">
 										<strong>Tags: </strong>
-										<?php BrandCo\Tags(', '); ?>
+										<?php Functions\Tags(', '); ?>
 									</p>		
 								<?php endif; ?>	
 

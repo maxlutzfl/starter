@@ -1,16 +1,18 @@
 <?php
 /**
- * Blog Index
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Index Template
+ * @author BrandCo. LLC
  */
-
-get_header(); ?>
+get_header();
+use BrandCo\Config\Functions;
+?>
 
 <main id="siteMain" class="siteMain" role="main">
 
 	<header id="pageHeader" class="pageHeader __border-bottom-thin __sectionPadding-default">
 		<div class="pageContainer">
-			<?php echo sprintf( '<h1 class="PageTitle">%s</h1>', Brandco\BlogTitle() ); ?>
+			<?php echo sprintf( '<h1 class="PageTitle">%s</h1>', Functions\BlogTitle() ); ?>
 		</div>
 	</header>
 
@@ -19,9 +21,9 @@ get_header(); ?>
 
 			<div class="pageMain-primary archivePage-list">
 				<?php while ( have_posts() ) : the_post(); ?>
-					<?php get_template_part('_templates/archive', 'default'); ?>
+					<?php get_template_part('templates/archive', 'default'); ?>
 				<?php endwhile; ?>
-				<?php BrandCo_Pagination(); ?>
+				<?php Functions\BrandCo_Pagination(); ?>
 			</div>
 
 			<aside class="pageMain-secondary siteSidebar widgetArea" role="complementary">

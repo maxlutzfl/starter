@@ -1,8 +1,10 @@
 <?php
 /**
- * Mobile Nav
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Mobile Navigation Drawer Template
+ * @author BrandCo. LLC
  */ 
+use BrandCo\Config\Functions;
 ?>
 
 <div id="mobileNavigation" class="mobileNavigation" aria-hidden="true">
@@ -12,14 +14,14 @@
 
 		<div class="mobileNavigation-header">
 
-			<img src="<?php echo BrandCo\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
+			<img src="<?php echo Functions\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
 
 		</div>
 
 		<div class="mobileNavigation-body">
 			<div class="mobileNavigation-links">
 				<ul>
-					<?php BrandCo\MobileNav(); ?>
+					<?php Functions\MobileNav(); ?>
 				</ul>				
 			</div>
 		</div>

@@ -16,6 +16,10 @@
  * 1.0 - Body
  */
 
+html {
+	padding: 30px;
+}
+
 body {
 	color: #1a1a1a;
 	font-family: Merriweather, Georgia, serif;
@@ -366,11 +370,13 @@ fieldset {
 .alignleft {
 	float: left;
 	margin: 6px 28px 28px 0;
+	max-width: 50%;
 }
 
 .alignright {
 	float: right;
 	margin: 6px 0 28px 28px;
+	max-width: 50%;
 }
 
 .aligncenter {

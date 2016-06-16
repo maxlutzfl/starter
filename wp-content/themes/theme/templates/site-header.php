@@ -1,19 +1,22 @@
 <?php 
 /** 
- * Site Masthead Template
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Site Masthead Template
+ * @author BrandCo. LLC
  */ 
+use BrandCo\Config\Functions;
 ?>
+
 
 <div id="siteMasthead" class="siteMasthead" data-fixed-masthead>
 	<header id="siteHeader" class="siteHeader" role="banner">
 		<div class="siteHeader-container">
 
 			<div class="siteHeader-logoSide">
-				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="siteHeader-homeLink __background-contain" itemscope itemtype="http://schema.org/Organization" style="background-image: url(<?php echo BrandCo\ImgDir('brandco-logo.png'); ?>); ">
+				<a href="<?php echo esc_url( home_url( '/' ) ); ?>" class="siteHeader-homeLink __background-contain" itemscope itemtype="http://schema.org/Organization" style="background-image: url(<?php echo Functions\ImgDir('brandco-logo.png'); ?>); ">
 					<span class="screen-reader-object" itemprop="name"><?php bloginfo('title'); ?></span>
 					<span class="screen-reader-object" itemprop="description"><?php bloginfo('description'); ?></span>
-					<img class="screen-reader-object" src="<?php echo BrandCo\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
+					<img class="screen-reader-object" src="<?php echo Functions\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
 				</a>			
 			</div>
 

@@ -1,7 +1,8 @@
 <?php
 /**
- * Global Header Template
- * @package 
+ * @package BrandCo Starter Theme
+ * @subpackage Global Header Template
+ * @author BrandCo. LLC
  */ ?><!DOCTYPE html> 
 <html class="no-js" <?php language_attributes(); ?> prefix="og: http://ogp.me/ns#">
 <head>
@@ -15,5 +16,5 @@
 
 	<div id="siteWrapper" class="siteWrapper">
  
-		<?php get_template_part('_templates/site', 'header'); ?>
+		<?php get_template_part('templates/site', 'header'); ?>
 

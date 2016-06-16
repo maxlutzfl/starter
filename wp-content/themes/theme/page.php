@@ -1,10 +1,12 @@
 <?php
 /**
- * Default Page Template
- * @package brandco
+ * @package BrandCo Starter Theme
+ * @subpackage Default Page Template
+ * @author BrandCo. LLC
  */
-
-get_header(); ?>
+get_header();
+use BrandCo\Config\Functions;
+?>
 
 <main id="siteMain" class="siteMain" role="main" <?php if ( is_user_logged_in() && function_exists('live_edit') ) { live_edit('post_title, post_content'); } ?>>
 

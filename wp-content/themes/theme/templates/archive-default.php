@@ -1,9 +1,18 @@
+<?php 
+/** 
+ * @package BrandCo Starter Theme
+ * @subpackage Default Article Summary Loop Template 
+ * @author BrandCo. LLC
+ */ 
+use BrandCo\Config\Functions;
+?>
+
 <article <?php post_class('entrySummary entry-summary'); ?>>
 
 	<?php if ( has_post_thumbnail() ) : ?>
 		<div class="entrySummary-image">
 			<a href="<?php echo get_permalink(); ?>">
-				<img src="<?php echo BrandCo\Image('thumbnail'); ?>" alt="<?php the_title(); ?> - Featured Image">
+				<img src="<?php echo Functions\Image('thumbnail'); ?>" alt="<?php the_title(); ?> - Featured Image">
 			</a>
 		</div>
 	<?php endif; ?>
@@ -17,15 +26,15 @@
 		<?php if ( is_home() || is_category() || is_tag() ) : ?>
 			<div class="entrySummary-meta">
 				<p>
-					<span class="entrySummary-meta-categories"><?php BrandCo\Categories(); ?> </span>
-					<span class="entrySummary-meta-date"><?php echo BrandCo\Date(); ?> </span>
+					<span class="entrySummary-meta-categories"><?php Functions\Categories(); ?> </span>
+					<span class="entrySummary-meta-date"><?php echo Functions\Date(); ?> </span>
 					<span class="entrySummary-meta-author author vcard" itemprop="author">by <?php echo get_the_author(); ?></span>
 				</p>
 			</div>
 		<?php endif; ?>
 
 		<div class="entrySummary-excerpt">
-			<?php echo BrandCo\Excerpt(100, null, '...'); ?>
+			<?php echo Functions\Excerpt(100, null, '...'); ?>
 		</div>
 
 	</div>

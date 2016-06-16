@@ -1,14 +1,18 @@
 <?php
 /**
- * Global Footer Template
- * @package 
- */ 
-?>	
-		<?php get_template_part('_templates/site', 'footer'); ?>
+ * @package BrandCo Starter Theme
+ * @subpackage Global Footer Template
+ * @author BrandCo. LLC
+ */
+get_header();
+use BrandCo\Config\Functions;
+?>
+
+		<?php get_template_part('templates/site', 'footer'); ?>
 
 	</div><?php /** #siteWrapper */ ?>
 
-	<?php get_template_part('_templates/site', 'mobilenav'); ?>
+	<?php get_template_part('templates/site', 'mobilenav'); ?>
 
  	<?php wp_footer(); ?>
 

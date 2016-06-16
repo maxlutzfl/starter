@@ -1,9 +1,11 @@
-<?php
-/**
- * Site Footer
- * @package 
+<?php 
+/** 
+ * @package BrandCo Starter Theme
+ * @subpackage Site Footer Template
+ * @author BrandCo. LLC
  */ 
-?>	
+use BrandCo\Config\Functions;
+?>
 
 <footer id="siteFooter" class="siteFooter __sectionPadding-default __border-top-thin" role="contentinfo">
 	<div class="siteFooter-container">
