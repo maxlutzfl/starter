@@ -2,18 +2,18 @@
  * =============================
  * BrandCo Website Styles
  * Run "gulp"
- * ============================= 
+ * =============================
  */
 
-/** 
- * Setup Files 
+/**
+ * Setup Files
  */
 
 @import "site/setup";
 @import "site/global";
 
-/** 
- * Plugin Files 
+/**
+ * Plugin Files
  */
 
 @import "plugins/gravity-forms";
@@ -22,8 +22,8 @@
 @import "plugins/magnific-popup";
 // @import "plugins/datepicker";
 
-/** 
- * Main Site Files 
+/**
+ * Main Site Files
  */
 
 @import "site/forms";

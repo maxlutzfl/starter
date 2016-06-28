@@ -3,6 +3,10 @@
  * @package BrandCo Starter Theme
  * @subpackage Theme Functions
  * @author BrandCo. LLC
+ * 
+ * To use function in this namespace add:
+ * <?php use BrandCo\Config\Functions; ?>
+ * Then you can use functions like <?php echo Functions\Date(); ?>
  */
 
 namespace BrandCo\Config\Functions;

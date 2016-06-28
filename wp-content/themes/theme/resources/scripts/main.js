@@ -5706,11 +5706,12 @@ $.magnificPopup.registerModule(RETINA_NS, {
       return !this.config.mobile && this.util().isMobile(navigator.userAgent);
     };
 
-    return WOW;
+    return WOW; 
 
   })();
 
 }).call(this);
+
 jQuery(function($){
 
 	$('html').removeClass('no-js').addClass('js');
@@ -5721,7 +5722,7 @@ jQuery(function($){
 
 	function toggleMobileMenu() {
 		var html = document.documentElement;
-		
+
 		if ( html.getAttribute('data-mobile-menu-open') === "true" ) {
 			html.setAttribute('data-mobile-menu-open', 'false');
 
@@ -5733,17 +5734,17 @@ jQuery(function($){
 	var closeLayer = document.getElementById('mobileNavigation-overlay');
 
 	if ( closeLayer ) {
-		closeLayer.addEventListener('click', function(){
+		closeLayer.addEventListener('click', function() {
 			toggleMobileMenu();
-		});	
+		});
 
 		document.getElementById('mobileNavigation-close').addEventListener('click', function(){
 			toggleMobileMenu();
-		});	
+		});
 
 		document.getElementById('mobileMenu-toggle').addEventListener('click', function(){
 			toggleMobileMenu();
-		});	
+		});
 	}
 
 	/**
@@ -5966,6 +5967,7 @@ jQuery(function($){
 	stickyNav_setup();
 
 	function stickyNav_siteMastheadWrapperHeightFix() {
+		var nav = $('[data-fixed-masthead]');
 		var navHeight = nav.outerHeight();
 		$('#siteMasthead-wrapper').height(navHeight);
 	}
@@ -5980,7 +5982,7 @@ jQuery(function($){
 		}
 	}
 
-	$(window).scroll(function() { 
+	$(window).scroll(function() {
 		window.requestAnimationFrame(stickyNav_scroll);
 	});
 
@@ -6013,7 +6015,7 @@ jQuery(function($){
 	});
 
 	$('[data-slider="test-buttons"]').slick({
-		slidesToShow: 3, 
+		slidesToShow: 3,
 		slidesToScroll: 1,
 		asNavFor: '[data-slider="test-main"]',
 		arrows: true,
@@ -6023,17 +6025,3 @@ jQuery(function($){
 	});
 
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-

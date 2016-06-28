@@ -1,4 +1,4 @@
-<?php 
+<?php
 /**
  * @package BrandCo Starter Theme
  * @subpackage Theme Setup
@@ -30,7 +30,7 @@ class Theme_Setup {
 		add_action('wp_insert_post_data', array($this, 'Comments_Off_By_Default'));
 		add_action('add_meta_boxes', array($this, 'Remove_Custom_Fields_Metabox'));
 		add_action('init', array($this, 'WP_Head_Cleanup'));
-		add_filter('tiny_mce_before_init', array($this, 'Add_Content_Editor_Formats'));	
+		add_filter('tiny_mce_before_init', array($this, 'Add_Content_Editor_Formats'));
 		add_filter('mce_buttons_2', array($this, 'Add_Formats_Dropdown_To_Content_Editor'));
 		add_action('admin_init', array($this, 'Add_Backend_Content_Editor_Stylesheet'));
 	}
@@ -56,19 +56,19 @@ class Theme_Setup {
 		add_theme_support( 'automatic-feed-links' );
 		add_theme_support( 'title-tag' );
 		add_theme_support( 'post-thumbnails' );
-		add_theme_support( 
-			'html5', 
+		add_theme_support(
+			'html5',
 			array(
 				'search-form',
 				'comment-form',
 				'comment-list',
 				'gallery',
 				'caption',
-			) 
+			)
 		);
 
 		/**
-		 * Add and update default image sizes 
+		 * Add and update default image sizes
 		 * uploaded to the media library
 		 * @see https://developer.wordpress.org/reference/functions/add_image_size/
 		 */
@@ -86,20 +86,20 @@ class Theme_Setup {
 		 * @see https://codex.wordpress.org/Function_Reference/register_nav_menus
 		 */
 
-		register_nav_menus( 
+		register_nav_menus(
 			array(
 				'primary' => esc_html__( 'Main Navigation', 'brandco' ),
 				'mobile' => esc_html__( 'Mobile Navigation', 'brandco' ),
 				'footer' => esc_html__( 'Footer Links', 'brandco' )
-			) 
+			)
 		);
 
 		/**
 		 * Move Yoast SEO metabox below custom fields
 		 */
 
-		add_filter( 
-			'wpseo_metabox_prio', 
+		add_filter(
+			'wpseo_metabox_prio',
 			function() {
 				return 'low';
 			}
@@ -110,7 +110,7 @@ class Theme_Setup {
 		 */
 
 		add_filter(
-			'gform_confirmation_anchor', 
+			'gform_confirmation_anchor',
 			create_function(
 				'',
 				'return false;'
@@ -132,7 +132,7 @@ class Theme_Setup {
 					'redirect' => false
 				)
 			);
-		}		
+		}
 	}
 
 	public function Widgets() {
@@ -142,7 +142,7 @@ class Theme_Setup {
 		 * @see https://codex.wordpress.org/Function_Reference/register_sidebar
 		 */
 
-		register_sidebar( 
+		register_sidebar(
 			array(
 				'name' => esc_html__( 'Sidebar', 'brandco' ),
 				'id' => 'sidebar-1',
@@ -150,7 +150,7 @@ class Theme_Setup {
 				'after_widget' => '</div>',
 				'before_title' => '<h1 class="widget-title">',
 				'after_title' => '</h1>',
-			) 
+			)
 		);
 	}
 
@@ -163,11 +163,11 @@ class Theme_Setup {
 	public function Frontend_Scripts_Styles() {
 		// Scripts
 		wp_enqueue_script( 'jquery' );
-		wp_enqueue_script( 'brandco-theme-scripts', SCRIPTS_DIRECTORY_URI . 'brandco.min.js', array('jquery'), null, true );
+		wp_enqueue_script( 'brandco-theme-scripts', SCRIPTS_DIRECTORY_URI . 'main.min.js', array('jquery'), null, true );
 		wp_enqueue_script( 'brandco-parallax', SCRIPTS_DIRECTORY_URI . 'parallax.js', array('jquery'), null, true );
 
 		// Styles
-		wp_enqueue_style( 'brandco-theme-style', STYLESHEET_DIRECTORY_URI . 'brandco.min.css' );
+		wp_enqueue_style( 'brandco-theme-style', STYLESHEET_DIRECTORY_URI . 'main.min.css' );
 
 		// Google Fonts
 		if ( GOOGLE_FONTS ) {
@@ -225,8 +225,8 @@ class Theme_Setup {
 				'section' => 'static_front_page',
 				'settings' => 'page_for_' . $type,
 				'type' => 'dropdown-pages'
-			))); 
-		}	
+			)));
+		}
 	}
 
 	/**
@@ -297,7 +297,7 @@ class Theme_Setup {
 		unregister_widget('WP_Widget_RSS');
 		unregister_widget('WP_Widget_Tag_Cloud');
 		unregister_widget('WP_Nav_Menu_Widget');
-	}	
+	}
 
 	/**
 	 * Comments_Off_By_Default
@@ -311,12 +311,12 @@ class Theme_Setup {
 			$data['comment_status'] = 0;
 		}
 		return $data;
-	}	
+	}
 
 	/**
 	 * Remove_Custom_Fields_Metabox
 	 */
-	
+
 	public function Remove_Custom_Fields_Metabox() {
 		global $post_type;
 		if ( is_admin() && post_type_supports( $post_type, 'custom-fields' ) ) {
@@ -361,8 +361,8 @@ class Theme_Setup {
 				'wrapper' => true,
 			),
 		);
-		$init_array['style_formats'] = json_encode($style_formats); 
-		return $init_array; 
+		$init_array['style_formats'] = json_encode($style_formats);
+		return $init_array;
 	}
 
 	public function Add_Backend_Content_Editor_Stylesheet() {
@@ -376,8 +376,3 @@ class Theme_Setup {
  */
 
 new Theme_Setup();
-
-
-
-
-

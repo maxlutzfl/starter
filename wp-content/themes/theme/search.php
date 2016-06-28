@@ -12,6 +12,10 @@ use BrandCo\Config\Functions;
 
 	<header id="pageHeader" class="pageHeader __border-bottom-thin __sectionPadding-default">
 		<div class="pageContainer">
+			<h1 class="pageTitle">
+				<?php echo 'Search results for: <span>' . get_search_query() . '</span>'; ?>
+			</h1>
+
 			<?php echo sprintf( '<h1 class="PageTitle">Search results for: <span>%s</span></h1>', get_search_query() ); ?>
 		</div>
 	</header>
@@ -23,7 +27,7 @@ use BrandCo\Config\Functions;
 				<?php while ( have_posts() ) : the_post(); ?>
 					<?php get_template_part('templates/archive', 'default'); ?>
 				<?php endwhile; ?>
-				<?php BrandCo_Pagination(); ?>
+				<?php Functions\BrandCo_Pagination(); ?>
 			</div>
 
 			<aside class="pageMain-secondary siteSidebar widgetArea" role="complementary">
@@ -36,4 +40,3 @@ use BrandCo\Config\Functions;
 </main>
 
 <?php get_footer();?>
-

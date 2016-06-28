@@ -506,7 +506,7 @@
       return !this.config.mobile && this.util().isMobile(navigator.userAgent);
     };
 
-    return WOW;
+    return WOW; 
 
   })();
 

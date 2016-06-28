@@ -3,10 +3,10 @@
  * =============================
  * BrandCo Website Styles
  * Run "gulp"
- * ============================= 
+ * =============================
  */
-/** 
- * Setup Files 
+/**
+ * Setup Files
  */
 /**
  * =============================
@@ -45,8 +45,8 @@
  * =============================
  * Global Styles
  * =============================
- * 
- * Table of Contents: 
+ *
+ * Table of Contents:
  * ------------------
  * 1.0 - Global/Resets
  * 2.0 - Entry Content
@@ -448,8 +448,8 @@ html .live-edit-button {
   display: block;
   width: 100%; }
 
-/** 
- * Plugin Files 
+/**
+ * Plugin Files
  */
 .gform_wrapper form .gform_heading {
   margin: 0.9375rem 0; }
@@ -1206,8 +1206,8 @@ img.mfp-img {
   right: 0;
   padding-top: 0; }
 
-/** 
- * Main Site Files 
+/**
+ * Main Site Files
  */
 /**
  * =============================

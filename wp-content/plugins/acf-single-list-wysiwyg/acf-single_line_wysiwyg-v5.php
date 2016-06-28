@@ -113,6 +113,21 @@ class acf_field_single_line_wysiwyg extends acf_field {
 				"label"   => "Strikethrough",
 				"default" => 0,
 			),
+			array(
+				"name"    => "alignleft",
+				"label"   => "Left",
+				"default" => 1,
+			),
+			array(
+				"name"    => "aligncenter",
+				"label"   => "Center",
+				"default" => 1,
+			),
+			array(
+				"name"    => "alignright",
+				"label"   => "Right",
+				"default" => 1,
+			),	
 		);
 		
 		$styles = apply_filters("acf/single_line_wysiwyg/style_$filter", $styles, $field);

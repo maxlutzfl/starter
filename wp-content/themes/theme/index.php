@@ -12,7 +12,9 @@ use BrandCo\Config\Functions;
 
 	<header id="pageHeader" class="pageHeader __border-bottom-thin __sectionPadding-default">
 		<div class="pageContainer">
-			<?php echo sprintf( '<h1 class="PageTitle">%s</h1>', Functions\BlogTitle() ); ?>
+			<h1 class="pageTitle">
+				<?php echo Functions\BlogTitle(); ?>
+			</h1>
 		</div>
 	</header>
 
@@ -36,4 +38,3 @@ use BrandCo\Config\Functions;
 </main>
 
 <?php get_footer();?>
-

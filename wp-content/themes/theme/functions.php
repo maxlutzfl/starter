@@ -14,7 +14,7 @@ namespace BrandCo\Config;
 define('CONFIG_DIRECTORY', dirname(__FILE__) . '/config/');
 define('RESOURCES_DIRECTORY_URI', get_template_directory_uri() . '/resources/');
 define('IMAGE_DIRECTORY_URI', get_template_directory_uri() . '/resources/images/');
-define('STYLESHEET_DIRECTORY_URI', get_template_directory_uri() . '/resources/styles/');
+define('STYLESHEET_DIRECTORY_URI', get_template_directory_uri() . '/resources/styles/css/');
 define('SCRIPTS_DIRECTORY_URI', get_template_directory_uri() . '/resources/scripts/');
 define('GOOGLE_FONTS', 'Open+Sans:400,700');
 

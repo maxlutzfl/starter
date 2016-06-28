@@ -1,4 +1,10 @@
 /**
+ Setup
+ */
+
+var devURL = 'starter.bco'
+
+/**
  * Import scripts
  */
 
@@ -14,6 +20,8 @@ var rename = require('gulp-rename');
 var plumber = require('gulp-plumber');
 var autoprefixer = require('gulp-autoprefixer');
 var livereload = require('gulp-livereload');
+var notify = require('gulp-notify');
+var gulpSassLint = require('gulp-sass-lint');
 
 /**
  * Setup "sass" task
@@ -21,18 +29,19 @@ var livereload = require('gulp-livereload');
 
 gulp.task('sass', function() {
 
-	return gulp.src('_assets/styles/brandco.scss')
-		.pipe(plumber())
+	return gulp.src('resources/styles/scss/main.scss')
 		.pipe(sourcemaps.init())
 		.pipe(sass())
-		.pipe(gulp.dest('_assets/styles/.'))		
+		.on('error', notify.onError(function(error) {
+			return error.message;
+		}))
+		.pipe(gulp.dest('resources/styles/css/.'))
 		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
 		.pipe(autoprefixer())
-		.pipe(rename('_assets/styles/brandco.min.css'))
+		.pipe(rename('resources/styles/css/main.min.css'))
 		.pipe(livereload())
 		.pipe(sourcemaps.write('./'))
 		.pipe(gulp.dest('.'));
-
 });
 
 /**
@@ -40,13 +49,17 @@ gulp.task('sass', function() {
  */
 
 gulp.task('scripts', function() {
-	return gulp.src('_assets/scripts/scripts/*.js')
-		.pipe(concat('all-scripts.js'))
+	return gulp.src(['resources/scripts/plugins/*.js', 'resources/scripts/scripts/*.js'])
+		.pipe(plumber())
 		.pipe(jshint())
-		.pipe(gulp.dest('_assets/scripts'))
-		.pipe(rename('brandco.min.js'))
+		.pipe(jshint.reporter('default'))
+		.pipe(sourcemaps.init())
+		.pipe(concat('main.js'))
+		.pipe(gulp.dest('resources/scripts'))
+		.pipe(rename('main.min.js'))
 		.pipe(uglify())
-		.pipe(gulp.dest('_assets/scripts'));
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('resources/scripts'));
 });
 
 /**
@@ -56,26 +69,27 @@ gulp.task('scripts', function() {
 gulp.task('browser-sync', function() {
 
 	// Watch for changes in .sass files and run the sass task
-	gulp.watch( '_assets/styles/**/*.scss', ['sass'] );
+	gulp.watch('resources/styles/scss/**/*.scss', ['sass']);
 
 	// Watch for changes in .js files and run the scripts task
-	gulp.watch( '_assets/scripts/scripts/*.js', ['scripts'] );
+	gulp.watch('resources/scripts/scripts/*.js', ['scripts']);
 
 	// BrowserSync settings
 	browserSync({
+		open: false,
 		files: [
-			"_assets/styles/brandco.min.css",
-			"_assets/scripts/brandco.min.js",
+			"resources/styles/css/main.min.css",
+			"resources/scripts/main.min.js",
 			"**/*.php"
 		],
 
 		/**
 		 *
 		 */
-		proxy: "starter.bco",
+		proxy: devURL,
 		snippetOptions: {
 			ignorePaths: ["http://localhost:3000/wp-admin/**"],
-		},		
+		},
 	});
 
 });
@@ -85,10 +99,3 @@ gulp.task('browser-sync', function() {
  */
 
 gulp.task( 'default', ['browser-sync'] );
-
-
-
-
-
-
-

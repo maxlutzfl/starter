@@ -27,7 +27,7 @@
 	outline: 0;
 
 	&:focus {
-		outline: 0;	
+		outline: 0;
 	}
 
 	&:hover {
@@ -54,7 +54,7 @@
 
 	}
 }
-	
+
 .formField-search-holder {
 	width: 100%;
 	position: relative;
@@ -167,7 +167,7 @@
 	transition: 300ms;
 	appearance: none;
 	-webkit-appearance: none;
-	-moz-appearance: none;	
+	-moz-appearance: none;
 	border-radius: $formField-borderRadius;
 	box-shadow: none;
 
@@ -176,4 +176,3 @@
 		outline: 0;
 	}
 }
-

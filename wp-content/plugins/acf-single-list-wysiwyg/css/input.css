@@ -9,3 +9,7 @@
 	border: 1px solid #eee;
 	height: 120px !important;
 }
+
+.acf-single-line-wysiwyg-wrap .mce-toolbar-grp{
+	width: 120px;
+}
