@@ -30,16 +30,27 @@ $('.menu-item-has-children').doubleTapToGo();
 
 - <strong>skrollr.js</strong> - <a href="https://github.com/Prinzhorn/skrollr" target="_blank">https://github.com/Prinzhorn/skrollr</a> For parallax scrolling animation
 
-<strong>To initialize (excluding mobile)</strong>
 ```javascript
+// Initialize skrollr.js 
 if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera) ) {
     var s = skrollr.init({
         forceHeight: false,
-        skrollrBody: 'siteWrapper',
         smoothScrolling: true,
         smoothScrollingDuration: 200
     });
 }
+```
+
+```php
+<section class="section">
+    <div class="container">
+        <h1>Section Title</h1>
+    </div>
+    <div class="background-cover absolute-fill-for-parallax"
+        style="background-image: url(path/to/image);"
+        data-top-bottom="transform: translate3d(0, 100px, 0);"
+        data-bottom-top="transform: translate3d(0, -100px, 0);"></div>
+</section>
 ```
 
 - <strong>Unveil.js</strong> - Lazy loading for images, background images
