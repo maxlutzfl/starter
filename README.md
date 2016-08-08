@@ -7,7 +7,9 @@ var devUrl = 'local-server-name.dev';
 ```
 
 - <strong>Run gulp</strong>
-<pre>gulp</pre>
+```
+gulp
+```
 That's it.
 
 ## Styles
@@ -27,8 +29,8 @@ $('.menu-item-has-children').doubleTapToGo();
 ```
 
 - <strong>skrollr.js</strong> - <a href="https://github.com/Prinzhorn/skrollr" target="_blank">https://github.com/Prinzhorn/skrollr</a> For parallax scrolling animation
-<br>
-To initialize (excluding mobile)
+
+<strong>To initialize (excluding mobile)</strong>
 ```javascript
 if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera) ) {
     var s = skrollr.init({
