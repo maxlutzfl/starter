@@ -2,7 +2,9 @@
 ## Gulp
 ### gulpfile.js
 - <strong>BrowserSync - </strong> Before you begin a new project, open the gulpfile.js and set the devUrl for BrowserSync.
-<pre>var devUrl = 'local-server-name.dev';</pre>
+```javascript
+var devUrl = 'local-server-name.dev';
+```
 
 - <strong>Run gulp</strong>
 <pre>gulp</pre>
@@ -20,12 +22,14 @@ That's it.
 
 ### Plugins
 - <strong>doubleTapToGo.js -</strong> <a href="http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly" target="_blank">http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly/</a> Solves the issue of mobile users tapping on parent menu items that acts as a dropdown, but the parent item that is tapped also links to a page.
-<pre>$('.menu-item-has-children').doubleTapToGo();</pre>
+```javascript
+$('.menu-item-has-children').doubleTapToGo();
+```
 
 - <strong>skrollr.js</strong> - <a href="https://github.com/Prinzhorn/skrollr" target="_blank">https://github.com/Prinzhorn/skrollr</a> For parallax scrolling animation
 <br>
 To initialize (excluding mobile)
-<pre>
+```javascript
 if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.userAgent || navigator.vendor || window.opera) ) {
     var s = skrollr.init({
         forceHeight: false,
@@ -34,7 +38,7 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
         smoothScrollingDuration: 200
     });
 }
-</pre>
+```
 
 - <strong>Unveil.js</strong> - Lazy loading for images, background images
 
