@@ -40,7 +40,7 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
 
 - <strong>Wow.js</strong> - For animating elements as they enter/exit the viewport
 
-- <strong>Slick.js</strong> - Carousels, sliders
+- <strong>Slick.js</strong> - <a href="http://kenwheeler.github.io/slick/" target="_blank">Demo/API</a> | <a href="https://github.com/kenwheeler/slick/" target="_blank">Github</a>
 
-- <strong>PhotoSwipe</strong> - <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Demo</a> | <a href="https://github.com/dimsemenov/Magnific-Popup" target="_blank">Github</a> <br>
+- <strong>Magnific Popup</strong> - <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Demo</a> | <a href="https://github.com/dimsemenov/Magnific-Popup" target="_blank">Github</a> <br>
 For popups
