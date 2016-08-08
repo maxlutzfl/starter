@@ -37,7 +37,10 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
 </pre>
 
 - <strong>Unveil.js</strong> - Lazy loading for images, background images
+
 - <strong>Wow.js</strong> - For animating elements as they enter/exit the viewport
+
 - <strong>Slick.js</strong> - Carousels, sliders
-- <strong>PhotoSwipe</strong> - <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Demo</a> | <a href="https://github.com/dimsemenov/Magnific-Popup" target="_blank">Github</a>
-<p>For popups</p>
+
+- <strong>PhotoSwipe</strong> - <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Demo</a> | <a href="https://github.com/dimsemenov/Magnific-Popup" target="_blank">Github</a> <br>
+For popups
