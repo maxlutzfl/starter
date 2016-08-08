@@ -133,13 +133,7 @@ class acf_field_date_picker extends acf_field {
 		
 		if( $field['value'] ) {
 			
-			// get time
-			$unixtimestamp = strtotime( $field['value'] );
-			$format = $field['display_format'];
-			
-			
-			// translate
-			$display_value = date_i18n($format, $unixtimestamp);
+			$display_value = acf_format_date( $field['value'], $field['display_format'] );
 			
 		}
 		
@@ -257,32 +251,7 @@ class acf_field_date_picker extends acf_field {
 	
 	function format_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) ) {
-			
-			return $value;
-		
-		}
-		
-		
-		// get time
-		$unixtimestamp = strtotime( $value );
- 
-		
-		// bail early if timestamp is not correct
-		if( !$unixtimestamp ) {
-			
-			return $value;
-			
-		}
-		
-		
-		// translate
-		$value = date_i18n($field['return_format'], $unixtimestamp);
-		
-		
-		// return
-		return $value;
+		return acf_format_date( $value, $field['return_format'] );
 		
 	}
 	

@@ -2,7 +2,7 @@
  Setup
  */
 
-var devURL = 'starter.bco'
+var devURL = 'starter.bco';
 
 /**
  * Import scripts
@@ -52,7 +52,7 @@ gulp.task('scripts', function() {
 	return gulp.src(['resources/scripts/plugins/*.js', 'resources/scripts/scripts/*.js'])
 		.pipe(plumber())
 		.pipe(jshint())
-		.pipe(jshint.reporter('default'))
+		// .pipe(jshint.reporter('default'))
 		.pipe(sourcemaps.init())
 		.pipe(concat('main.js'))
 		.pipe(gulp.dest('resources/scripts'))

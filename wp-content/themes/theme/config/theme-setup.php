@@ -5,9 +5,7 @@
  * @author BrandCo. LLC
  */
 
-namespace BrandCo\Config\ThemeSetup;
-
-class Theme_Setup {
+class ThemeSetup {
 
 	/**
 	 * Initiate functions using add_action inside __construct()
@@ -33,6 +31,7 @@ class Theme_Setup {
 		add_filter('tiny_mce_before_init', array($this, 'Add_Content_Editor_Formats'));
 		add_filter('mce_buttons_2', array($this, 'Add_Formats_Dropdown_To_Content_Editor'));
 		add_action('admin_init', array($this, 'Add_Backend_Content_Editor_Stylesheet'));
+		add_filter('nav_menu_link_attributes', array($this, 'add_schema_org_attributes_to_menu'), 10, 3 );
 	}
 
 	/**
@@ -164,7 +163,6 @@ class Theme_Setup {
 		// Scripts
 		wp_enqueue_script( 'jquery' );
 		wp_enqueue_script( 'brandco-theme-scripts', SCRIPTS_DIRECTORY_URI . 'main.min.js', array('jquery'), null, true );
-		wp_enqueue_script( 'brandco-parallax', SCRIPTS_DIRECTORY_URI . 'parallax.js', array('jquery'), null, true );
 
 		// Styles
 		wp_enqueue_style( 'brandco-theme-style', STYLESHEET_DIRECTORY_URI . 'main.min.css' );
@@ -369,10 +367,15 @@ class Theme_Setup {
 		add_theme_support('editor_style');
 		add_editor_style('/_assets/admin/custom-editor-style.css');
 	}
+
+	public function add_schema_org_attributes_to_menu( $atts, $item, $args ) {
+		$atts['itemprop'] = 'url';
+		return $atts;
+	}
 }
 
 /**
- * Initiate the Theme_Setup class
+ * Initiate the ThemeSetup class
  */
 
-new Theme_Setup();
+new ThemeSetup();

@@ -25,16 +25,16 @@ html {
 	background-color: transparent;
 	overflow-x: hidden;
 	max-width: 100%;
-	color: $globalColor-black;
+	color: $black;
 
 }
 
 body {
-	@include fontSize(16);
+	@include font-size(16);
 	overflow-x: hidden;
 	min-height: 100%;
 	background-color: transparent;
-	color: $globalColor-black;
+	color: $black;
 	cursor: auto;
 	margin: 0;
 	padding: 0;
@@ -61,7 +61,7 @@ ul {
 }
 
 li {
-	@include fontSize(16);
+	@include font-size(16);
 	list-style: none;
 	vertical-align: top;
 
@@ -97,33 +97,33 @@ h6 {
 }
 
 h1,
-.__h1 {
-	@include fontSize($headlineSize-h1);
+.h1 {
+	@include font-size($headlineSize-h1);
 }
 
 h2,
-.__h2 {
-	@include fontSize($headlineSize-h2);
+.h2 {
+	@include font-size($headlineSize-h2);
 }
 
 h3,
-.__h3 {
-	@include fontSize($headlineSize-h3);
+.h3 {
+	@include font-size($headlineSize-h3);
 }
 
 h4,
-.__h4 {
-	@include fontSize($headlineSize-h4);
+.h4 {
+	@include font-size($headlineSize-h4);
 }
 
 h5,
-.__h5 {
-	@include fontSize($headlineSize-h5);
+.h5 {
+	@include font-size($headlineSize-h5);
 }
 
 h6,
-.__h6 {
-	@include fontSize($headlineSize-h6);
+.h6 {
+	@include font-size($headlineSize-h6);
 }
 
 a,
@@ -141,7 +141,7 @@ blockquote {
 }
 
 a {
-	color: $globalColor-black;
+	color: #222;
 	text-decoration: none;
 	-webkit-backface-visibility: hidden;
 	backface-visibility: hidden;
@@ -156,11 +156,11 @@ img {
 	height: auto;
 }
 
-.pageContainer {
-	@include clearFix;
+.page-container {
+	@include clearfix;
 	position: relative;
 	z-index: 25;
-	max-width: $container-maxWidth;
+	max-width: $container;
 	margin: 0 auto;
 }
 
@@ -171,7 +171,7 @@ img {
  * =============================
  */
 
-.entryContent {
+.entry-content {
 	line-height: 1.75;
 
 	.gform_wrapper {
@@ -186,7 +186,7 @@ img {
 	h6 {
 		margin-bottom: rem(30);
 		line-height: 1.2;
-		color: $globalColor-black;
+		color: $black;
 	}
 
 	p,
@@ -214,7 +214,7 @@ img {
 	a {
 		font-weight: 700;
 		transition: 300ms;
-		color: $themeColor-primary;
+		color: $primary;
 		border: 0;
 		transition: 300ms ease;
 	}
@@ -351,29 +351,30 @@ img {
 [data-src] { transition: 500ms ease; }
 img[data-src] { opacity: 0; }
 
-.__no-margin { margin: 0; }
+.no-margin { margin: 0; }
 
-.__border-bottom-thin { border-bottom: 1px solid $borderColor; }
-.__border-top-thin { border-top: 1px solid $borderColor; }
+.border-bottom-thin { border-bottom: 1px solid $borderColor; }
+.border-top-thin { border-top: 1px solid $borderColor; }
 
-.__text-black { color: $globalColor-black; }
-.__text-primary { color: $themeColor-primary; }
-.__text-white { color: #fff; }
-.__text-secondary { color: $themeColor-secondary; }
+.text-black { color: $black; }
+.text-primary { color: $primary; }
+.text-white { color: #fff; }
+.text-secondary { color: $secondary; }
 
-.__text-center { text-align: center; }
-.__text-right { text-align: right; }
-.__text-left { text-align: left; }
+.text-center { text-align: center; }
+.text-right { text-align: right; }
+.text-left { text-align: left; }
 
-.__block-center { margin: 0 auto; }
+.block-center { margin: 0 auto; }
 
-.__background-cover { @include backgroundCover(); }
-.__background-contain { @include backgroundContain(); }
+.background-cover { @include backgroundCover(); }
+.background-contain { @include backgroundContain(); }
 
-.__sectionPadding-default { padding: 60px 30px; }
-.__sectionPadding-small { padding: 15px 30px; }
+.padding-default { padding: 60px 30px; 
+	@include breakpoint('above', 800px) { padding: 60px 60px; }
+}
 
-.__absolute-fill {
+.absolute-fill {
 	position: absolute;
 	top: 0;
 	right: 0;
@@ -406,7 +407,7 @@ html .live-edit-button {
 	position: fixed;
 }
 
-.responsiveVideo {
+.responsive-video {
 	position: relative;
 	padding-bottom: 56.25%;
 	padding-top: 25px;

@@ -1,16 +1,4 @@
-<?php
-/**
- * @package BrandCo Starter Theme
- * @subpackage Homepage Template
- * @author BrandCo. LLC
- */
-get_header();
-use BrandCo\Config\Functions;
-?>
-
-<main id="siteMain" class="siteMain" role="main">
- 	<?php get_template_part('templates/layout', 'default-page-header'); ?>
+<?php get_header(); ?>
+<main id="page-main" class="page-main" role="main" itemscope itemprop="mainContentOfPage">
 </main>
-
 <?php get_footer();?>
-

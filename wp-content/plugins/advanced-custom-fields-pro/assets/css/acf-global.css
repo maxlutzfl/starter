@@ -733,9 +733,6 @@ a.acf-icon.-cancel.grey:hover {
 #acf-field-group-wrap .tablenav.bottom {
   display: block;
 }
-#acf-field-group-wrap .wp-list-table {
-  border-radius: 0;
-}
 #acf-field-group-wrap .acf-description {
   font-weight: normal;
   font-size: 13px;

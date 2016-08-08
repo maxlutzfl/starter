@@ -21,36 +21,36 @@
 
 [data-content-sidebar="left"] {
 
-	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+	@include breakpoint('above', 750px) {
 
 		.pageMain-primary {
 			float: right;
-			width: $sidebarLayout-mainColumnWidth;
-			padding-left: ( $sidebarLayout-paddingBetweenColumns / 2 );
+			width: 70%;
+			padding-left: 30px;
 		}
 
 		.pageMain-secondary {
 			float: left;
-			width: $sidebarLayout-sidebarColumnWidth;
-			padding-right: ( $sidebarLayout-paddingBetweenColumns / 2 );
+			width: 30%;
+			padding-right: 30px;
 		}
 	}
 }
 
 [data-content-sidebar="right"] {
 
-	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+	@include breakpoint('above', 750px) {
 
 		.pageMain-primary {
 			float: left;
-			width: $sidebarLayout-mainColumnWidth;
-			padding-right: ( $sidebarLayout-paddingBetweenColumns / 2 );
+			width: 70%;
+			padding-right: 30px;
 		}
 
 		.pageMain-secondary {
 			float: right;
-			width: $sidebarLayout-sidebarColumnWidth;
-			padding-left: ( $sidebarLayout-paddingBetweenColumns / 2 );
+			width: 30%;
+			padding-left: 30px;
 		}
 	}
 }
@@ -79,7 +79,7 @@ body.page {
 .entryMeta {
 
 	a {
-		color: $themeColor-secondary;
+		color: $secondary;
 		font-weight: 700;
 	}
 }
@@ -92,8 +92,8 @@ body.page {
 		display: inline-block;
 		margin: 3px;
 		vertical-align: top;
-		color: $globalColor-black;
-		background-color: $globalColor-whiteGrey;
+		color: $black;
+		background-color: $white-grey;
 		border-radius: 3px;
 		text-align: center;
 		padding: 3px 8px;
@@ -101,11 +101,11 @@ body.page {
 		transition: 300ms ease;
 
 		&:hover {
-			background-color: $globalColor-lightGrey;
+			background-color: $light-grey;
 		}
 
 		&.current {
-			background-color: $globalColor-black;
+			background-color: $black;
 			color: #fff;
 		}
 	}
@@ -118,7 +118,7 @@ body.page {
  */
 
 .entrySummary {
-	@include clearFix();
+	@include clearfix();
 	margin-bottom: 60px;
 	padding-bottom: 60px;
 	border-bottom: 3px double $borderColor;
@@ -152,7 +152,7 @@ body.page {
 	a {
 
 		&:hover {
-			color: $themeColor-secondary;
+			color: $secondary;
 		}
 	}
 }
@@ -161,13 +161,13 @@ body.page {
 	margin-bottom: 10px;
 
 	a {
-		color: $themeColor-secondary;
+		color: $secondary;
 		font-weight: 700;
 	}
 }
 
 .entrySummary-excerpt {
-	@include fontSize(12);
+	@include font-size(12);
 	line-height: 1.75;
 }
 
@@ -190,7 +190,7 @@ aside {
 .widget-title {
 	font-size: em(24);
 	margin-bottom: em(10);
-	color: $globalColor-black;
+	color: $black;
 }
 
 .sidebar-widget {
@@ -205,7 +205,7 @@ aside {
 		transition: 300ms;
 
 		&:hover {
-			color: $themeColor-primary;
+			color: $primary;
 		}
 	}
 

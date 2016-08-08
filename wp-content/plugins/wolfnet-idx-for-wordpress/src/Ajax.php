@@ -27,61 +27,63 @@ class Wolfnet_Ajax
 	 *
 	 */
 	public function registerAdminAjaxActions()
-    {
-        $ajxActions = array(
-            'wolfnet_validate_key'            => 'remoteValidateProductKey',
-            'wolfnet_saved_searches'          => 'remoteGetSavedSearches',
-            'wolfnet_save_search'             => 'remoteSaveSearch',
-            'wolfnet_delete_search'           => 'remoteDeleteSearch',
-            'wolfnet_scb_options_agent'       => 'remoteShortcodeBuilderOptionsAgent',
-            'wolfnet_scb_options_featured'    => 'remoteShortcodeBuilderOptionsFeatured',
-            'wolfnet_scb_options_grid'        => 'remoteShortcodeBuilderOptionsGrid',
-            'wolfnet_scb_options_list'        => 'remoteShortcodeBuilderOptionsList',
-            'wolfnet_scb_options_quicksearch' => 'remoteShortcodeBuilderOptionsQuickSearch',
-            'wolfnet_scb_savedsearch'         => 'remoteShortcodeBuilderSavedSearch',
-            'wolfnet_scb_showagentfeature'    => 'remoteShortcodeBuilderShowAgentFeature',
-            'wolfnet_content'                 => 'remoteContent',
-            'wolfnet_content_header'          => 'remoteContentHeader',
-            'wolfnet_content_footer'          => 'remoteContentFooter',
-            'wolfnet_listings'                => 'remoteListings',
-            'wolfnet_get_listings'            => 'remoteListingsGet',
-            'wolfnet_listing_photos'          => 'remoteListingPhotos',
-            'wolfnet_css'                     => 'remotePublicCss',
-            'wolfnet_market_name'             => 'remoteGetMarketName',
-            'wolfnet_map_enabled'             => 'remoteMapEnabled',
-            'wolfnet_price_range'             => 'remotePriceRange',
-            'wolfnet_base_url'                => 'remoteGetBaseUrl',
-            'wolfnet_route_quicksearch'       => 'remoteRouteQuickSearch',
-            'wolfnet_smart_search'            => 'remoteGetSuggestions',
-            );
+	{
+		$ajaxActions = array(
+			'wolfnet_validate_key'            => 'remoteValidateProductKey',
+			'wolfnet_saved_searches'          => 'remoteGetSavedSearches',
+			'wolfnet_save_search'             => 'remoteSaveSearch',
+			'wolfnet_delete_search'           => 'remoteDeleteSearch',
+			'wolfnet_scb_options_agent'       => 'remoteShortcodeBuilderOptionsAgent',
+			'wolfnet_scb_options_featured'    => 'remoteShortcodeBuilderOptionsFeatured',
+			'wolfnet_scb_options_grid'        => 'remoteShortcodeBuilderOptionsGrid',
+			'wolfnet_scb_options_list'        => 'remoteShortcodeBuilderOptionsList',
+			'wolfnet_scb_options_quicksearch' => 'remoteShortcodeBuilderOptionsQuickSearch',
+			'wolfnet_scb_savedsearch'         => 'remoteShortcodeBuilderSavedSearch',
+			'wolfnet_scb_showagentfeature'    => 'remoteShortcodeBuilderShowAgentFeature',
+			'wolfnet_content'                 => 'remoteContent',
+			'wolfnet_content_header'          => 'remoteContentHeader',
+			'wolfnet_content_footer'          => 'remoteContentFooter',
+			'wolfnet_listings'                => 'remoteListings',
+			'wolfnet_get_listings'            => 'remoteListingsGet',
+			'wolfnet_listing_photos'          => 'remoteListingPhotos',
+			'wolfnet_css'                     => 'remotePublicCss',
+			'wolfnet_market_name'             => 'remoteGetMarketName',
+			'wolfnet_map_enabled'             => 'remoteMapEnabled',
+			'wolfnet_price_range'             => 'remotePriceRange',
+			'wolfnet_base_url'                => 'remoteGetBaseUrl',
+			'wolfnet_route_quicksearch'       => 'remoteRouteQuickSearch',
+			'wolfnet_search_manager_ajax'     => 'remoteAjaxRelay',
+			'wolfnet_smart_search'            => 'remoteGetSuggestions',
+		);
 
-        foreach ($ajxActions as $action => $method) {
-            $GLOBALS['wolfnet']->addAction('wp_ajax_' . $action, array(&$this, $method));
-        }
+		foreach ($ajaxActions as $action => $method) {
+			$GLOBALS['wolfnet']->addAction('wp_ajax_' . $action, array(&$this, $method));
+		}
 
-    }
+	}
 
-    public function registerAjaxActions()
-    {
-        $ajxActions = array(
-            'wolfnet_content'           => 'remoteContent',
-            'wolfnet_content_header'    => 'remoteContentHeader',
-            'wolfnet_content_footer'    => 'remoteContentFooter',
-            'wolfnet_listings'          => 'remoteListings',
-            'wolfnet_get_listings'      => 'remoteListingsGet',
-            'wolfnet_listing_photos'    => 'remoteListingPhotos',
-            'wolfnet_css'               => 'remotePublicCss',
-            'wolfnet_base_url'          => 'remoteGetBaseUrl',
-            'wolfnet_price_range'       => 'remotePriceRange',
-            'wolfnet_route_quicksearch' => 'remoteRouteQuickSearch',
-            'wolfnet_smart_search'      => 'remoteGetSuggestions',
-            );
+	public function registerAjaxActions()
+	{
+		$ajaxActions = array(
+			'wolfnet_content'              => 'remoteContent',
+			'wolfnet_content_header'       => 'remoteContentHeader',
+			'wolfnet_content_footer'       => 'remoteContentFooter',
+			'wolfnet_listings'             => 'remoteListings',
+			'wolfnet_get_listings'         => 'remoteListingsGet',
+			'wolfnet_listing_photos'       => 'remoteListingPhotos',
+			'wolfnet_css'                  => 'remotePublicCss',
+			'wolfnet_base_url'             => 'remoteGetBaseUrl',
+			'wolfnet_price_range'          => 'remotePriceRange',
+			'wolfnet_route_quicksearch'    => 'remoteRouteQuickSearch',
+			'wolfnet_search_manager_ajax'  => 'remoteAjaxRelay',
+			'wolfnet_smart_search'         => 'remoteGetSuggestions',
+		);
 
-        foreach ($ajxActions as $action => $method) {
-            $GLOBALS['wolfnet']->addAction('wp_ajax_nopriv_' . $action, array(&$this, $method));
-        }
+		foreach ($ajaxActions as $action => $method) {
+			$GLOBALS['wolfnet']->addAction('wp_ajax_nopriv_' . $action, array(&$this, $method));
+		}
 
-    }
+	}
 
 
 	/*
@@ -426,7 +428,7 @@ class Wolfnet_Ajax
             $args = $GLOBALS['wolfnet']->listingGrid->getOptions($_REQUEST);
 
             $response = $GLOBALS['wolfnet']->template->getWpHeader()
-            	. $GLOBALS['wolfnet']->listingGrid($args)
+            	. $GLOBALS['wolfnet']->listingGrid->listingGrid($args)
             	. $GLOBALS['wolfnet']->template->getWpFooter();
 
         } catch (Wolfnet_Exception $e) {
@@ -652,6 +654,66 @@ class Wolfnet_Ajax
 
         wp_send_json($response);
     }
+
+
+	public function remoteAjaxRelay()
+	{
+
+		try {
+
+			$url       = $_REQUEST['wnt__url'];
+			$reqMethod = $_REQUEST['wnt__method'];
+			$params    = $_REQUEST['wnt__params'];
+			$dataType  = (array_key_exists('wnt__datatype', $_REQUEST) ? $_REQUEST['wnt__datatype'] : '');
+
+			// Relay the request and get the response
+			$response = $GLOBALS['wolfnet']->searchManager->searchRelay($url, $requestMethod, $params);
+
+		} catch (Wolfnet_Exception $e) {
+
+			status_header(500);
+			$response = var_export(
+				array(
+					'message' => $e->getMessage(),
+					'data' => $e->getData(),
+				),
+				true
+			);
+
+		}
+
+		// For the create_session request (which returns HTML of a full page of 2.5), remove HTML
+		if (
+			(strpos($params, 'create_session') !== false) &&
+			in_array($dataType, array('json', 'script', 'jsonp'))
+		) {
+			$response = 'true';
+		}
+
+		switch ($dataType) {
+			case 'json':
+				header('Content-Type: text/json');
+				break;
+			case 'script':
+			case 'jsonp':
+				header('Content-Type: text/javascript');
+				break;
+			case 'xml':
+				header('Content-Type: application/xml');
+				break;
+			case 'html':
+				header('Content-Type: text/html');
+				break;
+			case 'text':
+				header('Content-Type: text/plain');
+				break;
+		}
+
+		echo $response;
+
+		die;
+
+	}
 
 
 	public function remoteGetSuggestions()

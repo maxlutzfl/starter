@@ -5,15 +5,15 @@
 *
 *  All the logic for this field type
 *
-*  @class 		acf_field_date_time_picker
+*  @class 		acf_field_date_and_time_picker
 *  @extends		acf_field
 *  @package		ACF
 *  @subpackage	Fields
 */
 
-if( ! class_exists('acf_field_date_time_picker') ) :
+if( ! class_exists('acf_field_date_and_time_picker') ) :
 
-class acf_field_date_time_picker extends acf_field {
+class acf_field_date_and_time_picker extends acf_field {
 	
 	
 	/*
@@ -172,12 +172,7 @@ class acf_field_date_time_picker extends acf_field {
 		
 		if( $field['value'] ) {
 			
-			// get time
-			$unixtimestamp = strtotime( $field['value'] );
-			
-			
-			// translate
-			$display_value = date_i18n($field['display_format'], $unixtimestamp);
+			$display_value = acf_format_date( $field['value'], $field['display_format'] );
 			
 		}
 		
@@ -192,7 +187,7 @@ class acf_field_date_time_picker extends acf_field {
 		$div = array(
 			'class'					=> 'acf-date-time-picker acf-input-wrap',
 			'data-date_format'		=> acf_convert_date_to_js($formats['date']),
-			'data-time_format'		=> acf_convert_date_to_js($formats['time']),
+			'data-time_format'		=> acf_convert_time_to_js($formats['time']),
 			'data-first_day'		=> $field['first_day'],
 		);
 		$hidden = array(
@@ -302,31 +297,13 @@ class acf_field_date_time_picker extends acf_field {
 	
 	function format_value( $value, $post_id, $field ) {
 		
-		// bail early if no value
-		if( empty($value) ) return $value;
-		
-		
-		// get time
-		$unixtimestamp = strtotime( $value );
-		$format = $field['return_format'];
-		
-		
-		// bail early if timestamp is not correct
-		if( !$unixtimestamp ) return $value;
-		
-		
-		// translate
-		$value = date_i18n($format, $unixtimestamp);
-		
-		
-		// return
-		return $value;
+		return acf_format_date( $value, $field['return_format'] );
 		
 	}
 	
 }
 
-new acf_field_date_time_picker();
+new acf_field_date_and_time_picker();
 
 endif;
 

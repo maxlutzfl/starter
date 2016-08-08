@@ -36,7 +36,7 @@ class Wolfnet_Plugin
      * as part of the Ant build process that is run when the plugin is packaged for distribution.
      * @var string
      */
-    public $version = '1.10.2';
+    public $version = '1.12.0';
 
     /**
      * This property is used to set the option group for the plugin which creates a namespaced
@@ -50,7 +50,14 @@ class Wolfnet_Plugin
      * collection of variables which are used in saving page settings.
      * @var string
      */
-    public $StyleOptionGroup = 'wolfnetStyle';
+    public $WidgetThemeOptionGroup = 'wolfnetStyle';
+
+    /**
+     * This property is used to set the option group for the Appearance page. It creates a namespaced
+     * collection of variables which are used in saving page settings.
+     * @var string
+     */
+    public $ColorOptionGroup = 'wolfnetColor';
 
     /**
      * This property is used to set the option group for the Edit Css page. It creates a namespaced
@@ -71,6 +78,18 @@ class Wolfnet_Plugin
      * @var string
      */
     public $widgetThemeOptionKey = 'wolfnet_widgetTheme';
+
+    /**
+     * This property is used to identify which widget theme color(s) to use.
+     * @var array
+     */
+    public $themeColorsOptionKey = 'wolfnet_themeColors';
+
+    /**
+     * This property is used to identify what opacity to use.
+     * @var integer
+     */
+    public $themeOpacityOptionKey = 'wolfnet_themeOpacity';
 
     /**
      * This property contains the public CSS as defined in the Edit CSS page.
@@ -164,6 +183,7 @@ class Wolfnet_Plugin
         $this->quickSearch = $this->ioc->get('Wolfnet_Module_QuickSearch');
         $this->smartSearch = $this->ioc->get('Wolfnet_Module_SmartSearch');
         $this->searchManager = $this->ioc->get('Wolfnet_Module_SearchManager');
+        $this->widgetTheme = $this->ioc->get('Wolfnet_Module_WidgetTheme');
 
         if(is_admin()) {
             $this->admin = $this->ioc->get('Wolfnet_Admin');
@@ -180,9 +200,17 @@ class Wolfnet_Plugin
             array(self::CACHE_CRON_HOOK, array($this->cachingService, 'clearExpired')),
             ));
 
-        if($this->keyService->getDefault()) {
+        try {
+			$productKey = $this->keyService->getDefault();
+			$response = $this->api->sendRequest($productKey, '/status', 'GET');
+			$successfulApiConnection = true;
+		} catch (Exception $e) {
+			$successfulApiConnection = false;
+		}
+
+        if ($successfulApiConnection) {
             $this->addAction(array(
-                array('widgets_init',      'widgetInit'),
+                array('widgets_init','widgetInit'),
             ));
         }
 
@@ -339,7 +367,8 @@ class Wolfnet_Plugin
 
         register_widget('Wolfnet_Widget_QuickSearchWidget');
 
-        register_widget('Wolfnet_Widget_AgentPagesWidget');
+		// Agent Pages widget - currently does not fit in a sidebar
+		//register_widget('Wolfnet_Widget_AgentPagesWidget');
 
         do_action($this->postHookPrefix . 'registerWidgets'); // Legacy hook
 

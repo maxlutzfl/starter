@@ -33,38 +33,9 @@
     padding-top: 20px;
     width: 100% !important;
   }
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet-suggestion-label {
-    font-size: 0.7em !important;
-  }
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet-suggestion-field {
-    font-size: 0.6em !important;
-  }
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartPriceFields, .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartBedBathFields, .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartSubmit {
-    width: 100%;
-    clear: both;
-  }
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartMinPrice,
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartMaxPrice,
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartBeds,
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartBaths {
-    width: 50% !important;
-  }
-  .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartSubmit {
-    width: 100% !important;
-  }
 }
 .wolfnet_widget {
   margin: 1em auto 2em auto;
-}
-.wolfnet_widget * {
-  box-sizing: border-box !important;
-}
-.wolfnet_widget button,
-.wolfnet_widget input[type="button"],
-.wolfnet_widget input[type="reset"],
-.wolfnet_widget input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
 }
 .wolfnet_widget.wolfnet_quickSearch_legacy {
   z-index: 10;
@@ -86,7 +57,7 @@
   background: linear-gradient(to bottom, #ffffff 60%, #e2e2e2 100%);
   /* W3C */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff", endColorstr="#e2e2e2", GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#ffffff",endColorstr="#e2e2e2",GradientType=0);
   /* IE6-9 */
 
 }
@@ -242,99 +213,6 @@
   height: auto;
   width: auto;
   float: none;
-}
-.wolfnet_widget.wolfnet_smartSearch.wnt-smartsearch .wnt-smartsearch-input-container {
-  width: 100%;
-}
-.wolfnet_widget.wolfnet_smartSearch .wolfnet-suggestion-label {
-  font-weight: bold;
-  font-size: 1.1em;
-  padding-left: 10px;
-  display: inline-block;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.wolfnet_widget.wolfnet_smartSearch .wolfnet-suggestion-field {
-  float: right;
-  padding-right: 10px;
-  font-size: 0.9em;
-}
-.wolfnet_widget.wolfnet_smartSearch .wnt-smart-menu {
-  display: inline-block;
-  position: absolute;
-}
-.wolfnet_widget.wolfnet_smartSearch span.wnt-smart-search {
-  padding: 1em 1em 1em 1em;
-  cursor: text;
-  overflow: hidden;
-  vertical-align: top;
-  border: 1px solid #e2e2e2;
-  height: auto !important;
-  width: 100%;
-  display: inline-block;
-  text-align: left;
-}
-.wolfnet_widget.wolfnet_smartSearch span.wnt-smart-search .wnt-ss-value {
-  background-color: #e2e2e2;
-  border: 1px solid black;
-  font-size: 1.1em;
-  margin-right: .5em;
-  padding: 0 5px 0 5px;
-}
-.wolfnet_widget.wolfnet_smartSearch span.wnt-smart-search .wnt-ss-value .wnt-close-btn {
-  padding-left: 5px;
-  cursor: pointer;
-  font-weight: bold;
-}
-.wolfnet_widget.wolfnet_smartSearch span.wnt-smart-search > span {
-  vertical-align: top;
-}
-.wolfnet_widget.wolfnet_smartSearch span.wnt-smart-search > span input {
-  background-color: white;
-  height: 100%;
-  border: 0 !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  outline: none !important;
-  padding: 0 !important;
-}
-.wolfnet_widget.wolfnet_smartSearch .wnt-suggestions {
-  border-top: 1px solid #e2e2e2;
-  border-bottom: 1px solid #e2e2e2;
-  border-left: 1px solid #e2e2e2;
-  border-right: 1px solid #e2e2e2;
-}
-.wolfnet_widget.wolfnet_smartSearch .wnt-suggestions > div {
-  clear: both;
-}
-.wolfnet_widget.wolfnet_smartSearch .wnt-suggestions > div.wnt-hover {
-  color: #e2e2e2;
-  background-color: gray;
-}
-.wolfnet_widget.wolfnet_smartSearch .wnt-suggestions > div.wnt-suggestion {
-  cursor: pointer;
-}
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields {
-  width: 100%;
-  padding-top: 0.5em;
-}
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartMinPrice,
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartMaxPrice,
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartBeds,
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartBaths,
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields .wolfnet_smartSubmit {
-  padding-right: 5px;
-  width: 20%;
-  float: left;
-  margin-top: .3em;
-  height: 2em;
-}
-.wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields button, .wolfnet_widget.wolfnet_smartSearch .wolfnet_smartHorizontalFields select {
-  width: 100%;
-  height: 2.8em;
-  text-transform: uppercase;
-  font-size: 0.7em;
 }
 .wolfnet_widget.wolfnet_officesList h2 {
   margin-top: 0;
@@ -539,98 +417,40 @@
 .wolfnet_widget.wolfnet_quickSearch_basic {
   z-index: 0;
 }
-.wolfnet_widget.wolfnet_featuredListings.wnt-in-transition .wolfnet_listings, .wolfnet_widget.wolfnet_listingGrid.wnt-in-transition .wolfnet_listings {
-  visibility: hidden;
-}
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing {
+  width: 150px;
   float: left;
-  margin: 0 5px 0 5px;
+  margin: 0 auto 1em auto;
   position: relative;
   text-align: left;
-  font-size: 0.8em;
+  font-size: .8em;
+  margin: 0 5px 0 5px;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing a, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing a {
   color: inherit;
   text-decoration: none;
-  box-shadow: none;
-  border: none;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_detailsLink, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_detailsLink {
   display: block;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage {
-  display: block;
   width: 100%;
   height: auto;
-  margin: 0 0 0.5em 0;
-  padding: 10px 0 10px 0;
+  display: block;
+  overflow: hidden;
+  margin: 0;
   text-align: center;
+  margin-bottom: .5em;
   border: 1px solid #dedede;
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
+  padding: 10px 0 10px 0;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage img, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage img {
-  display: block;
-  max-width: 100%;
   height: 95px;
+  box-shadow: 0 5px 10px rgba(153, 153, 153, 0.25);
   margin: auto;
-  border: none;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller {
-  position: relative;
-  display: block;
-  text-align: center;
-  background-color: transparent;
-  width: 100%;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn {
-  position: absolute;
-  top: 0;
-  width: 20px;
-  height: 100%;
-  border: none;
-  outline: none;
-  background: none;
-  background-color: transparent;
-  text-decoration: none;
-  font-style: normal;
-  font-weight: normal;
-  color: black;
-  padding: 0;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn .wnt-icon, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn .wnt-icon {
-  font-size: 30px;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn.wnt-next, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn.wnt-next {
-  right: -20px;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn.wnt-prev, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-nav-btn.wnt-prev {
-  left: -20px;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-thumbnails-loader, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller .wnt-thumbnails-loader {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: none;
-  width: 100%;
-  height: 100%;
-  background-color: white;
-  background-image: url(../img/loading.gif);
-  background-position: center;
-  background-repeat: no-repeat;
-  opacity: .40;
-  filter: alpha(opacity=40);
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-thumbnails-loading .wnt-thumbnails-loader, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-thumbnails-loading .wnt-thumbnails-loader {
-  display: inline-block;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-hidable-controls, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-hidable-controls {
-  padding-left: 0;
-  padding-right: 0;
-}
-.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-hidable-controls .wnt-nav-btn, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_listingImage .wnt-thumbnail-scroller.wnt-hidable-controls .wnt-nav-btn {
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.5);
-  color: rgba(0, 0, 0, 0.9);
+  border: 1px solid #EBEBEB;
+  max-width: 100%;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_price, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_price {
   font-size: 1.2em;
@@ -640,12 +460,19 @@
   text-overflow: ellipsis;
   overflow: hidden;
 }
+.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_location,
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_location,
+.wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_address,
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_address {
+  display: block;
+  line-height: 1.3em;
+}
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_bed_bath, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_bed_bath {
   display: block;
-  font-size: 0.8em;
+  font-size: .8em;
   font-style: italic;
   line-height: 1em;
-  margin-bottom: 0.75em;
+  margin-bottom: .75em;
 }
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_listing .wolfnet_bed_bath .wolfnet_label, .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_bed_bath .wolfnet_label {
   display: none;
@@ -693,115 +520,52 @@
   height: 480px;
   position: relative;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntMainMap .mqabasicwnd, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntMainMap .mqabasicwnd {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper {
-  display: block;
-  position: relative;
-  max-height: 200px;
-  min-height: 150px;
-  width: auto;
-  overflow-x: hidden;
-  overflow-y: auto;
-  font-size: 0.8em;
-  color: inherit;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper > a, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper > a {
-  color: inherit;
-  text-decoration: none;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem {
+.wolfnet_widget.wolfnet_listingGrid .wntHOItem, .wolfnet_widget.wolfnet_propertyList .wntHOItem {
   cursor: pointer;
   min-height: 115px;
   width: 100%;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOTable, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOTable {
   padding: 0px;
   width: auto;
-  border: none;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable th,
-.wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable th,
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable td,
-.wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable td {
-  border: none;
-  vertical-align: top;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOImg, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOImg {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOImg, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOImg {
   position: relative;
-  top: 0;
-  left: 0;
+  top: 0px;
+  left: 0px;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOBroker, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOBroker {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOBroker, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOBroker {
   position: relative;
   width: 110px;
-  margin-bottom: 5px !important;
-  color: #888;
-  max-height: 50px;
-  width: auto;
-  text-align: center;
+  margin-bottom: 5px!important;
+  color: ##888888;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOBroker .wolfnet_wntHOBrokerLogo, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOBroker .wolfnet_wntHOBrokerLogo {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOBrokerLogo, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOBrokerLogo {
   max-width: 100px;
   height: auto;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOContentContainer, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_wntHOTable .wolfnet_wntHOContentContainer {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOContentContainer, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOContentContainer {
   position: relative;
   min-width: 200px;
-  top: 0;
-  left: 0.75em;
+  line-height: 1.2;
+  top: 0px;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_listingImage, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_listingImage {
-  display: block;
-  width: 100%;
-  height: auto;
-  overflow: hidden;
-  margin: 0 0 0.5em 0;
-  padding: 6px;
-  text-align: center;
-  border: 1px solid #dedede;
-  background-color: #f5f5f5;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_listingImage img, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_listingImage img {
-  max-width: 100%;
-  max-height: 100px;
-  height: 95px;
-  margin: auto;
-  border: none;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_price, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_price {
-  font-size: 1.2em;
-  font-weight: bold;
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOContentBold, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOContentBold {
   display: block;
   white-space: nowrap;
-  text-overflow: ellipsis;
-  overflow: hidden;
+  font-weight: bold!important;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath {
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHOContentBold, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHOContentBold {
   display: block;
-  font-size: 0.8em;
-  font-style: italic;
-  line-height: 1em;
-  margin-bottom: 0.75em;
+  white-space: nowrap;
 }
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_label, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_label {
-  display: none;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_beds, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_beds {
-  display: inline-block;
-  margin-right: 1em;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_beds:before, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_beds:before {
-  content: "Beds: ";
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_baths, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_baths {
-  display: inline-block;
-}
-.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_baths:before, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper .wntHOItem .wolfnet_bed_bath .wolfnet_baths:before {
-  content: "Baths: ";
+.wolfnet_widget.wolfnet_listingGrid .wolfnet_wntHouseOverWrapper, .wolfnet_widget.wolfnet_propertyList .wolfnet_wntHouseOverWrapper {
+  position: relative;
+  max-height: 170px;
+  min-height: 150px;
+  width: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 .wolfnet_widget.wolfnet_listingGrid .showHideLink, .wolfnet_widget.wolfnet_propertyList .showHideLink {
   padding-top: 25px;
@@ -831,7 +595,10 @@
   text-align: right;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_toolbar .wolfnet_page_nav.wolfnet_disabled, .wolfnet_widget.wolfnet_propertyList .wolfnet_toolbar .wolfnet_page_nav.wolfnet_disabled {
-  display: none;
+  text-decoration: none;
+  opacity: 0.5;
+  filter: alpha(opacity=50);
+  cursor: default;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_toolbar .wolfnet_page_info, .wolfnet_widget.wolfnet_propertyList .wolfnet_toolbar .wolfnet_page_info {
   display: block;
@@ -849,7 +616,7 @@
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_toolbar .wolfnet_page_info .wolfnet_page_items_select select, .wolfnet_widget.wolfnet_propertyList .wolfnet_toolbar .wolfnet_page_info .wolfnet_page_items_select select {
   margin-right: .25em;
-  width: auto;
+  max-width: 3em;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_toolbar .wolfnet_page_info .wolfnet_sortoptions, .wolfnet_widget.wolfnet_propertyList .wolfnet_toolbar .wolfnet_page_info .wolfnet_sortoptions {
   display: inline-block;
@@ -876,7 +643,6 @@
 .wolfnet_widget.wolfnet_featuredListings .wolfnet_control {
   top: 0;
   position: absolute;
-  background: inherit;
   background-color: transparent;
   background-repeat: no-repeat;
   background-position: center center;
@@ -915,28 +681,23 @@
   vertical-align: top;
 }
 .wolfnet_widget.wolfnet_listingGrid {
-  text-align: center;
+  text-align: left;
   margin: 0 auto 2em auto;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing {
   text-align: left;
   position: relative;
-  display: inline-block;
-  float: none;
-  width: 150px;
-  vertical-align: top;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_branding {
   display: block;
-  font-size: 0.8em;
-  line-height: 1.25;
+  padding-top: 1.5em;
+  font-size: .8em;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_branding .wolfnet_brokerLogo {
   display: block;
 }
 .wolfnet_widget.wolfnet_listingGrid .wolfnet_listing .wolfnet_branding .wolfnet_brandingMessage {
   display: block;
-  margin-top: 0.5em;
 }
 .wolfnet_widget.wolfnet_propertyList .wolfnet_listing .wolfnet_full_address {
   white-space: nowrap;
@@ -1020,9 +781,6 @@
 }
 .widget_wolfnet_agentpageswidget .wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview .wolfnet_agentInfo {
   width: 100% !important;
-}
-.wolfnet_hidden {
-  display: none;
 }
 .wolfnet_clearfix:before, .wolfnet_clearfix:after {
   content: "";

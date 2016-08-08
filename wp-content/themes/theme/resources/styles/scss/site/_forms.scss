@@ -4,7 +4,7 @@
  * =============================
  */
 
-.buttonStyle,
+.button-style,
 .formField-submit,
 .gform_wrapper input[type="submit"] {
 	font-weight: 700;
@@ -14,7 +14,7 @@
 	letter-spacing: 1.5px;
 	text-transform: uppercase;
 	border: 0 solid transparent;
-	background-color: $globalColor-black;
+	background-color: $black;
 	border-radius: $formField-borderRadius;
 	padding: 0 15px;
 	box-shadow: 0 0 transparent;
@@ -35,22 +35,22 @@
 	}
 
 	/**
-	 * Extend buttonStyle
+	 * Extend button-style
 	 */
 
-	&.buttonStyle-hollow {
+	&.button-style-hollow {
 
 	}
 
-	&.buttonStyle-white {
+	&.button-style-white {
 
 	}
 
-	&.buttonStyle-primary {
+	&.button-style-primary {
 
 	}
 
-	&.buttonStyle-secondary {
+	&.button-style-secondary {
 
 	}
 }

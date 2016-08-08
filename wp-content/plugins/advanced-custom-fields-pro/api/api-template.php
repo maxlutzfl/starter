@@ -361,7 +361,16 @@ function get_field_objects( $post_id = false, $format_value = true, $load_value 
 
 function have_rows( $selector, $post_id = false ) {
 	
+	// reference
+	$_post_id = $post_id;
+	
+	
+	// filter post_id
+	$post_id = acf_get_valid_post_id( $post_id );
+	
+	
 	// vars
+	$key = "selector={$selector}/post_id={$post_id}";
 	$active_loop = acf_get_loop('active');
 	$previous_loop = acf_get_loop('previous');
 	$new_parent_loop = false;
@@ -369,15 +378,6 @@ function have_rows( $selector, $post_id = false ) {
 	$sub_field = false;
 	$sub_exists = false;
 	$change = false;
-	$key = "selector={$selector}/post_id={$post_id}";
-	
-	
-	// reference
-	$_post_id = $post_id;
-	
-	
-	// filter post_id
-	$post_id = acf_get_valid_post_id( $post_id );
 	
 	
 	// no active loops

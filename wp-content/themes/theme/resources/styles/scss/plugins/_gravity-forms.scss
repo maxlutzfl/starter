@@ -126,7 +126,7 @@
 
 .gfield_radio input:checked + label:before,
 .gfield_checkbox input:checked + label:before {
-	background: $globalColor-black;
+	background: $black;
 	box-shadow: inset 0px 0px 0px 2px #fff;
 }
 

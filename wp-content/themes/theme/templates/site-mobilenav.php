@@ -1,40 +1,23 @@
-<?php
-/**
- * @package BrandCo Starter Theme
- * @subpackage Mobile Navigation Drawer Template
- * @author BrandCo. LLC
- */ 
-use BrandCo\Config\Functions;
-?>
-
-<div id="mobileNavigation" class="mobileNavigation" aria-hidden="true">
-	<div class="mobileNavigation-container">
+<div id="mobile-navigation" class="mobile-navigation" aria-hidden="true">
+	<div class="mobile-navigation-container">
 		
-		<div id="mobileNavigation-close" class="mobileNavigation-close" title="Close Menu" data-mobile-menu-close>&times;</div>
+		<div id="mobile-navigation-close" class="mobile-navigation-close" title="Close Menu" data-mobile-menu-close>&times;</div>
 
-		<div class="mobileNavigation-header">
+		<div class="mobile-navigation-header">
 
-			<img src="<?php echo Functions\ImgDir('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
+			<img src="<?php echo get_image_from_directory('brandco-logo.png'); ?>" alt="<?php bloginfo('title'); ?> Logo" itemprop="logo">
 
 		</div>
 
-		<div class="mobileNavigation-body">
-			<div class="mobileNavigation-links">
+		<div class="mobile-navigation-body">
+			<div class="mobile-navigation-links">
 				<ul>
-					<?php Functions\MobileNav(); ?>
+					<?php display_mobile_nav(); ?>
 				</ul>				
 			</div>
-		</div>
-
-		<div class="mobileNavigation-footer">
-			<ul>
-				<li> ... </li>
-				<li> ... </li>
-				<li> ... </li>
-			</ul>
 		</div>
 
 	</div>
 </div>
 
-<div id="mobileNavigation-overlay" class="mobileNavigation-overlay" aria-hidden="true" data-mobile-menu-close></div>
+<div id="mobile-navigation-overlay" class="mobile-navigation-overlay" aria-hidden="true" data-mobile-menu-close></div>

@@ -1,21 +1,17 @@
 <?php 
-/**
+/** 
  * @package BrandCo Starter Theme
  * @subpackage Theme Functions
  * @author BrandCo. LLC
- * 
- * To use function in this namespace add:
- * <?php use BrandCo\Config\Functions; ?>
- * Then you can use functions like <?php echo Functions\Date(); ?>
  */
 
-namespace BrandCo\Config\Functions;
+
 
 /**
  * Default pagination for archives
  */
 
-function BrandCo_Pagination() {
+function display_archive_pagination() {
 	global $wp_query;
 	$big = 999999999;
 	$translated = __( 'Page', 'brandco' );
@@ -34,7 +30,7 @@ function BrandCo_Pagination() {
  * Get post date
  */
 
-function Date() {
+function get_post_date() {
 	$default_date = get_the_date();
 	$formatted_date = get_the_date("Y-m-d H:i:s");
 	$date = "<time datetime='{$formatted_date}' class='published' itemprop='datePublished'>{$default_date}</time>";
@@ -45,7 +41,7 @@ function Date() {
  * Get post categories
  */
 
-function Categories($sep = null) {
+function display_post_categories($sep = null) {
 	$list = get_the_category();
 	if ( $list ) { 
 		foreach ( $list as $category ) {
@@ -62,7 +58,7 @@ function Categories($sep = null) {
  * Get post tags
  */
 
-function Tags($sep = null) {
+function display_post_tags($sep = null) {
 	$list = get_the_tags();
 	if ( $list ) {
 		foreach ( $list as $tag ) {
@@ -79,7 +75,7 @@ function Tags($sep = null) {
  * Get blog page title
  */
 
-function BlogTitle() {
+function get_blog_page_title() {
 	if ( is_home() ) {
 		if ( get_option('page_for_posts', true) ) {
 			return get_the_title( get_option( 'page_for_posts', true ) );
@@ -93,7 +89,7 @@ function BlogTitle() {
  * Get custom post type title
  */
 
-function PostTypeTitle() {
+function get_post_type_archive_title() {
 	global $wp_query;
 
 	if ( is_post_type_archive() ) {
@@ -105,7 +101,7 @@ function PostTypeTitle() {
  * Get featured image url
  */
 
-function Image( $size = 'medium', $post_id = null ) {
+function get_featured_image_url( $size = 'medium', $post_id = null ) {
 	if ( empty( $post_id ) ) {
 		$post_id = get_the_ID();
 	}
@@ -125,7 +121,7 @@ function Image( $size = 'medium', $post_id = null ) {
  * Get image url by image ID
  */
 
-function ImageID($img_id, $size = 'thumbnail') {
+function get_image_url_by_id($img_id, $size = 'thumbnail') {
 	$img_src_url = wp_get_attachment_image_src( $img_id, $size );
 	if ( $img_src_url ) {
 		return $img_src_url[0];
@@ -138,7 +134,7 @@ function ImageID($img_id, $size = 'thumbnail') {
  * Single page back link to archive
  */
 
-function ArchiveBackLink() {
+function display_archive_back_link() {
 	global $wp_query;
 	
 	if ( ! is_post_type_archive() ) { return; }
@@ -146,43 +142,14 @@ function ArchiveBackLink() {
 	$post_type = $wp_query->query['post_type'];
 	$post_type_name = get_post_type_object( $wp_query->query['post_type'] )->labels->name;
 
-	echo '<a href="' . get_post_type_archive_link( $post_type ) . '" class="ArchiveBackLink">Back To All ' . $post_type_name . '</a>';
+	echo '<a href="' . get_post_type_archive_link( $post_type ) . '" class="archive-back-link">Back To All ' . $post_type_name . '</a>';
 }
 
-function SocialMedia() {
-	$links = array();
-
-	if ( get_option('SocialMedia__Facebook') ) 
-		$links[] = array( 'title' => 'Facebook', 'icon' => Icon('Facebook'), 'link' => get_option('SocialMedia__Facebook') );
-	
-	if ( get_option('SocialMedia__Twitter') )
-		$links[] = array( 'title' => 'Twitter', 'icon' => Icon('Twitter'), 'link' => get_option('SocialMedia__Twitter') );
-	
-	if ( get_option('SocialMedia__GooglePlus') )
-		$links[] = array( 'title' => 'Google Plus', 'icon' => Icon('Google Plus'), 'link' => get_option('SocialMedia__GooglePlus') );
-	
-	if ( get_option('SocialMedia__Linkedin') )
-		$links[] = array( 'title' => 'LinkedIn', 'icon' => Icon('LinkedIn'), 'link' => get_option('SocialMedia__Linkedin') );
-	
-	if ( get_option('SocialMedia__Pinterest') )
-		$links[] = array( 'title' => 'Pinterest', 'icon' => Icon('Pinterest'), 'link' => get_option('SocialMedia__Pinterest') );
-	
-	if ( get_option('SocialMedia__Instagram') )
-		$links[] = array( 'title' => 'Instagram', 'icon' => Icon('Instagram'), 'link' => get_option('SocialMedia__Instagram') );
-	
-	if ( get_option('SocialMedia__Youtube') )
-		$links[] = array( 'title' => 'Youtube', 'icon' => Icon('YouTube'), 'link' => get_option('SocialMedia__Youtube') );
-
-	foreach ( $links as $link ) {
-		echo '<a href="' . $link['link'] . '" title="Click to find us on ' . $link['title'] . '" class="SocialIcon">' . $link['icon'] . '</a>';
-	}
-}
-
-function ImgDir($img = null) {
+function get_image_from_directory($img = null) {
 	return IMAGE_DIRECTORY_URI . $img;
 }
 
-function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
+function get_post_excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
 
 	if ( $id === null ) {
 		$id = get_the_ID();
@@ -199,12 +166,12 @@ function Excerpt( $wordcount = 30, $id = null, $readmoretext = 'Read More' ) {
 	return wpautop( strip_shortcodes($trimmed_content) );
 }
 
-function GoogleMapsScript() {
-	echo '<script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>';
+function google_maps_script() {
+	echo '<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfEzWjcytuQ3VsBCE-9qi4zHptECX6sig&callback=initMap"></script>';
 }
 
-function AddMap( $address ) {
-	add_action('wp_footer', 'BrandCo\GoogleMapsScript');
+function display_google_map( $address ) {
+	add_action('wp_footer', 'google_maps_script');
 	?>
 		<div id="CompanyMap"></div>
 		<script>
@@ -235,11 +202,11 @@ function AddMap( $address ) {
 	<?php
 }
 
-function Icon( $name = null ) {
+function get_icon( $name = null ) {
 	if ( !$name ) { return 'No icon specified'; }
 
 	if ( $name === 'Google Plus' ) {
-		return '<svg class="SiteSvg" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1181 913q0 208-87 370.5t-248 254-369 91.5q-149 0-285-58t-234-156-156-234-58-285 58-285 156-234 234-156 285-58q286 0 491 192l-199 191q-117-113-292-113-123 0-227.5 62t-165.5 168.5-61 232.5 61 232.5 165.5 168.5 227.5 62q83 0 152.5-23t114.5-57.5 78.5-78.5 49-83 21.5-74h-416v-252h692q12 63 12 122zm867-122v210h-209v209h-210v-209h-209v-210h209v-209h210v209h209z"/></svg>';
+		return '<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 1792 1792" style="enable-background:new 0 0 1792 1792;" xml:space="preserve"><path d="M1115.7,909.1c0,106.9-22.4,202.1-67.1,285.6c-44.7,83.5-108.4,148.7-191.1,195.8s-177.5,70.5-284.4,70.5 c-76.6,0-149.8-14.9-219.7-44.7c-69.9-29.8-130-69.9-180.3-120.2c-50.4-50.4-90.4-110.5-120.2-180.3C23,1045.8,8.1,972.6,8.1,896 S23,746.2,52.8,676.3s69.9-130,120.2-180.3s110.5-90.4,180.3-120.2s143.1-44.7,219.7-44.7c147,0,273.1,49.3,378.4,148L798.1,626.2 C738,568.2,663,539.2,573.1,539.2c-63.2,0-121.6,15.9-175.3,47.8c-53.7,31.9-96.2,75.1-127.6,129.9c-31.3,54.7-47,114.5-47,179.2 s15.7,124.5,47,179.2s73.9,98,127.6,129.9c53.7,31.9,112.1,47.8,175.3,47.8c42.6,0,81.8-5.9,117.5-17.7 c35.7-11.8,65.1-26.6,88.2-44.3c23.1-17.7,43.3-37.9,60.5-60.5c17.2-22.6,29.8-43.9,37.8-64c8-20,13.5-39.1,16.6-57H573.1V815.1 h533.3C1112.6,847.4,1115.7,878.8,1115.7,909.1z M1783.9,815.1v161.9h-161.1V1138h-161.9V976.9h-161.1V815.1h161.1V654h161.9v161.1 H1783.9z"/></svg>';
 	
 	} else if ( $name === 'Twitter' ) {
 		return '<svg class="SiteSvg" width="1792" height="1792" viewBox="0 0 1792 1792" xmlns="http://www.w3.org/2000/svg"><path d="M1684 408q-67 98-162 167 1 14 1 42 0 130-38 259.5t-115.5 248.5-184.5 210.5-258 146-323 54.5q-271 0-496-145 35 4 78 4 225 0 401-138-105-2-188-64.5t-114-159.5q33 5 61 5 43 0 85-11-112-23-185.5-111.5t-73.5-205.5v-4q68 38 146 41-66-44-105-115t-39-154q0-88 44-163 121 149 294.5 238.5t371.5 99.5q-8-38-8-74 0-134 94.5-228.5t228.5-94.5q140 0 236 102 109-21 205-78-37 115-142 178 93-10 186-50z"/></svg>';
@@ -264,7 +231,7 @@ function Icon( $name = null ) {
 	}
 }
 
-function MobileNav() {
+function display_mobile_nav() {
 	if ( has_nav_menu('mobile') ) {
 		wp_nav_menu( 
 			array( 
@@ -291,7 +258,7 @@ function MobileNav() {
 	}	
 }
 
-function getParentPageId() {
+function get_parent_page_id() {
 	global $post;
 	if ( $post->post_parent )	{
 		$ancestors = get_post_ancestors($post->ID);

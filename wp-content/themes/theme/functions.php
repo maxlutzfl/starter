@@ -5,8 +5,6 @@
  * @author BrandCo. LLC
  */
 
-namespace BrandCo\Config;
-
 /**
  * Define global constants
  */

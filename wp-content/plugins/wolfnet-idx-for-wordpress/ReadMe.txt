@@ -1,10 +1,10 @@
 === WolfNet IDX for WordPress  ===
 Author:             WolfNet Technologies, LLC
-Contributors:       wolfnettech, ajmichels, asbaumgart, michaelpidde, blots
+Contributors:       wolfnettech, ajmichels, asbaumgart, michaelpidde, thenewcoke, blots
 Tags:               idx, mls, homes
 Requires at least:  3.5.1
 Tested up to:       4.5
-Stable tag:         1.10.2
+Stable tag:         1.12.0
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,38 @@ Please upgrade to the latest version of the plugin as we will be disabling the i
 Please upgrade to the latest version of the plugin as we will be disabling our old API servers. This means that plugin versions 0.1.0 - 1.6.4 will no longer function.
 
 == Changelog ==
+
+= 1.12.0 =
+
+* New Color Options form in the admin to customize the appearance of listings, agents, and offices
+* Aligned the agent pagination links
+* Fixed a bug in the listing grid prev/next links (when opening in a new tab)
+
+= 1.11.1 =
+
+* Hides the Agents/Offices toggle when offices are not included
+
+= 1.11.0 =
+
+* New layout for the Agents and Offices
+* HTTPS Search Manager fix
+
+= 1.10.5 =
+
+* Temporary rollback of HTTPS Search Manager fix.
+
+= 1.10.4 =
+
+* HTTPS fix of AJAX calls made from within Search Manager
+* Fixed a bug on Widgets based on state of API key
+
+= 1.10.3 =
+
+* Two new widget themes: "Modern Contrast" & "Modern Tile"
+* Adds a missing font to the "Modern Lite" widget theme
+* Simplified widget theme selection interface
+* Fixes a bug in pagination
+* Updates Featured Listings scroller logic
 
 = 1.10.2 =
 * New, simpler speed scale for Featured Listings scroller in lieu of the 1-99 scale.

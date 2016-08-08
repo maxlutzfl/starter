@@ -89,7 +89,7 @@ class acf_updates {
 	function modify_plugin_update( $transient ) {
 		
 		// bail early if no response (dashboard showed an error)
-		if( empty($transient->response) ) return $transient;
+		if( !isset($transient->response) ) return $transient;
 		
 		
 		// vars

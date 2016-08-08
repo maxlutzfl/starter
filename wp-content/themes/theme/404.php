@@ -1,42 +1,24 @@
-<?php
-/**
- * @package BrandCo Starter Theme
- * @subpackage 404 Page Template
- * @author BrandCo. LLC
- */
-get_header();
-use BrandCo\Config\Functions;
-?>
-
-<main id="siteMain" class="siteMain" role="main">
-
-	<article id="errorPage404" class="errorPage404">
-
-		<header id="pageHeader" class="pageHeader __border-bottom-thin __sectionPadding-default">
-			<div class="pageContainer">
+<?php get_header(); ?>
+<main id="site-main" class="site-main" role="main" itemscope itemprop="mainContentOfPage">
+	<article id="404-page" class="404-page">
+		<header id="page-header" class="page-header">
+			<div class="page-container">
 				<?php echo sprintf( '<h1 class="entry-title">%s</h1>', 'Oops... this page does not exist.' ); ?>
 			</div>
 		</header>
-
-		<section id="pageMain" class="pageMain __sectionPadding-default" data-content-sidebar="right">
-			<div class="pageContainer">
-
-				<div class="pageMain-primary">
-					<div class="entry-content entryContent">
-						<p>We're sorry, the page you are looking for does not exists. <a href="<?php echo home_url(); ?>">Go back home.</a></p>
+		<section id="page-main" class="page-main" data-content-sidebar="right">
+			<div class="page-container">
+				<div class="column-primary">
+					<div class="entry-content">
+						<p>We're sorry, the page you are looking for does not exist. <a href="<?php echo home_url(); ?>">Go back home.</a></p>
 					</div>
 				</div>
-
-				<aside class="pageMain-secondary" class="siteSidebar widgetArea" role="complementary">
+				<aside class="column-secondary page-sidebar widget-area" role="complementary" itemscope itemtype="http://schema.org/WPSideBar">
 					<?php get_sidebar(); ?>
 				</aside>
-				
 			</div>
 		</section>
-
 	</article>
-
 </main>
-
 <?php get_footer();?>
 
