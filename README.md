@@ -42,15 +42,31 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
 ```
 
 ```php
+<!-- Create a section -->
 <section class="section">
+
+    <!-- Add a container with some content -->
     <div class="container">
         <h1>Section Title</h1>
     </div>
+
+    <!-- Add an absolute positioned empty div and have it fill in the section, with some additional height above and below -->
     <div class="background-cover absolute-fill-for-parallax"
         style="background-image: url(path/to/image);"
         data-top-bottom="transform: translate3d(0, 100px, 0);"
         data-bottom-top="transform: translate3d(0, -100px, 0);"></div>
 </section>
+```
+
+```css
+.absolute-fill-for-parallax {
+    position: absolute;
+    top: -50px;
+    right: 0;
+    bottom: -50px;
+    left: 0;
+    z-index: -5;
+}
 ```
 
 - <strong>Unveil.js</strong> - Lazy loading for images, background images
