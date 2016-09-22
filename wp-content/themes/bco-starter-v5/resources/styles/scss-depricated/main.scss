@@ -1,0 +1,23 @@
+/** Main imports */
+@import 'normalize';
+@import 'functions-and-mixins';
+@import 'config';
+@import 'base';
+@import 'grid';
+@import 'content-styles';
+@import 'header-footer';
+@import 'margins-paddings';
+
+/** Plugins */
+@import 'plugins/gravity-forms';
+@import 'plugins/slickjs';
+@import 'plugins/magnific-popup';
+
+/** Layouts */
+@import 'layouts/sidebar-layout';
+@import 'layouts/post-preview';
+
+/** Components */
+@import 'components/buttons';
+@import 'components/form-fields';
+@import 'components/widgets';

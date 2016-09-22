@@ -3,7 +3,7 @@
 Plugin Name: Gravity Forms
 Plugin URI: http://www.gravityforms.com
 Description: Easily create web forms and manage form entries within the WordPress admin.
-Version: 2.0.5
+Version: 2.0.6
 Author: rocketgenius
 Author URI: http://www.rocketgenius.com
 Text Domain: gravityforms
@@ -155,7 +155,7 @@ class GFForms {
 	 * @static
 	 * @var string $version The version number
 	 */
-	public static $version = '2.0.5';
+	public static $version = '2.0.6';
 
 
 	/**
@@ -3810,6 +3810,7 @@ SET d.value = l.value"
 							var title = jQuery( '#edit-title-input' ).val();
 							jQuery( '#gform_settings_page_title' ).text( title );
 							jQuery( '#form_title_input').val( title );
+							<?php echo GFCommon::is_form_editor() ? 'form.title = title;' : ''; ?>
 						}
 
 						GF_CloseEditTitle();

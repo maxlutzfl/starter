@@ -32,6 +32,13 @@ That's it.
 </html>
 ```
 
+## Sections Layout
+
+```
+.plain-padding { padding: 30px; }
+.section-padding { padding: 60px 30px; }
+```
+
 ## Styles
 
 ## Scripts
@@ -97,3 +104,49 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
 
 - <strong>Magnific Popup</strong> - <a href="http://dimsemenov.com/plugins/magnific-popup/" target="_blank">Demo</a> | <a href="https://github.com/dimsemenov/Magnific-Popup" target="_blank">Github</a> <br>
 For popups
+
+## Grid system
+
+For multiple (unlimited) rows
+
+Basic Setup:
+
+```php
+<ul class="grid small-2-grid medium-3-grid large-4-grid small-small-gridpad medium-small-gridpad large-small-gridpad">
+    <li><div>Grid block 1</div></li>
+    <li><div>Grid block 2</div></li>
+    ...
+    <li><div>Grid block 17</div></li>
+    <li><div>Grid block 18</div></li>
+</ul>
+```
+
+### <code>.{responsive_size}-{column_count}-grid</code>
+<code>small-2-grid</code> translates to "On small, make the grid 2 columns"
+
+### <code>.{responsive_size}-{size_title}-gridpad</code>
+<code>.small-small-gridpad</code> translates to "On small use the small padding size to space out the grid"
+
+
+
+
+## Row/Column System
+
+For a single row with columns
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

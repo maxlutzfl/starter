@@ -1,0 +1,72 @@
+/**
+ * .mb-TYPE
+ * .mb-TYPE-at-SIZE
+ * Margin bottom on single elements
+ */
+
+$margins: (
+    'tiny': 10px,
+    'small': 20px,
+    'medium': 40px,
+    'large': 80px,
+    'none': 0px
+);
+
+// Mobile
+@each $type, $margin in $margins { 
+    .small-#{$type}-mb { margin-bottom: $margin; } 
+    .small-#{$type}-mt { margin-top: $margin; }
+    .small-#{$type}-pb { padding-bottom: $margin; } 
+    .small-#{$type}-pt { padding-top: $margin; }
+}
+
+// Tablet
+@each $type, $margin in $margins {
+    @include above-medium { .medium-#{$type}-mb { margin-bottom: $margin; } };
+    @include above-medium { .medium-#{$type}-mt { margin-top: $margin; } };
+    @include above-medium { .medium-#{$type}-pb { padding-bottom: $margin; } };
+    @include above-medium { .medium-#{$type}-pt { padding-top: $margin; } };
+}
+
+// Desktop
+@each $type, $margin in $margins {
+    @include above-large { .large-#{$type}-mb { margin-bottom: $margin; } };
+    @include above-large { .large-#{$type}-mt { margin-top: $margin; } };
+    @include above-large { .large-#{$type}-pb { padding-bottom: $margin; } };
+    @include above-large { .large-#{$type}-pt { padding-top: $margin; } };
+}
+
+/**
+ * Section Padding for <section>
+ * Setup .{responsive-size}-{padding-size}-sp
+ * Example .small-small-sp 
+ */
+
+$paddings: (
+    'small': 20px 20px,
+    'medium': 40px 20px,
+    'large': 80px 20px
+);
+
+@each $type, $padding in $paddings { .small-#{$type}-sp { padding: $padding; } }
+@each $type, $padding in $paddings { @include above-medium { .medium-#{$type}-sp { padding: $padding; } }; }
+@each $type, $padding in $paddings { @include above-large { .large-#{$type}-sp { padding: $padding; } }; }
+
+/** 
+ * .spacing-TYPE
+ * For horizontally spacing lists of elements, excluding the last child
+ */
+
+$spacings: (
+    'tiny': 10px,
+    'small': 20px,
+    'medium': 40px,
+    'large': 80px,
+    'small-medium': 30px,
+);
+
+// Mobile first
+@each $type, $spacing in $spacings { .small-#{$type}-hs > *:not(:last-child) { margin-bottom: $spacing }; }
+@each $type, $spacing in $spacings { @include above-medium { .medium-#{$type}-hs > *:not(:last-child) { margin-bottom: $spacing } }; }
+@each $type, $spacing in $spacings { @include above-large { .large-#{$type}-hs > *:not(:last-child) { margin-bottom: $spacing } }; }
+

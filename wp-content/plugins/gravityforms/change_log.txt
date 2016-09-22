@@ -1,4 +1,9 @@
 ------------------------------------------------------------------------------------------------------------------
+Version 2.0.6
+    - Fixed a JS error which could occur when conditional logic was based on a calculation result.
+    - Fixed an issue where the form title could revert back to the previous title if the update form button is used in the form editor after using the form title editor.
+
+------------------------------------------------------------------------------------------------------------------
 Version 2.0.5
     - Added debug statements for troubleshooting uploads.
 	- Fixed an issue with the upgrade process for some database configurations.

@@ -930,7 +930,7 @@ var GFCalc = function(formId, formulaFields){
         // allow result to be custom formatted
         var formattedResult = gform.applyFilters( 'gform_calculation_format_result', false, result, formulaField, formId, calcObj );
 
-        var numberFormat = gf_global.number_formats[formId][formulaField.field_id];
+        var numberFormat = gf_get_field_number_format(formulaField.field_id, formId);
 
         //formatting number
         if( formattedResult !== false) {

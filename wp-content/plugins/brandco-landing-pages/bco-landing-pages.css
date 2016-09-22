@@ -24,20 +24,7 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 0px !important;
 }
 
-body.has-post-thumbnail:after {
-    content: "";
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5 !important;
-    background-color: #333;
-    background-image: none !important;
-    opacity: 0.5;
-}
-
-body:before {
+/*body:before {
     content: "";
     position: fixed;
     top: 0;
@@ -47,6 +34,30 @@ body:before {
     z-index: 1;
     background-size: cover;
     background-position: 50%;                
+}*/
+
+.bco-landing-pages-background {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    background-size: cover;
+    background-position: 50%;     
+}
+
+body.has-post-thumbnail .bco-landing-pages-background:after {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5 !important;
+    background-color: #333;
+    background-image: none !important;
+    opacity: 0.33;
 }
 
 .bco-landing-pages--container {
@@ -161,12 +172,13 @@ body:before {
     width: 100%;
     background-color: #F44336;
     color: #fff;
+    border: none;
 }
 
 #BrandcoLandingPages_Map {
     background-color: #333;
     width: 100%;
-    height: 150px;
+    height: 250px;
 }
 
 #BrandcoLandingPages_Map:empty {
@@ -228,10 +240,50 @@ body:before {
     text-decoration: underline;
 }
 
+.do-map-confirmation .gform_heading > .gform_title:first-of-type,
+.do-map-confirmation .gform_heading  .gform_description,
+.do-map-confirmation .gform_body,
+.do-map-confirmation .gform_footer input[type="submit"] {
+    display: none !important;
+}
 
+.gmaps-confirmation-title {
+    margin-bottom: 30px;
+}
 
+.gmaps-confirmation-button {
+    display: inline-block;
+    margin: 5px;
+    background: rgba(0,0,0,.5);
+    border-radius: 3px;
+    padding: 10px 20px;
+    text-transform: uppercase;
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-align: center;
+    cursor: pointer;
+    transition: 300ms ease;
+    -webkit-transition: 300ms ease;
+    text-decoration: none;
+}
 
+.gmaps-confirmation-button:hover {
+    opacity: 0.8;
+}
 
+#gmaps-confirmation-yes {
+    background-color: #72bf33;
+}
+
+#gmaps-confirmation-no {
+    background-color: #bf3333;
+    color: #fff;
+}
+
+.map-is-confirmed .gmaps-confirmation-title {
+    display: none !important;
+}
 
 
 

@@ -21,171 +21,14 @@
 			$img_src_url = wp_get_attachment_image_src( $get_img_ID, $size )[0];
 			return $img_src_url;
 		}
-	}		
+	}
+
+	$parentid = get_the_ID();
+	$post_id = $parentid;
+	$autocomplete = get_post_meta( $post_id, 'bco-landingpages-map', true);
 ?>
 
 <body class="<?php if (BrandcoLandingPages_Image($parentid)) { echo 'has-post-thumbnail'; }; ?>" itemscope itemtype="http://schema.org/WebPage">
-
-	<?php /* ?>
-	<style>
-		html {
-			height: 100%;
-		}
-
-		body,
-		html {
-			background-color: transparent !important;
-			margin: 0;
-			padding: 0;
-			background-size: cover;
-			background-position: 50%;
-			min-height: 100%;
-			height: 100%;
-		}
-
-		body,
-		input,
-		textarea,
-		button,
-		p,
-		h1, h2, h3, h4, h5, h6 {
-			font-family: 'Open Sans', sans-serif !important;
-			white-space: normal !important;
-			word-wrap: break-word !important;
-			letter-spacing: 0px !important;
-		}
-
-		body:after {
-			content: "";
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 5 !important;
-			background-color: #333;
-			background-image: none !important;
-			opacity: 0.5;
-		}
-
-		body:before {
-			content: "";
-			position: fixed;
-			top: 0;
-			left: 0;
-			right: 0;
-			bottom: 0;
-			z-index: 1;
-			background-size: cover;
-			background-position: 50%;			
-			background-image: url('<?php echo BrandcoLandingPages_Image(); ?>');			
-		}
-
-		.bco-landing-pages--wrapper {
-			padding: 10% 50px;
-			position: relative;
-			z-index: 10;
-		}
-
-		.bco-landing-pages--container {
-			max-width: 520px;
-			margin: 0 auto;
-		}
-
-		@media screen and ( min-width: 750px ) {
-			.bco-landing-pages--wrapper {
-				padding-top: 13%;
-			}
-		}
-
-
-		@media screen and ( min-width: 1400px ) {
-			.bco-landing-pages--wrapper {
-				padding-top: 15%;
-			}
-		}
-
-		.gform_wrapper .gform_heading {
-			color: #fff !important;
-			text-align: center !important;
-		}
-
-		.gform_wrapper .gform_heading .gform_title {
-			margin: 15px 0 !important;
-			font-size: 50px !important;
-			color: #fff !important;
-		}
-
-		.gform_wrapper .gform_heading .gform_description {
-			margin: 15px 0 !important;
-			display: block !important;
-			font-size: 20px !important;
-		}
-
-		.gform_body ul {
-			margin: 0;
-			padding: 0;
-		}
-
-		.gform_body ul li {
-			list-style: none !important;
-		}
-
-		.gform_body {
-			margin: 15px 0 !important;
-		}
-
-		.gform_body .gfield {
-			margin: 15px 0 !important;
-		}
-
-		.gform_body .gfield input {
-			width: 100% !important;
-			background-color: #fff;
-			border: 2px solid #fff;
-			height: 50px;
-			line-height: normal;
-			padding: 0 15px;
-			transition: 300ms;
-			-webkit-transition: 300ms;
-		}
-
-		.gform_body .gfield input:focus {
-			background-color: #eee !important;
-		}
-
-		.gform_body .gfield label {
-			margin-bottom: 5px !important;
-			color: #fff !important;
-			font-size: 14px !important;
-			display: block !important;
-		}
-
-		.gform_footer {
-			margin: 15px 0 !important;
-			text-align: center !important;
-		}
-
-		.gform_footer input[type="submit"] {
-			height: 50px;
-			line-height: 50px;
-			white-space: nowrap;
-			text-transform: uppercase;
-			text-shadow: 0 0 transparent;
-			padding: 0 5px;
-			text-align: center;
-			font-size: 16px;
-			min-width: 150px;
-			letter-spacing: 1px;
-		}
-	</style>
-	<?php */ ?>
-
-	<?php if ( BrandcoLandingPages_Image() ) : ?>
-		<style>
-			body:before { background-image: url('<?php echo BrandcoLandingPages_Image(); ?>'); }
-		</style>
-	<?php endif; ?>
 
 	<div id="bco-landing-pages--wrapper-1" class="bco-landing-pages--wrapper">
 		<div class="bco-landing-pages--container">
@@ -199,6 +42,20 @@
 			</div>
 		</div>
 	</div>
+	
+	<?php if ( BrandcoLandingPages_Image() ) : ?>
+		<div class="bco-landing-pages-background" style="background-image: url('<?php echo BrandcoLandingPages_Image(); ?>'); "></div>
+	<?php endif; ?>
+
+	<?php if ( $autocomplete === 'yes' ) : ?>
+		<script>
+			function initAutocomplete() {
+				var input = document.getElementsByClassName('gform_body')[0].querySelectorAll('input[type=text]')[0];
+				var autocomplete = new google.maps.places.Autocomplete(input);
+			}
+		</script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfEzWjcytuQ3VsBCE-9qi4zHptECX6sig&libraries=places&callback=initAutocomplete" async defer></script>
+	<?php endif; ?>
 
 	<?php wp_footer(); ?>
 

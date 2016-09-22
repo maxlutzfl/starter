@@ -1,0 +1,61 @@
+/**
+ * .span-12-on-small
+ * .grid-margins-small-on-large
+ */
+
+[class*="span-"] { display: inline-block; width: 100%; }
+
+@for $i from 1 through 12 {
+    $width: percentage($i / 12);
+    
+    @include breakpoint('below', 750px) {
+        .span-#{$i}-on-small {
+            width: $width;
+        }
+    }
+    
+    @include breakpoint('between', 751px, 1200px) {
+        .span-#{$i}-on-medium {
+            width: $width;
+        }
+    }   
+    
+    @include breakpoint('above', 1201px) {
+        .span-#{$i}-on-large {
+            width: $width;
+        }
+    }       
+}
+
+$margins: (
+    'small': 10px,
+    'medium': 30px,
+    'large': 60px
+);
+
+@each $type, $margin in $margins {
+    
+    @include breakpoint('below', 750px) {
+        .grid-margins-#{$type}-on-small {
+            margin: -$margin / 2;
+
+            > li { padding: $margin / 2; }
+        }   
+    }
+    
+    @include breakpoint('between', 751px, 1200px) {
+        .grid-margins-#{$type}-on-medium {
+            margin: -$margin / 2;
+
+            > li { padding: $margin / 2; }
+        }   
+    }
+    
+    @include breakpoint('above', 1201px) {
+        .grid-margins-#{$type}-on-large {
+            margin: -$margin / 2;
+
+            > li { padding: $margin / 2; }
+        }   
+    }
+}

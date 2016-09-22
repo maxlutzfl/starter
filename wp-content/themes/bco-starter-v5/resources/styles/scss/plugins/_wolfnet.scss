@@ -1,0 +1,381 @@
+/**
+ * Appearance: Classic - Featured Listings
+ */
+
+$featured-listing-width: 270px;
+$featured-listing-margin: 15px;
+
+.entryContent,
+.pageMain-secondary {
+
+	.wolfnet_widget.wolfnet_featuredListings.wolfnet-theme-ash {
+		
+		.wolfnet_listing {
+			min-width: $featured-listing-width;
+			text-align: center;
+			margin: 0;
+			padding: 0 ( $featured-listing-margin / 2 );
+		}
+
+		.wolfnet_listingHead {
+			width: $featured-listing-width;
+		}
+
+		.wolfnet_listingImage {
+			padding: 0;
+			border: 0 transparent;
+			background-color: transparent;
+
+			img {
+				border: 0 transparent;
+				box-shadow: 0 0 transparent;
+				height: auto;
+			}
+		}
+
+		.wolfnet_locationInfo {
+			width: $featured-listing-width;
+		}
+	}
+}
+
+.pageMain-secondary {
+	.wolfnet_widget.wolfnet_featuredListings .wolfnet_control {
+		min-width: 40px;
+		background-size: 20px auto;
+	}
+}
+
+
+/**
+ * Appearance: Classic - Listings Grid
+ */
+
+
+
+/**
+ * Appearance: Modern - Featured Listings
+ */
+
+.entryContent,
+.pageMain-secondary {
+
+	.wolfnet_widget.wolfnet_featuredListings.wolfnet-theme-birch {
+
+	}
+
+}
+
+/**
+ * Appearance: Modern - Listings Grid
+ */
+
+
+
+/**
+ * Quick Search Basic (no Smart Search)
+ */
+
+$quick-search-field-height: 50px;
+
+.entryContent,
+.pageMain-secondary {
+	
+	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_basic,
+	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_legacy {
+		margin: 0;
+		padding: 0;
+		border: 0 transparent;
+
+		label {
+			display: none !important;
+		}
+
+		input[type="text"] {
+			font-size: 14px;
+		}
+
+		select {
+			font-size: 14px;
+		}
+
+		.wolfnet_searchType {
+			@include clearFix();
+			line-height: 1;
+			display: block;
+			width: 100%;
+			padding: 5px;
+
+			li {
+				list-style: none;
+				float: none;
+				display: inline-block;
+				margin: 0 10px 0 0;
+				padding: 0;
+			}
+			
+			a {
+				font-size: 12px;
+				text-transform: uppercase;
+				letter-spacing: 1px;
+				opacity: 0.33;
+				text-decoration: none;
+				border: 0;
+	
+				&.wolfnet_active {
+					opacity: 1;
+				}
+			}
+		}
+
+		.wolfnet_searchTypeField {
+			margin: 0;
+			padding: 5px;
+
+			input {
+				margin: 0;
+				width: 100%;
+				height: $quick-search-field-height;
+				padding: 0 15px;
+			}
+		}
+
+		.wolfnet_widgetPrice {
+			padding: 0;
+			margin: 0;
+			font-size: 0;
+
+			> div:nth-of-type(1),
+			> div:nth-of-type(2) {
+				padding: 5px;
+				margin: 0;
+				display: inline-block;
+				width: 50%;
+				font-size: 16px;
+				vertical-align: top;
+				height: auto;
+
+				select {
+					width: 100%;
+					margin: 0;
+					height: $quick-search-field-height;
+					background-color: #fff;
+				}
+			}
+		}
+
+		.wolfnet_widgetBedBath {
+			padding: 0;
+			margin: 0;
+			font-size: 0;
+
+			> div:nth-of-type(1),
+			> div:nth-of-type(2) {
+				padding: 5px;
+				margin: 0;
+				display: inline-block;
+				width: 50%;
+				font-size: 16px;
+				vertical-align: top;
+				height: auto;
+
+				select {
+					width: 100%;
+					margin: 0;
+					height: $quick-search-field-height;
+					background-color: #fff;
+				}
+			}
+		}
+
+		.wolfnet_quickSearchFormButton {
+			line-height: 1.5;
+			width: 100%;
+			display: block;
+			float: none;
+			margin: 0;
+			padding: 5px;
+			font-size: 0;
+
+			button {
+				@extend .buttonStyle;
+				width: 100% !important;
+				min-width: 0 !important;
+				font-size: 14px !important;
+			}
+		}
+	}
+}
+
+.entryContent {
+
+	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_basic,
+	.wolfnet_widget.wolfnet_quickSearch.wolfnet_quickSearch_legacy {
+		margin-bottom: 30px;
+		padding: 5px;
+
+		.wolfnet_widgetTitle {
+			margin-bottom: 5px;
+			padding: 5px;
+		}
+
+		@include breakpoint('above', $responsiveBreakpoint-tablet) {
+			.wolfnet_quickSearch_form {
+				font-size: 0;
+			}
+
+			.wolfnet_widgetPrice,
+			.wolfnet_widgetBedBath {
+				display: inline-block;
+				width: 50%;
+				vertical-align: top;
+			}	
+		}
+
+		@include breakpoint('above', 1200px) {
+
+			.wolfnet_quickSearch_form {
+				font-size: 0;
+			}
+
+			.wolfnet_widgetPrice,
+			.wolfnet_widgetBedBath {
+				display: inline-block;
+				width: 40%;
+				vertical-align: top;
+			}	
+
+			.wolfnet_quickSearchFormButton {
+				display: inline-block;
+				vertical-align: top;
+				width: 20%;
+			}
+		}
+	}	
+}
+
+/**
+ * Quick Search w/ Smart Search
+ */
+
+.entryContent,
+.pageMain-secondary {
+
+	.wolfnet_widget.wolfnet_smartSearch {
+		select {
+			-webkit-appearance: menulist-button;
+		}
+	}
+}
+
+/**
+ * Property List
+ */
+
+
+
+
+/**
+ * Vertical Quick Search
+ */
+ 
+ #Section__QuickSearch {
+	@include breakpoint('above', $responsiveBreakpoint-tablet) {
+		height: 0;
+	}
+
+	#QuickSearch {
+		background-color: $globalColor-black;
+		padding: 25px;
+		border-radius: 5px;
+
+		@include breakpoint('above', $responsiveBreakpoint-tablet) {
+			transform: translateY(-50%);
+		}
+	}
+
+	.wolfnet_quickSearch {
+		padding: 0;
+		margin: 0;
+		font-size: 0;
+
+		.wolfnet_widgetTitle,
+		.wolfnet_searchType {
+			display: none;
+		}
+
+		label {
+			display: none;
+		}
+
+		.wolfnet_widgetPrice,
+		.wolfnet_widgetBedBath {
+			display: inline !important;	
+		}
+
+		.wolfnet_widgetPrice .wolfnet_clearfix {
+			display: none !important;
+		}
+
+		.wolfnet_searchTypeField,
+		.wolfnet_widgetPrice > div:first-of-type,
+		.wolfnet_widgetPrice > div:nth-of-type(2n),
+		.wolfnet_widgetBeds,
+		.wolfnet_widgetBaths,
+		.wolfnet_quickSearchFormButton {
+			display: inline-block;
+			font-size: em(14);
+			vertical-align: top;
+			float: none !important;
+			width: auto;
+			padding: 10px;
+			margin: 0;
+
+			input,
+			select {
+				margin: 0;
+				font-size: 16px;
+			}
+		}
+
+		.wolfnet_searchTypeField {
+			width: 100%;
+
+			@include breakpoint('above', 1200px) {
+				width: 30%;
+			}
+		}
+
+		.wolfnet_widgetPrice > div:first-of-type,
+		.wolfnet_widgetPrice > div:nth-of-type(2n),
+		.wolfnet_widgetBeds,
+		.wolfnet_widgetBaths {
+			width: 100%;
+
+			@include breakpoint('above', 500px) {
+				width: 50%;
+			}
+
+			@include breakpoint('above', $responsiveBreakpoint-tablet) {
+				width: 25%;
+			}
+
+			@include breakpoint('above', 1200px) {
+				width: 15%;
+			}
+		}
+
+		.wolfnet_quickSearchFormButton {
+			width: 100%;
+
+			@include breakpoint('above', 1200px) {
+				width: 10%;
+			}
+
+			button {
+				min-width: 0 !important;
+				width: 100%;
+			}
+		}
+	}
+}

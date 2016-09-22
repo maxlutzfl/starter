@@ -173,10 +173,33 @@ class BrandcoLandingPages {
 				<input style="width: 100%" type="text" name="bco-landingpages-link-to-text" id="bco-landingpages-link-to-text" value="<?php if ( isset ( $stored_meta['bco-landingpages-link-to-text'] ) ) echo $stored_meta['bco-landingpages-link-to-text'][0]; ?>" />
 			</p>
 
+			<h1><strong>Google Maps Integration</strong></h1>
+
+			<p>
+				<label for="bco-landingpages-gmaps-autocomplete">
+					<input type="checkbox" name="bco-landingpages-gmaps-autocomplete" id="bco-landingpages-gmaps-autocomplete" value="yes" <?php if ( isset ( $stored_meta['bco-landingpages-gmaps-autocomplete'] ) ) checked( $stored_meta['bco-landingpages-gmaps-autocomplete'][0], 'yes' ); ?> />
+					Use Google Maps address autocomplete for Step 1?
+				</label>				
+			</p>
+
 			<p>
 				<label for="bco-landingpages-map">
 					<input type="checkbox" name="bco-landingpages-map" id="bco-landingpages-map" value="yes" <?php if ( isset ( $stored_meta['bco-landingpages-map'] ) ) checked( $stored_meta['bco-landingpages-map'][0], 'yes' ); ?> />
-					Display map for step 2? (Only apply if Step 1 is asking for an address)
+					Display Google Maps for Step 2? (Only apply if Step 1 is asking for an address)
+				</label>				
+			</p>
+
+			<p>
+				<label for="bco-landingpages-gmaps-confirmation">
+					<input type="checkbox" name="bco-landingpages-gmaps-confirmation" id="bco-landingpages-gmaps-confirmation" value="yes" <?php if ( isset ( $stored_meta['bco-landingpages-gmaps-confirmation'] ) ) checked( $stored_meta['bco-landingpages-gmaps-confirmation'][0], 'yes' ); ?> />
+					Add an additional step for map confirmation? The user will be shown the map after the submit their address and will be asked if the map is accurate. (<strong>Will only work work if the option for "Display Google Maps on Step 2" is checked.</strong>)
+				</label>				
+			</p>
+
+			<p>
+				<label for="bco-landingpages-gmaps-streetview">
+					<input type="checkbox" name="bco-landingpages-gmaps-streetview" id="bco-landingpages-gmaps-streetview" value="yes" <?php if ( isset ( $stored_meta['bco-landingpages-gmaps-streetview'] ) ) checked( $stored_meta['bco-landingpages-gmaps-streetview'][0], 'yes' ); ?> />
+					Google Street View?
 				</label>				
 			</p>
 
@@ -226,11 +249,29 @@ class BrandcoLandingPages {
 			update_post_meta( $post_id, 'bco-landingpages-page-3', $_POST[ 'bco-landingpages-page-3' ] );
 		}
 
+		if ( isset( $_POST[ 'bco-landingpages-gmaps-autocomplete' ] ) ) {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-autocomplete', 'yes' );
+		} else {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-autocomplete', '' );
+		}
+
+		if ( isset( $_POST[ 'bco-landingpages-gmaps-confirmation' ] ) ) {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-confirmation', 'yes' );
+		} else {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-confirmation', '' );
+		}
+
+		if ( isset( $_POST[ 'bco-landingpages-gmaps-streetview' ] ) ) {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-streetview', 'yes' );
+		} else {
+			update_post_meta( $post_id, 'bco-landingpages-gmaps-streetview', '' );
+		}
+
 		if ( isset( $_POST[ 'bco-landingpages-map' ] ) ) {
 			update_post_meta( $post_id, 'bco-landingpages-map', 'yes' );
 		} else {
 			update_post_meta( $post_id, 'bco-landingpages-map', '' );
-		}		
+		}
 
 	    if ( isset( $_POST[ 'bco-landingpages-ty-msg' ] ) ) {
 			update_post_meta( $post_id, 'bco-landingpages-ty-msg', sanitize_text_field( $_POST[ 'bco-landingpages-ty-msg' ] ) );

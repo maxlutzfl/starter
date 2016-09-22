@@ -1,0 +1,185 @@
+.gform_wrapper {
+
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+
+    li {
+        position: relative;
+    }
+
+    form {
+
+        .gform_heading {
+            margin: rem(15) 0;
+
+            .gform_title {
+                margin-bottom: 5px;
+            }
+
+            .gform_description {
+                margin-bottom: rem(15);
+                display: block;
+            }
+        }
+
+        .gform_body {
+
+            .gfield_label {
+                text-transform: uppercase;
+                font-weight: 700;
+                font-size: rem(12);
+                margin-bottom: 2px;
+                display: block;
+            }
+
+            ul.gform_fields {
+                margin: 0;
+                padding: 0;
+
+                li.gfield {
+                    list-style: none;
+                    margin: 0 0 20px 0;
+                    padding-left: 0;
+
+                    li {
+                        list-style: none;
+                    }
+
+                    .gfield_radio,
+                    .gfield_checkbox {
+                        margin: 0;
+                        > li {
+                            margin-bottom: rem(8);
+                        }
+                        label {
+                            display: inline-block;
+                        }
+                        input {
+                            height: auto;
+                            vertical-align: middle;
+                            display: inline-block;
+                            width: auto;
+                            margin-right: rem(10);
+                        }
+                    }
+
+                    .ginput_container_multiselect {
+
+
+                        .select-holder {
+
+                            &:after {
+                                display: none;
+                            }
+                        }
+                    }
+
+                    .ginput_container_fileupload {
+
+                        input {
+                            border: 0 transparent;
+                            padding: 0;
+                        }
+                    }
+                }
+            }
+        }
+
+        .gform_footer {
+
+        }
+    }
+
+    .validation_error,
+    .validation_message {
+        margin-top: 15px;
+        margin-bottom: 15px;
+        padding: 15px;
+        box-shadow: 0 1px 1px rgba( #000, 0.2 );
+        border-left: 3px solid #D64B15;
+        background-color: rgba( #D64B15, 0.5 );
+        font-weight: 700;
+        font-size: 0.85em;
+    }
+}
+
+.gfield_radio input,
+.gfield_checkbox input {
+    opacity: 0;
+    position: absolute;
+    left: -9999999px;
+}
+
+
+.gfield_radio input + label,
+.gfield_checkbox input + label {
+    margin-left: 30px;
+}
+
+.gfield_radio input + label:before,
+.gfield_checkbox input + label:before {
+    content: '';
+    background: #fff;
+    border: 2px solid #ddd;
+    display: inline-block;
+    vertical-align: middle;
+    width: 20px;
+    height: 20px;
+    margin-right: 10px;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.gfield_checkbox input + label:after {
+    content: "";
+    transform: rotate(45deg);
+    position: absolute;
+    top: 4px;
+    left: 8px;
+    height: 12px;
+    width: 5px;
+    border-right: 3px solid #333;
+    border-bottom: 3px solid #333;
+    transition: 300ms ease;
+    opacity: 0;
+}
+
+.gfield_radio input + label:after {
+    content: "";
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    width: 16px;
+    height: 16px;
+    background-color: #333;
+    opacity: 0;
+    transition: 300ms ease;
+}
+
+.gfield_radio input + label:after {
+    border-radius: 50%;
+}
+
+.gfield_radio input:checked + label:after,
+.gfield_checkbox input:checked + label:after {
+    opacity: 1;
+}
+
+.gfield_radio input + label:before,
+.gfield_radio input:checked + label:before {
+    border-radius: 50%;
+}
+
+.ginput_container_date {
+    img {
+        display: none;
+    }
+}
+
+.gform_ajax_spinner {
+    display: none;
+}
