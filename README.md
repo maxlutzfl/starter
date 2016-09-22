@@ -34,20 +34,28 @@ That's it.
 
 ## Sections Layout
 
-```
-.plain-padding { padding: 30px; }
-.section-padding { padding: 60px 30px; }
+```php  
+<section class="small-large-sp">
+    <div class="section-container">
+        <!-- Content goes here -->
+    </div>
+</section>
 ```
 
-## Styles
+#### <code>.{responsive_size}-{padding_title}-sp</code> for section padding (...-sp)
+<code>.small-large-sp</code> would give that section "large" section padding across all devices
+
+The section padding is to give padding on the top and bottom of the <code>section</code> element. 
+
+Place the <code>.section-container</code> inside to give a max-width to the content.
 
 ## Scripts
 
 ### <strong>File Structure</strong>
 
-- <strong>/resources/scripts/plugins/</strong> - Use this directory for third-party plugins
-- <strong>/resources/scripts/scripts/theme-scripts.js</strong> - Use this file for custom scripts and initializing plugins added in the plugins directory
-- The Gulp.js scripts task listens for changes in the theme-scripts.js file. The task combines all plugins and the theme-scripts.js file. This saves to main.js, main.min.js, and main.min.js.map. 
+- <code>/resources/scripts/plugins/</code> - Use this directory for third-party plugins
+- <code>/resources/scripts/scripts/</code> - This directory is for custom script files
+- The Gulp.js scripts task listens for changes in the <code>/resources/scripts/scripts/</code> directory. All scripts are combined and saved to main.js, main.min.js (minified), and main.min.js.map (source map for debugging in Chrome Dev Tools). 
 
 ### Plugins
 - <strong>doubleTapToGo.js -</strong> <a href="http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly" target="_blank">http://osvaldas.info/drop-down-navigation-responsive-and-touch-friendly/</a> Solves the issue of mobile users tapping on parent menu items that acts as a dropdown, but the parent item that is tapped also links to a page.
@@ -98,7 +106,7 @@ if ( !(/Android|iPhone|iPad|iPod|BlackBerry|Windows Phone/i).test(navigator.user
 
 - <strong>Unveil.js</strong> - Lazy loading for images, background images
 
-- <strong>Wow.js</strong> - For animating elements as they enter/exit the viewport
+- <strong>inview.js</strong> - For animating elements as they enter/exit the viewport
 
 - <strong>Slick.js</strong> - <a href="http://kenwheeler.github.io/slick/" target="_blank">Demo/API</a> | <a href="https://github.com/kenwheeler/slick/" target="_blank">Github</a>
 
