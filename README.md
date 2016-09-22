@@ -107,9 +107,9 @@ For popups
 
 ## Grid system
 
-For multiple (unlimited) rows
+For multiple (unlimited) rows. Each <code>{responsive_size}</code> must be set on the <code>...-grid</code> and <code>...-gridpad</code> to avoid conflicts. 
 
-Basic Setup:
+#### Basic Setup:
 
 ```php
 <ul class="grid small-2-grid medium-3-grid large-4-grid small-small-gridpad medium-small-gridpad large-small-gridpad">
@@ -121,10 +121,10 @@ Basic Setup:
 </ul>
 ```
 
-### <code>.{responsive_size}-{column_count}-grid</code>
+#### <code>.{responsive_size}-{column_count}-grid</code>
 <code>small-2-grid</code> translates to "On small, make the grid 2 columns"
 
-### <code>.{responsive_size}-{size_title}-gridpad</code>
+#### <code>.{responsive_size}-{size_title}-gridpad</code>
 <code>.small-small-gridpad</code> translates to "On small use the small padding size to space out the grid"
 
 
