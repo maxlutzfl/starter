@@ -134,7 +134,7 @@ For a single row with columns. Based on 12 column system.
 
 #### Basic Setup: 
 
-```
+```php
 <div class="row">
     <div id="main" class="column small-12 medium-8">
         <!-- Start at 12 column span -->
@@ -147,7 +147,7 @@ For a single row with columns. Based on 12 column system.
 </div>
 ```
 
-Since this system is mobile first, <code>.small-*</code> is the default size. If a column is <code>.small-6</code> then it's going span 6 columns (6/12 = 50% width) on all screen sizes. If it was <code><div class="column small-12 medium-6 large-3"></div></code>, then that <code>div</code> would start at 100% width, break to 50% width at the medium responsive breakpoint, and 25% width at the large responsive breakpoint. 
+Since this system is mobile first, <code>.small-*</code> is the default size. If a column is <code>.small-6</code> then it's going span 6 columns (6/12 = 50% width) on all screen sizes. If it was <code> <div class="column small-12 medium-6 large-3"></div> </code>, then that <code>div</code> would start at 100% width, break to 50% width at the medium responsive breakpoint, and 25% width at the large responsive breakpoint. 
 
 To add or edit the breakpoints and titles for the sizes, look in <code>_grid.scss</code>. <code>_spacing-padding.scss</code>, and <code>_mixins.scss</code>
 
