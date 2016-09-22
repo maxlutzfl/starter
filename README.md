@@ -141,8 +141,8 @@ For a single row with columns. Based on 12 column system.
         <!-- At medium, go to 8 column span -->
     </div>
     <div id="sidebar" class="column small-12 medium-4">
-    <!-- Start at 12 column span -->
-    <!-- At medium, go to 8 column span -->
+        <!-- Start at 12 column span -->
+        <!-- At medium, go to 8 column span -->
     </div>
 </div>
 ```
