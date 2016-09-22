@@ -122,7 +122,7 @@ For multiple (unlimited) rows. Each <code>{responsive_size}</code> must be set o
 ```
 
 #### <code>.{responsive_size}-{column_count}-grid</code>
-<code>small-2-grid</code> translates to "On small, make the grid 2 columns"
+<code>.small-2-grid</code> translates to "On small, make the grid 2 columns"
 
 #### <code>.{responsive_size}-{size_title}-gridpad</code>
 <code>.small-small-gridpad</code> translates to "On small use the small padding size to space out the grid"
@@ -135,7 +135,7 @@ For a single row with columns. Based on 12 column system.
 #### Basic Setup: 
 
 ```php
-<div class="row">
+<div class="row small-small-colpad medium-small-colpad large-small-colpad">
     <div id="main" class="column small-12 medium-8">
         <!-- Start at 12 column span -->
         <!-- At medium, go to 8 column span -->
@@ -146,6 +146,14 @@ For a single row with columns. Based on 12 column system.
     </div>
 </div>
 ```
+
+#### <code>.{responsive_size}-{columns_to_span}</code> on child elements
+<code>.small-12</code> will span 12 columns on all screen sizes. 
+<code>.medium-6</code> will span 6 columns starting at the medium breakpoint
+
+#### <code>.{responsive_size}-{padding_title}-colpad</code> on the parent <code>.row</code> element
+This must be set for each <code>{responsive_size}</code> to avoid conflicts. This adjusts so the first column does not have padding on it's left, and the right does not have padding on it's right so it fits with the layout. 
+<code>.small-small-colpad</code> translates to "on small only, use the small padding to pad the columns"
 
 Since this system is mobile first, <code>.small-*</code> is the default size. If a column is <code>.small-6</code> then it's going span 6 columns (6/12 = 50% width) on all screen sizes. If it was 
 ```php 
