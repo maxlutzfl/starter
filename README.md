@@ -42,8 +42,8 @@ That's it.
 </section>
 ```
 
-#### <code>.{responsive_size}-{padding_title}-sp</code> for section padding (...-sp)
-<code>.small-large-sp</code> would give that section "large" section padding across all devices
+#### Section Padding: <code>.{responsive_size}-{padding_title}-sp</code> 
+<code>.small-large-sp</code> translates to "on small, apply large section padding". Section padding is mobile first, so <code>.small-{padding_title}-sp</code> will apply on all device widths unless another section padding class is applied like <code>.medium-{padding_title}-sp</code>
 
 The section padding is to give padding on the top and bottom of the <code>section</code> element. 
 
