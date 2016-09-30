@@ -8,10 +8,21 @@
 
 ## Version control and deployment
 
-## PHP Functions
+## PHP functions
 
 ```php 
 // For subpages, sub-subpages, this function
 // will find the post ID of the parent page
 function get_parent_id() {  }
 ```
+
+## SCSS documentation
+```scss
+/* Coming soon */
+```
+
+## Javascript
+```js
+/* Coming soon */
+```
+
