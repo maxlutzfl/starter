@@ -1,0 +1,13 @@
+ul {
+    font-size: 0;
+
+    li {
+        @include font-size($base-font-size);
+        vertical-align: top;
+    }
+}
+
+.plain-list {
+    list-style: none;
+    padding: 0;
+}

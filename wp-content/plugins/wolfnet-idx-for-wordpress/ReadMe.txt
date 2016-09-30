@@ -4,7 +4,7 @@ Contributors:       wolfnettech, ajmichels, asbaumgart, michaelpidde, thenewcoke
 Tags:               idx, mls, homes
 Requires at least:  3.5.1
 Tested up to:       4.5
-Stable tag:         1.12.1
+Stable tag:         1.12.2
 License:            GPLv2 or later
 License URI:        http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -92,6 +92,13 @@ Please upgrade to the latest version of the plugin as we will be disabling the i
 Please upgrade to the latest version of the plugin as we will be disabling our old API servers. This means that plugin versions 0.1.0 - 1.6.4 will no longer function.
 
 == Changelog ==
+
+= 1.12.2 =
+
+* Updating Smart Search results to land on configured view.
+* Default appearance set to "Modern Lite" for new installations
+* Fixed issue where agent photos would sometimes disappear in FireFox
+* Fixed issue where agent/office search bar was too wide for iPhone 5
 
 = 1.12.1 =
 

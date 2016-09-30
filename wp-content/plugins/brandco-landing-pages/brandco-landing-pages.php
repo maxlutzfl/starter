@@ -63,7 +63,7 @@ class BrandcoLandingPages {
 
 			<p>
 				<label for="bco-landingpages-form" class="screen-reader-text">Select Form for Step 1</label>
-				<select name="bco-landingpages-form" id="bco-landingpages-form">
+				<select name="bco-landingpages-form" id="bco-landingpages-form" data-post-id="<?php echo $_GET['post']; ?>">
 					<option>-- Select Form for Step 1 </option>
 					<?php foreach ( $forms as $form ) : ?>
 						<option value="<?php echo $form['id']; ?>" <?php if ( isset ( $stored_meta['bco-landingpages-form'] ) ) selected( $stored_meta['bco-landingpages-form'][0], $form['id'] ); ?>>Form ID <?php echo $form["id"]; ?>: <?php echo $form['title']; ?></option>
@@ -72,15 +72,13 @@ class BrandcoLandingPages {
 			</p>
 
 			<p>
-				<select name="bco-landingpages-form2" id="bco-landingpages-form2">
+				<select name="bco-landingpages-form2" id="bco-landingpages-form2" data-post-id="<?php echo $_GET['post']; ?>">
 					<option>-- Select Form for Step 2 </option>
 					<?php foreach ( $forms as $form ) : ?>
 						<option value="<?php echo $form['id']; ?>" <?php if ( isset ( $stored_meta['bco-landingpages-form2'] ) ) selected( $stored_meta['bco-landingpages-form2'][0], $form['id'] ); ?>>Form ID <?php echo $form["id"]; ?>: <?php echo $form['title']; ?></option>
 					<?php endforeach; ?>
 				</select>
 			</p>
-
-			<p>Save or update this page to refresh to options below.</p>
 
 			<hr>
 
@@ -325,21 +323,17 @@ class BrandcoLandingPages {
 	}
 
 	public static function find_page2_parent() {
-		global $wpdb;
 		global $post;
+		if ( $post->post_parent )	{
+			$ancestors = get_post_ancestors($post->ID);
+			$root = count($ancestors) - 1;
+			$parent = $ancestors[$root];
+			
+		} else {
+			$parent = $post->ID;
+		}
 
-		$meta_key = 'bco-landingpages-page-2';
-
-		$parentid = $wpdb->get_var( $wpdb->prepare( 
-			"
-				SELECT post_id
-				FROM $wpdb->postmeta 
-				WHERE meta_key LIKE %s AND meta_value LIKE %s
-			", 
-			$meta_key,
-			$post->ID
-		) );
-		return $parentid;
+		return $parent;
 	}
 
 	public static function find_page3_parent() {
@@ -597,5 +591,101 @@ class BrandcoIncludeTemplates {
 
 add_action( 'plugins_loaded', array( 'BrandcoIncludeTemplates', 'get_instance' ) );
 add_action( 'admin_init', array( 'BrandcoIncludeTemplates', 'get_instance' ) );
+
+// Update option 1 javascript 
+add_action('admin_footer', 'update_option_1_javascript');
+function update_option_1_javascript() { ?>
+	<script type="text/javascript" >
+		jQuery(document).ready(function($) {
+
+			$('#bco-landingpages-form').on('change', function() {
+				var formId = $(this).val();
+				var postId = $(this).attr('data-post-id');
+
+				var data = {
+					'action': 'update_option_1',
+					form_id: formId,
+					post_id: postId
+				};
+
+				$.post(ajaxurl, data, function(response) {
+					$('#bco-landingpages-pass-01').html('').append(response);
+				});
+			});
+		});
+	</script> <?php
+}
+
+// Update option 1 callback
+add_action( 'wp_ajax_update_option_1', 'update_option_1_callback' );
+function update_option_1_callback() {
+	global $wpdb; 
+	$forms = \GFAPI::get_forms();
+	$selected_form = $_POST['form_id'];
+
+	?>
+		<option>-- Select field to pass information to Step 2</option>
+		<?php foreach ( $forms as $form => $value ) : ?>
+			<?php if ( $value['id'] == $selected_form ) : ?>
+				<?php $labels = $value['fields']; ?>
+				<?php foreach ($labels as $label => $value): ?>
+					<option value="<?php echo $value->id; ?>">
+						<?php echo $value->label; ?>
+					</option>
+				<?php endforeach ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php
+
+	wp_die(); 
+}
+
+// Update option 2 javascript 
+add_action('admin_footer', 'update_option_2_javascript');
+function update_option_2_javascript() { ?>
+	<script type="text/javascript" >
+		jQuery(document).ready(function($) {
+
+			$('#bco-landingpages-form2').on('change', function() {
+				var formId = $(this).val();
+				var postId = $(this).attr('data-post-id');
+
+				var data = {
+					'action': 'update_option_2',
+					form_id: formId,
+					post_id: postId
+				};
+
+				$.post(ajaxurl, data, function(response) {
+					$('#bco-landingpages-pass-02').html('').append(response);
+				});
+			});
+		});
+	</script> <?php
+}
+
+// Update option 2 callback
+add_action( 'wp_ajax_update_option_2', 'update_option_2_callback' );
+function update_option_2_callback() {
+	global $wpdb; 
+	$forms = \GFAPI::get_forms();
+	$selected_form = $_POST['form_id'];
+
+	?>
+		<option>-- Select field to accept information from Step 1</option>
+		<?php foreach ( $forms as $form => $value ) : ?>
+			<?php if ( $value['id'] == $selected_form ) : ?>
+				<?php $labels = $value['fields']; ?>
+				<?php foreach ($labels as $label => $value): ?>
+					<option value="<?php echo $value->id; ?>">
+						<?php echo $value->label; ?>
+					</option>
+				<?php endforeach ?>
+			<?php endif; ?>
+		<?php endforeach; ?>
+	<?php
+
+	wp_die(); 
+}
 
 ?>

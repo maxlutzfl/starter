@@ -1,0 +1,58 @@
+:root {
+    font-size: $base-font-size + px;
+}
+
+html {
+    @include font-size($base-font-size);
+    overflow-x: hidden;
+    color: $base-color;
+    box-sizing: border-box;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    width: 100%;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+ul {
+    padding: 0;
+    margin: 0;
+    font-size: 0;
+
+    li {
+        list-style: none;
+        @include font-size($base-font-size);
+    }
+}
+
+* {
+    box-sizing: inherit;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+hr {
+    height: 2px;
+    background-color: #eee;
+    clear: both;
+    margin: 30px 0;
+    border: none;
+}
+
+svg {
+    height: 16px;
+    width: 16px;
+}
+
+.aspect-ratio-box {
+    display: block;
+    position: relative;
+    padding-top: 40%;
+}

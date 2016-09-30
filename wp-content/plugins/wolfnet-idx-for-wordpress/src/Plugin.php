@@ -36,7 +36,7 @@ class Wolfnet_Plugin
      * as part of the Ant build process that is run when the plugin is packaged for distribution.
      * @var string
      */
-    public $version = '1.12.1';
+    public $version = '1.12.2';
 
     /**
      * This property is used to set the option group for the plugin which creates a namespaced
@@ -323,6 +323,20 @@ class Wolfnet_Plugin
 
         // Register CSS
         $this->template->registerStyles();
+
+		// Check widget theme
+		$widget_theme = get_option(trim($this->widgetThemeOptionKey));
+		if (!$widget_theme) {
+			$keyArray = json_decode($this->keyService->get());
+			if (is_array($keyArray) && $keyArray[0]->key != false) {
+				// Set old widget theme defaults for the existing plugin installation
+				$widget_theme = $this->widgetTheme->getLegacyDefaults();
+			} else {
+				// Set widget theme defaults for the new plugin installation
+				$widget_theme = $this->widgetTheme->getDefaults();
+			}
+			add_option($this->widgetThemeOptionKey, $widget_theme['widgetTheme']);
+		}
 
     }
 

@@ -22,3 +22,6 @@ define('SCRIPTS_DIRECTORY_URI', get_template_directory_uri() . '/resources/scrip
 
 require CONFIG_DIRECTORY . 'theme-setup.php';
 require CONFIG_DIRECTORY . 'theme-functions.php';
+require CONFIG_DIRECTORY . '/functions/website-info.php';
+
+

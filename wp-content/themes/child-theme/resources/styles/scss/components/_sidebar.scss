@@ -1,0 +1,47 @@
+.column-sidebar {
+
+    @include breakpoint('above', 750px) {
+        width: $sidebar-width;
+    }
+}
+
+.column-primary {
+
+    @include breakpoint('above', 750px) {
+        width: (100% - $sidebar-width);
+    }
+}
+
+.sidebar-layout-left {
+
+    .column-sidebar {
+        @include breakpoint('above', 750px) {
+           float: left;
+           padding-right: $padding;
+        }
+    }
+
+    .column-primary {
+        @include breakpoint('above', 750px) {
+            float: right;
+            padding-left: $padding;
+        }
+    }
+}
+
+.sidebar-layout-right {
+
+    .column-sidebar {
+        @include breakpoint('above', 750px) {
+           float: right;
+           padding-left: $padding;
+        }
+    }
+
+    .column-primary {
+        @include breakpoint('above', 750px) {
+            float: left;
+            padding-right: $padding;
+        }
+    }
+}

@@ -1,0 +1,155 @@
+textarea {
+    width: 100%;
+    resize: vertical;
+    min-height: 140px;
+    padding: $forms-textarea-padding;
+
+    border-radius: $forms-border-radius;
+    border: $forms-border;
+    background-color: $forms-background-color;
+
+    transition: 300ms ease;
+
+    &:focus {
+        outline: none;
+        background-color: $forms-background-color-on-focus;
+    }
+}
+
+
+input[type="text"],
+input[type="email"],
+input[type="url"],
+input[type="password"],
+input[type="search"],
+input[type="number"],
+input[type="tel"],
+input[type="range"],
+input[type="date"],
+input[type="month"],
+input[type="week"],
+input[type="time"],
+input[type="datetime"],
+input[type="datetime-local"],
+input[type="color"] {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+    box-shadow: none;
+
+    padding: $forms-input-padding;
+    height: $form-field-height;
+    border: $forms-border;
+    border-radius: $forms-border-radius;
+    background-color: $forms-background-color;
+
+    transition: 300ms ease;
+
+    &:focus {
+        outline: none;
+        background-color: $forms-background-color-on-focus;
+    }
+
+    @include breakpoint('below', 500px) {
+        padding: $forms-input-padding-small;
+        height: $form-field-height-mobile;
+    }
+}
+
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    width: 100%;
+
+    height: $form-field-height;
+    padding: $forms-input-padding;
+    border: $forms-border;
+    border-radius: $forms-border-radius;
+    background-color: $forms-background-color;
+
+    background-image: url(../../images/svg/dropdown.svg);
+    background-size: 18px;
+    background-repeat: no-repeat;
+    background-position: calc(100% - 12px) 50%;
+
+    &:focus {
+        outline: none;
+        background-color: $forms-background-color-on-focus;
+    }
+
+    @include breakpoint('below', 500px) {
+        padding: $forms-input-padding-small;
+        height: $form-field-height-mobile;
+        background-position: calc(100% - 10px) 50%;
+    }
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+input[type="button"],
+input[type="reset"],
+input[type="submit"],
+button,
+.button-style,
+.content-button {
+    cursor: pointer;
+    appearance: none;
+    text-shadow: none;
+    display: inline-block;
+    vertical-align: top;
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 400;
+
+    height: $form-field-height;
+    line-height: ($form-field-height - ($button-border-width * 2));
+    padding: $forms-input-padding;
+    background-color: $link-color;
+    border: $button-border-width solid $link-color;
+    box-shadow: $button-box-shadow;
+    border-radius: $button-border-radius;
+
+    @extend .small-text;
+
+    @include transition();
+
+    @include breakpoint('below', 500px) {
+        padding: $forms-input-padding-small;
+        height: $form-field-height-mobile;
+    }
+
+    &:focus {
+        outline: 0;
+        background-color: $link-hover-color;
+        border-color: $link-hover-color;
+    }
+
+    &:hover {
+        color: #fff;
+        background-color: $link-hover-color;
+        border-color: $link-hover-color;
+    }
+
+    &.button-style-hollow {
+        background-color: transparent;
+        color: $link-color;
+        border: $button-border-width solid $link-color;
+
+        &:hover {
+            background-color: $link-hover-color;
+            border-color: $link-hover-color;
+            color: #fff;
+        }
+    }
+
+    &.button-style-tag {
+        background-color: #999;
+        color: #fff;
+    }
+}

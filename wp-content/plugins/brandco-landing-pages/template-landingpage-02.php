@@ -22,6 +22,7 @@
 		$pass = htmlspecialchars( $_GET["pass"] );
 
 		$parentid = BrandcoLandingPages::find_page2_parent();
+		$parent_link = get_permalink($parentid);
 		$pass_to = get_post_meta( $parentid, 'bco-landingpages-pass-02', true);
 
 		$map = get_post_meta( $parentid, 'bco-landingpages-map', true);
@@ -38,7 +39,7 @@
 
 <body class="<?php echo (BrandcoLandingPages_Image($parentid)) ? 'has-post-thumbnail' : ''; ?> <?php echo ( $map_confirmation ) ? 'do-map-confirmation' : ''; ?>">
 
-	<div id="bco-landing-pages--wrapper-2" class="bco-landing-pages--wrapper">
+	<div id="bco-landing-pages--wrapper-2" class="bco-landing-pages--wrapper" data-back-link="<?php echo $parent_link; ?>">
 		<div class="bco-landing-pages--container">
 			<div class="bco-landing-pages--box">
 				<?php 
@@ -59,6 +60,24 @@
 
 		document.getElementById("<?php echo $inputID; ?>").value = "<?php echo $pass; ?>";
 
+		<?php if ( $map_confirmation ) : ?>
+			jQuery(function($) {
+				$('.gform_heading').append('<div class="gmaps-confirmation-title"><h3 id="gmaps-confirmation-title" class="gform_title">Is this correct?</h3><div id="gmaps-confirmation-yes" class="gmaps-confirmation-button">Yes</div><a href="" id="gmaps-confirmation-no" class="gmaps-confirmation-button">No, go back</a></div>');
+				
+				$('#gmaps-confirmation-yes').on('click', function() {
+					$('body').removeClass('do-map-confirmation').addClass('map-is-confirmed');
+				});
+
+				setTimeout(function() {
+					window.onload = function() { 
+						var backLink = document.getElementById('bco-landing-pages--wrapper-2').getAttribute('data-back-link');
+						var backButton = document.getElementById("gmaps-confirmation-no"); 
+						backButton.href = backLink; 
+					}
+				}, 200);
+			});
+		<?php endif; ?>
+
 		<?php if ( $map ) : ?>
 			var el = document.getElementsByClassName("gform_heading")[0];
 			el.insertAdjacentHTML('afterend', '<div id="BrandcoLandingPages_Map"></div>');
@@ -66,78 +85,73 @@
 			function initMap() {
 				var address = "<?php echo $pass; ?>";
 				var geocoder = new google.maps.Geocoder();
+
 				geocoder.geocode( { 'address': address}, function(results, status) {
-					var latitude = results[0].geometry.location.lat();
-					var longitude = results[0].geometry.location.lng();
-					var myLatLng = {lat: latitude, lng: longitude};
 
-					var map = new google.maps.Map(document.getElementById('BrandcoLandingPages_Map'), {
-						zoom: 17,
-						scrollwheel: false,
-						draggable: false,
-						center: myLatLng
-					});
+					if ( status === 'OK' ) {
+						var latitude = results[0].geometry.location.lat();
+						var longitude = results[0].geometry.location.lng();
+						var myLatLng = {lat: latitude, lng: longitude};
 
-					var marker = new google.maps.Marker({
-						position: myLatLng,
-						map: map,
-						title: "<?php bloginfo('title'); ?>"
-					});
+						var map = new google.maps.Map(document.getElementById('BrandcoLandingPages_Map'), {
+							zoom: 17,
+							scrollwheel: false,
+							draggable: false,
+							center: myLatLng
+						});
 
-					google.maps.event.addDomListener(window, 'resize', function() {
-						map.setCenter(myLatLng);
-					});
-
-					<?php if ($streetview) : ?>
-					var panorama = new google.maps.StreetViewPanorama(
-						document.getElementById('BrandcoLandingPages_Map'), {
+						var marker = new google.maps.Marker({
 							position: myLatLng,
-						}
-					);
-					map.setStreetView(panorama);
+							map: map,
+							title: "<?php bloginfo('title'); ?>"
+						});
 
-					var sv = new google.maps.StreetViewService();
+						google.maps.event.addDomListener(window, 'resize', function() {
+							map.setCenter(myLatLng);
+						});
 
-					sv.getPanorama({
-					    location: myLatLng,
-					    radius: 50
-					}, function(data, status) {
-						if (status === google.maps.StreetViewStatus.OK) {
+						<?php if ($streetview) : ?>
+							var panorama = new google.maps.StreetViewPanorama(
+								document.getElementById('BrandcoLandingPages_Map'), {
+									position: myLatLng,
+								}
+							);
+							map.setStreetView(panorama);
 
-						    var marker_pano = new google.maps.Marker({
-						        position: myLatLng,
-						        map: panorama
-						    });
+							var sv = new google.maps.StreetViewService();
 
-						    var heading = google.maps.geometry.spherical.computeHeading(data.location.latLng, marker_pano.getPosition());
+							sv.getPanorama({
+							    location: myLatLng,
+							    radius: 50
+							}, function(data, status) {
+								if (status === google.maps.StreetViewStatus.OK) {
 
-						    panorama.setPov({
-						        heading: heading,
-						        pitch: 0
-						    });
-						}
-					});
-					<?php endif; ?>
+								    var marker_pano = new google.maps.Marker({
+								        position: myLatLng,
+								        map: panorama
+								    });
+
+								    var heading = google.maps.geometry.spherical.computeHeading(data.location.latLng, marker_pano.getPosition());
+
+								    panorama.setPov({
+								        heading: heading,
+								        pitch: 0
+								    });
+								}
+							});
+						<?php endif; ?>
+					} else {
+
+						setTimeout(function() {
+							document.getElementById('gmaps-confirmation-title').innerHTML = 'The address you send was not found, please try again.';
+							document.getElementById('bco-landing-pages--wrapper-2').setAttribute('data-invalid-address', true);
+							document.getElementById('gmaps-confirmation-yes').style.display = 'none';
+							document.getElementById('gmaps-confirmation-no').innerHTML = 'Try again';
+						}, 500);
+
+					};
 				}); 
 			}
-		<?php endif; ?>
-
-		<?php if ( $map_confirmation ) : ?>
-		jQuery(function($) {
-			$('.gform_heading').append('<div class="gmaps-confirmation-title"><h3 class="gform_title">Is this correct?</h3><div id="gmaps-confirmation-yes" class="gmaps-confirmation-button">Yes</div><a href="" id="gmaps-confirmation-no" class="gmaps-confirmation-button">No, go back</a></div>');
-			
-			$('#gmaps-confirmation-yes').on('click', function() {
-				$('body').removeClass('do-map-confirmation').addClass('map-is-confirmed');
-			});
-
-			setTimeout(function() {
-				window.onload = function() { 
-					var backUrl = document.referrer;
-					var backButton = document.getElementById("gmaps-confirmation-no"); 
-					backButton.href = backUrl; 
-				}
-			}, 1000);
-		});
 		<?php endif; ?>
 
 	</script>

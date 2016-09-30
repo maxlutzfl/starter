@@ -14,7 +14,7 @@ if ( !class_exists( 'BrandCo_WebsiteSetup' ) ) :
 class BrandCo_WebsiteSetup {
 
 	function __construct() {
-		add_action( 'customize_register', array( $this, 'Customizer' ) );
+		// add_action( 'customize_register', array( $this, 'Customizer' ) );
 		add_action( 'init', array( $this, 'CPT_Agents' ) );
 	}
 
