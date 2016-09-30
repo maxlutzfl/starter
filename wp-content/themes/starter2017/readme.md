@@ -3,7 +3,7 @@
 ## Getting started
 - Download/activate the child theme
 - Run <code>npm install</code>
-- In the <code>gulp.js</code> file, change the <code>var = devUrl</code> to your local dev URL
+- In the <code>gulpfile.js</code> file, change the <code>devUrl</code> to your local dev URL
 - Run <code>gulp</code>
 
 ## PHP Functions
