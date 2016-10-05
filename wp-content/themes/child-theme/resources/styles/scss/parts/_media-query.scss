@@ -1,0 +1,18 @@
+@mixin breakpoint($direction, $point1, $point2: null) {
+
+    @if $direction == 'above' {
+        @media (min-width: $point1) { @content; }
+
+    } @else if $direction == 'below' {
+        @media (max-width: $point1) { @content; }
+
+    } @else if $direction == 'between' {
+        @media (min-width: $point1) and (max-width: $point2) { @content; }
+    }
+}
+
+@mixin on-small-only() { @include breakpoint('below', 750px) { @content; } }
+@mixin on-medium-only() { @include breakpoint('between', 751px, 1200px) { @content; } }
+@mixin on-large-only() { @include breakpoint('above', 1200px) { @content; } }
+@mixin above-medium() { @include breakpoint('above', 751px) { @content; } }
+@mixin above-large() { @include breakpoint('above', 1201px) { @content; } }

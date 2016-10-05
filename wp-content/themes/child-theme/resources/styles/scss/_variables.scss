@@ -1,0 +1,65 @@
+/**
+ * Layout
+ */
+
+$font-family: sans-serif;
+$container: 1000px;
+$base-font: 16;
+
+/**
+ * Colors
+ */
+
+$offwhite: #ECEFF1;
+$lightgrey: #EEEEEE;
+$grey: #BDBDBD;
+$blue: #1E88E5;
+$red: #C62828;
+$white: #FFFFFF;
+$black: #232323;
+$trueblack: #000000;
+
+$primary: $blue;
+$secondary: $red;
+$primary-dark: darken($primary, 10%); 
+$secondary-dark: darken($secondary, 10%); 
+
+/**
+ * Form fields
+ */
+
+$button-font-size: 16px;
+$button-height-mobile: 40px;
+$button-height: 50px;
+$button-radius: 3px;
+$button-weight: 400;
+$button-letter-spacing: 0px;
+$button-text-transform: none;
+
+$input-background: #fff;
+$input-border: 2px solid $grey;
+$input-height-mobile: 40px;
+$input-height: 50px;
+$input-border-width: 2px;
+$input-padding: 10px;
+$input-radius: $button-radius;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

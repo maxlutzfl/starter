@@ -15,6 +15,8 @@ require BCO_CONFIG_DIRECTORY . '/setup/gravity-forms.php';
 require BCO_CONFIG_DIRECTORY . '/setup/google-analytics.php';
 require BCO_CONFIG_DIRECTORY . '/setup/login-screen.php';
 require BCO_CONFIG_DIRECTORY . '/functions/website-info.php';
+require BCO_CONFIG_DIRECTORY . '/functions/social-media.php';
+require BCO_CONFIG_DIRECTORY . '/functions/helpers.php';
 
 # Admin files
 if ( is_admin() ) {

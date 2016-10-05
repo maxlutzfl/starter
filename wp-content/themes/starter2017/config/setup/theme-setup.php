@@ -83,6 +83,11 @@ function bco_theme_setup() {
 		)
 	);
 
+	// Hide admin bar is user is not an admin
+	if ( !current_user_can('administrator') && !is_admin() ) {
+		show_admin_bar(false);
+	}
+
 	/**
 	 * Add ACF Custom Options Page
 	 */

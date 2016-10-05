@@ -1,0 +1,77 @@
+/**
+ * Containers
+ */
+
+.section-container {
+	@include clearfix;
+	max-width: $container;
+	margin: 0 auto;
+	position: relative;
+	z-index: 10; }
+
+/**
+ * Helpers
+ */
+
+.clear { @include clearfix; }
+
+/**
+ * Text
+ */
+
+h1, h2, h3 {
+	line-height: 1.33;
+}
+
+h1, .h1 { 
+	@include font-size(28); 	
+	@include above-medium { @include font-size(38); } }
+
+h2, .h2 { 
+	@include font-size(20); 	
+	@include above-medium { @include font-size(28); } }
+
+h3, .h3 { 
+	@include font-size(18); }
+
+h4, .h4 { 
+	@include font-size(18); }
+
+h5, .h5 { 
+	@include font-size(16); }
+
+h6, .h6 { 
+	@include font-size(14); }
+
+a {
+	color: $primary;
+
+	transition: 300ms ease;
+	will-change: color, opacity, transform;
+
+	&:hover,
+	&:focus {
+		color: $primary-dark;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

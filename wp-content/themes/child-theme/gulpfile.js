@@ -45,6 +45,27 @@ gulp.task('sass', function() {
 });
 
 /**
+ * Setup "sass" task
+ */
+
+gulp.task('header-and-footer-styles', function() {
+
+	return gulp.src('resources/styles/scss/header-footer.scss')
+		.pipe(sourcemaps.init())
+		.pipe(sass())
+		.on('error', notify.onError(function(error) {
+			return error.message;
+		}))
+		.pipe(gulp.dest('resources/styles/css/.'))
+		.pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
+		.pipe(autoprefixer())
+		.pipe(rename('resources/styles/css/header-footer.min.css'))
+		.pipe(livereload())
+		.pipe(sourcemaps.write('./'))
+		.pipe(gulp.dest('.'));
+});
+
+/**
  * Setup "scripts" task
  */
 

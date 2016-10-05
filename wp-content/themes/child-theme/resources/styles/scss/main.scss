@@ -1,27 +1,26 @@
-@import 'setup/normalize';
-@import 'setup/variables';
-@import 'setup/mixins';
-@import 'setup/spacing-padding';
-@import 'setup/grid';
-@import 'setup/base';
-@import 'setup/containers';
+// Main files
+@import 'variables';
 
-@import 'components/header';
-@import 'components/footer';
-@import 'components/mobile-menu';
+// Parts
+@import 'parts/mixins';
+@import 'parts/media-query';
+@import 'parts/reset';
+@import 'parts/main';
+@import 'parts/form-elements';
+@import 'parts/element-spacing';
+@import 'parts/section-padding';
+@import 'parts/grid';
+@import 'parts/columns';
+@import 'parts/helpers';
 
-@import 'plugins/gravity-forms';
-@import 'plugins/slick-js';
-@import 'plugins/magnific-popup';
+@import 'parts/header';
+@import 'parts/footer';
+@import 'parts/navigation';
+@import 'parts/mobile-menu';
 
-@import 'components/entry-content';
-@import 'components/text';
-@import 'components/backgrounds';
-@import 'components/visibility';
-@import 'components/forms';
-@import 'components/lists';
-@import 'components/post-preview';
-@import 'components/sidebar';
-@import 'components/widgets';
+// Plugins
+@import 'plugins/forms';
+@import 'plugins/slider';
 
+// Custom
 @import 'custom';

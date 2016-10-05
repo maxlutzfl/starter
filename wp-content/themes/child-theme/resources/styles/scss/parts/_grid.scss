@@ -1,0 +1,94 @@
+// Setup base
+[data-grid] {
+	font-size: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+
+	> * {
+		@include font-size($base-font);
+		display: inline-block;
+		vertical-align: top;
+		margin: 0 !important;
+	}
+}
+
+// Loop through 12 starting with mobile first
+@for $i from 1 through 12 {
+	$width: (100% / $i);
+
+	@include on-small-only() {
+		[data-grid*="small(#{$i})"] > * { width: $width; }
+	}
+}
+
+@for $i from 1 through 12 {
+	$width: (100% / $i);
+
+	@include on-medium-only() {
+		[data-grid*="medium(#{$i})"] > * { width: $width; }
+	}
+}
+
+@for $i from 1 through 12 {
+	$width: (100% / $i);
+
+	@include on-large-only() {
+		[data-grid*="large(#{$i})"] > * { width: $width; }
+	}
+}
+
+// Setup grid padding sizes
+$grid-paddings: (
+	'20': 20px,
+	'40': 40px,
+	'80': 80px
+);
+
+// Loop through grid paddings
+@each $title, $value in $grid-paddings {
+
+	@include on-small-only {
+		[data-grid-padding*="small(#{$title})"] {
+			margin: -$value / 2;
+			> * { padding: $value / 2; }
+		}
+	}
+}
+
+@each $title, $value in $grid-paddings {
+
+	@include on-medium-only {
+		[data-grid-padding*="medium(#{$title})"] {
+			margin: -$value / 2;
+			> * { padding: $value / 2; }
+		}
+	}
+}
+
+@each $title, $value in $grid-paddings {
+
+	@include on-large-only {
+		[data-grid-padding*="large(#{$title})"] {
+			margin: -$value / 2;
+			> * { padding: $value / 2; }
+		}
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

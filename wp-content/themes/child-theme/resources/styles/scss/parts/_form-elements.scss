@@ -1,0 +1,141 @@
+input {
+
+	&:not([type="submit"]):not([type="button"]):not([type="checkbox"]):not([type="radio"]) {
+		width: 100%;
+		display: block;
+		height: $input-height-mobile;
+		border: $input-border;
+		border-radius: $input-radius;
+		padding: 0 $input-padding;
+		background-color: $input-background;
+
+		@include above-medium {
+			height: $input-height;
+		}
+
+		&:focus {
+			border-color: $primary;
+		}
+	}
+
+	&[type="checkbox"],
+	&[type="radio"] {
+		cursor: pointer;
+	}
+}
+
+textarea {
+	resize: vertical;
+	height: 120px;
+	width: 100%;
+	display: block;
+	overflow: auto;
+	border: $input-border;
+	border-radius: $input-radius;
+	padding: $input-padding;
+	background-color: $input-background;
+
+	&:focus {
+		border-color: $primary;
+	}
+}
+
+select {
+	width: 100%;
+	display: block;
+	height: $input-height-mobile;
+	border: $input-border;
+	border-radius: $input-radius;
+	padding: 0 $input-padding;
+	background-color: $input-background;
+	background-image: url('../../images/svg/dropdown.svg');
+	background-size: 18px;
+	background-repeat: no-repeat;
+	background-position: calc(100% - 6px) 50%;
+
+	@include above-medium {
+		height: $input-height;
+	}
+
+	&:focus {
+		border-color: $primary;
+	}
+}
+
+select::-ms-expand {
+    display: none;
+}
+
+button,
+input[type="submit"],
+input[type="button"],
+.button-style {
+	cursor: pointer;
+	display: inline-block;
+	text-decoration: none;
+	white-space: nowrap;
+	text-align: center;
+	font-weight: $button-weight;
+	letter-spacing: $button-letter-spacing;
+	text-transform: $button-text-transform;
+	font-size: $button-font-size;
+	
+	// Default
+	border: $input-border-width solid $primary;
+	background-color: $primary;
+	color: #fff;
+
+	// Variables
+	height: $button-height-mobile;
+	line-height: $button-height-mobile - ($input-border-width * 2);
+	border-radius: $button-radius;
+	padding: 0 $input-padding;
+
+	@include above-medium {
+		height: $button-height;
+		line-height: $button-height - ($input-border-width * 2);
+	}
+
+	&:focus,
+	&:hover {
+		color: #fff;
+		background-color: $primary-dark;
+		border-color: $primary-dark;
+	}
+	
+	// Secondary color button
+	&.button-style-secondary {
+		background-color: $secondary;
+		border-color: $secondary;
+		
+		&:focus,
+		&:hover {
+			background-color: $secondary-dark;
+			border-color: $secondary-dark; } }
+	
+	// Hollow button
+	&.button-style-hollow {
+		border-color: #fff;
+		background-color: transparent;
+		color: #fff;
+		
+		&:focus,
+		&:hover {
+			color: $black;
+			background-color: #fff;
+			border-color: #fff; } }
+
+	// Hollow button
+	&.button-style-hollow-dark {
+		border-color: $black;
+		background-color: transparent;
+		color: $black;
+		
+		&:focus,
+		&:hover {
+			color: #fff;
+			background-color: $black;
+			border-color: $black; } }
+}
+
+

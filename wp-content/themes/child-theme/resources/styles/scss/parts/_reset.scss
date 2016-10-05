@@ -1,0 +1,119 @@
+:root {
+	font-size: 16px;
+	box-sizing: border-box;
+	font-family: $font-family;
+	line-height: 1.75;
+}
+
+* {
+	box-sizing: inherit;
+}
+
+html {
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+
+body {
+	margin: 0;
+}
+
+svg {
+	height: 16px;
+	width: 20px;
+}
+
+figcaption,
+figure,
+main,
+article,
+aside,
+footer,
+header,
+nav,
+section {
+	display: block;
+}
+
+header,
+footer,
+section {
+	position: relative;
+}
+
+a,
+img,
+li {
+
+	&:active,
+	&:focus {
+		outline: none;
+	}
+}
+
+img {
+	max-width: 100%;
+	height: auto;
+}
+
+textarea,
+input,
+button,
+select {
+	appearance: none;
+	font-family: $font-family;
+	font-size: 16px;
+	margin: 0;
+
+	&:focus {
+		outline: none;
+	}
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+ul,
+ol {
+	margin: 0;
+}
+
+ol,
+ul {
+	font-size: 0;
+
+	li {
+		@include font-size($base-font);
+		vertical-align: top;
+	}
+
+	li:not(:last-of-type) {
+		margin-bottom: 20px;
+	}
+
+	ul {
+		margin-top: 10px;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

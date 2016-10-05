@@ -1,0 +1,21 @@
+$element-spacings: (
+	'10': 10px,
+	'30': 30px,
+	'60': 60px
+);
+
+@each $title, $value in $element-spacings {
+	[data-element-spacing*="small(#{$title})"] > *:not(:last-child) { margin-bottom: $value; } 
+}
+
+@each $title, $value in $element-spacings {
+	@include above-medium {
+		[data-element-spacing*="medium(#{$title})"] > *:not(:last-child) { margin-bottom: $value; } 
+	}
+}
+
+@each $title, $value in $element-spacings {
+	@include above-large {
+		[data-element-spacing*="large(#{$title})"] > *:not(:last-child) { margin-bottom: $value; } 
+	}
+}

@@ -1,0 +1,92 @@
+[data-column-span] {
+	display: inline-block;
+	width: 100%;
+	margin: 0 auto;
+	@include font-size($base-font);
+}
+
+[data-column-padding] {
+	@include clearfix;
+	font-size: 0;
+}
+
+// Setup grid padding sizes
+$column-paddings: (
+	'20': 20px,
+	'40': 40px,
+	'80': 80px
+);
+
+
+@include on-small-only {
+
+	@each $title, $value in $column-paddings {
+
+		[data-column-padding*="small(#{$title})"] {
+			margin: -($value / 2);
+
+			> * {
+				padding: ($value / 2);
+			}
+		}
+	}
+
+	@for $i from 1 through 12 {
+		$width: percentage($i / 12);
+		
+		[data-column-span*="small(#{$i})"] { width: $width; }
+	}
+}
+
+@include on-medium-only {
+
+	@each $title, $value in $column-paddings {
+
+		[data-column-padding*="medium(#{$title})"] {
+			margin: 0 (-($value / 2));
+
+			> * {
+				padding: 0 ($value / 2);
+			}
+		}
+	}
+
+	@for $i from 1 through 12 {
+		$width: percentage($i / 12);
+		
+		[data-column-span*="medium(#{$i})"] { width: $width; }
+	}
+}
+
+@include on-large-only {
+
+	@each $title, $value in $column-paddings {
+
+		[data-column-padding*="large(#{$title})"] {
+			margin: 0 (-($value / 2));
+
+			> * {
+				padding: 0 ($value / 2);
+			}
+		}
+	}
+
+	@for $i from 1 through 12 {
+		$width: percentage($i / 12);
+		
+		[data-column-span*="large(#{$i})"] { width: $width; }
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+

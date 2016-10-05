@@ -1,0 +1,22 @@
+$section-paddings: (
+    '20': 20px,
+    '40': 40px,
+    '80': 80px,
+    '200': 200px
+);
+
+@each $title, $value in $section-paddings {
+    [data-section-padding*="small(#{$title})"] { padding: $value 20px; } 
+}
+
+@each $title, $value in $section-paddings {
+    @include above-medium {
+        [data-section-padding*="medium(#{$title})"] { padding: $value 20px; } 
+    }
+}
+
+@each $title, $value in $section-paddings {
+    @include above-large {
+        [data-section-padding*="large(#{$title})"] { padding: $value 20px; } 
+    }
+}

@@ -1,5 +1,3 @@
-<?php /** Options: .mobile-navigation-right or .mobile-navigation-left or none for full width */ ?>
-
 <div id="mobile-navigation" class="mobile-navigation mobile-navigation-right" aria-hidden="true">
 	<div class="mobile-navigation-container">
 		

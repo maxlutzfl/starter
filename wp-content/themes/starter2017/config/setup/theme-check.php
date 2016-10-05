@@ -93,7 +93,7 @@ class bco_theme_checker {
 
 	# Check for admin email
 	public function check_admin_email() {
-		if (strpos(get_option('admin_email'), 'brandco') !== false) {
+		if (get_development_environment() === 'live' && strpos(get_option('admin_email'), 'brandco') !== false) {
 			?>
 				<div class="notice notice-error is-dismissible">
 					<p><?php _e('✉️ Admin email is set to a brandco address. Make sure forms are submitting to the right place. <a href="' . get_developer_options_link() . '">Hide developer alerts.</a>', 'bco'); ?></p>
