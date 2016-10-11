@@ -10,7 +10,7 @@
 		</div>
 		<div class="header-bottom">
 			<a href="#0" id="menu-toggle" class="menu-toggle" data-mobile-menu-toggle><?php echo get_icon('navicon.svg'); ?><span>MENU</span></a>
-			<nav class="header-navigation"><?php get_primary_navigation(); ?></nav>
+			<nav class="header-navigation"><ul><?php get_navigation(); ?></ul></nav>
 		</div>
 	</div>
 </header>
