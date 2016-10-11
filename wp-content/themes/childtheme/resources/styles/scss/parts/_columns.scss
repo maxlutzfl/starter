@@ -1,5 +1,6 @@
 [data-column-span] {
 	display: inline-block;
+	vertical-align: top;
 	width: 100%;
 	margin: 0 auto;
 	@include font-size($base-font);
@@ -14,7 +15,8 @@
 $column-paddings: (
 	'20': 20px,
 	'40': 40px,
-	'80': 80px
+	'80': 80px,
+	'120': 120px
 );
 
 
@@ -43,10 +45,10 @@ $column-paddings: (
 	@each $title, $value in $column-paddings {
 
 		[data-column-padding*="medium(#{$title})"] {
-			margin: 0 (-($value / 2));
+			margin: -($value / 2);
 
 			> * {
-				padding: 0 ($value / 2);
+				padding: ($value / 2);
 			}
 		}
 	}
@@ -63,10 +65,10 @@ $column-paddings: (
 	@each $title, $value in $column-paddings {
 
 		[data-column-padding*="large(#{$title})"] {
-			margin: 0 (-($value / 2));
+			margin: -($value / 2);
 
 			> * {
-				padding: 0 ($value / 2);
+				padding: ($value / 2);
 			}
 		}
 	}

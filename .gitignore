@@ -90,6 +90,7 @@ wp-content/*
 !wp-content/mu-plugins/
 !wp-content/plugins/
 !wp-content/themes/
+!idx/
 
 # ignore these plugins
 wp-content/plugins/hello.php
