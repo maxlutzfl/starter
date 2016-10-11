@@ -52,9 +52,35 @@ function textarea_filter($content) {  }
 
 ```
 
-## SCSS documentation
+## Styles/layouts documentation
+
+### _medium-query.scss
 ```scss
-/* Coming soon */
+// Mobile first
+.thing { 
+	
+	margin: 0px; 
+	@include above-medium { margin: 10px; }
+	@include above-large { margin: 20px; }
+
+	@include on-small-only { color: red; }
+	@include on-medium-only { color: white; }
+	@include on-large-only { color: blue; }
+}
+
+```
+
+### _section-padding.scss
+```php
+<section data-section-padding="small(20) medium(40) large(80)">
+    <div class="section-container">
+        <!-- Content here -->
+    </div>
+</section>
+```
+
+```scss
+[data-section-padding*=""]
 ```
 
 ## Javascript
