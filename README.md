@@ -54,11 +54,11 @@ function textarea_filter($content) {  }
 
 ## Styles/layouts documentation
 
-### _medium-query.scss
+### _media-query.scss
 ```scss
 // Mobile first
 .thing { 
-	
+
 	margin: 0px; 
 	@include above-medium { margin: 10px; }
 	@include above-large { margin: 20px; }
@@ -80,7 +80,14 @@ function textarea_filter($content) {  }
 ```
 
 ```scss
-[data-section-padding*=""]
+// On small, padding: 20px 20px;
+[data-section-padding="small(20)"] 
+
+// On medium, padding: 40px 20px;
+[data-section-padding="medium(40)"] 
+
+// On large, padding: 80px 20px;
+[data-section-padding="large(80)"] 
 ```
 
 ## Javascript
