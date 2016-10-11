@@ -1,0 +1,99 @@
+/**
+ * Text alignmnet
+ */
+
+.text-justify {
+    text-align: justify; }
+
+.text-center {
+    text-align: center; }
+
+.small-text-center {
+    @include on-small-only { text-align: center; } }
+
+.medium-text-center {
+    @include on-medium-only { text-align: center; } }
+
+.large-text-center {
+    @include on-large-only { text-align: center; } }
+
+.text-left {
+    text-align: left; }
+
+.small-text-left {
+    @include on-small-only { text-align: left; } }
+
+.medium-text-left {
+    @include on-medium-only { text-align: left; } }
+
+.large-text-left {
+    @include on-large-only { text-align: left; } }  
+
+.text-right {
+    text-align: right; }
+
+.small-text-right {
+    @include on-small-only { text-align: right; } }
+
+.medium-text-right {
+    @include on-medium-only { text-align: right; } }
+
+.large-text-right {
+    @include on-large-only { text-align: right; } } 
+
+/**
+ * Backgrounds
+ */
+
+ .dark-section {
+    color: #fff;
+
+    svg { fill: #fff; }
+    a { color: #fff; } }
+
+.dark-background {
+    background-color: $black; }
+
+.primary-background {
+    background-color: $primary; }
+
+.background-cover {
+    background-size: cover;
+    background-position: 50%; }
+
+.container-fill {
+    position: absolute;
+    @include fill; }
+
+.parallax-fill {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    bottom: -60px;
+    left: 0;
+    z-index: 1; 
+    background-size: cover;
+    background-position: 50%;
+    backface-visibility: hidden;
+
+    opacity: 0;
+    transition: opacity 1000ms ease 300ms;
+    will-change: opacity, transform;
+    
+    .bco-touchevents & {
+        opacity: 1;
+        top: 0;
+        bottom: 0; }
+
+    &.skrollable { opacity: 1; } }
+
+.overflow-hide {
+    overflow: hidden; }
+
+.background-layer-darken {
+    &:after {
+        content: "";
+        position: absolute;
+        @include fill;
+        background-color: $black;
+        opacity: 0.7; } }
