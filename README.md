@@ -11,6 +11,11 @@
 ## PHP functions
 
 ```php 
+/**
+ * Main page title, does NOT work inside loop, use the_title() instead
+ */
+function get_main_page_title() {  }
+
 /** 
  * For subpages/sub-subpages, this function will find the post ID of the parent page
  */
@@ -29,6 +34,8 @@ function get_post_excerpt($args = array()) {  }
  */
 
 function get_icon($icon = 'link.svg') {  }
+function get_image_by_id($image_id, $size = 'thumbnail') {  }
+function get_image_from_directory($filename) {  } // $filename = 'image.jpg';
 
 /**
  * Navigation
@@ -36,6 +43,12 @@ function get_icon($icon = 'link.svg') {  }
  */
 
 function get_navigation($args = array()) {  }
+
+/** 
+ * Misc
+ */
+function get_brandco_link() {  }
+function textarea_filter($content) {  }
 
 ```
 
