@@ -148,7 +148,24 @@ function get_image_from_directory($file_name) {
 	return BCO_CHILD_BASE_DIRECTORY_URI . '/resources/images/' . $file_name;
 }
 
+/** 
+ * Get featured image url 
+ */
+function get_featured_image($size = 'medium', $post_id = null) {
+	if ( empty( $post_id ) ) {
+		$post_id = get_the_ID();
+	}
 
+	if ( has_post_thumbnail( $post_id ) ) {
+		$get_img_ID = get_post_thumbnail_id( $post_id );
+		$img_src_url = wp_get_attachment_image_src( $get_img_ID, $size );
+		if ( $img_src_url ) {
+			return $img_src_url[0];
+		} else {
+			return;
+		}
+	}
+}
 
 
 
