@@ -201,6 +201,15 @@ class BrandcoLandingPages {
 				</label>				
 			</p>
 
+			<h1><strong>Zillow Integration</strong></h1>
+
+			<p>
+				<label for="bco-zillow-estimate">
+					<input type="checkbox" name="bco-zillow-estimate" id="bco-zillow-estimate" value="yes" <?php if ( isset ( $stored_meta['bco-zillow-estimate'] ) ) checked( $stored_meta['bco-zillow-estimate'][0], 'yes' ); ?> />
+					Show Zillow Home Value Estimate?
+				</label>				
+			</p>
+
 		<?php endif; ?>
 
 		<?php if ( $template === 'template-landingpage-02.php') : ?>
@@ -263,6 +272,12 @@ class BrandcoLandingPages {
 			update_post_meta( $post_id, 'bco-landingpages-gmaps-streetview', 'yes' );
 		} else {
 			update_post_meta( $post_id, 'bco-landingpages-gmaps-streetview', '' );
+		}
+
+		if ( isset( $_POST[ 'bco-zillow-estimate' ] ) ) {
+			update_post_meta( $post_id, 'bco-zillow-estimate', 'yes' );
+		} else {
+			update_post_meta( $post_id, 'bco-zillow-estimate', '' );
 		}
 
 		if ( isset( $_POST[ 'bco-landingpages-map' ] ) ) {
