@@ -1,6 +1,6 @@
 <?php 
 /**
- * @package BrandCo. Framework Child Theme
+ * 
  */
 
 # Remove parent framework theme script
@@ -23,13 +23,8 @@ function child_frontend_scripts_and_styles() {
 	# Styles
 	wp_enqueue_style('bco-child-theme-style', BCO_CHILD_BASE_DIRECTORY_URI . '/resources/styles/css/main.min.css');
 
+	/** Remove parent styles */
 	wp_dequeue_style('bco-framework-theme-style');
-
-	# Google Fonts
-	// if ( defined('GOOGLE_FONTS') ) {
-	// 	wp_register_style( 'bco-google-font', 'https://fonts.googleapis.com/css?family=' . GOOGLE_FONTS);
-	// 	wp_enqueue_style( 'bco-google-font' );
-	// }
 }
 
 add_action('wp_enqueue_scripts', 'child_frontend_scripts_and_styles', 20);

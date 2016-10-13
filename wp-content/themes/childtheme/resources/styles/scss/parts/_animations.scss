@@ -1,0 +1,13 @@
+$inview-delay: 500ms;
+
+.inview-rtl {
+    transform: translate3d(100px, 0, 0);
+    opacity: 0;
+    transition: 1000ms ease $inview-delay;
+    will-change: opacity, transform;
+
+    &.element-inview-animated {
+        transform: none;
+        opacity: 1;
+    }
+}

@@ -25,6 +25,10 @@
 		$parent_link = get_permalink($parentid);
 		$pass_to = get_post_meta( $parentid, 'bco-landingpages-pass-02', true);
 
+		// Back link
+		$back_link = ( isset($_GET['referer']) ) ? $_GET['referer'] : $parent_link;
+
+		// Google Maps
 		$map = get_post_meta( $parentid, 'bco-landingpages-map', true);
 		$map_confirmation = get_post_meta($parentid, 'bco-landingpages-gmaps-confirmation', true);
 		$streetview = get_post_meta($parentid, 'bco-landingpages-gmaps-streetview', true);
@@ -40,6 +44,7 @@
 <body class="<?php echo (BrandcoLandingPages_Image($parentid)) ? 'has-post-thumbnail' : ''; ?> <?php echo ( $map_confirmation ) ? 'do-map-confirmation' : ''; ?>">
 
 	<div id="bco-landing-pages--wrapper-2" class="bco-landing-pages--wrapper" data-back-link="<?php echo $parent_link; ?>">
+	<div id="bco-landing-pages--wrapper-2" class="bco-landing-pages--wrapper" data-back-link="<?php echo $back_link; ?>">
 		<div class="bco-landing-pages--container">
 			<div class="bco-landing-pages--box">
 				<?php 

@@ -10,7 +10,7 @@
 		<div class="mobile-navigation-body">
 			<div class="mobile-navigation-links">
 				<ul>
-					<?php get_mobile_navigation(); ?>
+					<?php get_navigation('mobile'); ?>
 				</ul>				
 			</div>
 		</div>

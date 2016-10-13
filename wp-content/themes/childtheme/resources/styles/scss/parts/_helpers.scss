@@ -77,15 +77,19 @@
     backface-visibility: hidden;
 
     opacity: 0;
-    transition: opacity 1000ms ease 300ms;
+    transition: opacity 1000ms ease 500ms;
     will-change: opacity, transform;
     
+    &.skrollable {
+        opacity: 1;
+    }
+
     .bco-touchevents & {
         opacity: 1;
         top: 0;
-        bottom: 0; }
-
-    &.skrollable { opacity: 1; } }
+        bottom: 0;
+    }
+}
 
 .overflow-hide {
     overflow: hidden; }

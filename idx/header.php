@@ -3,7 +3,7 @@
 if ( ! isset( $_GET['site'] ) ) { echo 'Please use http://website.com/header.php?site={SITE_URL}'; return; }
 
 // Get header contents
-$site = $_GET['site'] . '/wolfnet/header-contents.php';
+$site = $_GET['site'] . '/idx/header-contents.php';
 
 // Echo header contents
 echo file_get_contents( $site ); ?>

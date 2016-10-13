@@ -3,6 +3,8 @@
 	box-sizing: border-box;
 	font-family: $font-family;
 	line-height: 1.75;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
 }
 
 * {
@@ -51,9 +53,17 @@ li {
 	}
 }
 
+embed,
+iframe,
+object,
+figure,
 img {
 	max-width: 100%;
 	height: auto;
+}
+
+figure {
+	margin: 0;
 }
 
 textarea,

@@ -5,44 +5,6 @@
  */
 
 /**
- * Global page title function
- * Does NOT work in loop, use the_title() instead
- */
-function get_main_page_title() {
-
-	if (is_home()) {
-
-		if ( get_option('page_for_posts') ) {
-			return get_the_title(get_option('page_for_posts'));
-		} else {
-			return 'Recent Posts';
-		}
-	}
-
-	if (is_post_type_archive()) {
-		return get_post_type_archive_title(); 
-	}
-
-	if ( is_category() ) {
-		return single_cat_title( '', false );
-	} 
-
-	if ( is_tag() ) {
-		return single_term_title( '', false );
-	}
-
-	if ( is_search() ) {
-		return 'Search results for: <span>' . get_search_query() . '</span>';
-	}
-
-	if (is_404()) {
-		return __('This page cannot be accessed, need help?', 'bco');
-	}
-
-	return get_the_title();
-}
-
-/**
  * Get image url by image ID
  */
 function get_image_by_id($img_id, $size = 'thumbnail') {
