@@ -1,12 +1,12 @@
-=== WolfNet IDX for WordPress  ===
-Author:             WolfNet Technologies, LLC
-Contributors:       wolfnettech, ajmichels, asbaumgart, michaelpidde, thenewcoke, blots
-Tags:               idx, mls, homes
-Requires at least:  3.5.1
-Tested up to:       4.5
-Stable tag:         1.12.2
-License:            GPLv2 or later
-License URI:        http://www.gnu.org/licenses/gpl-2.0.html
+=== WolfNet IDX for WordPress ===
+Author:              WolfNet Technologies, LLC
+Contributors:        wolfnettech, ajmichels, asbaumgart, michaelpidde, thenewcoke, blots
+Tags:                idx, mls, homes
+Requires at least:   3.5.1
+Tested up to:        4.5
+Stable tag:          1.13.0
+License:             GPLv2 or later
+License URI:         http://www.gnu.org/licenses/gpl-2.0.html
 
 The WolfNet IDX for WordPress plugin provides IDX search solution integration with any WordPress
 website.
@@ -41,6 +41,7 @@ entered in the "WolfNet >> General Settings" page before any IDX data can be dis
 2. Activate "WolfNet IDX for WordPress" from the "Plugins" page in the admin.
 3. Go to WolfNet and add your Product Key.
 4. Click "Save".
+
 
 == Frequently Asked Questions ==
 
@@ -83,6 +84,7 @@ The following CSS will resolve the layout issue in the "Twenty Fifteen" theme:
 == Screenshots ==
 
 
+
 == Upgrade Notice ==
 
 = HTTP Deprecation - April 2015 =
@@ -91,7 +93,18 @@ Please upgrade to the latest version of the plugin as we will be disabling the i
 = Old API Deprecation - January 2015 =
 Please upgrade to the latest version of the plugin as we will be disabling our old API servers. This means that plugin versions 0.1.0 - 1.6.4 will no longer function.
 
+
 == Changelog ==
+
+= 1.13.0 =
+
+* Changed agent/office URLs to be a pretty format
+* Redesigned agent/office search bar
+* Agent profile listings are now labeled as active or sold when the active/sold toggle is not displayed
+* Gracefully degrade when adding widgets if the API key is disabled
+* Fixed issue with the agent profile photo scroll-following rules
+* Fixed agent profile active listings link
+* Fixed issue where the agents/offices toggle was partially covered
 
 = 1.12.2 =
 
@@ -550,6 +563,10 @@ The following individuals contributed to the creation of this plugin.
 = Michael Pidde =
 * http://michaelpidde.com
 * Minnesota, USA
+
+= John Coleman =
+* @thenewcoke
+* Minneapolis, Minnesota, USA
 
 = Tom Penney =
 * http://tompenney.com

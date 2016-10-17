@@ -129,7 +129,28 @@ function get_featured_image($size = 'medium', $post_id = null) {
 	}
 }
 
+/**
+ * Get list of terms from taxonomy
+ * Defaults to category
+ */
 
+function get_taxonomy_list($taxonomy = 'category', $separator = null) {
+	if ( taxonomy_exists($taxonomy) ) {
+		$list = get_the_terms(false, $taxonomy);
+		if ( $list ) { 
+			foreach ( $list as $category ) {
+				if ( $category === end($list) ) {
+					echo '<a href="' . get_term_link( $category->term_id ) . '" class="category" itemprop="keywords">' . $category->name . '</a>';
+				} else {
+					echo '<a href="' . get_term_link( $category->term_id ) . '" class="category" itemprop="keywords">' . $category->name . '</a>' . '<span class="taxonomy-separator">' . $separator . '</span>';
+				}
+			}
+		}
+
+	} else {
+		echo $taxonomy . ' is not a taxonomy.';
+	}
+}
 
 
 

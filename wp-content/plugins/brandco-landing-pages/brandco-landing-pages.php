@@ -201,14 +201,18 @@ class BrandcoLandingPages {
 				</label>				
 			</p>
 
-			<h1><strong>Zillow Integration</strong></h1>
+			<div style="display: none;">
+				
+				<h1><strong>Zillow Integration</strong></h1>
 
-			<p>
-				<label for="bco-zillow-estimate">
-					<input type="checkbox" name="bco-zillow-estimate" id="bco-zillow-estimate" value="yes" <?php if ( isset ( $stored_meta['bco-zillow-estimate'] ) ) checked( $stored_meta['bco-zillow-estimate'][0], 'yes' ); ?> />
-					Show Zillow Home Value Estimate?
-				</label>				
-			</p>
+				<p>
+					<label for="bco-zillow-estimate">
+						<input type="checkbox" name="bco-zillow-estimate" id="bco-zillow-estimate" value="yes" <?php if ( isset ( $stored_meta['bco-zillow-estimate'] ) ) checked( $stored_meta['bco-zillow-estimate'][0], 'yes' ); ?> />
+						Show Zillow Home Value Estimate?
+					</label>				
+				</p>
+
+			</div>
 
 		<?php endif; ?>
 

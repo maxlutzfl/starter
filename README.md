@@ -50,6 +50,13 @@ function get_navigation($args = array()) {  }
 function get_brandco_link() {  }
 function textarea_filter($content) {  }
 
+/**
+ * Taxonomy term list
+ * Use category, post_tag, or other custom taxonomies
+ * $separator = ', ' would result in a list of terms with a comma in between
+ */
+function get_taxonomy_list($taxonomy = 'category', $separator = null) {  }
+
 ```
 
 ## Styles/layouts documentation
