@@ -1,5 +1,12 @@
 <?php get_header(); ?>
 
+<?php
+
+
+echo apply_filters('page_title_filter', 'Title That Can Be Changed!', 10, 1);
+
+?>
+
 	<section class="text-center small-large-sp">
 		<div class="section-container">
 			<div class="small-medium-sp">

@@ -131,32 +131,31 @@ echo '<h1>Title That Cannot Be Changed</h1>';
 echo '<h1>' . apply_filters('page_title_filter', 'Title That Can Be Changed!', 10, 1) . '</h1>';
 
 /** In the functions file you can now change this as needed */
-add_filter('page_title_filter', 'replace_page_title', 10, 1);
+add_filter('page_title_filter', 'replace_page_title');
 function replace_page_title($old_title) {
     $new_title = 'New Title!';
     return $new_title;
 }
 
-/** Better: */
+/** Alternative */
 add_action('init', 'replace_page_title');
 function replace_page_title() {
-    
+
     // Get new title
     $new_title = 'New Title!';
-    
+
     // Add new filter
-    apply_filters(
+    add_filter(
         'page_title_filter',
         function($old_title) use ($new_title) {
 
             // If there is a new title, replace the old
             // otherwise return back the old title
-            $title_to_show = ($new_title) : $old_title;
+            $title_to_show = ($new_title) ? $new_title : $old_title;
             return $title_to_show;
         }
     );
 }
-
 ```
 
 ## .htaccess
