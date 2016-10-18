@@ -17,7 +17,7 @@
 /**
  * Main page title, does NOT work inside loop, use the_title() instead
  */
-function get_main_page_title() {  }
+function get_page_title() {  }
 
 /** 
  * For subpages/sub-subpages, this function will find the post ID of the parent page
@@ -43,6 +43,12 @@ function get_featured_image($size = 'medium', $post_id = null) {  }
  * $args = array('location' => 'primary', 'depth' => -1);
  */
 function get_navigation($args = array()) {  }
+
+/**
+ * Social Media
+ * returns as an array of data
+ */
+function get_social_media_links() {  }
 
 /** 
  * Misc
@@ -103,13 +109,38 @@ function get_archive_pagination() {   }
 ```
 
 ### _grid.scss
-```scss
+
+For multiple rows of cells
+
+```php
+<section>
+	<ul data-grid="small(2) medium(4) large(6)" data-grid-padding="small(20) medium(40) large(40)">
+		<li>...</li>
+		<li>...</li>
+		<li>...</li>
+		...
+	</ul>
+</section>
 ```
 
 ### _columns.scss
-```scss
+
+For single row with columns
+
+```php
+<section>
+	<div class="section-container">
+		<ul data-column-padding="small(20) medium(40) large(80)">
+			<li data-column-span="small(6) medium(4) large(3)">...</li>
+			<li data-column-span="small(6) medium(8) large(9)">...</li>
+		</ul>
+	</div>
+</section>
 ```
 
+### CSS helper classes
+```
+```
 
 ## Javascript
 ```js
@@ -132,8 +163,6 @@ In the template:
 
 In `functions.php`:
 ```php  
-<?php
-
 /** In the functions file you can now change this as needed */
 add_filter('page_title_filter', 'replace_page_title');
 function replace_page_title($old_title) {
