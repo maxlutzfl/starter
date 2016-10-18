@@ -155,6 +155,39 @@ https://github.com/kenwheeler/slick/
 </ul>
 ```
 
+```javascript
+$('[data-slider="hero"]').slick({
+	infinite: true,
+	slidesToShow: 1,
+	slidesToScroll: 1,
+	speed: 300,
+	swipe: true,
+	pauseOnFocus: false,
+	pauseOnHover: false,
+	pauseOnDotsHover: false,
+	autoplay: false,
+	autoplaySpeed: 3000,
+	centerMode: false,
+	centerPadding: '50px',
+	dots: true,
+	arrows: true,
+	draggable: true,
+	fade: false,
+	// appendArrows: $('#arrows'),
+	// appendDots: $('#dots'),
+	mobileFirst: true,
+	prevArrow: '<div class="slick-prev">Previous</div>',
+	nextArrow: '<div class="slick-next">Next</div>',
+	responsive: [{
+		breakpoint: 750,
+		settings: {
+			fade: true,
+		}
+	}]
+});
+```
+
+
 ### Animating elements as they appear in viewport
 https://github.com/camwiegert/in-view
 
