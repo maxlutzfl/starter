@@ -118,7 +118,45 @@ function get_archive_pagination() {   }
 
 ## Actions and Filters
 
-### `add_filter()` and `apply_filter`
+### `add_filter()` and `apply_filters()`
+
+- <a href="https://developer.wordpress.org/reference/functions/add_filter/" target="_blank">add_filter()</a>
+- <a href="https://developer.wordpress.org/reference/functions/apply_filters/" target="_blank">apply_filters()</a>
+
+```php  
+/** Bad  */
+<h1>Title That Cannot Be Changed</h1>
+
+/** Good */
+<h1><?php echo apply_filters('page_title_filter', 'Title That Can Be Changed!', 10, 1); ?></h1>
+
+/** In functions.php you can now change this as needed */
+add_filter('page_title_filter', 'replace_page_title', 10, 1);
+function replace_page_title($old_title) {
+    $new_title = 'New Title!';
+    return $new_title;
+}
+
+/** Better: */
+add_action('init', 'replace_page_title');
+function replace_page_title() {
+    
+    // Get new title
+    $new_title = 'New Title!';
+    
+    // Add new filter
+    apply_filters(
+        'page_title_filter',
+        function($old_title) use ($new_title) {
+            
+            // If there is a new title, replace the old
+            // otherwise return back the old title
+            $title_to_show = ($new_title) : $old_title;
+            return $title_to_show;
+        }
+    );
+}
+```
 
 ## .htaccess
 
