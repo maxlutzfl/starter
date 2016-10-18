@@ -121,14 +121,18 @@ function get_archive_pagination() {   }
 - <a href="https://developer.wordpress.org/reference/functions/add_filter/" target="_blank">add_filter()</a>
 - <a href="https://developer.wordpress.org/reference/functions/apply_filters/" target="_blank">apply_filters()</a>
 
+In the template:
+```php
+<!-- Bad -->
+<h1>Title That Cannot Be Changed</h1>
+
+<!-- Good -->
+<h1><?php echo apply_filters('page_title_filter', 'Title That Can Be Changed!', 10, 1); ?></h1>
+```
+
+In `functions.php`:
 ```php  
 <?php
-
-/** Bad  */
-echo '<h1>Title That Cannot Be Changed</h1>';
-
-/** Good */
-echo '<h1>' . apply_filters('page_title_filter', 'Title That Can Be Changed!', 10, 1) . '</h1>';
 
 /** In the functions file you can now change this as needed */
 add_filter('page_title_filter', 'replace_page_title');
