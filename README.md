@@ -143,12 +143,30 @@ For single row with columns
 ```
 
 ## Javascript
-```js
-/* Coming soon */
+
+### Sliders
+https://github.com/kenwheeler/slick/
+
+```php
+<ul data-slider="hero">
+	<li><div>Slide 1</div></li>
+	<li><div>Slide 1</div></li>
+	<li><div>Slide 1</div></li>
+</ul>
+```
+
+### Animating elements as they appear in viewport
+https://github.com/camwiegert/in-view
+
+```php
+<section>
+	<h1 class="element-inview inview-up">Title Will Animate Up</h1>
+</section>
 ```
 
 ### Parallax
-Uses Skrollr (https://github.com/Prinzhorn/skrollr)
+https://github.com/Prinzhorn/skrollr
+
 ```php
 <section>
 	<div class="section-container">
