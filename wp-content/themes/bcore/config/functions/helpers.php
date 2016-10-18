@@ -134,7 +134,7 @@ function get_featured_image($size = 'medium', $post_id = null) {
  * Defaults to category
  */
 
-function get_taxonomy_list($taxonomy = 'category', $separator = null) {
+function get_taxonomy_list($taxonomy = 'category', $separator = ', ') {
 	if ( taxonomy_exists($taxonomy) ) {
 		$list = get_the_terms(false, $taxonomy);
 		if ( $list ) { 
@@ -152,7 +152,24 @@ function get_taxonomy_list($taxonomy = 'category', $separator = null) {
 	}
 }
 
+/**
+ * Default pagination for archives
+ */
 
+function get_archive_pagination() {
+	global $wp_query;
+	echo '<div class="archive-pages">'; 
+		echo paginate_links( 
+			array(
+				'base' => str_replace(10000000, '%#%', esc_url(get_pagenum_link(10000000))),
+				'format' => '?paged=%#%',
+				'current' => max(1, get_query_var('paged')),
+				'total' => $wp_query->max_num_pages,
+				'before_page_number' => '<span class="screen-reader-text">Page </span>'
+			) 
+		);
+	echo '</div>';
+}
 
 
 

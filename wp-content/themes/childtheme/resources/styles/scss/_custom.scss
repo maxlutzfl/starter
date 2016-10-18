@@ -1,1 +1,24 @@
+.archive-pages {
+    text-align: center;
 
+    .page-numbers {
+        display: inline-block;
+        background-color: #eee;
+        font-weight: 700;
+        line-height: 20px;
+        min-width: 30px;
+        text-align: center;
+        padding: 3px 6px;
+        border-radius: 3px;
+
+        &.current {
+            background-color: $red;
+            color: #fff;
+        }
+    }
+
+    a:hover {
+        background-color: #333;
+        color: #fff;
+    }
+}

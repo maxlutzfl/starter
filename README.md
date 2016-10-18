@@ -55,7 +55,12 @@ function textarea_filter($content) {  }
  * Use category, post_tag, or other custom taxonomies
  * $separator = ', ' would result in a list of terms with a comma in between
  */
-function get_taxonomy_list($taxonomy = 'category', $separator = null) {  }
+function get_taxonomy_list($taxonomy = 'category', $separator = ', ') {  }
+
+/**
+ * Archive pages
+ */
+function get_archive_pagination() {   }
 
 ```
 
@@ -110,6 +115,10 @@ function get_taxonomy_list($taxonomy = 'category', $separator = null) {  }
 ```js
 /* Coming soon */
 ```
+
+## Actions and Filters
+
+### `add_filter()` and `apply_filter`
 
 ## .htaccess
 
