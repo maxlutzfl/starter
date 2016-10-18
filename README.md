@@ -147,6 +147,22 @@ For single row with columns
 /* Coming soon */
 ```
 
+### Parallax
+Uses Skrollr (https://github.com/Prinzhorn/skrollr)
+```php
+<section>
+	<div class="section-container">
+		<h1>Title</h1>
+		<p>Content...</p>
+	</div>
+	<div class="parallax-fill"
+		style="background-image: url('background.jpg');"
+		data-bottom-top="transform: translate3d(0, -100px, 0);"
+		data-top-bottom="transform: translate3d(0, 100px, 0);"></div>
+	</div>
+</section>
+```
+
 ## `add_filter()` and `apply_filters()`
 
 - <a href="https://developer.wordpress.org/reference/functions/add_filter/" target="_blank">add_filter()</a>
