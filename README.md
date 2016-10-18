@@ -162,6 +162,70 @@ function replace_page_title() {
 }
 ```
 
+For an array:
+```php
+<div>
+	<ul>
+		<?php foreach (apply_filters('section_loop_filter') as $single) : ?>
+			<li>
+				<h2><?php echo $single['title']; ?></h2>
+			</li>
+		<?php endforeach; ?>
+	</ul>
+</div>
+```
+
+```php 
+apply_filters('section_loop_filter', 'array_to_loop');
+function array_to_loop() {
+	$array_to_loop = array(
+		array('title' => 'Title 1'),
+		array('title' => 'Title 2'),
+		array('title' => 'Title 3')
+	);
+
+	return $array_to_loop;
+}
+```
+
+Looping through multiple filters
+```php
+add_action('init', 'do_lots_of_filters');
+function do_lots_of_filters() {
+	// Create an array of the filters and new data to include
+	$filters = array(
+		array(
+			'filter' => 'title_filter',
+			'new_data' => get_post_meta(get_the_ID(), 'page_title', true)
+		),
+		array(
+			'filter' => 'subtitle_filter',
+			'new_data' => get_post_meta(get_the_ID(), 'page_subtitle', true)
+		)
+	);
+
+	// Loop
+	foreach ( $filters as $filter ) {
+		// 
+		$filter_name = $filter['filter'];
+		$new_data = $filter['new_data'];
+		
+		// If new data exists
+		if ( $new_data ) {
+			
+			// Pass $new_data to the anonymous function with `use`
+			add_filter($filter_name, function($old_data) use ($new_data) { 
+
+				// If there is new data, replace the old
+				// otherwise return the old data
+				$data_to_show = ($new_data) ? $new_data : $old_data;
+				return $data_to_show;
+			});
+		}
+	}
+}
+```
+
 ## .htaccess
 
 ```
