@@ -1,4 +1,16 @@
 <?php get_header(); ?>
+<?php 
+
+$new_mod = new bcore_module(
+	'testimonials-section-412312412512123',
+	'about', 
+	array(
+		'title' => '<h1>New testimonials title</h1>',
+		'subtitle' => '<h2>Subtitle</h2>'
+	)
+);
+?>
+
 	<section class="text-center" data-section-padding="small(30)">
 		<div class="section-container">
 			<div class="small-medium-sp">
