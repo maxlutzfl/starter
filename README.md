@@ -11,6 +11,16 @@
 - If using BigMomma, make a new directory like <code>ClientName.git</code>, <code>cd</code> to that directory and run <code>git --bare init</code>
 - In Tower, <code>Clone Remote Repository</code>
 
+## SEO
+
+http://jsonld.com/
+
+## Launch 
+
+```php
+define('DISALLOW_FILE_EDIT', true);
+```
+
 ## PHP functions
 
 ```php 
@@ -326,7 +336,7 @@ function do_lots_of_filters() {
 
 ### .htaccess
 
-```
+```python
 # BEGIN Caching #
 <IfModule mod_expires.c>
 ExpiresActive On
@@ -334,6 +344,10 @@ ExpiresByType image/jpg "access 1 month"
 ExpiresByType image/jpeg "access 1 month"
 ExpiresByType image/gif "access 1 month"
 ExpiresByType image/png "access 1 month"
+ExpiresByType text/css "access 1 month"
+ExpiresByType text/javascript "access 1 month"
+ExpiresByType application/x-javascript "access 1 month"
+ExpiresByType application/javascript "access 1 month"
 </IfModule>
 # END Caching #
  
