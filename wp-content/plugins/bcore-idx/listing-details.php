@@ -1,0 +1,1 @@
+<h1>Listing Details Page Template</h1>

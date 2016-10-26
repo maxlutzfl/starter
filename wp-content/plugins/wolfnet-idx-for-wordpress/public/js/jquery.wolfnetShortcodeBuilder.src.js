@@ -257,6 +257,7 @@ jQuery(function($){
 
     var buildShortcode = function (callback)
     {
+        console.log(this);
         var attrs    = {};
         var code     = '[' + this.attr('wolfnet:sc') + ' /]';
         var exclAttr = ['mode','savedsearch','criteria'];

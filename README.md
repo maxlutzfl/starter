@@ -322,7 +322,9 @@ function do_lots_of_filters() {
 }
 ```
 
-## .htaccess
+## Problem Solving
+
+### .htaccess
 
 ```
 # BEGIN Caching #
@@ -360,4 +362,15 @@ AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/xml
 </IfModule>
 # END Compression #
+```
+
+### Gravity Forms Email Notifications Issues
+
+Install `Easy WP SMTP` plugin
+
+#### Office 365
+```
+Server smtp.office365.com
+Port 587
+SSL Yes
 ```

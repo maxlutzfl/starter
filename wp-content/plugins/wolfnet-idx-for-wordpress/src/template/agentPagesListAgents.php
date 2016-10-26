@@ -26,8 +26,19 @@ if (array_key_exists("REDIRECT_URL", $_SERVER)) {
 	$linkBase = $_SERVER['PHP_SELF'] . '/';
 }
 
+if($showOffices) {
+	$paginationLinkBase = $linkBase;
+} else {
+	/*
+	 * This prevents us from having a pagination link like 'page-name/2' which
+	 * would then use the WP page pagination. Instead we need a pagination link
+	 * like 'page-name/agnts/2'
+	 */
+	$paginationLinkBase = $allAgentsLink;
+}
+
 // Remove any page number from link base
-$paginationLinkBase = preg_replace('/\/[0-9]+/', '', $linkBase);
+$paginationLinkBase = preg_replace('/\/[0-9]+/', '', $paginationLinkBase);
 
 if (!function_exists('paginate')) {
 
@@ -140,8 +151,6 @@ if (!function_exists('paginate')) {
 			],
 			$aoHeader = $aoWidget.find('.wolfnet_agentOfficeHeader');
 
-		wolfnet.resizeAOItems($aoItems, itemSections, $aoHeader, resizeComplete);
-
 		var resizeComplete = function (data) {
 			for (var i=0, l=data.length; i<l; i++) {
 				if (data[i].hasOwnProperty('name') && (data[i].name === 'body')) {
@@ -158,6 +167,8 @@ if (!function_exists('paginate')) {
 				wolfnet.resizeAOItems($aoItems, itemSections, $aoHeader, resizeComplete);
 			}, 500);
 		});
+
+		wolfnet.resizeAOItems($aoItems, itemSections, $aoHeader, resizeComplete);
 
 	});
 

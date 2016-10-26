@@ -1,0 +1,352 @@
+/**
+ * CSS Document
+ *
+ * @package       css
+ * @title         wolfnetAgentPages.less
+ * @copyright     Copyright (c) 2012 - 2016, WolfNet Technologies, LLC
+ *
+ *                This program is free software; you can redistribute it and/or
+ *                modify it under the terms of the GNU General Public License
+ *                as published by the Free Software Foundation; either version 2
+ *                of the License, or (at your option) any later version.
+ *
+ *                This program is distributed in the hope that it will be useful,
+ *                but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *                MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *                GNU General Public License for more details.
+ *
+ *                You should have received a copy of the GNU General Public License
+ *                along with this program; if not, write to the Free Software
+ *                Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
+ *
+ */
+@media screen and (max-width: 480px) {
+  .wolfnet_widget.wolfnet_officesList .wolfnet_agentSearch .wolfnet_agentCriteria,
+  .wolfnet_widget.wolfnet_agentsList .wolfnet_agentSearch .wolfnet_agentCriteria {
+    width: 37% !important;
+    margin-right: 10px;
+  }
+}
+@media screen and (max-width: 520px) {
+  .wolfnet_widget.wolfnet_agentShow .wolfnet_agentInfo {
+    float: none !important;
+    clear: both;
+    padding-top: 20px;
+    width: 100% !important;
+  }
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agentSearch {
+  width: inherit;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agentSearch .wolfnet_agentSearchButton {
+  float: left;
+  margin-top: 4px;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agent .wolfnet_agentInfo {
+  float: left;
+  width: inherit;
+  margin-top: 10px;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview .wolfnet_agentInfo {
+  width: 100% !important;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader {
+  height: 40px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader h2 {
+  text-transform: uppercase;
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView {
+  text-transform: uppercase;
+  display: block;
+  width: auto;
+  float: right;
+  margin-right: 10px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView div {
+  display: inline-block;
+  width: 100px;
+  background: #ddd;
+  text-align: center;
+  float: left;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView div a,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView div a:link,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView div a:hover,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView div a:visited {
+  display: block;
+  padding: 6px;
+  width: 100%;
+  height: 100%;
+  text-decoration: none;
+  border: 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentOfficeView .selected {
+  /* This probably won't stay this color. */
+  background: lightblue;
+  padding: 6px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentSearch {
+  width: auto;
+  float: right;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeHeader .wolfnet_agentSearch .wolfnet_agentCriteria {
+  width: 280px;
+  margin-right: 10px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview {
+  position: relative;
+  font-size: 14px;
+  float: left;
+  border: 1px solid #ccc;
+  margin: 10px 16px 0 0;
+  width: 370px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview ul.wolfnet_officeLinks {
+  margin: 6px 0 20px 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview ul.wolfnet_officeLinks li {
+  font-size: 14px;
+  list-style: none;
+  padding: 8px 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview ul.wolfnet_officeLinks li .wnt-icon {
+  margin-right: 6px;
+  font-size: 16px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .officeButton {
+  display: block;
+  width: 48%;
+  text-align: center;
+  font-size: 1em;
+  text-transform: uppercase;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .officeButton a,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .officeButton a:link,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .officeButton a:hover,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .officeButton a:visited {
+  color: #fff;
+  display: block;
+  height: 100%;
+  width: 100%;
+  padding: 6px;
+  border: 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .wolfnet_officeLink {
+  float: right;
+  /* This probably won't stay this color. */
+  background: lightblue;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officePreview .wolfnet_officeLinkLeft {
+  float: left;
+  background: #ccc;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeImage {
+  height: 230px;
+  overflow: hidden;
+  text-align: center;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeData {
+  padding: 10px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeContact {
+  float: none;
+  font-size: .8em;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeName {
+  font-weight: bold;
+  font-size: 18px;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeName a,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeName a:link,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeName a:hover,
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeName a:visited {
+  text-decoration: none;
+  border: 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeRule {
+  width: 30%;
+  margin: 6px 0;
+}
+.wolfnet_widget.wolfnet_officesList .wolfnet_officeAddress {
+  font-size: 16px;
+  color: #bbb;
+}
+.wolfnet_widget.wolfnet_agentsList h2 {
+  margin-top: 0;
+  text-transform: uppercase;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_viewAll {
+  margin-bottom: 10px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_noResults {
+  margin-top: 30px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentSearch {
+  width: 500px;
+  margin-bottom: 10px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentSearch input {
+  float: left;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentSearch .wolfnet_agentCriteria {
+  width: 280px;
+  margin-right: 10px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentPreview {
+  float: left;
+  border: 1px solid #ccc;
+  margin: 10px 10px 0 0;
+  padding-right: 10px;
+  width: 280px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentImage {
+  float: left;
+  margin: 8px;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentInfo {
+  float: right;
+  width: 170px;
+  font-size: .75em;
+}
+.wolfnet_widget.wolfnet_agentsList .wolfnet_agentInfo .wolfnet_agentName {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+.wolfnet_widget.wolfnet_agentShow {
+  width: 100%;
+}
+.wolfnet_widget.wolfnet_agentShow h2 {
+  margin-top: 0;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_viewAll,
+.wolfnet_widget.wolfnet_agentShow .wolfnet_back {
+  margin-bottom: 30px;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentImage {
+  float: left;
+  margin-right: 20px;
+  width: 200px;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentInfo {
+  float: right;
+  width: 50%;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentInfo .wolfnet_agentName {
+  font-weight: bold;
+  font-size: 1.2em;
+  /* These next two lines are some stupid crap they wanted so the
+                text lines up with the top of the agent image... If it breaks
+                later, well... */
+  line-height: .7em;
+  padding-bottom: 10px;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentInfo .wolfnet_agentTitle {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentBio {
+  clear: both;
+  padding-top: 20px;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentBio .wolfnet_agentLinks {
+  padding-bottom: 10px;
+  list-style: none;
+}
+.wolfnet_widget.wolfnet_agentShow .wolfnet_agentBio .wolfnet_agentSection {
+  padding: 10px 0;
+}
+.wolfnet_widget .wolfnet_agentPagination {
+  list-style: none;
+  clear: both;
+}
+.wolfnet_widget .wolfnet_agentPagination li {
+  display: inline-block;
+  margin-right: 10px;
+}
+.wolfnet_widget .wolfnet_agentPagination li .wolfnet_selected {
+  font-weight: bold;
+}
+.wolfnet_widget.wolfnet_contactAgent,
+.wolfnet_widget.wolfnet_contactOffice {
+  width: 100%;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactThanks,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactThanks {
+  width: 600px;
+  border: 1px solid #ccc;
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px 0;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_agentPreview {
+  border: 1px solid #ccc;
+  padding: 6px;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview .wolfnet_agentImage,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_agentPreview .wolfnet_agentImage {
+  float: left;
+  margin: 8px;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview .wolfnet_agentInfo,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_agentPreview .wolfnet_agentInfo {
+  float: left;
+  margin-left: 10px;
+  width: 60%;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_officePreview,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_officePreview {
+  border: 1px solid #ccc;
+  padding: 6px;
+  text-align: center;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_officePreview .wolfnet_officeName,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_officePreview .wolfnet_officeName {
+  font-weight: bold;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm {
+  padding-top: 16px;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm label,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm label {
+  display: block;
+  padding-top: 16px;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm .wolfnet_red,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm .wolfnet_red {
+  color: red;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm .wolfnet_errorMessage,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm .wolfnet_errorMessage {
+  font-size: .9em;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm #wolfnet_submit,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm #wolfnet_submit {
+  margin-top: 16px;
+}
+.wolfnet_widget.wolfnet_contactAgent .wolfnet_contactForm .wolfnet_required,
+.wolfnet_widget.wolfnet_contactOffice .wolfnet_contactForm .wolfnet_required {
+  border: 1px solid red;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agentSearch {
+  width: inherit;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agentSearch .wolfnet_agentSearchButton {
+  float: left;
+  margin-top: 4px;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget .wolfnet_agent .wolfnet_agentInfo {
+  float: left;
+  width: inherit;
+  margin-top: 10px;
+}
+.widget_wolfnet_agentpageswidget .wolfnet_widget.wolfnet_contactAgent .wolfnet_agentPreview .wolfnet_agentInfo {
+  width: 100% !important;
+}
