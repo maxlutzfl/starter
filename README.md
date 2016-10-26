@@ -13,10 +13,10 @@
 
 ## SEO
 
-https://search.google.com/structured-data/testing-tool/
-http://jsonld.com/
-https://schema.org/
-http://schemadata.com/schema.org/
+- https://search.google.com/structured-data/testing-tool/
+- http://jsonld.com/
+- https://schema.org/
+- http://schemadata.com/schema.org/
 
 ## Launch 
 
