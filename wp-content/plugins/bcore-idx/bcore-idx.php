@@ -17,12 +17,12 @@ function wolfnet_api_testing() {
     $request = $client->sendRequest($token, $resource);
 
     foreach ( $request['responseData']['data']['listing'] as $listing ) {
-
+    	$link = 'http://starter.bco/listings/' . sanitize_title($listing['display_address']) . '_' . $listing['property_id'];
         echo '<article>';
             echo '<img src="' . $listing['photo_url'] . '">';
             echo '<h1>' . $listing['display_address'] . '</h1>';
             echo '<h2>$' . $listing['listing_price'] . '</h2>';
-            echo '<a href="http://starter.bco/listings/' . $listing['property_id'] . '">See listing</a>';
+            echo '<a href="' . $link . '">See listing</a>';
         echo '</article>';
         echo '<br><hr><br>';
     }

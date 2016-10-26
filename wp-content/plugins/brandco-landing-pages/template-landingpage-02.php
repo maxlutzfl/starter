@@ -40,7 +40,16 @@
 		$fieldID = 'field_' . BrandcoLandingPages::form2( $parentid ) . '_' . get_post_meta( $parentid, 'bco-landingpages-pass-02', true);
 	?>
 
-	<style> #<?php echo $fieldID; ?> { display: none !important; } </style>
+	<style> 
+		#<?php echo $fieldID; ?> { display: none !important; }
+		.validation_error {
+			padding: 20px 20px 0;
+			font-size: 12px;
+			background: #fff;
+			color: #9d0f0f;
+			text-align: center;
+		}
+	</style>
 
 </head>
 
@@ -87,9 +96,6 @@
 
 		<?php if ( $map ) : ?>
 
-				var el = document.getElementsByClassName("gform_heading")[0];
-				el.insertAdjacentHTML('afterend', '<div id="BrandcoLandingPages_Map"></div>');
-
 				function initMap() {
 
 					jQuery(function($) {
@@ -101,6 +107,7 @@
 							console.log(results);
 							
 							if ( status === 'OK' ) {
+
 								var latitude = results[0].geometry.location.lat();
 								var longitude = results[0].geometry.location.lng();
 								var myLatLng = {lat: latitude, lng: longitude};
@@ -247,13 +254,19 @@
 
 				}
 
+				jQuery(document).bind('gform_post_render', function() {
+					var el = document.getElementsByClassName("gform_heading")[0];
+					el.insertAdjacentHTML('afterend', '<div id="BrandcoLandingPages_Map"></div>');
+					initMap();
+				});
+
 		<?php endif; ?>
 
 	</script>
 
 	<?php if ( $map ) : ?>
 		<?php /* ?><script src="<?php echo plugin_dir_url( __FILE__ ) . 'bco-landing-pages.js'; ?>"></script><?php */ ?>
-		<script src="https://maps.googleapis.com/maps/api/js?callback=initMap&key=AIzaSyBfEzWjcytuQ3VsBCE-9qi4zHptECX6sig&libraries=geometry"></script>
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBfEzWjcytuQ3VsBCE-9qi4zHptECX6sig&libraries=geometry"></script>
 	<?php endif; ?>
 
 	<?php 

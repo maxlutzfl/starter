@@ -1,0 +1,448 @@
+msgid ""
+msgstr "MIME-Version: 1.0\n"
+
+#. Name.
+msgid "Imsanity"
+msgstr ""
+
+#. Short description.
+msgid ""
+"Imsanity automatically resizes huge image uploads.  Are contributors uploading\n"
+"huge photos?  Tired of manually scaling?  Imsanity to the rescue!"
+msgstr ""
+
+#. Screenshot description.
+msgid "Imsanity girl will cut you"
+msgstr ""
+
+#. Screenshot description.
+msgid "Imsanity settings page to configure max height/width"
+msgstr ""
+
+#. Screenshot description.
+msgid "Imsanity bulk image resize feature"
+msgstr ""
+
+#. Found in description header.
+msgid "Features"
+msgstr ""
+
+#. Found in description list item.
+msgid "Automatically scales large image uploads to a more \"sane\" size"
+msgstr ""
+
+#. Found in description list item.
+msgid "Bulk-resize feature to selectively resize existing images"
+msgstr ""
+
+#. Found in description list item.
+msgid "Allows configuration of max width/height and jpg quality"
+msgstr ""
+
+#. Found in description list item.
+msgid "Optionally converts BMP files to JPG so image can be scaled"
+msgstr ""
+
+#. Found in description list item.
+msgid "Once enabled, Imsanity requires no actions on the part of the user"
+msgstr ""
+
+#. Found in description list item.
+msgid "Uses WordPress built-in image scaling functions"
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Imsanity automatically resizes huge image uploads down to a size that is\n"
+"more reasonable for display in browser, yet still more than large enough for typical website use.\n"
+"The plugin is configurable with a max width, height and quality.  When a contributor uploads an\n"
+"image that is larger than the configured size, Imsanity will automatically scale it down to the\n"
+"configured size and replace the original image."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"Imsanity also provides a bulk-resize feature to selectively resize previously uploaded images\n"
+"to free up disk space."
+msgstr ""
+
+#. Found in description paragraph.
+msgid ""
+"This plugin is ideal for blogs that do not require hi-resolution original images\n"
+"to be stored and/or the contributors don't want (or understand how) to scale images\n"
+"before uploading."
+msgstr ""
+
+#. Found in installation list item.
+msgid "Go to Admin - Plugins - Add New and search for \"imsanity\""
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click the Install Button"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Click 'Activate'"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Download imsanity.zip"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Unzip and upload the 'imsanity' folder to your '/wp-content/plugins/' directory"
+msgstr ""
+
+#. Found in installation list item.
+msgid "Activate the plugin through the 'Plugins' menu in WordPress"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Automatic Installation:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Manual Installation:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "Optional:"
+msgstr ""
+
+#. Found in installation paragraph.
+msgid "If you prefer not to see the Imsanity girl logo image on the settings page, add the following line to wp-config.php:"
+msgstr ""
+
+#. Found in installation paragraph, faq paragraph.
+msgid "define('IMSANITY_HIDE_LOGO',true);"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "tested up to WP 4.4"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "if resized image is not smaller than original, then keep original"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "allow IMSANITY_AJAX_MAX_RECORDS to be overridden in wp-config.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "if png-to-jpg is enabled, replace png transparency with white"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add option to hide Imsanity girl logo image on settings screen"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Security update to network settings page"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Update default size from 1024 to 2048"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Tested up to WordPress 4.1.1"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Move screenshots to /assets folder"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Added 256x256 icon"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Add PNG-To-JPG Option thanks to Jody Nesbitt"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "ignore errors if EXIF data is not readable"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "show counter when bulk resizing images"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix for incorrectly identifying media uploads as coming from 'other' on WP 4+"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add \"noresize\" to filename will bypass imsanity"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fix issue trying to auto-resize non-jpg images"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "add danish language support"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "hotfix for bux exif_read_data constant"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Automatically rotate images according to EXIF rotation data if available"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "Reset the quota cache after bulk resizing images"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed bug in network settings where width/height input fields are in the same place"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed bug with bulk upload deleting the \"large\" image size in certain situations"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "style settings page input boxes a little wider"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "load js properly to avoid warnings with certain security plugins"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "update settings text to be more clear about max w/h"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "updated language translation .pot file"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "updated FAQ"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "improved error reporting in bulk resize"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "replaced image_resize() call for wordpress prior to 3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "removed deprecated call to image_resize() in bulk resize"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "removed deprecated call to image_resize() on &lt; wordpress &gt; 3.5"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed call to is_multisite() on &lt; wordpress &lt; 3.0"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "internationalization support &amp; French translation thanks to https://twitter.com/ChrysMTP"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed undefined error in setup.php"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed crash when uploading images via Android app via RPC (thanks Pieter!)"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed issue where only first 250 images could be re-sized in bulk-resize feature"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "really fixed bug w/ multisite network settings only working on main site"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "fixed bug w/ multisite network settings only working on main site"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "max height/width can be configured separately for different upload types"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added network configuration for multi-site installation to enforce server-wide settings"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added \"bulk resize\" feature to resize existing images and recover disk space"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added ms-config.php file that can be used for global settings configuration"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added feature &amp; setting to convert bmp images to jpg"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added setting to control JPG quality"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "added error handling &amp; reporting when image_resize returns an error"
+msgstr ""
+
+#. Found in changelog list item.
+msgid "original release.  fresh!"
+msgstr ""
+
+#. Found in faq header.
+msgid "What is Imsanity?"
+msgstr ""
+
+#. Found in faq header.
+msgid "1. Will installing the Imsanity plugin alter existing images in my blog?"
+msgstr ""
+
+#. Found in faq header.
+msgid "2. Why aren't all of my images detected when I try to use the bulk resize feature?"
+msgstr ""
+
+#. Found in faq header.
+msgid "3. Why am I getting an error saying that my \"File is not an image\" ?"
+msgstr ""
+
+#. Found in faq header.
+msgid "4. How can I tell Imsanity to ingore a certain image so I can upload it without being resized?"
+msgstr ""
+
+#. Found in faq header.
+msgid "5. Why would I need this plugin?"
+msgstr ""
+
+#. Found in faq header.
+msgid "6. Why would I NOT want to use this plugin?"
+msgstr ""
+
+#. Found in faq header.
+msgid "7. Doesn't WordPress already automatically scale images?"
+msgstr ""
+
+#. Found in faq header.
+msgid "8. Why did you spell Insanity wrong and why does Imsanity girl want to cut me?"
+msgstr ""
+
+#. Found in faq header.
+msgid "9. How can I hide or remove the Imsanity logo image on the settings page?"
+msgstr ""
+
+#. Found in faq header.
+msgid "10. Where do I go for support?"
+msgstr ""
+
+#. Found in faq header.
+msgid "TODO"
+msgstr ""
+
+#. Found in faq list item.
+msgid "Add a network settings to override the individual plugin settings text"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "Imsanity is a plugin that automatically resizes uploaded images that are larger than the configured max width/height"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Activating Imsanity will not alter any existing images.  Imsanity resizes images as they are uploaded so\n"
+"it does not affect existing images unless you specifically use the \"Bulk Image Resize\" feature on\n"
+"the Imsanity settings page.  The \"Bulk Image Resize\" feature allows you to selectively resize existing images."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Imsanity doesn't search your file system to find large files, instead it looks at the \"metadata\"\n"
+"in the WordPress media library database.  When you upload files, WordPress stores all of the information \n"
+"about the image."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"WordPress uses the GD library to handle the image manipulation.  GD can be installed and configured to support\n"
+"various types of images.  If GD is not configured to handle a particular image type then you will get\n"
+"this message when you try to upload it.  For more info see http://php.net/manual/en/image.installation.php"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"You can re-name your file and add \"-noresize\" to the filename.  For example if your file is named\n"
+"\"photo.jpg\" you can rename it \"photo-noresize.jpg\" and Imsanity will ignore it, allowing you\n"
+"to upload the full-sized image."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Optionally you can temporarily adjust the max image size settings and set them to a number that is\n"
+"higher than the resolution of the image you wish to upload"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Photos taken on any modern camera and even most cellphones are too large for display full-size in a browser.\n"
+"In the case of modern DSLR cameras, the image sizes are intended for high-quality printing and are ridiculously\n"
+"over-sized for display on a web page."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Imsanity allows you to set a sanity limit so that all uploaded images will be constrained\n"
+"to a reasonable size which is still more than large enough for the needs of a typical website.\n"
+"Imsanity hooks into WordPress immediately after the image upload, but before WordPress processing\n"
+"occurs.  So WordPress behaves exactly the same in all ways, except it will be as if the contributor\n"
+"had scaled their image to a reasonable size before uploading."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"The size limit that imsanity uses is configurable.  The default value is large enough to fill\n"
+"the average vistors entire screen without scaling so it is still more than large enough for\n"
+"typical usage."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"You might not want to use Imsanity if you use WordPress as a stock art download\n"
+"site, provide high-res images for print or use WordPress as a high-res photo\n"
+"storage archive.  If you are doing any of these things then most likely\n"
+"you already have a good understanding of image resolution."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"When an image is uploaded WordPress keeps the original and, depending on the size of the original,\n"
+"will create up to 3 smaller sized copies of the file (Large, Medium, Thumbnail) which are intended\n"
+"for embedding on your pages.  Unless you have special photographic needs, the original usually sits\n"
+"there unused, but taking up disk quota."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Imsanity is short for \"Image Sanity Limit\"  A sanity limit is a term for limiting something down to\n"
+"a size or value that is reasonable.  Imsanity girl cuts because you drive her insane by uploading\n"
+"unecessarily large images for no good reason."
+msgstr ""
+
+#. Found in faq paragraph.
+msgid "If you prefer not to see the logo, add the following line to wp-config.php:"
+msgstr ""
+
+#. Found in faq paragraph.
+msgid ""
+"Documentation is available on the plugin homepage at http://wordpress.org/tags/imsanity and questions may\n"
+"be posted on the support forum at http://wordpress.org/tags/imsanity"
+msgstr ""
