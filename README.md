@@ -336,7 +336,7 @@ ExpiresByType image/gif "access 1 month"
 ExpiresByType image/png "access 1 month"
 </IfModule>
 # END Caching #
-
+ 
 # BEGIN Compression #
 <IfModule mod_deflate.c>
 AddOutputFilterByType DEFLATE application/javascript
