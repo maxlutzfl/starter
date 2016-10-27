@@ -21,6 +21,8 @@
 ## Launch 
 
 ```php
+define('WP_DEBUG', false);
+define('WP_DEBUG_LOG', true);
 define('DISALLOW_FILE_EDIT', true);
 ```
 
@@ -97,6 +99,13 @@ function get_archive_pagination() {   }
 	@include on-small-only { color: red; }
 	@include on-medium-only { color: white; }
 	@include on-large-only { color: blue; }
+
+	@include breakpoint('above', 600px) {}
+	@include breakpoint('below', 600px) {}
+	@include breakpoint('between', 600px, 800px) {}
+
+	@media (orientation:portrait) {  } // Like a phone
+	@media (orientation:landscape) {  } // Like a desktop
 }
 
 ```
@@ -151,8 +160,10 @@ For single row with columns
 </section>
 ```
 
-### CSS helper classes
-```
+### CSS helper classes/variables
+```scss
+$primary: $red; // Primary theme color
+$secondary: $blue; // Secondary theme color
 ```
 
 ## Javascript
@@ -222,7 +233,7 @@ https://github.com/Prinzhorn/skrollr
 	<div class="parallax-fill"
 		style="background-image: url('background.jpg');"
 		data-bottom-top="transform: translate3d(0, -100px, 0);"
-		data-top-bottom="transform: translate3d(0, 100px, 0);"></div>
+		data-top-bottom="transform: translate3d(0, 100px, 0);">
 	</div>
 </section>
 ```
