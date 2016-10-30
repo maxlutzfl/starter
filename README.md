@@ -375,7 +375,7 @@ $(document).bind('gform_post_render', function() {
 - https://schema.org/
 - http://schemadata.com/schema.org/
 
-### Launching a website
+### Post-launch wp-config 
 ```php
 /** Turn off debug mode but enable error log */
 define('WP_DEBUG', false);
@@ -402,6 +402,15 @@ Server smtp.office365.com
 Port 587
 SSL Yes
 ```
+
+### Plugins
+- ACF
+- Gravity forms
+- Search and replace
+- WP Smush
+- Akismet
+- Easy WP SMTP
+- Leadin
 
 ### .htaccess
 
