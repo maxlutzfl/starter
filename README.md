@@ -11,29 +11,6 @@
 - If using BigMomma, make a new directory like <code>ClientName.git</code>, <code>cd</code> to that directory and run <code>git --bare init</code>
 - In Tower, <code>Clone Remote Repository</code>
 
-## SEO
-
-- https://search.google.com/structured-data/testing-tool/
-- http://jsonld.com/
-- https://schema.org/
-- http://schemadata.com/schema.org/
-
-## Launch 
-
-```php
-define('WP_DEBUG', false);
-define('WP_DEBUG_LOG', true);
-define('DISALLOW_FILE_EDIT', true);
-```
-
-## Default WP image sizes
-- `placeholder` - 30x30 scaled
-- `featured` - 600x380 cropped
-- `thumbnail` - 300x300 cropped
-- `medium` - 600x600 scaled
-- `large` - 1500x1500 scaled
-- `full` 
-
 ## PHP functions
 
 ```php 
@@ -392,6 +369,40 @@ $(document).bind('gform_post_render', function() {
 });
 ```
 
+### SEO Tools
+- https://search.google.com/structured-data/testing-tool/
+- http://jsonld.com/
+- https://schema.org/
+- http://schemadata.com/schema.org/
+
+### Launching a website
+```php
+/** Turn off debug mode but enable error log */
+define('WP_DEBUG', false);
+define('WP_DEBUG_LOG', true);
+
+/** Disable file editing */
+define('DISALLOW_FILE_EDIT', true);
+```
+
+## Default WP image sizes
+- `placeholder` - 30x30 scaled
+- `featured` - 600x380 cropped
+- `thumbnail` - 300x300 cropped
+- `medium` - 600x600 scaled
+- `large` - 1500x1500 scaled
+- `full` 
+
+### Gravity Forms Email Notifications Issues
+Install `Easy WP SMTP` plugin
+
+**Office 365**
+```
+Server smtp.office365.com
+Port 587
+SSL Yes
+```
+
 ### .htaccess
 
 ```python
@@ -434,15 +445,37 @@ AddOutputFilterByType DEFLATE text/plain
 AddOutputFilterByType DEFLATE text/xml
 </IfModule>
 # END Compression #
-```
 
-### Gravity Forms Email Notifications Issues
-Install `Easy WP SMTP` plugin
+# START Security
+RewriteCond %{QUERY_STRING} author=d
+RewriteRule ^ /? [L,R=301]
+Options All -Indexes
+Options +FollowSymLinks
+RewriteEngine On
+RewriteCond %{QUERY_STRING} (<|%3C).*script.*(>|%3E) [NC,OR]
+RewriteCond %{QUERY_STRING} GLOBALS(=|[|%[0-9A-Z]{0,2}) [OR]
+RewriteCond %{QUERY_STRING} _REQUEST(=|[|%[0-9A-Z]{0,2})
+RewriteRule ^(.*)$ index.php [F,L]
+RewriteCond %{REQUEST_URI} !^/wp-content/plugins/file/to/exclude\.php
+RewriteCond %{REQUEST_URI} !^/wp-content/plugins/directory/to/exclude/
+RewriteRule wp-content/plugins/(.*\.php)$ - [R=404,L]
+RewriteCond %{REQUEST_URI} !^/wp-content/themes/file/to/exclude\.php
+RewriteCond %{REQUEST_URI} !^/wp-content/themes/directory/to/exclude/
+RewriteRule wp-content/themes/(.*\.php)$ - [R=404,L]
 
-- *Office 365*
-```
-Server smtp.office365.com
-Port 587
-SSL Yes
-```
+<FilesMatch "^.*(error_log|wp-config\.php|php.ini|\.[hH][tT][aApP].*)$">
+Order deny,allow
+Deny from all
+</FilesMatch>
 
+<IfModule mod_rewrite.c>
+RewriteEngine On
+RewriteBase /
+RewriteRule ^wp-admin/includes/ - [F,L]
+RewriteRule !^wp-includes/ - [S=3]
+RewriteRule ^wp-includes/[^/]+\.php$ - [F,L]
+RewriteRule ^wp-includes/js/tinymce/langs/.+\.php - [F,L]
+RewriteRule ^wp-includes/theme-compat/ - [F,L]
+</IfModule>
+# END Security
+```
