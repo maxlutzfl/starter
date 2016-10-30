@@ -7,8 +7,6 @@
 # Global constants
 define('BCO_FRAMEWORK_DIRECTORY_NAME', 'starter2017');
 define('BCO_BASE_DIRECTORY', get_template_directory());
-define('BCO_CHILD_BASE_DIRECTORY', get_stylesheet_directory());
-define('BCO_CHILD_BASE_DIRECTORY_URI', get_stylesheet_directory_uri());
 define('BCO_CONFIG_DIRECTORY', get_template_directory() . '/config/');
 define('BCO_RESOURCES_DIRECTORY', get_template_directory_uri() . '/resources/');
 define('BCO_IMAGE_DIRECTORY', get_template_directory() . '/resources/images/');

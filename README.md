@@ -26,6 +26,14 @@ define('WP_DEBUG_LOG', true);
 define('DISALLOW_FILE_EDIT', true);
 ```
 
+## Default WP image sizes
+- `placeholder` - 30x30 scaled
+- `featured` - 600x380 cropped
+- `thumbnail` - 300x300 cropped
+- `medium` - 600x600 scaled
+- `large` - 1500x1500 scaled
+- `full` 
+
 ## PHP functions
 
 ```php 
@@ -162,8 +170,18 @@ For single row with columns
 
 ### CSS helper classes/variables
 ```scss
+/** Colors */
 $primary: $red; // Primary theme color
 $secondary: $blue; // Secondary theme color
+
+/** Backgrounds */
+.background-primary {}
+.background-white {}
+.background-lightgrey {}
+.background-black {}
+
+/**  */
+.dark-section {} // makes all text in a section white 
 ```
 
 ## Javascript
@@ -346,7 +364,33 @@ function do_lots_of_filters() {
 }
 ```
 
-## Problem Solving
+## Helpful stuff
+
+### WP options table
+- `siteurl`
+- `blogname`
+- `blogdescription`
+- `admin_email`
+- `template`
+- `stylesheet`
+
+### SVG scaling
+Use `preserveAspectRatio` to determine how the `svg` scales. Helpful for IE.
+```html
+<svg preserveAspectRatio="xMaxYMin slice"></svg>
+```
+
+### Gravity Forms
+
+```js
+/** 
+ * Gravity forms
+ * Fires when the form loads ands reloads after failed submit when using AJAX
+ */
+$(document).bind('gform_post_render', function() {
+	// Do stuff after form loads or reloads
+});
+```
 
 ### .htaccess
 
@@ -393,12 +437,12 @@ AddOutputFilterByType DEFLATE text/xml
 ```
 
 ### Gravity Forms Email Notifications Issues
-
 Install `Easy WP SMTP` plugin
 
-#### Office 365
+- *Office 365*
 ```
 Server smtp.office365.com
 Port 587
 SSL Yes
 ```
+

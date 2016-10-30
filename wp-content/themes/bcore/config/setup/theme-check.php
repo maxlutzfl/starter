@@ -14,6 +14,7 @@ class bco_theme_checker {
 			add_action('admin_notices', array($this, 'blog_description_check'));
 			add_action('admin_notices', array($this, 'screenshot_check'));
 			add_action('admin_notices', array($this, 'discourage_search_engines_check'));
+			add_action('admin_notices', array($this, 'discourage_search_engines_check_beta'));
 			add_action('admin_notices', array($this, 'check_for_debug_mode_on_live'));
 			add_action('admin_notices', array($this, 'check_for_favicon'));
 			add_action('admin_notices', array($this, 'check_admin_email'));
@@ -64,6 +65,18 @@ class bco_theme_checker {
 			?>
 				<div class="notice notice-error is-dismissible">
 					<p><?php _e('👀 "Discourage search engines" is currently on (Settings > Reading). <a href="' . get_developer_options_link() . '">Hide developer alerts.</a>', 'bco'); ?></p>
+				</div>
+			<?php	
+		}
+	}
+
+	# Check for "Discourage search engines"
+	public function discourage_search_engines_check_beta() {
+		$public = get_option('blog_public');
+		if ( get_development_environment() === 'beta' && (int) $public === 1 ) {
+			?>
+				<div class="notice notice-error is-dismissible">
+					<p><?php _e('👀 "Discourage search engines" should be on during beta (Settings > Reading). <a href="' . get_developer_options_link() . '">Hide developer alerts.</a>', 'bco'); ?></p>
 				</div>
 			<?php	
 		}

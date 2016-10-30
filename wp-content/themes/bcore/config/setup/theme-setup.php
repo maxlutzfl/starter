@@ -40,12 +40,13 @@ function bco_theme_setup() {
 	 */
 
 	add_image_size('placeholder', 30, 30);
+	add_image_size('featured', 600, 380, true);
 	update_option('thumbnail_size_w', 300);
 	update_option('thumbnail_size_h', 300);
 	update_option('medium_size_w', 600);
 	update_option('medium_size_h', 600);
-	update_option('large_size_w', 1200);
-	update_option('large_size_h', 1200);
+	update_option('large_size_w', 1500);
+	update_option('large_size_h', 1500);
 
 	/**
 	 * Add navigation menu locations to the theme
