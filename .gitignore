@@ -34,6 +34,7 @@
 /*
 !wp-content/
 
+
 # ignore all files starting with .
 .*
 
@@ -91,6 +92,7 @@ wp-content/*
 !wp-content/plugins/
 !wp-content/themes/
 !idx/
+!modules/
 
 # ignore these plugins
 wp-content/plugins/hello.php
