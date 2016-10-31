@@ -411,6 +411,7 @@ SSL Yes
 - Akismet
 - Easy WP SMTP
 - Leadin
+- EPS Redirects
 
 ### .htaccess
 

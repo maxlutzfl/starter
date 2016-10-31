@@ -24,10 +24,17 @@ function get_icon($icon = 'link.svg') {
 	// Get file
 	$file = BCO_IMAGE_DIRECTORY . 'svg/' . $icon;
 
-	// Return
+	// Might also be in the child theme
+	$or_from_child_theme = get_stylesheet_directory() . '/resources/images/svg/' . $icon;
+
+	// See if the svg is in the core theme
 	if ( file_exists($file) ) {
-		return file_get_contents(BCO_IMAGE_DIRECTORY . 'svg/' . $icon); 
-	
+		return file_get_contents($file); 
+
+	// Otherwise check in child theme
+	} else if ( file_exists($or_from_child_theme) ) { 
+		return file_get_contents($or_from_child_theme); 
+
 	// Error
 	} else {
 		return 'This is not the icon you are looking for (' . $icon . ')';
