@@ -46,7 +46,7 @@ function bcore-new-project() {
   # Finished
   echo -e "\033[0;34m🚀  All done! \033[0m"
 }
-
+ 
 function bcore-setup() {
   # Initialize
   echo -e "\033[0;34m🚀  Setting up theme and plugins, standby... \033[0m"
