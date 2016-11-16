@@ -47,10 +47,10 @@ function get_icon($icon = 'link.svg') {
 function get_post_excerpt($args = array()) {
 
 	// Get defaults
-	$word_count = (array_key_exists('word_count', $args)) ? $args['word_count'] : 30;
-	$post_id = (array_key_exists('post_id', $args)) ? $args['post_id'] : get_the_ID();
-	$read_more_text = (array_key_exists('read_more_text', $args)) ? $args['read_more_text'] : 'Continue reading...';
-	$link = (array_key_exists('link', $args)) ? $args['link'] : true;
+	$word_count = (array_key_exists('word_count', (array) $args)) ? $args['word_count'] : 30;
+	$post_id = (array_key_exists('post_id', (array) $args)) ? $args['post_id'] : get_the_ID();
+	$read_more_text = (array_key_exists('read_more_text', (array) $args)) ? $args['read_more_text'] : 'Continue reading...';
+	$link = (array_key_exists('link', (array) $args)) ? $args['link'] : true;
 
 	// Get read more link
 	$read_more_text = ($read_more_text) ? $read_more_text : '';
@@ -75,8 +75,8 @@ function get_post_excerpt($args = array()) {
 function get_navigation($args = array()) {
 
 	// Get defaults
-	$location = (array_key_exists('location', $args)) ? $args['location'] : 'primary';
-	$depth = (array_key_exists('depth', $args)) ? $args['depth'] : 0;
+	$location = (array_key_exists('location', (array) $args)) ? $args['location'] : 'primary';
+	$depth = (array_key_exists('depth', (array) $args)) ? $args['depth'] : 0;
 
 	// Get menu
 	if ( has_nav_menu($location) ) {
@@ -99,8 +99,9 @@ function get_navigation($args = array()) {
 /**
  * BrandCo link
  */
-function get_brandco_link() {
-  return '<a href="https://brandco.com/?utm_source=brandco_custom_site" target="_blank" rel="nofollow">BrandCo</a>';
+function get_brandco_link($text = '') {
+	$text = ($text) ? $text : 'built by <span>BrandCo</span>';
+	return '<a href="https://brandco.com/?utm_source=brandco_custom_site" target="_blank" rel="nofollow">' . apply_filters('by_brandco_text', $text) . '</a>';
 }
 
 /** 
@@ -178,8 +179,14 @@ function get_archive_pagination() {
 	echo '</div>';
 }
 
+function get_fallback_image() {
+	return get_option('fallback-image');
+}
 
-
+function get_post_featured_image() {
+	$image_url = (has_post_thumbnail()) ? get_featured_image('large') : get_fallback_image();
+	return $image_url;
+}
 
 
 

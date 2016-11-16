@@ -23,6 +23,19 @@ function bco_customize_register($wp_customize) {
 	))); 
 
 	# Company info panel
+	$wp_customize->add_section( 'website-settings' , array(
+		'title' => __( 'Website Settings', 'bco' ),
+		'priority' => 30
+	));
+
+	$wp_customize->add_setting('fallback-image', array('type' => 'option'));
+	$wp_customize->add_control( new WP_Customize_Image_Control( $wp_customize, 'fallback-image', array(
+		'label' => 'Fallback Image',
+		'section' => 'website-settings',
+		'settings' => 'fallback-image',
+	))); 
+
+	# Company info panel
 	$wp_customize->add_section( 'section-company' , array(
 		'title' => __( 'Company Info', 'bco' ),
 		'priority' => 30

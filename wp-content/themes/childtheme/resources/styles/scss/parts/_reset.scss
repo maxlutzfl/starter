@@ -92,21 +92,66 @@ ol {
 	margin: 0;
 }
 
-ol,
 ul {
 	font-size: 0;
+	margin: 0;
+	padding: 0;
+	list-style: none;
 
 	li {
 		@include font-size($base-font);
 		vertical-align: top;
 	}
+}
 
-	li:not(:last-of-type) {
-		margin-bottom: 20px;
+a {
+	text-decoration: none;
+}
+
+.entry-content {
+
+	a {
+		text-decoration: underline;
+	}
+	
+	ul { 
+		list-style-type: disc; 
+		list-style-position: inside; 
 	}
 
+	ol { 
+		list-style-type: decimal; 
+		list-style-position: inside; 
+	}
+
+	ul ul, ol ul { 
+		list-style-type: circle; 
+		list-style-position: inside; 
+		margin-left: 15px; 
+	}
+
+	ol ol, ul ol { 
+		list-style-type: lower-latin; 
+		list-style-position: inside; 
+		margin-left: 15px; 
+	}
+
+	ol,
 	ul {
-		margin-top: 10px;
+		margin: 0;
+		padding-left: 30px;
+
+		li {
+			
+		}
+
+		li:not(:last-of-type) {
+			margin-bottom: 20px;
+		}
+
+		ul {
+			margin-top: 10px;
+		}
 	}
 }
 

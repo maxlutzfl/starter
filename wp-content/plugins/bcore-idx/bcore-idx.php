@@ -15,7 +15,7 @@ function wolfnet_api_testing() {
     $token = $authenticate['responseData']['data']['api_token'];
     $resource = '/listing?sort=price_desc&min_price=200000&max_price=300000&city=Coon Rapids&maxrows=5&startrow=6';
     $request = $client->sendRequest($token, $resource);
-
+    // var_dump($request);
     foreach ( $request['responseData']['data']['listing'] as $listing ) {
     	$link = 'http://starter.bco/listings/' . sanitize_title($listing['display_address']) . '_' . $listing['property_id'];
         echo '<article>';

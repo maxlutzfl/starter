@@ -16,3 +16,4 @@
 @mixin on-large-only() { @include breakpoint('above', 1200px) { @content; } }
 @mixin above-medium() { @include breakpoint('above', 751px) { @content; } }
 @mixin above-large() { @include breakpoint('above', 1201px) { @content; } }
+@mixin nav-break() { @include breakpoint('above', 1000px) { @content; } }

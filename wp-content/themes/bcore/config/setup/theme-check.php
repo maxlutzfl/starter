@@ -48,13 +48,16 @@ class bco_theme_checker {
 
 	# Check for screenshot
 	public function screenshot_check() {
-		$screenshot_file = BCO_CHILD_BASE_DIRECTORY . '/screenshot.png';
-		if ( !file_exists($screenshot_file) ) {
+		$screenshot_png = BCO_CHILD_BASE_DIRECTORY . '/screenshot.png';
+		$screenshot_jpg = BCO_CHILD_BASE_DIRECTORY . '/screenshot.jpg';
+		if ( file_exists($screenshot_png) || file_exists($screenshot_jpg) ) {
+
+		} else {
 			?>
 				<div class="notice notice-error is-dismissible">
-					<p><?php _e('📷 Current theme does not have a screenshot.png file. <a href="' . get_developer_options_link() . '">Hide developer alerts.</a>', 'bco'); ?></p>
+					<p><?php _e('📷 Current theme does not have a screenshot file. <a href="' . get_developer_options_link() . '">Hide developer alerts.</a>', 'bco'); ?></p>
 				</div>
-			<?php	
+			<?php
 		}
 	}
 

@@ -24,6 +24,7 @@
 										)); 
 									?>
 									<a href="<?php the_permalink(); ?>" class="button-style"><span>Read More</span></a>
+									<?php the_content(); ?>
 								</div>
 							</li>
 						</ul>
