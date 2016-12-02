@@ -14,6 +14,7 @@ require BCO_CONFIG_DIRECTORY . '/setup/cleanup.php';
 require BCO_CONFIG_DIRECTORY . '/setup/gravity-forms.php';
 require BCO_CONFIG_DIRECTORY . '/setup/google-analytics.php';
 require BCO_CONFIG_DIRECTORY . '/setup/login-screen.php';
+require BCO_CONFIG_DIRECTORY . '/setup/module-builder.php';
 
 /** Functions */
 require BCO_CONFIG_DIRECTORY . '/functions/website-info.php';
