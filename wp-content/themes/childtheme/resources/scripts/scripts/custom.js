@@ -102,6 +102,9 @@ jQuery(function($){
 
 	$(document).ready(function(){
 		var gfields = $('li.gfield .ginput_container input, li.gfield .ginput_container textarea');
+		gfields.each(function() {
+			$(this).parent().parent().addClass('field-has-animated-label');
+		});
 		gfields.focus(function(){
 			$(this).parent().parent().addClass('field-active');
 		});

@@ -1,3 +1,10 @@
+<?php
+/**
+ * Mobile Menu Template
+ */
+
+?>
+
 <div id="mobile-navigation" class="mobile-navigation mobile-navigation-right" aria-hidden="true">
 	<div class="mobile-navigation-container">
 		

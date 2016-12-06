@@ -1,5 +1,9 @@
 <?php
-// Get post type archive title
+/**
+ * Titles
+ * @package bcore
+ */
+
 function get_post_type_title() {
 	global $wp_query;
 	return get_post_type_object( $wp_query->query['post_type'] )->labels->name;

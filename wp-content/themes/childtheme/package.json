@@ -1,7 +1,7 @@
 {
-	"name": "brandco-starter-theme",
-	"version": "5.0.0",
-	"description": "BrandCo Starter Theme",
+	"name": "bcore-custom-web",
+	"version": "17.0.0",
+	"description": "bcore",
 	"author": "BrandCo LLC <dev@brandco.com>",
 	"dependencies": {
 		"gulp": "~3.9.0",

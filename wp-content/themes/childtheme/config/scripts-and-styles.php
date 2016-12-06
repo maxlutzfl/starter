@@ -18,10 +18,10 @@ function child_frontend_scripts_and_styles() {
 
 	# Scripts
 	wp_enqueue_script('jquery');
-	wp_enqueue_script('bco-child-theme-scripts', BCO_CHILD_BASE_DIRECTORY_URI . '/resources/scripts/main.min.js', array('jquery'), null, true);
+	wp_enqueue_script('bco-child-theme-scripts', BCORE_CHILD_BASE_DIRECTORY_URI . '/resources/scripts/main.min.js', array('jquery'), null, true);
 
 	# Styles
-	wp_enqueue_style('bco-child-theme-style', BCO_CHILD_BASE_DIRECTORY_URI . '/resources/styles/css/main.min.css');
+	wp_enqueue_style('bco-child-theme-style', BCORE_CHILD_BASE_DIRECTORY_URI . '/resources/styles/css/main.min.css');
 
 	/** Remove parent styles */
 	wp_dequeue_style('bco-framework-theme-style');

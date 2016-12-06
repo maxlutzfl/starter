@@ -1,3 +1,11 @@
+<?php
+/**
+ * Header Template
+ */
+
+?>
+
+
 <header id="site-header" class="site-header">
 	<div class="header-container">
 		<div class="header-top">

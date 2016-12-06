@@ -1,15 +1,15 @@
 
 /* Modes */
-#wp-admin-bar-bco-dev-env-beta a,
-#wp-admin-bar-bco-dev-env-local a {
+#wp-admin-bar-bcore-dev-env-beta a,
+#wp-admin-bar-bcore-dev-env-local a {
 	background-color: #D32F2F !important;
 	color: #fff !important;
 }
 
-#wp-admin-bar-bco-dev-env-beta a:focus,
-#wp-admin-bar-bco-dev-env-local a:focus
-#wp-admin-bar-bco-dev-env-beta a:hover,
-#wp-admin-bar-bco-dev-env-local a:hover {
+#wp-admin-bar-bcore-dev-env-beta a:focus,
+#wp-admin-bar-bcore-dev-env-local a:focus
+#wp-admin-bar-bcore-dev-env-beta a:hover,
+#wp-admin-bar-bcore-dev-env-local a:hover {
 	background-color: #D32F2F !important;
 	color: #fff !important;
 }

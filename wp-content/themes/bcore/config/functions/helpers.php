@@ -1,5 +1,6 @@
 <?php
 /**
+ * Helper Functions
  * @package bcore
  */
 
@@ -21,7 +22,7 @@ function get_image_by_id($img_id, $size = 'thumbnail') {
 function get_icon($icon = 'link.svg') {
 
 	// Get file
-	$file = BCO_IMAGE_DIRECTORY . 'svg/' . $icon;
+	$file = BCORE_PARENT_RESOURCES_DIRECTORY . 'images/svg/' . $icon;
 
 	// Might also be in the child theme
 	$or_from_child_theme = get_stylesheet_directory() . '/resources/images/svg/' . $icon;
@@ -114,7 +115,7 @@ function textarea_filter($content) {
  * Get image from directory
  */
 function get_image_from_directory($file_name) {
-	return BCO_CHILD_BASE_DIRECTORY_URI . '/resources/images/' . $file_name;
+	return BCORE_CHILD_BASE_DIRECTORY_URI . '/resources/images/' . $file_name;
 }
 
 /** 
@@ -179,13 +180,33 @@ function get_archive_pagination() {
 }
 
 function get_fallback_image() {
-	return get_option('fallback-image');
+	return get_option('fallback_image');
 }
 
 function get_post_featured_image() {
 	$image_url = (has_post_thumbnail()) ? get_featured_image('large') : get_fallback_image();
 	return $image_url;
 }
+
+function create_url_from_data($base_url, $query_array) {
+	$query_string = http_build_query($query_array);
+	return $base_url . '?' . $query_string;
+}
+
+function get_google_maps_api_key() {
+	return get_option('google_maps_api_key');
+}
+
+add_filter('acf/settings/google_api_key', function() {
+	return get_google_maps_api_key();
+});
+
+
+
+
+
+
+
 
 
 
