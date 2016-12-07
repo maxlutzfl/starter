@@ -54,7 +54,7 @@ class BcoreIDXQueryListings {
 		$data['current_page']['last'] = (int) ($this->startrow + $this->maxrows) - 1;
 
 		$data['pages']['total'] = (int) ceil($this->all_query_data->data->total_rows / $this->maxrows);
-		$data['pages']['current'] = floor($data['current_page']['limit'], $data['current_page']['total']);
+		$data['pages']['current'] = floor(($data['current_page']['limit'] / $data['current_page']['total']));
 		$data['pages']['next'] = ($data['current_page']['last'] + 1);
 		$data['pages']['last'] = ($data['current_page']['first'] - $data['current_page']['limit']);
 

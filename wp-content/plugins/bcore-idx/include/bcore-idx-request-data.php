@@ -11,6 +11,7 @@ class BcoreIdxRequestData {
 	private $example_api_key = self::EXAMPLE_API_KEY;
 	private $wolfnet_api_host = self::WOLFNET_API_HOST;
 
+	// Get many listings
 	public function get_listings($request) {
 		$key = $this->get_key();
 		$token = $this->get_token();
@@ -29,6 +30,7 @@ class BcoreIdxRequestData {
 		return $decoded_response;
 	}
 
+	// Get one listing
 	public function get_listing($listing_id) {
 		$key = $this->get_key();
 		$token = $this->get_token();

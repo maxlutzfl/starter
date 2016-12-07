@@ -6,12 +6,12 @@
 class BcoreIDXURLSetup {
 
 	function __construct() {
-		add_filter('template_include', array($this, 'example_bcoreidx_template_include'));
-		add_action('init', array($this, 'example_bcoreidx_add_rewrite_rules'));
-		add_filter('query_vars', array($this, 'example_bcoreidx_query_vars'));
+		add_filter('template_include', array($this, 'template_include'));
+		add_action('init', array($this, 'add_rewrite_rules'));
+		add_filter('query_vars', array($this, 'query_vars'));
 	}
 
-	public function example_bcoreidx_template_include($template) {
+	public function template_include($template) {
 		global $wp_query;
 		$new_template = '';
 
@@ -45,7 +45,7 @@ class BcoreIDXURLSetup {
 		return $template;
 	}
 
-	public function example_bcoreidx_add_rewrite_rules() {
+	public function add_rewrite_rules() {
 		add_rewrite_tag('%bcoreidx%', '([^&]+)');
 		add_rewrite_rule(
 			'listings/?$',
@@ -70,7 +70,7 @@ class BcoreIDXURLSetup {
 		);
 	}
 
-	public function example_bcoreidx_query_vars($vars) {
+	public function query_vars($vars) {
 		$vars[] = 'bcoreidx';
 		return $vars;
 	}

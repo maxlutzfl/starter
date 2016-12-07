@@ -9,15 +9,28 @@ Author URI: https://brandco.com/
 
 define('BCORE_IDX_PLUGIN_DIRECTORY', plugin_dir_path(__FILE__));
 
+/** 
+ * Setup URLs 
+ */
+require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-url-setup.php';
+new BcoreIDXURLSetup();
+
+/**
+ * Setup shortcodes
+ */
+require BCORE_IDX_PLUGIN_DIRECTORY . '/shortcodes/list-shortcode.php';
+new BcoreIDXListShortcode();
+
+/**
+ * Include
+ */
 require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-request-data.php';
 require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-query-listings.php';
 require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-query-listing.php';
-require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-url-setup.php';
 require BCORE_IDX_PLUGIN_DIRECTORY . '/include/bcore-idx-functions.php';
-require BCORE_IDX_PLUGIN_DIRECTORY . '/shortcodes/list-shortcode.php';
 
-new BcoreIDXURLSetup();
-new BcoreIDXListShortcode();
+
+
 
 // add_action('init', 'wolfnet_api_testing');
 // function wolfnet_api_testing() { 

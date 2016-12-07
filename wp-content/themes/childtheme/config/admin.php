@@ -1,6 +1,8 @@
 <?php
+/** 
+ * Custom admin styles 
+ */
 
-/** Custom admin styles */
 add_action('admin_head', 'wp_admin_custom_styles');
 function wp_admin_custom_styles() {
 	?>

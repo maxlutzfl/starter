@@ -1,6 +1,6 @@
 <?php
 /**
- * Get listing data
+ * Get single listing data
  */
 
 class BcoreIDXListing {
