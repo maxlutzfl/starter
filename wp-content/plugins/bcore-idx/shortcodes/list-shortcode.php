@@ -41,8 +41,8 @@ class BcoreIDXListShortcode {
 		}
 		echo '</ul>';
 
-		echo '<a href="http://starter.bco/listings/?startrow=' . $query->loop_info()['pages']['last'] . '">Last Page</a>';
-		echo '<a href="http://starter.bco/listings/?startrow=' . $query->loop_info()['pages']['next'] . '">Next Page</a>';
+		echo '<a href="' . get_option('siteurl') . '/listings/?startrow=' . $query->loop_info()['pages']['last'] . '">Last Page</a>';
+		echo '<a href="' . get_option('siteurl') . '/listings/?startrow=' . $query->loop_info()['pages']['next'] . '">Next Page</a>';
 
 	}
 }
